@@ -67,6 +67,20 @@ productId: {
     label: "Product Id"
 }
 ```
+- Sale
+
+```js
+clientId: {
+    type: String,
+    label: 'Client Id'
+   
+},
+productId: {
+    type: String,
+    label: "Product Id"
+}
+```
+
 ### Develop
 - ~~Product~~
 - Customer
