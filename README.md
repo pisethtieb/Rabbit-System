@@ -56,7 +56,7 @@ company: {
 ```
 
 ### Develop
-- Product
+- ~~Product~~
 - Customer
 - Quotation
 - Sale
