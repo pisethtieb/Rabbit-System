@@ -37,7 +37,6 @@ companyName: {
     label: 'Company Name',
     max: 250
 },
-
 address: {
     type: String,
     label: "Address"
@@ -51,13 +50,13 @@ contactPerson: {
     label: 'Contact Person'
 }
 ```
+
 - Quotation
 
 ```js
 clientId: {
     type: String,
     label: 'Client Id'
-   
 },
 productId: {
     type: String,
@@ -68,6 +67,7 @@ date:{
     label: "date"
 }
 ```
+
 - Sale
 
 ```js
@@ -89,6 +89,7 @@ totalPrice:{
     label: "Total Price"
 }
 ```
+
 - Maintenance_service
 
 ```js
@@ -102,6 +103,7 @@ des: {
     label: "Description"
 }
 ```
+
 ### Develop
 - ~~Product~~
 - Customer
