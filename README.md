@@ -32,15 +32,12 @@ feature: {
 - Customer
 
 ```js
-name: {
+companyMame: {
     type: String,
-    label: 'Name',
+    label: 'Company Name',
     max: 250
 },
-gender: {
-    type: String,
-    label: "Gender"
-},
+
 address: {
     type: String,
     label: "Address"
@@ -49,8 +46,9 @@ telephone: {
     type: String,
     label: 'Company'
 }
-company: {
-    type: String,
+contactPerson: {
+    type: Object,
+    <!--(name, gender, tel, address)-->
     label: 'Telephone'
 }
 ```
@@ -80,7 +78,19 @@ productId: {
     label: "Product Id"
 }
 ```
+- Maintenance_service
 
+```js
+saleId: {
+    type: String,
+    label: 'Sale Id'
+   
+},
+des: {
+    type: String,
+    label: "Description"
+}
+```
 ### Develop
 - ~~Product~~
 - Customer
