@@ -54,3 +54,13 @@ company: {
     label: 'Telephone'
 }
 ```
+
+### Develop
+- Product
+- Customer
+- Quotation
+- Sale
+
+### Report
+- Quotation
+- Invoice
