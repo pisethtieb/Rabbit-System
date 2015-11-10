@@ -32,7 +32,7 @@ feature: {
 - Customer
 
 ```js
-companyMame: {
+companyName: {
     type: String,
     label: 'Company Name',
     max: 250
@@ -47,9 +47,8 @@ telephone: {
     label: 'Company'
 }
 contactPerson: {
-    type: Object,
-    <!--(name, gender, tel, address)-->
-    label: 'Telephone'
+    type: Object, <!--(name, gender, tel)-->
+    label: 'Contact Person'
 }
 ```
 - Quotation
@@ -63,6 +62,10 @@ clientId: {
 productId: {
     type: String,
     label: "Product Id"
+},
+date:{
+    type: DateTime,
+    label: "date"
 }
 ```
 - Sale
@@ -76,6 +79,14 @@ clientId: {
 productId: {
     type: String,
     label: "Product Id"
+},
+saleDate:{
+    type: DateTime,
+    label: "date"
+},
+totalPrice:{
+    type: String,
+    label: "Total Price"
 }
 ```
 - Maintenance_service
