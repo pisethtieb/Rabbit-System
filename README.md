@@ -5,6 +5,7 @@ Rabbit System
 ### Schema
 
 - Product
+
 ```js
 name: {
     type: String,
@@ -26,10 +27,10 @@ feature: {
     type: String,
     label: 'Feature'
 }
-
 ```
 
 - Customer
+
 ```js
 name: {
     type: String,
