@@ -1,0 +1,1 @@
+Template.rabbit_home.helpers({});

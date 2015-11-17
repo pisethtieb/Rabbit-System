@@ -1,0 +1,50 @@
+<template name="rabbit_navbar">
+    <li class="{{isActiveRoute name='rabbit.home'}}"><a href="{{pathFor 'rabbit.home'}}">Home</a></li>
+    <li class="dropdown">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+            Data <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu" role="menu">
+            <li class="{{isActiveRoute name='rabbit.customer'}}">
+                <a href="{{pathFor 'rabbit.customer'}}">Customer</a>
+            </li>
+            <!--<li class="{{isActiveRoute name='rabbit.order'}}">-->
+            <!--<a href="{{pathFor 'rabbit.order'}}">Order</a>-->
+            <!--</li>-->
+        </ul>
+    </li>
+
+    <!--Reports-->
+    {{#if isInRole 'report' 'Rabbit'}}
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                Reports <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="{{isActiveRoute name='rabbit.customerReport'}}">
+                    <a href="{{pathFor 'rabbit.customerReport'}}">Customer (Browser View)</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.customerExcelReport'}}">
+                    <a href="{{pathFor 'rabbit.customerExcelReport'}}">Customer (Excel)</a>
+                </li>
+            </ul>
+        </li>
+    {{/if}}
+
+    <!--Settings-->
+    {{#if isInRole 'setting' 'Rabbit'}}
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                Settings <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="{{isActiveRoute name='cpanel.exchange'}}">
+                    <a href="{{pathFor 'cpanel.exchange'}}">Exchange</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.location'}}">
+                    <a href="{{pathFor 'rabbit.location'}}">Location</a>
+                </li>
+            </ul>
+        </li>
+    {{/if}}
+</template>
