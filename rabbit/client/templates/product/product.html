@@ -1,13 +1,14 @@
 <!--Index-->
-<template name="rabbit_customer">
+<template name="rabbit_product">
     <p>
         <button type="button" class="btn btn-primary js-insert">{{fa "plus"}} Add New</button>
     </p>
-    {{> tabular table=Rabbit.TabularTable.Customer selector=selector class="table table-striped table-bordered table-condensed table-hover-pointer"}}
+
+    {{> tabular table=Rabbit.TabularTable.Product selector=selector class="table table-striped table-bordered table-condensed table-hover-pointer"}}
 </template>
 
 <!--Action-->
-<template name="rabbit_customerAction">
+<template name="rabbit_productAction">
     {{#tabularAction}}
         <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
         <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
@@ -16,18 +17,18 @@
 </template>
 
 <!--Insert-->
-<template name="rabbit_customerInsert">
-    {{#autoForm collection=Rabbit.Collection.Customer id="rabbit_customerInsert" type="insert"}}
+<template name="rabbit_productInsert">
+    {{#autoForm collection=Rabbit.Collection.Product id="rabbit_productInsert" type="insert"}}
         <div class="row">
             <div class="col-md-6">
-                {{> afQuickField name="companyName"}}
-                {{> afQuickField name="telephone"}}
+                {{> afQuickField name="name"}}
+                {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="basePriceObjectField"}}
+                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
+
+
             </div>
             <div class="col-md-6">
-                {{> afQuickField name="address"}}
-            </div>
-            <div class="col-md-12">
-                {{> afArrayField name="contactPerson" id="contactPerson" template="customArrayField" subtemplate="customObjectField"}}
+                {{> afQuickField name="feature"}}
                 <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
                 <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
             </div>
@@ -36,20 +37,20 @@
 </template>
 
 <!--Update-->
-<template name="rabbit_customerUpdate">
+<template name="rabbit_productUpdate">
     <!--Built-in template sub ready by all-->
     {{#if Template.subscriptionsReady}}
-        {{#autoForm collection=Rabbit.Collection.Customer id="rabbit_customerUpdate" doc=this type="update"}}
+        {{#autoForm collection=Rabbit.Collection.Product id="rabbit_productUpdate" doc=this type="update"}}
             <div class="row">
                 <div class="col-md-6">
-                    {{> afQuickField name="companyName"}}
-                    {{> afQuickField name="telephone"}}
+                    {{> afQuickField name="name"}}
+                    {{> afQuickField name="basePrice"}}
+                    {{> afQuickField name="maintenancePrice"}}
+
                 </div>
                 <div class="col-md-6">
-                    {{> afQuickField name="address"}}
-                </div>
-                <div class="col-md-12">
-                    {{> afArrayField name="contactPerson" id="contactPerson" template="customArrayField" subtemplate="customObjectField"}}
+                    {{> afQuickField name="feature"}}
+
                     <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
                     <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
                 </div>
@@ -62,21 +63,21 @@
 </template>
 
 <!--Show-->
-<template name="rabbit_customerShow">
-    <!--Customer template sub ready by all-->
+<template name="rabbit_productShow">
+    <!--Product template sub ready by all-->
     {{#if templateSubReady}}
         {{#with data}}
             <dl class="dl-horizontal">
                 <dt>ID:</dt>
                 <dd>{{_id}}</dd>
-                <dt>Company Name:</dt>
-                <dd>{{companyName}}</dd>
-                <dt>Address:</dt>
-                <dd>{{address}}</dd>
-                <dt>Telephone:</dt>
-                <dd>{{telephone}}</dd>
-                <dt>Contact Person:</dt>
-                <dd>{{contactPerson}}</dd>
+                <dt>Name:</dt>
+                <dd>{{name}}</dd>
+                <dt>Base Price:</dt>
+                <dd>{{base}}</dd>
+                <dt>Maintenance Price:</dt>
+                <dd>{{maintenance}}</dd>
+                <dt>Feature:</dt>
+                <dd>{{feature}}</dd>
             </dl>
         {{/with}}
     {{else}}
@@ -85,12 +86,12 @@
 </template>
 
 <!--Location add on-->
-<!--<template name="rabbit_locationAddOnCustomer">-->
-<!--{{> rabbit_location cssClass="pointer"}}-->
+<!--<template name="rabbit_locationAddOnProduct">-->
+    <!--{{> rabbit_location cssClass="pointer"}}-->
 <!--</template>-->
 
 <!--Custom array field-->
-<template name="afArrayField_customArrayField">
+<template name="afArrayField_basePriceArrayField">
     <div class="panel panel-default">
         <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
         <div class="panel-body">
@@ -130,17 +131,19 @@
     </div>
 </template>
 <!--Custom object field-->
-<template name="customObjectField">
-    <div class="col-sm-3">
-        {{> afQuickField name=current.name template="bootstrap3" label=false class="input-sm" placeholder="Name"}}
+<template name="basePriceObjectField">
+    <div class="col-sm-6">
+        {{> afQuickField name=current.headOffice template="bootstrap3" label=false class="input-sm" placeholder="Head Office"}}
     </div>
-    <div class="col-sm-2">
-        {{> afQuickField name=current.gender template="bootstrap3" label=false class="input-sm"}}
+    <div class="col-sm-6">
+        {{> afQuickField name=current.branch template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
     </div>
-    <div class="col-sm-3">
-        {{> afQuickField name=current.position template="bootstrap3" label=false class="input-sm" placeholder="Position"}}
+</template>
+<template name="maintenancePriceObjectField">
+    <div class="col-sm-6">
+        {{> afQuickField name=current.headOffice template="bootstrap3" label=false class="input-sm" placeholder="Head Office"}}
     </div>
-    <div class="col-sm-3">
-        {{> afQuickField name=current.tel template="bootstrap3" label=false class="input-sm" placeholder="Telephone"}}
+    <div class="col-sm-6">
+        {{> afQuickField name=current.branch template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
     </div>
 </template>

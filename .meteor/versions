@@ -13,7 +13,7 @@ aldeed:template-extension@3.4.3
 amplify@1.0.0
 anti:fake@0.4.1
 anti:i18n@0.4.3
-arillo:flow-router-helpers@0.4.5
+arillo:flow-router-helpers@0.4.6
 autoupdate@1.2.4
 babel-compiler@5.8.24_1
 babel-runtime@0.1.4
@@ -51,7 +51,7 @@ chhib:selectize-bootstrap-3@0.0.1
 chuangbo:cookie@1.1.0
 coffeescript@1.0.11
 comerc:autoform-selectize@2.2.3
-cosmos:browserify@0.8.3
+cosmos:browserify@0.8.4
 cottz:flow-router-auth@0.0.8
 czbaker:lightbox2@2.7.1_1
 dalgard:reactive-map@0.1.0_3
@@ -68,8 +68,8 @@ deps@1.0.9
 diff-sequence@1.0.1
 digilord:faker@1.0.7
 digilord:sugarjs@1.4.1
-easy:search@2.0.0
-easysearch:components@2.0.3
+easy:search@2.0.4
+easysearch:components@2.0.4
 easysearch:core@2.0.3
 ecmascript@0.1.6
 ecmascript-runtime@0.2.6
@@ -129,7 +129,7 @@ moonco:fixtures@0.1.6
 mpowaga:autoform-summernote@0.4.2
 msavin:fetcher@1.1.0
 natestrauser:animate-css@3.4.0
-natestrauser:select2@3.5.1
+natestrauser:select2@4.0.0_1
 netanelgilad:excel@0.2.4
 netanelgilad:mkdirp@0.0.1
 netanelgilad:node-uuid@1.0.2
@@ -213,4 +213,3 @@ xamfoo:reactive-obj@0.5.0
 zimme:active-route@2.3.2
 zimme:collection-behaviours@1.1.3
 zimme:collection-softremovable@1.0.5
-zimme:select2-bootstrap3-css@1.4.6

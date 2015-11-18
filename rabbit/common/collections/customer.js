@@ -10,7 +10,12 @@ Rabbit.Schema.Customer = new SimpleSchema({
     },
     address: {
         type: String,
-        label: "Address"
+        label: "Address",
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        }
     },
     telephone: {
         type: String,
@@ -18,13 +23,11 @@ Rabbit.Schema.Customer = new SimpleSchema({
     },
     contactPerson: {
         type: Array,
-        label: "Contact Person",
         minCount: 1,
         optional: true
     },
     'contactPerson.$': {
         type: Object
-
     },
     'contactPerson.$.name': {
         type: String
@@ -32,7 +35,7 @@ Rabbit.Schema.Customer = new SimpleSchema({
     'contactPerson.$.gender': {
         type: String,
         autoform: {
-            type: "select2",
+            type: "selectize",
             options: function () {
                 return Rabbit.List.gender();
             }

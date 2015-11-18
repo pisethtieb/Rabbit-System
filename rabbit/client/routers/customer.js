@@ -12,7 +12,7 @@ rabbitRoutes.route('/customer', {
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'Customer',
+        title: 'customer',
         parent: 'rabbit.home'
     }
 });

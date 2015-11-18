@@ -1,0 +1,6 @@
+.select2-dropdown {
+    z-index: 9999;
+}
+.selectize-dropdown, .selectize-input, .selectize-input input{
+   font-size: 12px;
+}

@@ -1,12 +1,12 @@
 /**
  * Declare template
  */
-var indexTpl = Template.rabbit_customer,
-    insertTpl = Template.rabbit_customerInsert,
-    updateTpl = Template.rabbit_customerUpdate,
-    showTpl = Template.rabbit_customerShow;
+var indexTpl = Template.rabbit_product,
+    insertTpl = Template.rabbit_productInsert,
+    updateTpl = Template.rabbit_productUpdate,
+    showTpl = Template.rabbit_productShow;
 
-    //locationAddOnTpl = Template.rabbit_locationAddOnCustomer;
+    //locationAddOnTpl = Template.rabbit_locationAddOnProduct;
 
 
 /**
@@ -15,13 +15,13 @@ var indexTpl = Template.rabbit_customer,
 indexTpl.onCreated(function () {
     // SEO
     SEO.set({
-        title: 'Customer',
+        title: 'Product',
         description: 'Description for this page'
     });
 
     // Create new  alertify
-    createNewAlertify(["customer"], {size: 'lg'});
-    createNewAlertify(["customerShow"]);
+    createNewAlertify(["product"], {size: 'lg'});
+    createNewAlertify(["productShow"]);
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -37,19 +37,19 @@ indexTpl.helpers({
 
 indexTpl.events({
     'click .js-insert': function (e, t) {
-        alertify.customer(fa("plus", "Customer"), renderTemplate(insertTpl));
+        alertify.product(fa("plus", "Product"), renderTemplate(insertTpl));
     },
     'click .js-update': function (e, t) {
-        alertify.customer(fa("pencil", "Customer"), renderTemplate(updateTpl, this));
+        alertify.product(fa("pencil", "Product"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
         var self = this;
 
         alertify.confirm(
-            fa("remove", "Customer"),
+            fa("remove", "Product"),
             "Are you sure to delete [" + self._id + "]?",
             function () {
-                Rabbit.Collection.Customer.remove(self._id, function (error) {
+                Rabbit.Collection.Product.remove(self._id, function (error) {
                     if (error) {
                         alertify.error(error.message);
                     } else {
@@ -61,7 +61,7 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.customerShow(fa("eye", "Customer"), renderTemplate(showTpl, this));
+        alertify.productShow(fa("eye", "Product"), renderTemplate(showTpl, this));
     }
 
 
@@ -72,7 +72,7 @@ indexTpl.events({
     //    var rowData = dataTable.row(event.currentTarget)
     //        .data();
     //
-    //    FlowRouter.go('rabbit.order', {customerId: rowData._id});
+    //    FlowRouter.go('rabbit.order', {productId: rowData._id});
     //}
 });
 
@@ -88,7 +88,7 @@ insertTpl.onRendered(function () {
  * Update
  */
 updateTpl.onCreated(function () {
-    this.subscribe('rabbit_customer', this.data._id);
+    this.subscribe('rabbit_product', this.data._id);
 });
 
 updateTpl.onRendered(function () {
@@ -97,7 +97,7 @@ updateTpl.onRendered(function () {
 
 updateTpl.helpers({
     data: function () {
-        var data = Rabbit.Collection.Customer.findOne(this._id);
+        var data = Rabbit.Collection.Product.findOne(this._id);
         return data;
     }
 });
@@ -107,30 +107,42 @@ updateTpl.helpers({
  * Show
  */
 showTpl.onCreated(function () {
-    this.subscribe('rabbit_customer', this.data._id);
+    this.subscribe('rabbit_product', this.data._id);
 });
 
 showTpl.helpers({
     data: function () {
-        var data = Rabbit.Collection.Customer.findOne(this._id);
+        var data = Rabbit.Collection.Product.findOne(this._id);
         return data;
 
     },
-    contactPerson: function () {
+    base: function () {
         var str = "<table class='table table-bordered'><thead>" +
             "<tr>" +
-            "<th>Name</th>" +
-            "<th>Gender</th>" +
-            "<th>Position</th>" +
-            "<th>Telephone</th>" +
+            "<th>Head Office</th>" +
+            "<th>Branch</th>" + +
             "</tr>" +
             "</thead><tbody>";
-        this.contactPerson.forEach(function (o) {
+        this.basePrice.forEach(function (o) {
             str += '<tr>' +
-                '<td>' + o.name + '</td>' +
-                '<td>' + o.gender + '</td>' +
-                '<td>' + o.position + '</td>' +
-                '<td>' + o.tel + '</td>' +
+                '<td>' + o.headOffice + '</td>' +
+                '<td>' + o.branch + '</td>' +
+                '</tr>'
+        });
+        str += "</tbody></table>";
+        return new Spacebars.SafeString(str);
+    },
+    maintenance: function () {
+        var str = "<table class='table table-bordered'><thead>" +
+            "<tr>" +
+            "<th>Head Office</th>" +
+            "<th>Branch</th>" + +
+                "</tr>" +
+            "</thead><tbody>";
+        this.maintenancePrice.forEach(function (o) {
+            str += '<tr>' +
+                '<td>' + o.headOffice + '</td>' +
+                '<td>' + o.branch + '</td>' +
                 '</tr>'
         });
         str += "</tbody></table>";
@@ -143,12 +155,12 @@ showTpl.helpers({
  * Hook
  */
 AutoForm.hooks({
-    // Customer
-    rabbit_customerInsert: {
+    // Product
+    rabbit_productInsert: {
         before: {
             insert: function (doc) {
                 var prefix = Session.get('currentBranch') + '-';
-                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Customer, prefix, 6);
+                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Product, prefix, 6);
                 doc.branchId = Session.get('currentBranch');
                 return doc;
             }
@@ -160,9 +172,9 @@ AutoForm.hooks({
             alertify.error(error.message);
         }
     },
-    rabbit_customerUpdate: {
+    rabbit_productUpdate: {
         onSuccess: function (formType, result) {
-            alertify.customer().close();
+            alertify.product().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {

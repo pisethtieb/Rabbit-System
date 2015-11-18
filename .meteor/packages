@@ -91,8 +91,7 @@ anti:fake
 
 ### Template ###
 aldeed:autoform
-natestrauser:select2
-zimme:select2-bootstrap3-css
+#zimme:select2-bootstrap3-css
 aldeed:autoform-select2
 chhib:selectize-bootstrap-3
 comerc:autoform-selectize
@@ -177,3 +176,4 @@ theara:factory
 theara:app-dump
 theara:autoform-file
 theara:scrollup
+natestrauser:select2

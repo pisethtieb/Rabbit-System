@@ -1,17 +1,18 @@
 var subs = new SubsManager();
 
-rabbitRoutes.route('/location', {
-    name: 'rabbit.location',
+rabbitRoutes.route('/product', {
+    name: 'rabbit.product',
     subscriptions: function (params, queryParams) {
-        //this.register('rabbit_location', subs.subscribe('rabbit_location'));
+        // Customer
+        //this.register('rabbit_customer', subs.subscribe('rabbit_customer', Session.get('currentBranch')));
     },
     action: function (params, queryParams) {
-        Layout.main('rabbit_location');
+        Layout.main('rabbit_product');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'Location',
+        title: 'product',
         parent: 'rabbit.home'
     }
 });
