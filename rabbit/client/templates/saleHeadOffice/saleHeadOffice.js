@@ -103,6 +103,16 @@ insertTpl.events({
         $('[name=headBasePrice]').val(product.basePrice[0].headOffice);
         $('[name=headMaintainPrice]').val(product.maintenancePrice[0].headOffice);
         $('[name=totalPrice]').val(product.maintenancePrice[0].headOffice + product.basePrice[0].headOffice);
+    },
+    'keyup [name=headBasePrice]'(){
+
+        $('[name=totalPrice]').val(parseFloat($('[name=headBasePrice]').val()) + parseFloat($('[name=headMaintainPrice]').val()));
+
+    },
+    'keyup [name=headMaintainPrice]'(){
+
+        $('[name=totalPrice]').val(parseFloat($('[name=headBasePrice]').val()) + parseFloat($('[name=headMaintainPrice]').val()));
+
     }
 });
 
