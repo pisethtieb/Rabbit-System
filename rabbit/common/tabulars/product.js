@@ -12,21 +12,18 @@ Rabbit.TabularTable.Product = new Tabular.Table({
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_productAction},
         {data: "_id", title: "ID"},
         {data: "name", title: "Name"},
-        {data: "basePrice", title: "Product Price",
+        {
+            data: "basePrice", title: "Product Price",
             render: function (val, type, doc) {
                 return JSON.stringify(val);
-            }},
-        //{
-        //    data: "dob",
-        //    title: "Date of Birth",
-        //    render: function (val, type, doc) {
-        //        return moment(val).format('YYYY-MM-DD');
-        //    }
-        //},
-        {data: "maintenancePrice", title: "Maintenance Price",
+            }
+        },
+        {
+            data: "maintenancePrice", title: "Maintenance Price",
             render: function (val, type, doc) {
                 return JSON.stringify(val);
-            }},
+            }
+        },
         {data: "feature", title: "Feature"}
     ]
 });

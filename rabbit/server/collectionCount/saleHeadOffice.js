@@ -1,0 +1,1 @@
+Rabbit.Collection.SaleHeadOffice.cacheCount('branchCount', Rabbit.Collection.SaleBranchOffice, 'saleHeadOfficeId');

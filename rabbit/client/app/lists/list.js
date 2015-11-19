@@ -23,15 +23,30 @@ Rabbit.List = {
 
         return list;
     },
+    product: function () {
+        var list = [];
+        list.push({label: "(Select One)", value: ""});
+
+        Rabbit.Collection.Product.find()
+            .forEach(function (obj) {
+                list.push({label: obj._id + ' : ' + obj.name, value: obj._id});
+            });
+
+        return list;
+    },
     customer: function () {
-        //var list = [];
-        //list.push({label: "(Select One)", value: ""});
-        //
-        //Rabbit.Collection.Customer.find()
-        //    .forEach(function (obj) {
-        //        list.push({label: obj._id + ' : ' + obj.name, value: obj._id});
-        //    });
-        //
-        //return list;
+        var list = [];
+        list.push({label: "(Select One)", value: ""});
+
+        Rabbit.Collection.Customer.find()
+            .forEach(function (obj) {
+                list.push({label: obj._id + ' : ' + obj.companyName, value: obj._id});
+            });
+
+        return list;
+    },
+    getProduct(id){
+        let product = Rabbit.Collection.Product.findOne(id);
+        return product;
     }
 };

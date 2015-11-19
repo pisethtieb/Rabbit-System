@@ -19,10 +19,12 @@ Rabbit.Schema.Product = new SimpleSchema({
         type: Object
     },
     'basePrice.$.headOffice': {
-        type: String
+        type: Number,
+        decimal:true
     },
     'basePrice.$.branch': {
-        type: String
+        type: Number,
+        decimal: true
     },
     maintenancePrice: {
         type: Array,
@@ -33,10 +35,12 @@ Rabbit.Schema.Product = new SimpleSchema({
         type: Object
     },
     'maintenancePrice.$.headOffice': {
-        type: String
+        type: Number,
+        decimal: true
     },
     'maintenancePrice.$.branch': {
-        type: String
+        type: Number,
+        decimal: true
     },
     feature: {
         type: String,

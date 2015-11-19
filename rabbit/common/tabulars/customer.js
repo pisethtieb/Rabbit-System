@@ -13,13 +13,6 @@ Rabbit.TabularTable.Customer = new Tabular.Table({
         {data: "_id", title: "ID"},
         {data: "companyName", title: "Company Name"},
         {data: "address", title: "Address"},
-        //{
-        //    data: "dob",
-        //    title: "Date of Birth",
-        //    render: function (val, type, doc) {
-        //        return moment(val).format('YYYY-MM-DD');
-        //    }
-        //},
         {data: "telephone", title: "Telephone"},
         {
             data: "contactPerson", title: "Contact Person",
