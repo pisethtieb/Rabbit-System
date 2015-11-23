@@ -3,17 +3,18 @@ Rabbit.Collection.Office = new Mongo.Collection("rabbit_office");
 
 // Schema
 Rabbit.Schema.Office = new SimpleSchema({
-    saleHeadOfficeId: {
+    contractId: {
         type: String,
-        label: 'Sale HeadOffice ID'
+        label: 'Contract ID'
 
     },
-    branchBasePrice: {
-        type: Number,
-        decimal: true
+    type: {
+        type: String,
+        decimal: true,
+        label: 'Type'
     }
     ,
-    branchMaintainPrice: {
+    price: {
         type: Number,
         decimal: true
     },

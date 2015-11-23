@@ -9,6 +9,10 @@ Rabbit.TabularTable.Office = new Tabular.Table({
     order: [['1', 'desc']],
     columns: [
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_officeAction},
-        {data: "_id", title: "ID"}
+        {data: "_id", title: "ID"},
+        {data: "contractId", title: "ID"},
+        {data: "type", title: "ID"},
+        {data: "price", title: "ID"},
+        {data: "totalPrice", title: "ID"}
     ]
 });

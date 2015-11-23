@@ -2,24 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c191e4-0749-4c02-8796-28c2c3c82501" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/server/collections_hook/saleHeadOffice.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/server/methods/branchOffice.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/client/routers/saleBranchOffice.js" afterPath="$PROJECT_DIR$/rabbit/client/routers/office.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/client/routers/saleHeadOffice.js" afterPath="$PROJECT_DIR$/rabbit/client/routers/contract.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/client/templates/saleBranchOffice/saleBranchOffice.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/office/office.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/client/templates/saleBranchOffice/saleBranchOffice.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/office/office.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/client/templates/saleHeadOffice/saleHeadOffice.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.html" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/client/templates/saleHeadOffice/saleHeadOffice.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/common/collections/saleBranchOffice.js" afterPath="$PROJECT_DIR$/rabbit/common/collections/office.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/common/collections/saleHeadOffice.js" afterPath="$PROJECT_DIR$/rabbit/common/collections/contract.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/common/tabulars/saleBranchOffice.js" afterPath="$PROJECT_DIR$/rabbit/common/tabulars/office.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/common/tabulars/saleHeadOffice.js" afterPath="$PROJECT_DIR$/rabbit/common/tabulars/contract.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/server/publications/saleBranchOffice.js" afterPath="$PROJECT_DIR$/rabbit/server/publications/office.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/server/publications/saleHeadOffice.js" afterPath="$PROJECT_DIR$/rabbit/server/publications/contract.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/server/security/saleBranchOffice.js" afterPath="$PROJECT_DIR$/rabbit/server/security/office.js" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/rabbit/server/security/saleHeadOffice.js" afterPath="$PROJECT_DIR$/rabbit/server/security/contract.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/server/collectionCount/saleHeadOffice.js" afterPath="$PROJECT_DIR$/rabbit/server/collectionCount/saleHeadOffice.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/office/office.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/office/office.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/collections/office.js" afterPath="$PROJECT_DIR$/rabbit/common/collections/office.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/tabulars/office.js" afterPath="$PROJECT_DIR$/rabbit/common/tabulars/office.js" />
     </list>
     <ignored path="rabbit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -40,21 +25,41 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="contract.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/contract/contract.html">
+      <file leaf-file-name="office.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rabbit/client/routers/office.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-4.827586">
-              <caret line="21" column="35" selection-start-line="21" selection-start-column="35" selection-end-line="21" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="office.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.793103">
+              <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
       <file leaf-file-name="office.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/rabbit/client/routers/office.js">
+        <entry file="file://$PROJECT_DIR$/rabbit/common/tabulars/office.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.37546933">
-              <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+              <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="office.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rabbit/common/collections/office.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.0">
+              <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
               <folding />
             </state>
           </provider>
@@ -115,12 +120,9 @@
         <option value="$PROJECT_DIR$/rabbit/client/templates/saleBranchOffice/saleBranchOffice.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/saleHeadOffice/saleHeadOffice.html" />
         <option value="$PROJECT_DIR$/rabbit/common/tabulars/saleHeadOffice.js" />
-        <option value="$PROJECT_DIR$/rabbit/client/templates/office/office.html" />
         <option value="$PROJECT_DIR$/rabbit/common/collections/saleHeadOffice.js" />
         <option value="$PROJECT_DIR$/rabbit/server/publications/contract.js" />
         <option value="$PROJECT_DIR$/rabbit/client/routers/contract.js" />
-        <option value="$PROJECT_DIR$/rabbit/common/tabulars/office.js" />
-        <option value="$PROJECT_DIR$/rabbit/common/collections/office.js" />
         <option value="$PROJECT_DIR$/rabbit/server/collectionCount/saleHeadOffice.js" />
         <option value="$PROJECT_DIR$/rabbit/common/tabulars/contract.js" />
         <option value="$PROJECT_DIR$/rabbit/server/security/contract.js" />
@@ -128,6 +130,9 @@
         <option value="$PROJECT_DIR$/rabbit/server/publications/office.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/contract/contract.html" />
         <option value="$PROJECT_DIR$/rabbit/client/routers/office.js" />
+        <option value="$PROJECT_DIR$/rabbit/common/collections/office.js" />
+        <option value="$PROJECT_DIR$/rabbit/client/templates/office/office.html" />
+        <option value="$PROJECT_DIR$/rabbit/common/tabulars/office.js" />
       </list>
     </option>
   </component>
@@ -976,14 +981,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.0">
-          <caret line="0" column="23" selection-start-line="0" selection-start-column="23" selection-end-line="0" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/common/collections/contract.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.12515645">
@@ -996,14 +993,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.40050063">
           <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/common/collections/office.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.6508135">
-          <caret line="26" column="24" selection-start-line="26" selection-start-column="24" selection-end-line="26" selection-end-column="24" />
           <folding />
         </state>
       </provider>
@@ -1028,14 +1017,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.10012516">
           <caret line="4" column="26" selection-start-line="4" selection-start-column="26" selection-end-line="4" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/common/tabulars/office.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.2753442">
-          <caret line="11" column="34" selection-start-line="11" selection-start-column="34" selection-end-line="11" selection-end-column="34" />
           <folding />
         </state>
       </provider>
@@ -1106,8 +1087,32 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/routers/office.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.37546933">
+        <state vertical-scroll-proportion="0.0">
           <caret line="15" column="33" selection-start-line="15" selection-start-column="33" selection-end-line="15" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.793103">
+          <caret line="20" column="33" selection-start-line="20" selection-start-column="33" selection-end-line="20" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/common/collections/office.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="16" column="5" selection-start-line="16" selection-start-column="5" selection-end-line="16" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/common/tabulars/office.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.37546933">
+          <caret line="15" column="22" selection-start-line="15" selection-start-column="22" selection-end-line="15" selection-end-column="22" />
           <folding />
         </state>
       </provider>
