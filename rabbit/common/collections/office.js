@@ -1,8 +1,8 @@
 // Collection
-Rabbit.Collection.SaleBranchOffice = new Mongo.Collection("rabbit_saleBranchOffice");
+Rabbit.Collection.Office = new Mongo.Collection("rabbit_office");
 
 // Schema
-Rabbit.Schema.SaleBranchOffice = new SimpleSchema({
+Rabbit.Schema.Office = new SimpleSchema({
     saleHeadOfficeId: {
         type: String,
         label: 'Sale HeadOffice ID'
@@ -31,7 +31,7 @@ Rabbit.Schema.SaleBranchOffice = new SimpleSchema({
 ;
 
 // Attach schema
-Rabbit.Collection.SaleBranchOffice.attachSchema(Rabbit.Schema.SaleBranchOffice);
+Rabbit.Collection.Office.attachSchema(Rabbit.Schema.Office);
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');

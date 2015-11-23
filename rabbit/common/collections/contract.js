@@ -1,8 +1,8 @@
 // Collection
-Rabbit.Collection.SaleHeadOffice = new Mongo.Collection("rabbit_saleHeadOffice");
+Rabbit.Collection.Contract = new Mongo.Collection("rabbit_contract");
 
 // Schema
-Rabbit.Schema.SaleHeadOffice = new SimpleSchema({
+Rabbit.Schema.Contract = new SimpleSchema({
     customerId: {
         type: String,
         label: 'Client Id',
@@ -23,32 +23,14 @@ Rabbit.Schema.SaleHeadOffice = new SimpleSchema({
             options(){
                 return Rabbit.List.product();
             }
-
         }
-
     },
-    headBasePrice: {
-        type: Number,
-        decimal: true
-    }
-    ,
-    headMaintainPrice: {
-        type: Number,
-        decimal: true
-    }
-    ,
     saleDate: {
         type: Date,
         label: "date",
         defaultValue: function () {
             return moment().format('YYYY-MM-DD');
         }
-    }
-    ,
-    totalPrice: {
-        type: Number,
-        decimal:true,
-        label: "Total Price"
     }
     ,
     branchId: {
@@ -59,7 +41,7 @@ Rabbit.Schema.SaleHeadOffice = new SimpleSchema({
 ;
 
 // Attach schema
-Rabbit.Collection.SaleHeadOffice.attachSchema(Rabbit.Schema.SaleHeadOffice);
+Rabbit.Collection.Contract.attachSchema(Rabbit.Schema.Contract);
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');

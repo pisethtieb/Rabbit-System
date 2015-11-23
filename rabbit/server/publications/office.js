@@ -1,12 +1,12 @@
  //Publication
- Meteor.publish('rabbit_saleHeadOffice', function (branchId) {
+ Meteor.publish('rabbit_office', function (branchId) {
      this.unblock();
      if (this.userId) {
          var selector = {};
          if (!_.isUndefined(branchId)) {
              selector.branchId = branchId;
          }
-         return Rabbit.Collection.SaleHeadOffice.find(selector, {removed: true});
+         return Rabbit.Collection.Office.find(selector, {removed: true});
      }
      this.ready();
  });

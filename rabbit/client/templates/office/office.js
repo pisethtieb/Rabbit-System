@@ -4,12 +4,12 @@
 /**
  * Declare template
  */
-var indexTpl = Template.rabbit_saleBranchOffice,
-    insertTpl = Template.rabbit_saleBranchOfficeInsert,
-    updateTpl = Template.rabbit_saleBranchOfficeUpdate,
-    showTpl = Template.rabbit_saleBranchOfficeShow;
+var indexTpl = Template.rabbit_office,
+    insertTpl = Template.rabbit_officeInsert,
+    updateTpl = Template.rabbit_officeUpdate,
+    showTpl = Template.rabbit_officeShow;
 
-//locationAddOnTpl = Template.rabbit_locationAddOnSaleBranchOffice;
+//locationAddOnTpl = Template.rabbit_locationAddOnOffice;
 
 
 /**
@@ -23,26 +23,26 @@ indexTpl.onCreated(function () {
     });
 
     // Create new  alertify
-    createNewAlertify(["saleBranchOffice"], {size: 'lg'});
-    createNewAlertify(["saleBranchOfficeShow"]);
+    createNewAlertify(["office"], {size: 'lg'});
+    createNewAlertify(["officeShow"]);
     //createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
 indexTpl.events({
     'click .js-insert': function (e, t) {
-        alertify.saleBranchOffice(fa("plus", "SaleBranchOffice"), renderTemplate(insertTpl));
+        alertify.office(fa("plus", "Office"), renderTemplate(insertTpl));
     },
     'click .js-update': function (e, t) {
-        alertify.saleBranchOffice(fa("pencil", "SaleBranchOffice"), renderTemplate(updateTpl, this));
+        alertify.office(fa("pencil", "Office"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
         var self = this;
 
         alertify.confirm(
-            fa("remove", "SaleBranchOffice"),
+            fa("remove", "Office"),
             "Are you sure to delete [" + self._id + "]?",
             function () {
-                Rabbit.Collection.SaleBranchOffice.remove(self._id, function (error) {
+                Rabbit.Collection.Office.remove(self._id, function (error) {
                     if (error) {
                         alertify.error(error.message);
                     } else {
@@ -54,7 +54,7 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.saleBranchOfficeShow(fa("eye", "SaleBranchOffice"), renderTemplate(showTpl, this));
+        alertify.officeShow(fa("eye", "Office"), renderTemplate(showTpl, this));
     }
 
 
@@ -65,7 +65,7 @@ indexTpl.events({
     //    var rowData = dataTable.row(event.currentTarget)
     //        .data();
     //
-    //    FlowRouter.go('rabbit.order', {saleBranchOfficeId: rowData._id});
+    //    FlowRouter.go('rabbit.order', {officeId: rowData._id});
     //}
 });
 
@@ -79,9 +79,17 @@ indexTpl.helpers({
 });
 
 /*Insert*/
+insertTpl.onCreated(function () {
+    this.subscribe('rabbit_saleHeadOffice');
+});
 insertTpl.helpers({
     saleHeadOfficeId(){
         return FlowRouter.getParam('saleHeadOfficeId');
+    },
+    branchBasePrice(){
+        let saleHeadOfficeId = FLowRouter.getParam('saleHeadOfficeId');
+        let product = ReactiveMethod.call('getBranchBasePrice', saleHeadOfficeId);
+        return product;
     }
 });
 
@@ -89,7 +97,7 @@ insertTpl.helpers({
  * Update
  */
 updateTpl.onCreated(function () {
-    this.subscribe('rabbit_saleBranchOffice', this.data._id);
+    this.subscribe('rabbit_office', this.data._id);
 });
 
 updateTpl.onRendered(function () {
@@ -98,7 +106,7 @@ updateTpl.onRendered(function () {
 
 updateTpl.helpers({
     data: function () {
-        var data = Rabbit.Collection.SaleBranchOffice.findOne(this._id);
+        var data = Rabbit.Collection.Office.findOne(this._id);
         return data;
     }
 });
@@ -107,12 +115,12 @@ updateTpl.helpers({
  * Show
  */
 showTpl.onCreated(function () {
-    this.subscribe('rabbit_saleBranchOffice', this.data._id);
+    this.subscribe('rabbit_office', this.data._id);
 });
 
 showTpl.helpers({
     data: function () {
-        var data = Rabbit.Collection.SaleBranchOffice.findOne(this._id);
+        var data = Rabbit.Collection.Office.findOne(this._id);
         return data;
 
     }
@@ -122,12 +130,12 @@ showTpl.helpers({
  * Hook
  */
 AutoForm.hooks({
-    // SaleBranchOffice
-    rabbit_saleBranchOfficeInsert: {
+    // Office
+    rabbit_officeInsert: {
         before: {
             insert: function (doc) {
                 var prefix = Session.get('currentBranch') + '-';
-                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.SaleBranchOffice, prefix, 6);
+                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Office, prefix, 6);
                 doc.branchId = Session.get('currentBranch');
                 return doc;
             }
@@ -139,9 +147,9 @@ AutoForm.hooks({
             alertify.error(error.message);
         }
     },
-    rabbit_saleBranchOfficeUpdate: {
+    rabbit_officeUpdate: {
         onSuccess: function (formType, result) {
-            alertify.saleBranchOffice().close();
+            alertify.office().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {
