@@ -10,18 +10,18 @@ Rabbit.Schema.Office = new SimpleSchema({
     },
     type: {
         type: String,
-        decimal: true,
-        label: 'Type'
+        label: 'Type',
+        autoform: {
+            type: "select2",
+            options: function () {
+                return Rabbit.List.type();
+            }
+        }
     }
     ,
     price: {
         type: Number,
         decimal: true
-    },
-    totalPrice: {
-        type: Number,
-        decimal:true,
-        label: "Total Price"
     },
     branchId: {
         type: String,

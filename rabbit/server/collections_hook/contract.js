@@ -1,0 +1,1 @@
+Rabbit.Collection.Contract.cacheDoc('product', Rabbit.Collection.Product, ['_id','name','basePrice','maintenancePrice','feature']);

@@ -10,6 +10,14 @@ Rabbit.List = {
 
         return list;
     },
+    type: function () {
+        var list = [];
+        list.push({label: "Select One", value: ""});
+        list.push({label: 'Head Office', value: 'HO'});
+        list.push({label: 'Branch Office', value: 'BO'});
+
+        return list;
+    },
     address: function () {
         var list = [];
         list.push({label: "(Select One)", value: ""});

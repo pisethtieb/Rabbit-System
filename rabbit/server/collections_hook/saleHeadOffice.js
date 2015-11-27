@@ -1,1 +1,0 @@
-//Rabbit.Collection.SaleHeadOffice.cacheDoc('product', Rabbit.Collection.Product, {''});

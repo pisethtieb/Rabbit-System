@@ -60,7 +60,7 @@ indexTpl.events({
             null
         );
     },
-    'click #branch'(){
+    'click #addOffice'(){
         FlowRouter.go('rabbit.office',{
             contractId: this._id
         })

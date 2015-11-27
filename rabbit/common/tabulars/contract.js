@@ -18,12 +18,12 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
                 return moment(val).format('YYYY-MM-DD');
             }
         },
-        {data: "productId", title: "Product ID"}
-        //{
-        //    data: '_branchCount',
-        //    title: "Branch <i class='fa fa-arrow-up'></i>",
-        //    tmpl: Meteor.isClient && Template.rabbit_branch
-        //}
+        {data: "productId", title: "Product ID"},
+        {
+            data: '_branchCount',
+            title: "Office <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_addOffice
+        }
 
     ]
 });
