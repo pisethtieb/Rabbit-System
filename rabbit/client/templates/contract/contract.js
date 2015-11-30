@@ -25,8 +25,27 @@ indexTpl.onCreated(function () {
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
-indexTpl.onRendered(function () {
-    //
+Template.rabbit_addOffice.onRendered(function () {
+    $('#addOffice').hide();
+    $('#addBranch').hide();
+
+    Meteor.subscribe('rabbit_office');
+    var data = Rabbit.Collection.Office.findOne();
+    debugger;
+    if (data == null || undefined) {
+        $('#addOffice').show();
+        $('#addBranch').hide();
+        debugger;
+    } else {
+        $('#addOffice').hide();
+        $('#addBranch').show();
+    }
+    debugger;
+});
+Template.rabbit_addOffice.events({
+    'click #addOffice'() {
+        alertify.contract(fa("plus", "Office"), renderTemplate(Template.rabbit_officeInsert));
+    }
 });
 
 indexTpl.helpers({
@@ -61,12 +80,12 @@ indexTpl.events({
         );
     },
     'click #addOffice'(){
-        FlowRouter.go('rabbit.office',{
+        FlowRouter.go('rabbit.office', {
             contractId: this._id
         })
     },
     'click #addBranch'(){
-        FlowRouter.go('rabbit.office',{
+        FlowRouter.go('rabbit.office', {
             contractId: this._id
         })
     },
@@ -89,7 +108,7 @@ indexTpl.events({
 /**
  * Insert
  */
-insertTpl.onCreated(function (){
+insertTpl.onCreated(function () {
     Meteor.subscribe('rabbit_customer');
 
 });
@@ -97,9 +116,7 @@ insertTpl.onRendered(function () {
     configOnRender();
 });
 
-insertTpl.helpers({
-
-});
+insertTpl.helpers({});
 
 insertTpl.events({
     //'change .productId'(e, t) {
