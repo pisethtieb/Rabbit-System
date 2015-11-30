@@ -23,10 +23,14 @@ Rabbit.Schema.Office = new SimpleSchema({
         type: Number,
         decimal: true
     },
+    productId: {
+        type: String,
+        optional: true
+    },
     branchId: {
         type: String,
         label: "Branch",
-        optional:true
+        optional: true
     }
 })
 ;

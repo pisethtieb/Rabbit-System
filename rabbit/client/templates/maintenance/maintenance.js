@@ -4,12 +4,12 @@
 /**
  * Declare template
  */
-var indexTpl = Template.rabbit_office,
-    insertTpl = Template.rabbit_officeInsert,
-    updateTpl = Template.rabbit_officeUpdate,
-    showTpl = Template.rabbit_officeShow;
+var indexTpl = Template.rabbit_maintenance,
+    insertTpl = Template.rabbit_maintenanceInsert,
+    updateTpl = Template.rabbit_maintenanceUpdate,
+    showTpl = Template.rabbit_maintenanceShow;
 
-//locationAddOnTpl = Template.rabbit_locationAddOnOffice;
+//locationAddOnTpl = Template.rabbit_locationAddOnMaintenance;
 
 
 /**
@@ -18,24 +18,24 @@ var indexTpl = Template.rabbit_office,
 indexTpl.onCreated(function () {
     // SEO
     SEO.set({
-        title: 'Sale Branch Office',
+        title: 'Sale Branch Maintenance',
         description: 'Description for this page'
     });
 
     // Create new  alertify
-    createNewAlertify(["office"], {size: 'lg'});
-    createNewAlertify(["officeShow"]);
+    createNewAlertify(["maintenance"], {size: 'lg'});
+    createNewAlertify(["maintenanceShow"]);
     //createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
 indexTpl.events({
     'click .js-insert': function (e, t) {
 
-        alertify.office(fa("plus", "Office"), renderTemplate(insertTpl));
+        alertify.maintenance(fa("plus", "Maintenance"), renderTemplate(insertTpl));
 
     },
     'click .js-update': function (e, t) {
-        alertify.office(fa("pencil", "Office"), renderTemplate(updateTpl, this));
+        alertify.maintenance(fa("pencil", "Maintenance"), renderTemplate(updateTpl, this));
         console.log(this);
         debugger;
     },
@@ -43,10 +43,10 @@ indexTpl.events({
         var self = this;
 
         alertify.confirm(
-            fa("remove", "Office"),
+            fa("remove", "Maintenance"),
             "Are you sure to delete [" + self._id + "]?",
             function () {
-                Rabbit.Collection.Office.remove(self._id, function (error) {
+                Rabbit.Collection.Maintenance.remove(self._id, function (error) {
                     if (error) {
                         alertify.error(error.message);
                     } else {
@@ -58,12 +58,12 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.officeShow(fa("eye", "Office"), renderTemplate(showTpl, this));
+        alertify.maintenanceShow(fa("eye", "Maintenance"), renderTemplate(showTpl, this));
 
     },
-    'click #addMaintenance'(){
+    'click #addMaitenance'(){
         FlowRouter.go('rabbit.maintenance', {
-            officeId: this._id
+            maintenanceId: this._id
         })
     }
 
@@ -75,7 +75,7 @@ indexTpl.events({
     //    var rowData = dataTable.row(event.currentTarget)
     //        .data();
     //
-    //    FlowRouter.go('rabbit.order', {officeId: rowData._id});
+    //    FlowRouter.go('rabbit.order', {maintenanceId: rowData._id});
     //}
 });
 
@@ -90,23 +90,23 @@ indexTpl.helpers({
 
 /*Insert*/
 insertTpl.onRendered(function () {
-    //auto selected on office selected"HeadOffice"
-    let office = Rabbit.Collection.Office.findOne();
-    if (office == null || undefined) {
+    //auto selected on maintenance selected"HeadMaintenance"
+    let maintenance = Rabbit.Collection.Maintenance.findOne();
+    if (maintenance == null || undefined) {
         $('.type').val("HO");
         $('.type').change()
     }
 });
 insertTpl.helpers({
-    contractId(){
-        return FlowRouter.getParam('contractId');
-    },
-    productId(){
-        Meteor.subscribe('rabbit_product');
-        let contractId = FlowRouter.getParam('contractId');
-        let productId = Rabbit.Collection.Contract.findOne({_id: contractId}).productId;
+    //officeId(){
+    //    return FlowRouter.getParam('officeId');
+    //},
+    office(){
+        Meteor.subscribe('rabbit_office');
+        let officeId = FlowRouter.getParam('officeId');
+        let office = Rabbit.Collection.Office.findOne({_id: officeId});
 
-        return productId;
+        return office;
     }
 });
 insertTpl.events({
@@ -116,22 +116,22 @@ insertTpl.events({
         var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
         //let types = Rabbit.List.getProduct(type);
         if (type == 'HO') {
-            $('[name=price]').val(contract._product.basePrice[0].headOffice);
+            $('[name=price]').val(contract._product.basePrice[0].headMaintenance);
         } else if (type == "BO") {
             $('[name=price]').val(contract._product.basePrice[0].branch);
         } else {
             $('[name=price]').val("");
         }
-        //$('[name=headBasePrice]').val(product.basePrice[0].headOffice);
-        //$('[name=headMaintainPrice]').val(product.maintenancePrice[0].headOffice);
-        //$('[name=totalPrice]').val(product.maintenancePrice[0].headOffice + product.basePrice[0].headOffice);
+        //$('[name=headBasePrice]').val(product.basePrice[0].headMaintenance);
+        //$('[name=headMaintainPrice]').val(product.maintenancePrice[0].headMaintenance);
+        //$('[name=totalPrice]').val(product.maintenancePrice[0].headMaintenance + product.basePrice[0].headMaintenance);
     }
 });
 /**
  * Update
  */
 updateTpl.onCreated(function () {
-    this.subscribe('rabbit_office', this.data._id);
+    this.subscribe('rabbit_maintenance', this.data._id);
 });
 
 updateTpl.onRendered(function () {
@@ -140,7 +140,7 @@ updateTpl.onRendered(function () {
 
 updateTpl.helpers({
     data: function () {
-        var data = Rabbit.Collection.Office.findOne(this._id);
+        var data = Rabbit.Collection.Maintenance.findOne(this._id);
         return data;
     }
 });
@@ -149,12 +149,12 @@ updateTpl.helpers({
  * Show
  */
 showTpl.onCreated(function () {
-    this.subscribe('rabbit_office', this.data._id);
+    this.subscribe('rabbit_maintenance', this.data._id);
 });
 
 showTpl.helpers({
     data: function () {
-        var data = Rabbit.Collection.Office.findOne(this._id);
+        var data = Rabbit.Collection.Maintenance.findOne(this._id);
         return data;
 
     }
@@ -164,12 +164,12 @@ showTpl.helpers({
  * Hook
  */
 AutoForm.hooks({
-    // Office
-    rabbit_officeInsert: {
+    // Maintenance
+    rabbit_maintenanceInsert: {
         before: {
             insert: function (doc) {
                 var prefix = Session.get('currentBranch') + '-';
-                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Office, prefix, 6);
+                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Maintenance, prefix, 6);
                 doc.branchId = Session.get('currentBranch');
                 return doc;
             }
@@ -181,9 +181,9 @@ AutoForm.hooks({
             alertify.error(error.message);
         }
     },
-    rabbit_officeUpdate: {
+    rabbit_maintenanceUpdate: {
         onSuccess: function (formType, result) {
-            alertify.office().close();
+            alertify.maintenance().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {
@@ -191,3 +191,8 @@ AutoForm.hooks({
         }
     }
 });
+var configOnRender = function () {
+    // date
+    var dateRang = $('[name="dateRang"]');
+    DateTimePicker.dateRange(dateRang);
+};
