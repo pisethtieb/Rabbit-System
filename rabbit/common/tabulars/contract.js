@@ -20,7 +20,7 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
         },
         {data: "productId", title: "Product ID"},
         {
-            data: '_branchCount',
+            data: '',
             title: "Office <i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_addOffice
         }

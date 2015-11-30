@@ -32,8 +32,7 @@ indexTpl.events({
     'click .js-insert': function (e, t) {
         let office = Rabbit.Collection.Office.find();
         if (office == null) {
-
-            //=$('[name=type]').val('HO');
+            $('#price').val('hi');
             alertify.office(fa("plus", "Office"), renderTemplate(insertTpl));
         } else {
             alertify.office(fa("plus", "Office"), renderTemplate(insertTpl));
