@@ -30,16 +30,14 @@ indexTpl.onCreated(function () {
 
 indexTpl.events({
     'click .js-insert': function (e, t) {
-        let office = Rabbit.Collection.Office.find();
-        if (office == null) {
-            $('#price').val('hi');
-            alertify.office(fa("plus", "Office"), renderTemplate(insertTpl));
-        } else {
-            alertify.office(fa("plus", "Office"), renderTemplate(insertTpl));
-        }
+
+        alertify.office(fa("plus", "Office"), renderTemplate(insertTpl));
+
     },
     'click .js-update': function (e, t) {
         alertify.office(fa("pencil", "Office"), renderTemplate(updateTpl, this));
+        console.log(this);
+        debugger;
     },
     'click .js-remove': function (e, t) {
         var self = this;
@@ -61,6 +59,7 @@ indexTpl.events({
     },
     'click .js-show': function (e, t) {
         alertify.officeShow(fa("eye", "Office"), renderTemplate(showTpl, this));
+
     }
 
 
@@ -86,16 +85,12 @@ indexTpl.helpers({
 
 /*Insert*/
 insertTpl.onRendered(function () {
-    $('#price').val('HO');
-    //this.subscribe('rabbit_office');
-    //let office = Rabbit.Collection.Office.findOne();
-    //if (office == null || undefined) {
-    //    //alert('he');
-    //
-    //
-    //
-    //    //list.push({label: 'Head Office', value: 'HO'});
-    //}
+    //auto selected on office selected"HeadOffice"
+    let office = Rabbit.Collection.Office.findOne();
+    if (office == null || undefined) {
+        $('.type').val("HO");
+        $('.type').change()
+    }
 });
 insertTpl.helpers({
     contractId(){

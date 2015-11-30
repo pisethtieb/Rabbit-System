@@ -30,30 +30,26 @@ Template.rabbit_addOffice.onRendered(function () {
     $('#addBranch').hide();
 
     Meteor.subscribe('rabbit_office');
-    var data = Rabbit.Collection.Office.findOne();
-    debugger;
+    let data = Rabbit.Collection.Office.findOne();
     if (data == null || undefined) {
         $('#addOffice').show();
         $('#addBranch').hide();
-        debugger;
     } else {
         $('#addOffice').hide();
         $('#addBranch').show();
     }
-    debugger;
+
 });
 Template.rabbit_addOffice.events({
     'click #addOffice'() {
         alertify.contract(fa("plus", "Office"), renderTemplate(Template.rabbit_officeInsert));
     }
 });
-
 indexTpl.helpers({
     selector: function () {
         return {branchId: Session.get('currentBranch')};
     }
 });
-
 indexTpl.events({
     'click .js-insert': function (e, t) {
         alertify.contract(fa("plus", "Contract"), renderTemplate(insertTpl));
