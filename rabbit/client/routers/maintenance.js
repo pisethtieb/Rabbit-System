@@ -3,15 +3,17 @@ var subs = new SubsManager();
 rabbitRoutes.route('/maintenance/:officeId', {
     name: 'rabbit.maintenance',
     subscriptions: function (params, queryParams) {
-        // Customer
-        },
+        // Customer.
+        this.register('rabbit_maintenance', subs.subscribe('rabbit_maintenance', Session.get('currentBranch')));
+
+    },
     action: function (params, queryParams) {
         Layout.main('rabbit_maintenance');
     },
     breadcrumb: {
-        params: ['officeId'],
+        params: ['office'],
         //queryParams: ['show', 'color'],
-        title: 'Maintenance',
-        parent: 'rabbit.maintenance'
+        title: 'maintenance',
+        parent: 'rabbit.office'
     }
 });

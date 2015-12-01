@@ -81,21 +81,16 @@ indexTpl.events({
 
 indexTpl.helpers({
     selector: function () {
-        let id = FlowRouter.getParam('contractId');
+        let id = FlowRouter.getParam('officeId');
         //console.log(id);
-        return {contractId: id}
+        return {officeId: id}
     }
 
 });
 
 /*Insert*/
 insertTpl.onRendered(function () {
-    //auto selected on maintenance selected"HeadMaintenance"
-    let maintenance = Rabbit.Collection.Maintenance.findOne();
-    if (maintenance == null || undefined) {
-        $('.type').val("HO");
-        $('.type').change()
-    }
+
 });
 insertTpl.helpers({
     //officeId(){
@@ -107,26 +102,22 @@ insertTpl.helpers({
         let office = Rabbit.Collection.Office.findOne({_id: officeId});
 
         return office;
-    }
-});
-insertTpl.events({
-    'change .type'(e, t) {
-        let type = $(e.currentTarget).val();
-        var contractId = FlowRouter.getParam('contractId');
-        var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
-        //let types = Rabbit.List.getProduct(type);
-        if (type == 'HO') {
-            $('[name=price]').val(contract._product.basePrice[0].headMaintenance);
-        } else if (type == "BO") {
-            $('[name=price]').val(contract._product.basePrice[0].branch);
-        } else {
-            $('[name=price]').val("");
+    },
+    price(){
+        Meteor.subscribe('rabbit_office');
+        let officeId = FlowRouter.getParam('officeId');
+        let office = Rabbit.Collection.Office.findOne({_id: officeId});
+        if (office.type == 'HO') {
+            return office._product.maintenancePrice[0].headOffice;
+        } else if (office.type == 'BO') {
+            return office._product.maintenancePrice[0].branch;
+
         }
-        //$('[name=headBasePrice]').val(product.basePrice[0].headMaintenance);
-        //$('[name=headMaintainPrice]').val(product.maintenancePrice[0].headMaintenance);
-        //$('[name=totalPrice]').val(product.maintenancePrice[0].headMaintenance + product.basePrice[0].headMaintenance);
+
+
     }
 });
+insertTpl.events({});
 /**
  * Update
  */
@@ -194,5 +185,5 @@ AutoForm.hooks({
 var configOnRender = function () {
     // date
     var dateRang = $('[name="dateRang"]');
-    DateTimePicker.dateRange(dateRang);
+    DateTimePicker.date(dateRang);
 };

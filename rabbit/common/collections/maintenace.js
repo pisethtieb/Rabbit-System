@@ -2,10 +2,20 @@
 Rabbit.Collection.Maintenance = new Mongo.Collection("rabbit_maintenance");
 
 // Schema
-Rabbit.Schema.Office = new SimpleSchema({
+Rabbit.Schema.Maintenance = new SimpleSchema({
     dateRang: {
-        type: String,
+        type: Date,
         label: 'Date Rang'
+
+    },
+    officeId: {
+        type: String,
+        label: 'officeId'
+
+    },
+    price: {
+        type: String,
+        label: 'price'
 
     },
     type: {

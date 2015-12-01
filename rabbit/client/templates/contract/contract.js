@@ -26,11 +26,13 @@ indexTpl.onCreated(function () {
 });
 
 Template.rabbit_addOffice.onRendered(function () {
+
     $('#addOffice').hide();
     $('#addBranch').hide();
 
     Meteor.subscribe('rabbit_office');
-    let data = Rabbit.Collection.Office.findOne();
+    let data = Rabbit.Collection.Office.findOne({contractId: this.data._id});
+    debugger;
     if (data == null || undefined) {
         $('#addOffice').show();
         $('#addBranch').hide();
@@ -42,6 +44,10 @@ Template.rabbit_addOffice.onRendered(function () {
 });
 Template.rabbit_addOffice.events({
     'click #addOffice'() {
+        FlowRouter.go('rabbit.office', {
+            contractId: this._id
+        });
+        Meteor.subscribe('rabbit_office');
         alertify.contract(fa("plus", "Office"), renderTemplate(Template.rabbit_officeInsert));
     }
 });
@@ -74,11 +80,6 @@ indexTpl.events({
             },
             null
         );
-    },
-    'click #addOffice'(){
-        FlowRouter.go('rabbit.office', {
-            contractId: this._id
-        })
     },
     'click #addBranch'(){
         FlowRouter.go('rabbit.office', {

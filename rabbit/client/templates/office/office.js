@@ -167,12 +167,20 @@ AutoForm.hooks({
     // Office
     rabbit_officeInsert: {
         before: {
+
             insert: function (doc) {
+                debugger;
                 var prefix = Session.get('currentBranch') + '-';
+                debugger;
                 doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Office, prefix, 6);
+                debugger;
+
                 doc.branchId = Session.get('currentBranch');
+                debugger;
                 return doc;
+
             }
+
         },
         onSuccess: function (formType, result) {
             alertify.success('Success');
