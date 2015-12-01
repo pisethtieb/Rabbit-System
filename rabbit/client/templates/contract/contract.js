@@ -32,6 +32,7 @@ Template.rabbit_addOffice.onRendered(function () {
 
     Meteor.subscribe('rabbit_office');
     let data = Rabbit.Collection.Office.findOne({contractId: this.data._id});
+
     debugger;
     if (data == null || undefined) {
         $('#addOffice').show();
@@ -40,7 +41,6 @@ Template.rabbit_addOffice.onRendered(function () {
         $('#addOffice').hide();
         $('#addBranch').show();
     }
-
 });
 Template.rabbit_addOffice.events({
     'click #addOffice'() {
@@ -88,6 +88,11 @@ indexTpl.events({
     },
     'click .js-show': function (e, t) {
         alertify.contractShow(fa("eye", "Contract"), renderTemplate(showTpl, this));
+    },
+    'click .showCustomerDetail' (){
+        alert('hi');
+        alertify.contractShow(fa("eye", "Contract"), renderTemplate(showTpl));
+
     }
 
 
@@ -113,27 +118,13 @@ insertTpl.onRendered(function () {
     configOnRender();
 });
 
-insertTpl.helpers({});
-
-insertTpl.events({
-    //'change .productId'(e, t) {
-    //    let productId = $('.productId').val();
-    //    let product = Rabbit.List.getProduct(productId);
-    //    $('[name=headBasePrice]').val(product.basePrice[0].headOffice);
-    //    $('[name=headMaintainPrice]').val(product.maintenancePrice[0].headOffice);
-    //    $('[name=totalPrice]').val(product.maintenancePrice[0].headOffice + product.basePrice[0].headOffice);
-    //},
-    //'keyup [name=headBasePrice]'(){
-    //
-    //    $('[name=totalPrice]').val(parseFloat($('[name=headBasePrice]').val()) + parseFloat($('[name=headMaintainPrice]').val()));
-    //
-    //},
-    //'keyup [name=headMaintainPrice]'(){
-    //
-    //    $('[name=totalPrice]').val(parseFloat($('[name=headBasePrice]').val()) + parseFloat($('[name=headMaintainPrice]').val()));
-    //
-    //}
+insertTpl.helpers({
+    customerId(){
+        console.log(FlowRouter.getParam('customerId'));
+        return FlowRouter.getParam('customerId');
+    }
 });
+
 
 /**
  * Update
@@ -152,24 +143,18 @@ updateTpl.helpers({
         return data;
     }
 });
-
-
 /**
  * Show
  */
 showTpl.onCreated(function () {
     this.subscribe('rabbit_contract', this.data._id);
 });
-
 showTpl.helpers({
     data: function () {
         var data = Rabbit.Collection.Contract.findOne(this._id);
         return data;
-
     }
 });
-
-
 /**
  * Hook
  */
@@ -201,7 +186,6 @@ AutoForm.hooks({
         }
     }
 });
-
 // Config date picker
 var configOnRender = function () {
     // date

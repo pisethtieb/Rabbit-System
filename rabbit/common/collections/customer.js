@@ -5,7 +5,7 @@ Rabbit.Collection.Customer = new Mongo.Collection("rabbit_customer");
 Rabbit.Schema.Customer = new SimpleSchema({
     companyName: {
         type: String,
-        label: "Name",
+        label: "Company Name",
         max: 200
     },
     address: {

@@ -5,14 +5,14 @@ Rabbit.Collection.Contract = new Mongo.Collection("rabbit_contract");
 Rabbit.Schema.Contract = new SimpleSchema({
     customerId: {
         type: String,
-        label: 'Client Id',
-        autoform: {
-            type: 'select2',
-            options(){
-                return Rabbit.List.customer();
-            }
-
-        }
+        label: 'Client Id'
+        //autoform: {
+        //    type: 'select2',
+        //    options(){
+        //        return Rabbit.List.customer();
+        //    }
+        //
+        //}
 
     },
     productId: {

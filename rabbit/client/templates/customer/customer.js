@@ -6,7 +6,7 @@ var indexTpl = Template.rabbit_customer,
     updateTpl = Template.rabbit_customerUpdate,
     showTpl = Template.rabbit_customerShow;
 
-    //locationAddOnTpl = Template.rabbit_locationAddOnCustomer;
+//locationAddOnTpl = Template.rabbit_locationAddOnCustomer;
 
 
 /**
@@ -21,7 +21,7 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["customer"], {size: 'lg'});
-    createNewAlertify(["customerShow"]);
+    createNewAlertify(["customerShow"], {size: 'lg'});
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -62,6 +62,12 @@ indexTpl.events({
     },
     'click .js-show': function (e, t) {
         alertify.customerShow(fa("eye", "Customer"), renderTemplate(showTpl, this));
+    },
+    'click .contractAction': function () {
+        FlowRouter.go('rabbit.contract', {
+            customerId: this._id
+        })
+
     }
 
 

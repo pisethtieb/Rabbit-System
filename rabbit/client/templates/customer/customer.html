@@ -144,3 +144,13 @@
         {{> afQuickField name=current.tel template="bootstrap3" label=false class="input-sm" placeholder="Telephone"}}
     </div>
 </template>
+<!--link to contract-->
+<template name="rabbit_contractLinkAction">
+    <button type="button" class="btn btn-primary btn-sm contractAction">
+        {{#if _contractCount}}
+            {{_contractCount}}
+        {{else}}
+            0
+        {{/if}}
+    </button>
+</template>

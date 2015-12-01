@@ -90,6 +90,8 @@ indexTpl.helpers({
 
 /*Insert*/
 insertTpl.onRendered(function () {
+    var name = $('[name="date"]');
+    DateTimePicker.dateRange(name);
 
 });
 insertTpl.helpers({
@@ -111,10 +113,7 @@ insertTpl.helpers({
             return office._product.maintenancePrice[0].headOffice;
         } else if (office.type == 'BO') {
             return office._product.maintenancePrice[0].branch;
-
         }
-
-
     }
 });
 insertTpl.events({});
@@ -147,7 +146,6 @@ showTpl.helpers({
     data: function () {
         var data = Rabbit.Collection.Maintenance.findOne(this._id);
         return data;
-
     }
 });
 
@@ -184,6 +182,6 @@ AutoForm.hooks({
 });
 var configOnRender = function () {
     // date
-    var dateRang = $('[name="dateRang"]');
-    DateTimePicker.date(dateRang);
+    var date = $('[name="date"]');
+    DateTimePicker.date(date);
 };

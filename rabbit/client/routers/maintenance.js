@@ -11,7 +11,7 @@ rabbitRoutes.route('/maintenance/:officeId', {
         Layout.main('rabbit_maintenance');
     },
     breadcrumb: {
-        params: ['office'],
+        //params: ['officeId'],
         //queryParams: ['show', 'color'],
         title: 'maintenance',
         parent: 'rabbit.office'

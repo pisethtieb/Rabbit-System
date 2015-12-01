@@ -1,6 +1,6 @@
 var subs = new SubsManager();
 
-rabbitRoutes.route('/contract', {
+rabbitRoutes.route('/contract/:customerId', {
     name: 'rabbit.contract',
     subscriptions: function (params, queryParams) {
         // Customer
@@ -13,6 +13,6 @@ rabbitRoutes.route('/contract', {
         //params: ['id'],
         //queryParams: ['show', 'color'],
         title: 'contract',
-        parent: 'rabbit.home'
+        parent: 'rabbit.customer'
     }
 });

@@ -19,6 +19,10 @@ Rabbit.TabularTable.Customer = new Tabular.Table({
             render: function (val, type, doc) {
                 return JSON.stringify(val);
             }
+        },
+        {
+            data: "_contractCount", title: "Contract",
+            tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
         }
     ]
 });

@@ -11,7 +11,7 @@ rabbitRoutes.route('/office/:contractId', {
         Layout.main('rabbit_office');
     },
     breadcrumb: {
-        params: ['contractId'],
+        //params: ['contractId'],
         //queryParams: ['show', 'color'],
         title: 'office',
         parent: 'rabbit.contract'

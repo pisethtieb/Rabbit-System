@@ -19,8 +19,8 @@
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name="officeId" value=office._id readonly=true}}
-                {{> afQuickField name="dateRang" }}
-                {{> afQuickField name="type" value=office.type}}
+                {{> afQuickField name="date" }}
+                {{> afQuickField name="type" value=office.type readOnly=true}}
             </div>
             <div class="col-md-6">
                 {{> afQuickField name="price" value=price}}
@@ -38,11 +38,14 @@
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Maintenance id="rabbit_maintenanceUpdate" doc=this type="update"}}
             <div class="row">
-                <div class="col-md-12">
-                    {{> afQuickField name="contractId" value=contractId readonly=true}}
-                    {{> afQuickField name="type" class='type'}}
+                <div class="col-md-6">
+                    {{> afQuickField name="officeId" readonly=true}}
+                    {{> afQuickField name="date" }}
+                    {{> afQuickField name="type"  readOnly=true}}
+                </div>
+                <div class="col-md-6">
                     {{> afQuickField name="price"}}
-                    {{> afQuickField name="productId"  value=productId type='hidden' }}
+                    {{> afQuickField name="paidAmount" }}
                     <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
                     <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
                 </div>

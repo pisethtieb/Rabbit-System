@@ -36,7 +36,6 @@ indexTpl.events({
     },
     'click .js-update': function (e, t) {
         alertify.office(fa("pencil", "Office"), renderTemplate(updateTpl, this));
-        console.log(this);
         debugger;
     },
     'click .js-remove': function (e, t) {
@@ -137,28 +136,28 @@ updateTpl.onCreated(function () {
 updateTpl.onRendered(function () {
     configOnRender();
 });
-
-updateTpl.helpers({
-    data: function () {
-        var data = Rabbit.Collection.Office.findOne(this._id);
-        return data;
-    }
-});
-
-/**
- * Show
- */
-showTpl.onCreated(function () {
-    this.subscribe('rabbit_office', this.data._id);
-});
-
-showTpl.helpers({
-    data: function () {
-        var data = Rabbit.Collection.Office.findOne(this._id);
-        return data;
-
-    }
-});
+//
+//updateTpl.helpers({
+//    data: function () {
+//        var data = Rabbit.Collection.Office.findOne(this._id);
+//        return data;
+//    }
+//});
+//
+///**
+// * Show
+// */
+//showTpl.onCreated(function () {
+//    this.subscribe('rabbit_office', this.data._id);
+//});
+//
+//showTpl.helpers({
+//    data: function () {
+//        var data = Rabbit.Collection.Office.findOne(this._id);
+//        return data;
+//
+//    }
+//});
 
 /**
  * Hook

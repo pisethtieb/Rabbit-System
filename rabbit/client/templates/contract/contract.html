@@ -3,6 +3,9 @@
     <p>
         <button type="button" class="btn btn-primary js-insert">{{fa "plus"}} Add New</button>
     </p>
+    <p>
+        <button type="button" class="btn btn-primary showCustomerDetail">{{fa "eye"}} showCustomerDetail </button>
+    </p>
     {{> tabular table=Rabbit.TabularTable.Contract selector=selector class="table table-striped table-bordered table-condensed table-hover-pointer"}}
 </template>
 
@@ -20,7 +23,7 @@
     {{#autoForm collection=Rabbit.Collection.Contract id="rabbit_contractInsert" type="insert"}}
         <div class="row">
             <div class="col-md-12">
-                {{> afQuickField name="customerId"}}
+                {{> afQuickField name="customerId" value=customerId readOnly=true}}
                 {{> afQuickField name="saleDate"}}
                 {{> afQuickField name="productId" class='productId'}}
 
@@ -73,7 +76,9 @@
                 <dd>{{address}}</dd>
                 <dt>Telephone:</dt>
                 <dd>{{telephone}}</dd>
-                <dt>Contact Person:</dt>
+                <dd>Contact Person:</dd>
+                <br>
+
                 <dd>{{contactPerson}}</dd>
             </dl>
         {{/with}}

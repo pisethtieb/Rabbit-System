@@ -1,5 +1,5 @@
 Rabbit.TabularTable.Maintenance = new Tabular.Table({
-    name: "rabbit_saleBranchOfficeList",
+    name: "rabbit_maintenanceList",
     collection: Rabbit.Collection.Maintenance,
     pagingType: "full_numbers",
     autoWidth: false,
