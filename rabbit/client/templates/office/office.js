@@ -64,18 +64,7 @@ indexTpl.events({
         FlowRouter.go('rabbit.maintenance', {
             customerId: this._contract.customerId, contractId: this.contractId, officeId: this._id
         })
-
     }
-
-    //'dblclick tbody > tr': function (event) {
-    //    var dataTable = $(event.target)
-    //        .closest('table')
-    //        .DataTable();
-    //    var rowData = dataTable.row(event.currentTarget)
-    //        .data();
-    //
-    //    FlowRouter.go('rabbit.order', {officeId: rowData._id});
-    //}
 });
 
 indexTpl.helpers({
@@ -84,7 +73,6 @@ indexTpl.helpers({
         //console.log(id);
         return {contractId: id}
     }
-
 });
 
 /*Insert*/
@@ -101,7 +89,6 @@ insertTpl.helpers({
     contractId(){
         return FlowRouter.getParam('contractId');
         console.log(FlowRouter.getParam('contractId'));
-        debugger;
     },
     productId(){
         Meteor.subscribe('rabbit_product');

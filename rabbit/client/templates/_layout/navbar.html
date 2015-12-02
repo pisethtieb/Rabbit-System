@@ -38,11 +38,11 @@
                 Settings <span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
+                <li class="{{isActiveRoute name='rabbit.product'}}">
+                    <a href="{{pathFor 'rabbit.product'}}">Product</a>
+                </li>
                 <li class="{{isActiveRoute name='cpanel.exchange'}}">
                     <a href="{{pathFor 'cpanel.exchange'}}">Exchange</a>
-                </li>
-                <li class="{{isActiveRoute name='rabbit.location'}}">
-                    <a href="{{pathFor 'rabbit.location'}}">Location</a>
                 </li>
             </ul>
         </li>

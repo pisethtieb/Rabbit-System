@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c191e4-0749-4c02-8796-28c2c3c82501" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/server/collections_hook/contract.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/server/collections_hook/customer.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/server/collections_hook/maintenance.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/server/collections_hook/product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/server/methods/RabbitGenerateId.js" afterPath="$PROJECT_DIR$/rabbit/server/methods/RabbitGenerateId.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/customer/customer.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/customer/customer.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/_layout/navbar.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/_layout/navbar.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/office/office.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/office/office.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/server/collections_hook/office.js" afterPath="$PROJECT_DIR$/rabbit/server/collections_hook/office.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/product/product.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/product/product.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rabbit.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -34,16 +25,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="contract.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/contract/contract.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-15.038462">
-              <caret line="179" column="27" selection-start-line="179" selection-start-column="27" selection-end-line="179" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="maintenance.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -54,11 +35,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="office.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="office.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.30740276">
-              <caret line="93" column="73" selection-start-line="93" selection-start-column="73" selection-end-line="93" selection-end-column="73" />
+            <state vertical-scroll-proportion="-50.115383">
+              <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="maintenance.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-13.9375">
+              <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="navbar.html" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/_layout/navbar.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.6801517">
+              <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
               <folding />
             </state>
           </provider>
@@ -116,16 +117,6 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="customer.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/customer/customer.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-12.384615">
-              <caret line="155" column="14" selection-start-line="155" selection-start-column="14" selection-end-line="158" selection-end-column="27" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="product.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/product/product.js">
           <provider selected="true" editor-type-id="text-editor">
@@ -153,7 +144,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/rabbit/common/tabulars/saleBranchOffice.js" />
         <option value="$PROJECT_DIR$/rabbit/client/routers/saleBranchOffice.js" />
         <option value="$PROJECT_DIR$/rabbit/server/publications/saleBranchOffice.js" />
         <option value="$PROJECT_DIR$/rabbit/server/publications/saleHeadOffice.js" />
@@ -178,7 +168,6 @@
         <option value="$PROJECT_DIR$/rabbit/client/routers/maintanace.js" />
         <option value="$PROJECT_DIR$/rabbit/client/routers/maintenace.js" />
         <option value="$PROJECT_DIR$/rabbit/common/tabulars/maintenance.js" />
-        <option value="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html" />
         <option value="$PROJECT_DIR$/rabbit/server/security/maintenance.js" />
         <option value="$PROJECT_DIR$/rabbit/common/tabulars/customer.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/customer/customer.html" />
@@ -204,6 +193,8 @@
         <option value="$PROJECT_DIR$/rabbit/server/collections_hook/contract.js" />
         <option value="$PROJECT_DIR$/rabbit/server/collections_hook/maintenance.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/office/office.js" />
+        <option value="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html" />
+        <option value="$PROJECT_DIR$/rabbit/client/templates/_layout/navbar.html" />
       </list>
     </option>
   </component>
@@ -575,6 +566,32 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
             <PATH_ELEMENT>
+              <option name="myItemId" value="templates" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="_layout" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rabbit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rabbit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="rabbit" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="client" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
               <option name="myItemId" value="routers" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
@@ -826,13 +843,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/product/product.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="1.4564369">
-          <caret line="56" column="18" selection-start-line="56" selection-start-column="18" selection-end-line="56" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/app/subscriptions/global.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -942,14 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-14.153846">
           <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="20" column="40" selection-start-line="20" selection-start-column="40" selection-end-line="20" selection-end-column="40" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1200,8 +1202,24 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.30740276">
-          <caret line="93" column="73" selection-start-line="93" selection-start-column="73" selection-end-line="93" selection-end-column="73" />
+        <state vertical-scroll-proportion="-50.115383">
+          <caret line="66" column="5" selection-start-line="66" selection-start-column="5" selection-end-line="66" selection-end-column="5" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-13.9375">
+          <caret line="74" column="32" selection-start-line="74" selection-start-column="32" selection-end-line="74" selection-end-column="32" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/_layout/navbar.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.6801517">
+          <caret line="45" column="21" selection-start-line="45" selection-start-column="21" selection-end-line="45" selection-end-column="21" />
           <folding />
         </state>
       </provider>
