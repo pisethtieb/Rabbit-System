@@ -5,9 +5,11 @@
     </p>
     <div class="pull-right" style="display: inline">
         <small>
-                {{#with customer}}
-                    <a href="#" class="jsCustomerInfo">{{_id}} : {{name}} | Tel: {{telephone}}</a>
-                {{/with}}
+
+            {{#with customer}}
+                <a href="#" class="jsCustomerInfo">{{_id}} : {{companyName}} | Tel: {{telephone}}|
+                    Address: {{address}}</a>
+            {{/with}}
         </small>
     </div>
     {{> tabular table=Rabbit.TabularTable.Contract selector=selector class="table table-striped table-bordered table-condensed table-hover-pointer"}}

@@ -58,7 +58,11 @@ indexTpl.helpers({
         return {customerId: id}
     },
     customer: function () {
-        return _customer;
+        let id = FlowRouter.getParam('customerId');
+        let customer = Rabbit.Collection.Customer.findOne({_id: id});
+        console.log(customer);
+        return customer;
+
     }
 });
 indexTpl.events({
