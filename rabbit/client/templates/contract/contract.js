@@ -174,9 +174,9 @@ AutoForm.hooks({
     rabbit_contractInsert: {
         before: {
             insert: function (doc) {
-                var prefix = Session.get('currentBranch') + '-';
-                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Contract, prefix, 6);
                 doc.branchId = Session.get('currentBranch');
+                var prefix = doc.branchId + '-';
+                Meteor.call('rabbit', prefix);
                 return doc;
             }
         },

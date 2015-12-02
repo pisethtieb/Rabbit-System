@@ -90,7 +90,8 @@ indexTpl.helpers({
 /*Insert*/
 insertTpl.onRendered(function () {
     //auto selected on office selected"HeadOffice"
-    let office = Rabbit.Collection.Office.findOne();
+    var contractId = FlowRouter.getParam('contractId');
+    let office = Rabbit.Collection.Office.findOne({contractId: contractId});
     if (office == null || undefined) {
         $('.type').val("HO");
         $('.type').change()
@@ -170,14 +171,9 @@ AutoForm.hooks({
         before: {
 
             insert: function (doc) {
-                debugger;
-                var prefix = Session.get('currentBranch') + '-';
-                debugger;
-                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Office, prefix, 6);
-                debugger;
-
                 doc.branchId = Session.get('currentBranch');
-                debugger;
+                var prefix = doc.branchId + '-';
+                Meteor.call('rabbit', prefix);
                 return doc;
 
             }

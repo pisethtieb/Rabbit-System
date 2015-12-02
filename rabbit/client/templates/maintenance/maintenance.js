@@ -157,9 +157,9 @@ AutoForm.hooks({
     rabbit_maintenanceInsert: {
         before: {
             insert: function (doc) {
-                var prefix = Session.get('currentBranch') + '-';
-                doc._id = idGenerator.genWithPrefix(Rabbit.Collection.Maintenance, prefix, 6);
                 doc.branchId = Session.get('currentBranch');
+                var prefix = doc.branchId + '-';
+                Meteor.call('rabbit', prefix);
                 return doc;
             }
         },
