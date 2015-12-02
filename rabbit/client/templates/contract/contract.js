@@ -53,7 +53,12 @@ Template.rabbit_addOffice.events({
 });
 indexTpl.helpers({
     selector: function () {
-        return {branchId: Session.get('currentBranch')};
+        let id = FlowRouter.getParam('customerId');
+        //return FlowRouter.getParam('customerId');
+        return {customerId: id}
+    },
+    customer: function () {
+        return _customer;
     }
 });
 indexTpl.events({
@@ -81,11 +86,6 @@ indexTpl.events({
             null
         );
     },
-    'click #addBranch'(){
-        FlowRouter.go('rabbit.office', {
-            contractId: this._id
-        })
-    },
     'click .js-show': function (e, t) {
         alertify.contractShow(fa("eye", "Contract"), renderTemplate(showTpl, this));
     },
@@ -93,6 +93,13 @@ indexTpl.events({
         alert('hi');
         alertify.contractShow(fa("eye", "Contract"), renderTemplate(showTpl));
 
+    },
+    'click .officeAction': function () {
+        FlowRouter.go('rabbit.office', {
+            customerId: this.customerId, contractId: this._id
+
+        });
+        debugger;
     }
 
 

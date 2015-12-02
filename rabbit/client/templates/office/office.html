@@ -51,9 +51,9 @@
     {{/if}}
 
 </template>
-<template name="rabbit_addMaintenance">
-    <button id="addMaintenance" class="btn btn-default">Add Maintenance</button>
-</template>
+<!--<template name="rabbit_addMaintenance">-->
+    <!--<button id="addMaintenance" class="btn btn-default">Add Maintenance</button>-->
+<!--</template>-->
 <!--Show-->
 <template name="rabbit_officeShow">
     <!--&lt;!&ndash;Office template sub ready by all&ndash;&gt;-->
@@ -77,3 +77,12 @@
 <!--<template name="rabbit_locationAddOnOffice">-->
 <!--{{> rabbit_location cssClass="pointer"}}-->
 <!--</template>-->
+<template name="rabbit_maintenanceLinkActions">
+    <button type="button" class="btn btn-primary btn-sm maintenanceAction">
+        {{#if _maintenanceCount}}
+            {{_maintenanceCount}}
+        {{else}}
+            0
+        {{/if}}
+    </button>
+</template>

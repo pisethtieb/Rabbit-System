@@ -1,6 +1,6 @@
 var subs = new SubsManager();
 
-rabbitRoutes.route('/office/:contractId', {
+rabbitRoutes.route('/office/:customerId/:contractId', {
     name: 'rabbit.office',
     subscriptions: function (params, queryParams) {
         // Customer
@@ -11,7 +11,7 @@ rabbitRoutes.route('/office/:contractId', {
         Layout.main('rabbit_office');
     },
     breadcrumb: {
-        //params: ['contractId'],
+        params: ['customerId', 'contractId'],
         //queryParams: ['show', 'color'],
         title: 'office',
         parent: 'rabbit.contract'

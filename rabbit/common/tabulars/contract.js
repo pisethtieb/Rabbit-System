@@ -11,7 +11,7 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
     columns: [
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_contractAction},
         {data: "_id", title: "ID"},
-        {data: "customerId", title: "Customer ID"},
+        {data: "_customer.companyName", title: "Customer"},
         {
             data: "saleDate", title: "Contract Date",
             render: function (val, type, doc) {
@@ -19,11 +19,15 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
             }
         },
         {data: "productId", title: "Product ID"},
+        //{
+        //    data: '',
+        //    title: "Office <i class='fa fa-arrow-up'></i>",
+        //    tmpl: Meteor.isClient && Template.rabbit_addOffice
+        //}
         {
-            data: '',
+            data: "_officeCount",
             title: "Office <i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_addOffice
+            tmpl: Meteor.isClient && Template.rabbit_officeLinkAction
         }
-
-    ]
+    ], extraFields: ['customerId']
 });

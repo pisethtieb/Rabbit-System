@@ -1,6 +1,6 @@
 var subs = new SubsManager();
 
-rabbitRoutes.route('/maintenance/:officeId', {
+rabbitRoutes.route('/maintenance/:customerId/:contractId/:officeId', {
     name: 'rabbit.maintenance',
     subscriptions: function (params, queryParams) {
         // Customer.

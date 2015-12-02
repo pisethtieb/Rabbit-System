@@ -14,9 +14,9 @@ Rabbit.TabularTable.Office = new Tabular.Table({
         {data: "type", title: "Type"},
         {data: "price", title: "Price"},
         {
-            data: '',
-            title: "Office <i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_addMaintenance
+            data: "_maintenanceCount",
+            title: "Maintenance <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_maintenanceLinkActions
         }
-    ]
+    ], extraFields: ['_contract.customerId']
 });

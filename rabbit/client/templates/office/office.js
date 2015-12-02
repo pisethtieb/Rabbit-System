@@ -60,12 +60,12 @@ indexTpl.events({
         alertify.officeShow(fa("eye", "Office"), renderTemplate(showTpl, this));
 
     },
-    'click #addMaintenance'(){
+    'click .maintenanceAction': function () {
         FlowRouter.go('rabbit.maintenance', {
-            officeId: this._id
+            customerId: this._contract.customerId, contractId: this.contractId, officeId: this._id
         })
-    }
 
+    }
 
     //'dblclick tbody > tr': function (event) {
     //    var dataTable = $(event.target)
@@ -99,6 +99,8 @@ insertTpl.onRendered(function () {
 insertTpl.helpers({
     contractId(){
         return FlowRouter.getParam('contractId');
+        console.log(FlowRouter.getParam('contractId'));
+        debugger;
     },
     productId(){
         Meteor.subscribe('rabbit_product');
