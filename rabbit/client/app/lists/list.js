@@ -56,5 +56,13 @@ Rabbit.List = {
     getProduct(id){
         let product = Rabbit.Collection.Product.findOne(id);
         return product;
-    }
+    },
+    contractType: function () {
+        var list = [];
+        list.push({label: "Select One", value: ""});
+        list.push({label: 'Product', value: 'product'});
+        list.push({label: 'new', value: 'new'});
+
+        return list;
+    },
 };

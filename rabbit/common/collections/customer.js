@@ -44,6 +44,14 @@ Rabbit.Schema.Customer = new SimpleSchema({
     'contactPerson.$.position': {
         type: String
     },
+    'contactPerson.$.age': {
+        type: String,
+        optional: true
+    },
+    'contactPerson.$.idCard': {
+        type: String,
+        optional: true
+    },
     'contactPerson.$.tel': {
         type: String
     },

@@ -54,7 +54,7 @@ contactPerson: {
 - Quotation
 
 ```js
-clientId: {
+customerId: {
     type: String,
     label: 'Client Id'
 },
@@ -71,7 +71,7 @@ date:{
 - misContract
 
 ```js
-saleDate:{
+contractDate:{
     type: DateTime,
     label: "date"
 },

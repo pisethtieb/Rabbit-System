@@ -27,11 +27,14 @@
             <div class="col-md-6">
                 {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
             </div>
-            {{> afQuickField name="feature"}}
-            <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-            <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+            <div class="col-md-12">
+                {{> afQuickField name="feature"}}
+            </div>
 
         </div>
+        <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+        <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+
     {{/autoForm}}
 </template>
 
@@ -40,18 +43,24 @@
     <!--Built-in template sub ready by all-->
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Product id="rabbit_productUpdate" doc=this type="update"}}
+            autoForm collection=Rabbit.Collection.Product id="rabbit_productInsert" type="insert"}}
             <div class="row">
                 <div class="col-md-6">
                     {{> afQuickField name="name"}}
                     {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="basePriceObjectField"}}
+
                 </div>
                 <div class="col-md-6">
                     {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
                 </div>
-                {{> afQuickField name="feature"}}
-                <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-                <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+                <div class="col-md-12">
+                    {{> afQuickField name="feature"}}
+                </div>
+
             </div>
+            <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+            <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+
         {{/autoForm}}
     {{else}}
         {{> loading}}

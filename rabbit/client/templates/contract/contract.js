@@ -131,11 +131,31 @@ insertTpl.onRendered(function () {
 
 insertTpl.helpers({
     customerId(){
-        console.log(FlowRouter.getParam('customerId'));
         return FlowRouter.getParam('customerId');
     }
 });
+insertTpl.events({
+    'change .productId': function (e, t) {
 
+        let productId = $(e.currentTarget).val();
+        let product = Rabbit.Collection.Product.findOne({_id: productId});
+        if (product) {
+            $('#basePriceHeadOffice').val(product.basePrice[0].headOffice);
+            $('#basePriceBranch').val(product.basePrice[0].branch);
+            $('#MaintenaceHeadOffice').val(product.maintenancePrice[0].headOffice);
+            $('#MaintenaceBranch').val(product.maintenancePrice[0].branch);
+        } else if (productId == "") {
+            $('#basePriceHeadOffice').val("");
+            $('#basePriceBranch').val("");
+            $('#MaintenaceHeadOffice').val("");
+            $('#MaintenaceBranch').val("");
+        }
+        debugger;
+
+
+    }
+
+});
 
 /**
  * Update
@@ -162,6 +182,7 @@ showTpl.onCreated(function () {
 });
 showTpl.helpers({
     data: function () {
+
         var data = Rabbit.Collection.Contract.findOne(this._id);
         return data;
     }
@@ -200,6 +221,6 @@ AutoForm.hooks({
 // Config date picker
 var configOnRender = function () {
     // date
-    var saleDate = $('[name="saleDate"]');
-    DateTimePicker.date(saleDate);
+    var contractDate = $('[name="contractDate"]');
+    DateTimePicker.date(contractDate);
 };

@@ -131,16 +131,22 @@
 </template>
 <!--Custom object field-->
 <template name="customObjectField">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         {{> afQuickField name=current.name template="bootstrap3" label=false class="input-sm" placeholder="Name"}}
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.gender template="bootstrap3" label=false class="input-sm"}}
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-1">
+        {{> afQuickField name=current.age template="bootstrap3" label=false class="input-sm" placeholder="age"}}
+    </div>
+    <div class="col-sm-2">
+        {{> afQuickField name=current.idCard template="bootstrap3" label=false class="input-sm" placeholder="IdCard"}}
+    </div>
+    <div class="col-sm-2">
         {{> afQuickField name=current.position template="bootstrap3" label=false class="input-sm" placeholder="Position"}}
     </div>
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         {{> afQuickField name=current.tel template="bootstrap3" label=false class="input-sm" placeholder="Telephone"}}
     </div>
 </template>
