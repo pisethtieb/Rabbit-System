@@ -103,10 +103,7 @@ indexTpl.events({
             customerId: this.customerId, contractId: this._id
 
         });
-        debugger;
     }
-
-
     //'dblclick tbody > tr': function (event) {
     //    var dataTable = $(event.target)
     //        .closest('table')
@@ -123,12 +120,11 @@ indexTpl.events({
  */
 insertTpl.onCreated(function () {
     Meteor.subscribe('rabbit_customer');
-
+    $('.testing').hide();
 });
 insertTpl.onRendered(function () {
     configOnRender();
 });
-
 insertTpl.helpers({
     customerId(){
         return FlowRouter.getParam('customerId');
@@ -136,7 +132,6 @@ insertTpl.helpers({
 });
 insertTpl.events({
     'change .productId': function (e, t) {
-
         let productId = $(e.currentTarget).val();
         let product = Rabbit.Collection.Product.findOne({_id: productId});
         if (product) {
@@ -153,6 +148,16 @@ insertTpl.events({
         debugger;
 
 
+    },
+    'change .type': function (e, t) {
+        let type = $(e.currentTarget).val();
+        if (type == 'product') {
+            $('.testing').hide()
+        } else if (type == "new") {
+            $('.testing').show()
+        } else if (type == '') {
+            $('.testing').hide()
+        }
     }
 
 });

@@ -6,7 +6,7 @@ var indexTpl = Template.rabbit_product,
     updateTpl = Template.rabbit_productUpdate,
     showTpl = Template.rabbit_productShow;
 
-    //locationAddOnTpl = Template.rabbit_locationAddOnProduct;
+//locationAddOnTpl = Template.rabbit_locationAddOnProduct;
 
 
 /**
@@ -21,7 +21,7 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["product"], {size: 'lg'});
-    createNewAlertify(["productShow"]);
+    createNewAlertify(["productShow"], {size: 'lg'});
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -121,7 +121,7 @@ showTpl.helpers({
             "<tr>" +
             "<th>Head Office</th>" +
             "<th>Branch</th>" + +
-            "</tr>" +
+                "</tr>" +
             "</thead><tbody>";
         this.basePrice.forEach(function (o) {
             str += '<tr>' +

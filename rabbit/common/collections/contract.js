@@ -5,11 +5,11 @@ Rabbit.Collection.Contract = new Mongo.Collection("rabbit_contract");
 Rabbit.Schema.Contract = new SimpleSchema({
     contractDate: {
         type: String,
-        label: "contractDate"
+        label: "Contract Date"
     },
     customerId: {
         type: String,
-        label: 'customer Id'
+        label: 'Customer Id'
 
     },
     productId: {
@@ -78,12 +78,12 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     testing: {
         type: String,
-        label: "testing",
+        label: "Testing Duration",
         optional: true
     },
     maintenanceFee: {
         type: String,
-        label: "maintenanceFee"
+        label: "MaintenanceFee"
         //example
         //" 1 year,one month"
     },
