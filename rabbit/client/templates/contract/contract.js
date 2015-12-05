@@ -24,24 +24,6 @@ indexTpl.onCreated(function () {
     createNewAlertify(["contractShow"]);
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
-
-Template.rabbit_addOffice.onRendered(function () {
-
-    $('#addOffice').hide();
-    $('#addBranch').hide();
-
-    Meteor.subscribe('rabbit_office');
-    let data = Rabbit.Collection.Office.findOne({contractId: this.data._id});
-
-    debugger;
-    if (data == null || undefined) {
-        $('#addOffice').show();
-        $('#addBranch').hide();
-    } else {
-        $('#addOffice').hide();
-        $('#addBranch').show();
-    }
-});
 Template.rabbit_addOffice.events({
     'click #addOffice'() {
         FlowRouter.go('rabbit.office', {
@@ -92,11 +74,6 @@ indexTpl.events({
     },
     'click .js-show': function (e, t) {
         alertify.contractShow(fa("eye", "Contract"), renderTemplate(showTpl, this));
-    },
-    'click .showCustomerDetail' (){
-        alert('hi');
-        alertify.contractShow(fa("eye", "Contract"), renderTemplate(showTpl));
-
     },
     'click .officeAction': function () {
         FlowRouter.go('rabbit.office', {
@@ -165,20 +142,20 @@ insertTpl.events({
 /**
  * Update
  */
-updateTpl.onCreated(function () {
-    this.subscribe('rabbit_contract', this.data._id);
-});
+//updateTpl.onCreated(function () {
+//    this.subscribe('rabbit_contract', this.data._id);
+//});
 
 updateTpl.onRendered(function () {
     configOnRender();
 });
 
-updateTpl.helpers({
-    data: function () {
-        var data = Rabbit.Collection.Contract.findOne(this._id);
-        return data;
-    }
-});
+//updateTpl.helpers({
+//    data: function () {
+//        var data = Rabbit.Collection.Contract.findOne(this._id);
+//        return data;
+//    }
+//})
 /**
  * Show
  */

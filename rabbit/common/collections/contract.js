@@ -94,7 +94,12 @@ Rabbit.Schema.Contract = new SimpleSchema({
     ,
     des: {
         type: String,
-        label: "Description"
+        label: "Description",
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        }
     }
 })
 ;
