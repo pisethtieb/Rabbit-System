@@ -40,6 +40,8 @@ indexTpl.events({
         alertify.customer(fa("plus", "Customer"), renderTemplate(insertTpl));
     },
     'click .js-update': function (e, t) {
+        this
+        debugger;
         alertify.customer(fa("pencil", "Customer"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {

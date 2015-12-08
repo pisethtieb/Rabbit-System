@@ -15,15 +15,19 @@ Rabbit.TabularTable.Customer = new Tabular.Table({
         {data: "address", title: "Address"},
         {data: "telephone", title: "Telephone"},
         {
-            data: "contactPerson", title: "Contact Person",
-            render: function (val, type, doc) {
-                return JSON.stringify(val);
-            }
+            data: "_contractCount",
+            title: "Qutation  <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
         },
         {
             data: "_contractCount",
-            title: "Contract <i class='fa fa-arrow-up'></i>",
+            title: "Mis Contract  <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
+        },
+        {
+            data: "_contractCount",
+            title: "Web Contract  <i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
         }
-    ]
+    ], extraFields: ['contactPerson']
 });
