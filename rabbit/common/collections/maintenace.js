@@ -3,9 +3,14 @@ Rabbit.Collection.Maintenance = new Mongo.Collection("rabbit_maintenance");
 
 // Schema
 Rabbit.Schema.Maintenance = new SimpleSchema({
-    date: {
+    startDate: {
         type: String,
-        label: 'Date Rang'
+        label: 'Start Date'
+
+    },
+    endDate: {
+        type: String,
+        label: 'End Date'
 
     },
     officeId: {
@@ -29,16 +34,26 @@ Rabbit.Schema.Maintenance = new SimpleSchema({
         //}
     }
     ,
-    paidAmount: {
-        type: Number,
-        label: "Paid Amount",
-        min: 1,
-        custom: function () {
-            if (this.value > this.field('price').value) {
-                return "greaterThan";
+    //paidAmount: {
+    //    type: Number,
+    //    label: "Paid Amount",
+    //    min: 1,
+    //    custom: function () {
+    //        if (this.value > this.field('price').value) {
+    //            return "greaterThan";
+    //        }
+    //    }
+    //
+    //},
+    des: {
+        type: String,
+        label: "Description",
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
             }
         }
-
     },
     branchId: {
         type: String,
@@ -53,6 +68,6 @@ Rabbit.Collection.Maintenance.attachSchema(Rabbit.Schema.Maintenance);
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');
-SimpleSchema.messages({
-    "greaterThan": "PaidAmount mustn't be greater than price!"
-});
+//SimpleSchema.messages({
+//    "greaterThan": "PaidAmount mustn't be greater than price!"
+//});

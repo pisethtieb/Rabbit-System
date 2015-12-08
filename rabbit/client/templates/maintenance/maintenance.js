@@ -90,8 +90,7 @@ indexTpl.helpers({
 
 /*Insert*/
 insertTpl.onRendered(function () {
-    var name = $('[name="date"]');
-    DateTimePicker.dateRange(name);
+    configOnRender();
 
 });
 insertTpl.helpers({
@@ -182,6 +181,8 @@ AutoForm.hooks({
 });
 var configOnRender = function () {
     // date
-    var date = $('[name="date"]');
-    DateTimePicker.date(date);
+    var startDate = $('[name="startDate"]');
+    DateTimePicker.date(startDate);
+    var endDate = $('[name="endDate"]');
+    DateTimePicker.date(endDate);
 };

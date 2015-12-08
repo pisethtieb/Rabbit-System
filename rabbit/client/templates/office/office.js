@@ -126,6 +126,26 @@ updateTpl.onCreated(function () {
 updateTpl.onRendered(function () {
     configOnRender();
 });
+
+
+updateTpl.events({
+    'change .type'(e, t) {
+        let type = $(e.currentTarget).val();
+        var contractId = FlowRouter.getParam('contractId');
+        var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
+        //let types = Rabbit.List.getProduct(type);
+        if (type == 'HO') {
+            $('[name=price]').val(contract._product.basePrice[0].headOffice);
+        } else if (type == "BO") {
+            $('[name=price]').val(contract._product.basePrice[0].branch);
+        } else {
+            $('[name=price]').val("");
+        }
+        //$('[name=headBasePrice]').val(product.basePrice[0].headOffice);
+        //$('[name=headMaintainPrice]').val(product.maintenancePrice[0].headOffice);
+        //$('[name=totalPrice]').val(product.maintenancePrice[0].headOffice + product.basePrice[0].headOffice);
+    }
+});
 //
 //updateTpl.helpers({
 //    data: function () {

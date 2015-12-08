@@ -11,10 +11,11 @@ Rabbit.TabularTable.Maintenance = new Tabular.Table({
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_maintenanceAction},
         {data: "_id", title: "ID"},
         {data: "officeId", title: "Office Id"},
-        {data: "date", title: "Date"},
+
         {data: "type", title: "Type"},
         {data: "price", title: "Price"},
-        {data: "paidAmount", title: "Paid Amount"}
+        {data: "startDate", title: "Start Date"},
+        {data: "endDate", title: "End Date"}
         //{
         //    data: '',
         //    title: "Office <i class='fa fa-arrow-up'></i>",

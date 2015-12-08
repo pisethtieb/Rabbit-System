@@ -1,50 +1,61 @@
 // Collection
-Rabbit.Collection.Maintenance = new Mongo.Collection("rabbit_maintenance");
+Rabbit.Collection.Payment = new Mongo.Collection("rabbit_payment");
 
 // Schema
-Rabbit.Schema.Maintenance = new SimpleSchema({
-    startDate: {
+Rabbit.Schema.Payment = new SimpleSchema({
+    customerId: {
         type: String,
-        label: 'Start Date'
-
+        label: 'CustomerId'
     },
-    endDate: {
+    contractId: {
         type: String,
-        label: 'End Date'
-
-    },
-    officeId: {
-        type: String,
-        label: 'officeId'
-
-    },
-    price: {
-        type: String,
-        label: 'price'
+        label: 'ContractId'
 
     },
     type: {
         type: String,
-        label: 'Type'
-        //autoform: {
-        //    type: "select2",
-        //    options: function () {
-        //        return Rabbit.List.type();
-        //    }
-        //}
-    }
-    ,
-    //paidAmount: {
-    //    type: Number,
-    //    label: "Paid Amount",
-    //    min: 1,
-    //    custom: function () {
-    //        if (this.value > this.field('price').value) {
-    //            return "greaterThan";
-    //        }
-    //    }
-    //
-    //},
+        label: 'Type',
+        autoform: {
+            type: "select2",
+            options: function () {
+                return Rabbit.List.contractPaymentType();
+            }
+        }
+    },
+    officeMaintenance: {
+        type: String,
+        label: "Office & Maintenance",
+        autoform: {
+            type: "select2",
+            options: function () {
+                return Rabbit.List.officeMaintenance();
+            }
+        }
+    },
+    paymentDate: {
+        type: String,
+        label: 'Payment Date'
+
+    },
+    price: {
+        type: Number,
+        label: 'price'
+
+    },
+    paidAmount: {
+        type: Number,
+        label: "Paid Amount",
+        min: 1,
+        custom: function () {
+            if (this.value > this.field('price').value) {
+                return "greaterThan";
+            }
+        }
+    },
+    dueAmount: {
+        type: Number,
+        label: 'Due Amount'
+    },
     des: {
         type: String,
         label: "Description",
@@ -64,10 +75,10 @@ Rabbit.Schema.Maintenance = new SimpleSchema({
 ;
 
 // Attach schema
-Rabbit.Collection.Maintenance.attachSchema(Rabbit.Schema.Maintenance);
+Rabbit.Collection.Payment.attachSchema(Rabbit.Schema.Payment);
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');
-//SimpleSchema.messages({
-//    "greaterThan": "PaidAmount mustn't be greater than price!"
-//});
+SimpleSchema.messages({
+    "greaterThan": "PaidAmount mustn't be greater than price!"
+});

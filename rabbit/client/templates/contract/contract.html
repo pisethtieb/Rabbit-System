@@ -81,10 +81,14 @@
                 </div>
                 <div class="col-md-6">
                     {{> afQuickField name="paymentMethod"}}
-                    {{> afQuickField name="type"}}
+                    {{> afQuickField name="type" class='type'}}
+                    <div class="testing">
+                        {{> afQuickField name="testing"}}
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    {{> afQuickField name="testing"}}
+
+
                     {{> afQuickField name="maintenanceFee"}}
                     {{> afQuickField name="des"}}
                 </div>
@@ -145,6 +149,15 @@
     <button type="button" class="btn btn-primary btn-sm officeAction">
         {{#if _officeCount}}
             {{_officeCount}}
+        {{else}}
+            0
+        {{/if}}
+    </button>
+</template>
+<template name="rabbit_paymentLinkAction">
+    <button type="button" class="btn btn-primary btn-sm paymentAction">
+        {{#if _paymentCount}}
+            {{_paymentCount}}
         {{else}}
             0
         {{/if}}

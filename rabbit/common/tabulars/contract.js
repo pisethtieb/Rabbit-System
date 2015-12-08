@@ -13,7 +13,7 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
         {data: "_id", title: "ID"},
         {data: "_customer.companyName", title: "Customer"},
         {
-            data: "saleDate", title: "Contract Date",
+            data: "contractDate", title: "Contract Date",
             render: function (val, type, doc) {
                 return moment(val).format('YYYY-MM-DD');
             }
@@ -28,6 +28,10 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
             data: "_officeCount",
             title: "Office <i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_officeLinkAction
+        }, {
+            data: "_paymentCount",
+            title: "payment <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_paymentLinkAction
         }
     ],
     extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des']

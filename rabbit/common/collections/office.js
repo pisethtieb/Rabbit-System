@@ -3,6 +3,10 @@ Rabbit.Collection.Office = new Mongo.Collection("rabbit_office");
 
 // Schema
 Rabbit.Schema.Office = new SimpleSchema({
+    name: {
+        type: String,
+        label: "name"
+    },
     contractId: {
         type: String,
         label: 'Contract ID'
@@ -26,6 +30,16 @@ Rabbit.Schema.Office = new SimpleSchema({
     productId: {
         type: String,
         optional: true
+    },
+    des: {
+        type: String,
+        label: 'Description',
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        }
     },
     branchId: {
         type: String,

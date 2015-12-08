@@ -1,6 +1,6 @@
-Rabbit.TabularTable.Office = new Tabular.Table({
-    name: "rabbit_saleBranchOfficeList",
-    collection: Rabbit.Collection.Office,
+Rabbit.TabularTable.Payment = new Tabular.Table({
+    name: "rabbit_saleBranchPaymentList",
+    collection: Rabbit.Collection.Payment,
     pagingType: "full_numbers",
     autoWidth: false,
     columnDefs: [
@@ -8,9 +8,9 @@ Rabbit.TabularTable.Office = new Tabular.Table({
     ],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_officeAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_paymentAction},
         {data: "_id", title: "ID"},
-        {data: "name", title: "Name"},
+        {data: "_customer.name", title: "customer"},
         {data: "contractId", title: "Contract ID"},
         {data: "type", title: "Type"},
         {data: "price", title: "Price"},

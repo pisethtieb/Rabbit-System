@@ -15,7 +15,6 @@
         <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
     {{/tabularAction}}
 </template>
-
 <!--Insert-->
 <template name="rabbit_productInsert">
     {{#autoForm collection=Rabbit.Collection.Product id="rabbit_productInsert" type="insert"}}
@@ -25,17 +24,14 @@
                 {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="basePriceObjectField"}}
             </div>
             <div class="col-md-6">
-                <div class="col-md-6"></div>
-                <div class="col-md-6">
-                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
-
-                </div>
+                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
             </div>
-            <div class="col-md-12">
-                {{> afQuickField name="feature"}}
-            </div>
-
         </div>
+        <div class="col-md-12">
+            {{> afQuickField name="feature"}}
+        </div>
+
+
         <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
         <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
 
@@ -53,19 +49,16 @@
                     {{> afQuickField name="name"}}
                     {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="basePriceObjectField"}}
 
-                </div>
-                <div class="col-md-6">
-                    <div class="col-md-6"></div>
                     <div class="col-md-6">
                         {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
-
                     </div>
-                </div>
-                <div class="col-md-12">
-                    {{> afQuickField name="feature"}}
-                </div>
+                    <div class="col-md-12">
+                        {{> afQuickField name="feature"}}
+                    </div>
 
+                </div>
             </div>
+
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
             <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
 

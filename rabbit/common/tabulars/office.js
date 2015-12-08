@@ -10,6 +10,7 @@ Rabbit.TabularTable.Office = new Tabular.Table({
     columns: [
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_officeAction},
         {data: "_id", title: "ID"},
+        {data: "name", title: "Name"},
         {data: "contractId", title: "Contract ID"},
         {data: "type", title: "Type"},
         {data: "price", title: "Price"},

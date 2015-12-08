@@ -66,6 +66,11 @@ Rabbit.Schema.Contract = new SimpleSchema({
         //    }
         //}
     },
+    //paymentMethod: {
+    //    type: Array,
+    //    minCount: 1,
+    //    maxCount: 1
+    //},
     type: {
         type: String,
         label: 'type',

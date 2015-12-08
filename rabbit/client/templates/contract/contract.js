@@ -80,6 +80,12 @@ indexTpl.events({
             customerId: this.customerId, contractId: this._id
 
         });
+    },
+    'click .paymentAction': function () {
+        FlowRouter.go('rabbit.payment', {
+            customerId: this.customerId, contractId: this._id
+
+        });
     }
     //'dblclick tbody > tr': function (event) {
     //    var dataTable = $(event.target)
