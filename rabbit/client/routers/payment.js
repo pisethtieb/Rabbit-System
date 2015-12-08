@@ -4,9 +4,10 @@ rabbitRoutes.route('/payment/:customerId/:contractId', {
     name: 'rabbit.payment',
     subscriptions: function (params, queryParams) {
         // Customer
-        this.register('rabbit_contract', subs.subscribe('rabbit_contract', Session.get('currentBranch')));
-        this.register('rabbit_maintenance', subs.subscribe('rabbit_maintenance', Session.get('currentBranch')));
-        this.register('rabbit_office', subs.subscribe('rabbit_office', Session.get('currentBranch')));
+        this.register('rabbit_contract', subs.subscribe('rabbit_contract'));
+        this.register('rabbit_maintenance', subs.subscribe('rabbit_maintenance'));
+        this.register('rabbit_office', subs.subscribe('rabbit_office'));
+        this.register('rabbit_payment', subs.subscribe('rabbit_payment'));
     },
     action: function (params, queryParams) {
         Layout.main('rabbit_payment');
