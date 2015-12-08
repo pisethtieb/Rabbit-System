@@ -43,20 +43,17 @@
     <!--Built-in template sub ready by all-->
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Product id="rabbit_productUpdate" doc=this type="update"}}
-            autoForm collection=Rabbit.Collection.Product id="rabbit_productInsert" type="insert"}}
             <div class="row">
                 <div class="col-md-6">
                     {{> afQuickField name="name"}}
                     {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="basePriceObjectField"}}
-
-                    <div class="col-md-6">
-                        {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
-                    </div>
-                    <div class="col-md-12">
-                        {{> afQuickField name="feature"}}
-                    </div>
-
                 </div>
+                <div class="col-md-6">
+                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
+                </div>
+            </div>
+            <div class="col-md-12">
+                {{> afQuickField name="feature"}}
             </div>
 
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>

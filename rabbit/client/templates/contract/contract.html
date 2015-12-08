@@ -81,14 +81,12 @@
                 </div>
                 <div class="col-md-6">
                     {{> afQuickField name="paymentMethod"}}
-                    {{> afQuickField name="type" class='type'}}
-                    <div class="testing">
+                    {{> afQuickField name="type" id='type'}}
+                    <div id="testing">
                         {{> afQuickField name="testing"}}
                     </div>
                 </div>
                 <div class="col-md-6">
-
-
                     {{> afQuickField name="maintenanceFee"}}
                     {{> afQuickField name="des"}}
                 </div>
@@ -109,18 +107,12 @@
     {{#if templateSubReady}}
         {{#with data}}
             <dl class="dl-horizontal">
-                <dt>ID:</dt>
-                <dd>{{_id}}</dd>
-                <dt>Company Name:</dt>
-                <dd>{{companyName}}</dd>
-                <dt>Address:</dt>
-                <dd>{{address}}</dd>
-                <dt>Telephone:</dt>
-                <dd>{{telephone}}</dd>
-                <dd>Contact Person:</dd>
-                <br>
-
-                <dd>{{contactPerson}}</dd>
+                <dt>customer:</dt>
+                <dd>{{customerId}}</dd>
+                <dt>contract Date:</dt>
+                <dd>{{contractDate}}</dd>
+                <dt>Product:</dt>
+                <dd>{{_product.name}}</dd>
             </dl>
         {{/with}}
     {{else}}

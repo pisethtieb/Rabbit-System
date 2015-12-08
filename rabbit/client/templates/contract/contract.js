@@ -154,8 +154,46 @@ insertTpl.events({
 
 updateTpl.onRendered(function () {
     configOnRender();
+
+    var type = $('#type').val();
+    if (type == 'product') {
+        $('#testing').hide();
+    } else {
+        $('#testing').show();
+    }
 });
 
+updateTpl.events({
+    'change .productId': function (e, t) {
+        let productId = $(e.currentTarget).val();
+        let product = Rabbit.Collection.Product.findOne({_id: productId});
+        if (product) {
+            $('#basePriceHeadOffice').val(product.basePrice[0].headOffice);
+            $('#basePriceBranch').val(product.basePrice[0].branch);
+            $('#MaintenaceHeadOffice').val(product.maintenancePrice[0].headOffice);
+            $('#MaintenaceBranch').val(product.maintenancePrice[0].branch);
+        } else if (productId == "") {
+            $('#basePriceHeadOffice').val("");
+            $('#basePriceBranch').val("");
+            $('#MaintenaceHeadOffice').val("");
+            $('#MaintenaceBranch').val("");
+        }
+        debugger;
+
+
+    },
+    'change #type': function (e, t) {
+        let type = $(e.currentTarget).val();
+        if (type == 'product') {
+            $('#testing').hide()
+        } else if (type == "new") {
+            $('#testing').show()
+        } else if (type == '') {
+            $('#testing').hide()
+        }
+    }
+
+});
 //updateTpl.helpers({
 //    data: function () {
 //        var data = Rabbit.Collection.Contract.findOne(this._id);
