@@ -105,6 +105,10 @@ insertTpl.events({
         let checkOM = $(e.currentTarget).val();
         Session.set('checkOfficeMaintenance', checkOM);
     },
+    'keyup .paidAmount': function (e, t) {
+
+        $('.dueAmount').val($('.price').val() - $('.paidAmount').val());
+    },
 
     'change .officeMaintenance': function (e) {
 
@@ -112,15 +116,16 @@ insertTpl.events({
         if (checkOM == "office") {
             let officeId = $(e.currentTarget).val();
             var office = Rabbit.Collection.Office.findOne({_id: officeId});
-            Rabbit.Collection.Office.find({_id: office._id}).forEach(function (obj) {
+            Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
                 var payment = Rabbit.Collection.Payment.findOne({
-                        contractId: obj._id
+                        contractId: obj.contractId
                     },
                     {
                         sort: {
                             _id: -1
                         }
                     });
+                debugger;
                 if (payment != null && payment.price > 0) {
                     $('.price').val(payment.price);
                     $('.paidAmount').val(payment.paidAmount);

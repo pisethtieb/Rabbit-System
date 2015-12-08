@@ -75,40 +75,44 @@ Rabbit.List = {
         var list = [];
         var contractId = FlowRouter.getParam("contractId");
         var checkOM = Session.get('checkOfficeMaintenance');
-        debugger;
 
         if (checkOM == "office") {
             //var patientId = Labo.ListForSale.get('patientId');
 
             Rabbit.Collection.Office.find({contractId: contractId}).forEach(function (obj) {
-                //var patient = Dental.Collection.Patient.findOne({_id: obj.patientId});
-                var payment = Rabbit.Collection.Payment.findOne({
-                        contractId: obj._id
-                    },
-                    {
-                        sort: {
-                            _id: -1
-                        }
-                    });
-                if (payment != null && payment.dueAmount > 0) {
-                    list.push({
-                        label: "ID : " + obj._id + " | " + " : " + obj.contractDate + " | " + "Amount : " + fee.outstandingAmount,
-                        value: obj._id
+                    debugger;
+                    //var patient = Dental.Collection.Patient.findOne({_id: obj.patientId});
+                    var payment = Rabbit.Collection.Payment.findOne({
+                            contractId: obj.contractId
+                        },
+                        {
+                            sort: {
+                                _id: -1
+                            }
+                        });
+                    if (payment != null && payment.dueAmount > 0) {
+                        debugger;
 
-                    });
-                } else if (payment == null) {
-                    list.push({
-                        label: "ID : " + obj._id + " | " + "price : " + obj.price,
-                        value: obj._id
-                    });
+                        list.push({
+                                label: "ID : " + obj._id + " | " + " : " + payment.dueAmount,
+                                value: obj._id
+
+                            }
+                        )
+                        ;
+                    }
+                    else if (payment == null) {
+                        list.push({
+                            label: "ID : " + obj._id + " | " + "price : " + obj.price,
+                            value: obj._id
+                        });
+                    }
                 }
-            });
+            )
+            ;
 
         } else if (checkOM == "maintenance") {
-            debugger;
-
             Rabbit.Collection.Maintenance.find({"_office.contractId": contractId}).forEach(function (obj) {
-                debugger;
                 //var patient = Dental.Collection.Patient.findOne({_id: obj.patientId});
                 var payment = Rabbit.Collection.Payment.findOne({
                         contractId: obj._id,
@@ -137,4 +141,5 @@ Rabbit.List = {
 
 
     }
-};
+}
+;

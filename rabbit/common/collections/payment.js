@@ -16,7 +16,7 @@ Rabbit.Schema.Payment = new SimpleSchema({
         type: String,
         label: 'Type',
         autoform: {
-            type: "select2",
+            type: "select",
             options: function () {
                 return Rabbit.List.contractPaymentType();
             }
@@ -26,7 +26,7 @@ Rabbit.Schema.Payment = new SimpleSchema({
         type: String,
         label: "Office & Maintenance",
         autoform: {
-            type: "select2",
+            type: "select",
             options: function () {
                 return Rabbit.List.officeMaintenance();
             }

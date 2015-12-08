@@ -2,32 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c191e4-0749-4c02-8796-28c2c3c82501" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/common/collections/maintenace.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/server/collectionCount/maintenance.js" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/collections/contract.js" afterPath="$PROJECT_DIR$/rabbit/common/collections/contract.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/tabulars/contract.js" afterPath="$PROJECT_DIR$/rabbit/common/tabulars/contract.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/server/collectionCount/contract.js" afterPath="$PROJECT_DIR$/rabbit/server/collectionCount/contract.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/app/lists/list.js" afterPath="$PROJECT_DIR$/rabbit/client/app/lists/list.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/tabulars/maintenance.js" afterPath="$PROJECT_DIR$/rabbit/common/tabulars/maintenance.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/office/office.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/office/office.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/office/office.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/office/office.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/collections/office.js" afterPath="$PROJECT_DIR$/rabbit/common/collections/office.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/tabulars/office.js" afterPath="$PROJECT_DIR$/rabbit/common/tabulars/office.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/routers/payment.js" afterPath="$PROJECT_DIR$/rabbit/client/routers/payment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/collections/payment.js" afterPath="$PROJECT_DIR$/rabbit/common/collections/payment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/tabulars/payment.js" afterPath="$PROJECT_DIR$/rabbit/common/tabulars/payment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/server/collectionCount/payment.js" afterPath="$PROJECT_DIR$/rabbit/server/collectionCount/payment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/server/collections_hook/payment.js" afterPath="$PROJECT_DIR$/rabbit/server/collections_hook/payment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/server/security/payment.js" afterPath="$PROJECT_DIR$/rabbit/server/security/payment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/product/product.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/product/product.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rabbit.iws" />
@@ -52,18 +30,18 @@
       <file leaf-file-name="payment.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.764706">
-              <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
+            <state vertical-scroll-proportion="-14.705882">
+              <caret line="30" column="72" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="72" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="payment.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="payment.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.061349694">
-              <caret line="118" column="21" selection-start-line="118" selection-start-column="21" selection-end-line="118" selection-end-column="21" />
+            <state vertical-scroll-proportion="-11.551724">
+              <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
               <folding />
             </state>
           </provider>
@@ -73,17 +51,17 @@
         <entry file="file://$PROJECT_DIR$/rabbit/common/collections/payment.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="34" column="15" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="15" />
+              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="list.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rabbit/client/app/lists/list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="89" column="35" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
+            <state vertical-scroll-proportion="0.44717446">
+              <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
               <folding />
             </state>
           </provider>
@@ -92,7 +70,7 @@
       <file leaf-file-name="payment.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client/routers/payment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-6.4814816">
+            <state vertical-scroll-proportion="0.0">
               <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
               <folding />
             </state>
@@ -212,11 +190,11 @@
         <option value="$PROJECT_DIR$/rabbit/client/templates/office/office.js" />
         <option value="$PROJECT_DIR$/rabbit/server/collectionCount/maintenance.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html" />
-        <option value="$PROJECT_DIR$/rabbit/common/collections/payment.js" />
         <option value="$PROJECT_DIR$/rabbit/client/routers/payment.js" />
+        <option value="$PROJECT_DIR$/rabbit/common/collections/payment.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" />
-        <option value="$PROJECT_DIR$/rabbit/client/app/lists/list.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/payment/payment.js" />
+        <option value="$PROJECT_DIR$/rabbit/client/app/lists/list.js" />
       </list>
     </option>
   </component>
@@ -276,8 +254,6 @@
       <sortByType />
     </navigator>
     <panes>
-      <pane id="Scratches" />
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -732,6 +708,8 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -830,7 +808,7 @@
     <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.15500794" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24085851" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292978" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
@@ -1226,42 +1204,42 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/common/collections/payment.js">
+    <entry file="file://$PROJECT_DIR$/rabbit/client/routers/payment.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="34" column="15" selection-start-line="34" selection-start-column="4" selection-end-line="34" selection-end-column="15" />
+          <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client/routers/payment.js">
+    <entry file="file://$PROJECT_DIR$/rabbit/common/collections/payment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-6.4814816">
-          <caret line="7" column="78" selection-start-line="7" selection-start-column="78" selection-end-line="7" selection-end-column="78" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.764706">
-          <caret line="31" column="70" selection-start-line="31" selection-start-column="70" selection-end-line="31" selection-end-column="70" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client/app/lists/list.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="89" column="35" selection-start-line="89" selection-start-column="35" selection-end-line="89" selection-end-column="35" />
+        <state vertical-scroll-proportion="-14.705882">
+          <caret line="30" column="72" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="72" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.061349694">
-          <caret line="118" column="21" selection-start-line="118" selection-start-column="21" selection-end-line="118" selection-end-column="21" />
+        <state vertical-scroll-proportion="-11.551724">
+          <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/client/app/lists/list.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.44717446">
+          <caret line="82" column="29" selection-start-line="82" selection-start-column="29" selection-end-line="82" selection-end-column="29" />
           <folding />
         </state>
       </provider>
