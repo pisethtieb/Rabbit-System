@@ -1,6 +1,7 @@
 /**
  * Created by ratanak on 11/19/15.
  */
+Rabbit.ListState = new ReactiveObj();
 /**
  * Declare template
  */
@@ -115,10 +116,11 @@ insertTpl.events({
         let checkOM = Session.get('checkOfficeMaintenance');
         if (checkOM == "office") {
             let officeId = $(e.currentTarget).val();
+            $('.officeId').val(officeId);
             var office = Rabbit.Collection.Office.findOne({_id: officeId});
             Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
                 var payment = Rabbit.Collection.Payment.findOne({
-                        contractId: obj.contractId
+                        officeId: obj._id
                     },
                     {
                         sort: {
@@ -127,16 +129,38 @@ insertTpl.events({
                     });
                 debugger;
                 if (payment != null && payment.price > 0) {
-                    $('.price').val(payment.price);
-                    $('.paidAmount').val(payment.paidAmount);
-                    $('.dueAmount').val(payment.dueAmount);
+                    $('.price').val(payment.dueAmount);
+                    $('.paidAmount').val(payment.dueAmount);
+                    $('.dueAmount').val(0);
                 } else if (payment == null) {
                     $('.price').val(office.price);
                     $('.paidAmount').val(office.price);
-                    $('.dueAmount').val(office.price);
+                    $('.dueAmount').val(0);
                 }
             });
         } else if (checkOM == 'maintenance') {
+            let maintenanceId = $(e.currentTarget).val();
+            $('.maintenanceId').val(maintenanceId);
+            var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
+            Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
+                var payment = Rabbit.Collection.Payment.findOne({
+                        maintenanceId: obj._id
+                    },
+                    {
+                        sort: {
+                            _id: -1
+                        }
+                    });
+                if (payment != null && payment.price > 0) {
+                    $('.price').val(payment.dueAmount);
+                    $('.paidAmount').val(payment.dueAmount);
+                    $('.dueAmount').val(0);
+                } else if (payment == null) {
+                    $('.price').val(maintenance.price);
+                    $('.paidAmount').val(maintenance.price);
+                    $('.dueAmount').val(0);
+                }
+            });
 
         }
     }

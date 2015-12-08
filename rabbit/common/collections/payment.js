@@ -10,7 +10,6 @@ Rabbit.Schema.Payment = new SimpleSchema({
     contractId: {
         type: String,
         label: 'ContractId'
-
     },
     type: {
         type: String,
@@ -69,6 +68,16 @@ Rabbit.Schema.Payment = new SimpleSchema({
     branchId: {
         type: String,
         label: "Branch",
+        optional: true
+    },
+    officeId: {
+        type: String,
+        label: "officeId",
+        optional: true
+    },
+    maintenanceId: {
+        type: String,
+        label: "maintenanceId",
         optional: true
     }
 })

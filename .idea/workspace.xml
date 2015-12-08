@@ -2,8 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c191e4-0749-4c02-8796-28c2c3c82501" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/rabbit/server/publications/payment.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/routers/payment.js" afterPath="$PROJECT_DIR$/rabbit/client/routers/payment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/app/lists/list.js" afterPath="$PROJECT_DIR$/rabbit/client/app/lists/list.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/office/office.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/office/office.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/common/collections/payment.js" afterPath="$PROJECT_DIR$/rabbit/common/collections/payment.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rabbit.iws" />
@@ -25,11 +28,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="payment.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="payment.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-14.705882">
-              <caret line="30" column="72" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="72" />
+            <state vertical-scroll-proportion="-0.025641026">
+              <caret line="52" column="59" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
               <folding />
             </state>
           </provider>
@@ -38,8 +41,20 @@
       <file leaf-file-name="payment.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-11.551724">
-              <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="143" column="87" selection-start-line="143" selection-start-column="87" selection-end-line="143" selection-end-column="87" />
+              <folding>
+                <element signature="e#0#42#0" expanded="false" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="office.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-11.029411">
+              <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
               <folding />
             </state>
           </provider>
@@ -49,77 +64,17 @@
         <entry file="file://$PROJECT_DIR$/rabbit/common/collections/payment.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
+              <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="list.js" pinned="false" current-in-tab="true">
+      <file leaf-file-name="list.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rabbit/client/app/lists/list.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-0.53061223">
-              <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="payment.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/client/routers/payment.js">
-          <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="6" column="73" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="payment.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/server/publications/payment.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="maintenance.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/server/collectionCount/maintenance.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="maintenance.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="42" column="53" selection-start-line="42" selection-start-column="53" selection-end-line="42" selection-end-column="53" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="contract.html" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/contract/contract.html">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="94" column="18" selection-start-line="94" selection-start-column="18" selection-end-line="94" selection-end-column="18" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="office.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="148" column="2" selection-start-line="148" selection-start-column="2" selection-end-line="148" selection-end-column="2" />
+              <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -170,7 +125,6 @@
         <option value="$PROJECT_DIR$/rabbit/client/templates/product/product.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/product/product.html" />
         <option value="$PROJECT_DIR$/rabbit/common/collections/contract.js" />
-        <option value="$PROJECT_DIR$/rabbit/client/templates/office/office.html" />
         <option value="$PROJECT_DIR$/rabbit/common/collections/office.js" />
         <option value="$PROJECT_DIR$/rabbit/common/collections/maintenace.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.js" />
@@ -187,12 +141,13 @@
         <option value="$PROJECT_DIR$/rabbit/client/templates/office/office.js" />
         <option value="$PROJECT_DIR$/rabbit/server/collectionCount/maintenance.js" />
         <option value="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html" />
-        <option value="$PROJECT_DIR$/rabbit/common/collections/payment.js" />
-        <option value="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" />
-        <option value="$PROJECT_DIR$/rabbit/client/templates/payment/payment.js" />
-        <option value="$PROJECT_DIR$/rabbit/client/app/lists/list.js" />
         <option value="$PROJECT_DIR$/rabbit/client/routers/payment.js" />
         <option value="$PROJECT_DIR$/rabbit/server/publications/payment.js" />
+        <option value="$PROJECT_DIR$/rabbit/common/collections/payment.js" />
+        <option value="$PROJECT_DIR$/rabbit/client/app/lists/list.js" />
+        <option value="$PROJECT_DIR$/rabbit/client/templates/payment/payment.js" />
+        <option value="$PROJECT_DIR$/rabbit/client/templates/office/office.html" />
+        <option value="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" />
       </list>
     </option>
   </component>
@@ -825,14 +780,13 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1296" height="1000" extended-state="7" />
+    <frame x="-8" y="-8" width="1296" height="1000" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.24085851" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25039744" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.3292978" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32660332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
@@ -844,6 +798,7 @@
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32660332" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
     <layout-to-restore>
@@ -1177,14 +1132,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="31" column="18" selection-start-line="31" selection-start-column="18" selection-end-line="31" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/templates/contract/contract.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1201,14 +1148,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/server/collectionCount/maintenance.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -1217,50 +1156,68 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/common/collections/payment.js">
+    <entry file="file://$PROJECT_DIR$/rabbit/server/publications/payment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="12" column="0" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-14.705882">
-          <caret line="30" column="72" selection-start-line="30" selection-start-column="62" selection-end-line="30" selection-end-column="72" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-11.551724">
-          <caret line="117" column="43" selection-start-line="117" selection-start-column="43" selection-end-line="117" selection-end-column="43" />
+        <state vertical-scroll-proportion="0.03071253">
+          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/routers/payment.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
+        <state vertical-scroll-proportion="0.18427518">
           <caret line="6" column="73" selection-start-line="6" selection-start-column="73" selection-end-line="6" selection-end-column="73" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/rabbit/server/publications/payment.js">
+    <entry file="file://$PROJECT_DIR$/rabbit/server/collectionCount/maintenance.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.09213759">
+          <caret line="3" column="0" selection-start-line="3" selection-start-column="0" selection-end-line="3" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/common/collections/payment.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="1" column="24" selection-start-line="1" selection-start-column="24" selection-end-line="1" selection-end-column="24" />
+          <caret line="79" column="29" selection-start-line="79" selection-start-column="29" selection-end-line="79" selection-end-column="29" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/app/lists/list.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-0.53061223">
-          <caret line="85" column="21" selection-start-line="85" selection-start-column="21" selection-end-line="85" selection-end-column="21" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="137" column="9" selection-start-line="137" selection-start-column="9" selection-end-line="137" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="143" column="87" selection-start-line="143" selection-start-column="87" selection-end-line="143" selection-end-column="87" />
+          <folding>
+            <element signature="e#0#42#0" expanded="false" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/office/office.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-11.029411">
+          <caret line="48" column="58" selection-start-line="48" selection-start-column="58" selection-end-line="48" selection-end-column="58" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/rabbit/client/templates/payment/payment.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="-0.025641026">
+          <caret line="52" column="59" selection-start-line="52" selection-start-column="59" selection-end-line="52" selection-end-column="59" />
           <folding />
         </state>
       </provider>

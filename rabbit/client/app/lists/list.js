@@ -80,10 +80,9 @@ Rabbit.List = {
             //var patientId = Labo.ListForSale.get('patientId');
 
             Rabbit.Collection.Office.find({contractId: contractId}).forEach(function (obj) {
-                    debugger;
-                    //var patient = Dental.Collection.Patient.findOne({_id: obj.patientId});
+
                     var payment = Rabbit.Collection.Payment.findOne({
-                            contractId: obj.contractId
+                            officeId: obj._id
                         },
                         {
                             sort: {
@@ -91,8 +90,6 @@ Rabbit.List = {
                             }
                         });
                     if (payment != null && payment.dueAmount > 0) {
-                        debugger;
-
                         list.push({
                                 label: "ID : " + obj._id + " | " + " : " + payment.dueAmount,
                                 value: obj._id
@@ -115,7 +112,7 @@ Rabbit.List = {
             Rabbit.Collection.Maintenance.find({"_office.contractId": contractId}).forEach(function (obj) {
                 //var patient = Dental.Collection.Patient.findOne({_id: obj.patientId});
                 var payment = Rabbit.Collection.Payment.findOne({
-                        contractId: obj._id,
+                        maintenanceId: obj._id,
                     },
                     {
                         sort: {
@@ -124,12 +121,14 @@ Rabbit.List = {
                     });
                 if (payment != null && payment.dueAmount > 0) {
                     list.push({
-                        label: "ID : " + obj._id + " | " + "Amount : " + fee.outstandingAmount,
-                        value: obj._id
+                            label: "ID : " + obj._id + " | " + " : " + payment.dueAmount,
+                            value: obj._id
 
-                    });
-                } else if (payment == null) {
-                    debugger;
+                        }
+                    )
+                    ;
+                }
+                else if (payment == null) {
                     list.push({
                         label: "ID : " + obj._id + " | " + "price : " + obj.price,
                         value: obj._id
