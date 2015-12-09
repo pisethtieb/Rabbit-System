@@ -72,12 +72,20 @@ Rabbit.Schema.Payment = new SimpleSchema({
     },
     officeId: {
         type: String,
-        label: "officeId",
+        autoform: {
+            type: "hidden",
+            label: false
+        },
         optional: true
+
+
     },
     maintenanceId: {
         type: String,
-        label: "maintenanceId",
+        autoform: {
+            type: "hidden",
+            label: false
+        },
         optional: true
     }
 })

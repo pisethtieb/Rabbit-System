@@ -111,9 +111,6 @@ insertTpl.events({
         } else {
             $('[name=price]').val("");
         }
-        //$('[name=headBasePrice]').val(product.basePrice[0].headOffice);
-        //$('[name=headMaintainPrice]').val(product.maintenancePrice[0].headOffice);
-        //$('[name=totalPrice]').val(product.maintenancePrice[0].headOffice + product.basePrice[0].headOffice);
     }
 });
 /**

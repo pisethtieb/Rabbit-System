@@ -208,9 +208,40 @@ showTpl.onCreated(function () {
 });
 showTpl.helpers({
     data: function () {
-
         var data = Rabbit.Collection.Contract.findOne(this._id);
         return data;
+    },
+    base: function () {
+        var str = "<table class='table table-bordered'><thead>" +
+            "<tr>" +
+            "<th>Head Office</th>" +
+            "<th>Branch</th>" + +
+                "</tr>" +
+            "</thead><tbody>";
+        this.basePrice.forEach(function (o) {
+            str += '<tr>' +
+                '<td>' + o.headOffice + '</td>' +
+                '<td>' + o.branch + '</td>' +
+                '</tr>'
+        });
+        str += "</tbody></table>";
+        return new Spacebars.SafeString(str);
+    },
+    maintenance: function () {
+        var str = "<table class='table table-bordered'><thead>" +
+            "<tr>" +
+            "<th>Head Office</th>" +
+            "<th>Branch</th>" + +
+                "</tr>" +
+            "</thead><tbody>";
+        this.maintenancePrice.forEach(function (o) {
+            str += '<tr>' +
+                '<td>' + o.headOffice + '</td>' +
+                '<td>' + o.branch + '</td>' +
+                '</tr>'
+        });
+        str += "</tbody></table>";
+        return new Spacebars.SafeString(str);
     }
 });
 /**

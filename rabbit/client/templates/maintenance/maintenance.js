@@ -37,11 +37,9 @@ indexTpl.events({
     'click .js-update': function (e, t) {
         alertify.maintenance(fa("pencil", "Maintenance"), renderTemplate(updateTpl, this));
         console.log(this);
-        debugger;
     },
     'click .js-remove': function (e, t) {
         var self = this;
-
         alertify.confirm(
             fa("remove", "Maintenance"),
             "Are you sure to delete [" + self._id + "]?",
@@ -59,15 +57,12 @@ indexTpl.events({
     },
     'click .js-show': function (e, t) {
         alertify.maintenanceShow(fa("eye", "Maintenance"), renderTemplate(showTpl, this));
-
     },
     'click #addMaitenance'(){
         FlowRouter.go('rabbit.maintenance', {
             maintenanceId: this._id
         })
     }
-
-
     //'dblclick tbody > tr': function (event) {
     //    var dataTable = $(event.target)
     //        .closest('table')
@@ -101,7 +96,6 @@ insertTpl.helpers({
         Meteor.subscribe('rabbit_office');
         let officeId = FlowRouter.getParam('officeId');
         let office = Rabbit.Collection.Office.findOne({_id: officeId});
-
         return office;
     },
     price(){
@@ -133,21 +127,18 @@ updateTpl.helpers({
         return data;
     }
 });
-
 /**
  * Show
  */
 showTpl.onCreated(function () {
     this.subscribe('rabbit_maintenance', this.data._id);
 });
-
 showTpl.helpers({
     data: function () {
         var data = Rabbit.Collection.Maintenance.findOne(this._id);
         return data;
     }
 });
-
 /**
  * Hook
  */
