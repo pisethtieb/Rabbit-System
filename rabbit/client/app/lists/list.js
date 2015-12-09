@@ -67,8 +67,8 @@ Rabbit.List = {
     },
     contractPaymentType: function () {
         let list = [];
-        list.push({label: 'Office', value: 'office'});
-        list.push({label: 'Maintenance', value: 'maintenance'});
+        list.push({label: 'Office', value: 'office'}, {label: 'Maintenance', value: 'maintenance'}
+        );
         return list;
     },
     officeMaintenance: function () {

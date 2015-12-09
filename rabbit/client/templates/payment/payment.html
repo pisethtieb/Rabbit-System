@@ -49,18 +49,18 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-6">
-                        {{> afQuickField name="customerId" value=customerId readonly=true}}
-                        {{> afQuickField name="contractId" value=contractId readonly=true}}
+                        {{> afQuickField name="customerId"  readonly=true}}
+                        {{> afQuickField name="contractId" readonly=true}}
                         {{> afQuickField name="paymentDate" }}
-                        {{> afQuickField name="type"  class='type'}}
+                        {{> afQuickField name="type"  id='type'}}
                     </div>
                     <div class="col-md-6">
-                        {{> afQuickField name="officeMaintenance" class="officeMaintenance" }}
-                        {{> afQuickField name="officeId" class="officeId" }}
-                        {{> afQuickField name="maintenanceId" class="maintenanceId"}}
-                        {{> afQuickField name="price" class='price' readonly=true}}
-                        {{> afQuickField name="paidAmount" class="paidAmount" }}
-                        {{> afQuickField name="dueAmount" class="dueAmount" readonly=true}}
+                        {{> afQuickField name="officeMaintenance" id="officeMaintenance" }}
+                        {{> afQuickField name="officeId" id="officeId" }}
+                        {{> afQuickField name="maintenanceId" id="maintenanceId"}}
+                        {{> afQuickField name="price" id='price' readonly=true}}
+                        {{> afQuickField name="paidAmount" id="paidAmount" }}
+                        {{> afQuickField name="dueAmount" id="dueAmount" readonly=true}}
                         {{> afQuickField name="des"}}
                     </div>
                 </div>
@@ -85,10 +85,22 @@
         <dl class="dl-horizontal">
             <dt>ID:</dt>
             <dd>{{_id}}</dd>
-            <dt>Type:</dt>
+            <dt>customerId:</dt>
+            <dd>{{customerId}}</dd>
+            <dt>contractId</dt>
+            <dd>{{contractId}}</dd>
+            <dt>type</dt>
             <dd>{{type}}</dd>
-            <dt>Price</dt>
+            <dt>officeMaintenance</dt>
+            <dd>{{officemaintenance}}</dd>
+            <dt>price</dt>
             <dd>{{price}}</dd>
+            <dt>PaidAmount</dt>
+            <dd>{{paidAmount}}</dd>
+            <dt>dueAmount</dt>
+            <dd>{{dueAmount}}</dd>
+            <dt>des</dt>
+            <dd>id}}</dd>
         </dl>
             <!--{{/with}}-->
         <!--{{else}}-->
