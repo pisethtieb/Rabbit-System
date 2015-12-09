@@ -10,7 +10,7 @@ Rabbit.TabularTable.Payment = new Tabular.Table({
     columns: [
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_paymentAction},
         {data: "_id", title: "ID"},
-        {data: "_customer.name", title: "customer"},
+        {data: "_customer.companyName", title: "customer"},
         {data: "contractId", title: "Contract ID"},
         {data: "type", title: "Type"},
         {data: "price", title: "Price"},
@@ -19,5 +19,6 @@ Rabbit.TabularTable.Payment = new Tabular.Table({
             title: "Maintenance <i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_maintenanceLinkActions
         }
-    ], extraFields: ['customerId', 'paymentDate', 'paidAmount', 'dueAmount', 'des', 'officeMaintenance']
+    ],
+    extraFields: ['customerId', 'paymentDate', 'paidAmount', 'dueAmount', 'des', 'officeMaintenance', 'officeId', 'maintenanceId']
 });

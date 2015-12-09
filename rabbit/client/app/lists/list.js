@@ -90,8 +90,9 @@ Rabbit.List = {
                             }
                         });
                     if (payment != null && payment.dueAmount > 0) {
+                        debugger;
                         list.push({
-                                label: "ID : " + obj._id + " | " + " : " + payment.dueAmount,
+                                label: "ID : " + obj._id + " | " + " Price: " + payment.dueAmount,
                                 value: obj._id
 
                             }

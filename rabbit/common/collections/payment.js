@@ -23,17 +23,22 @@ Rabbit.Schema.Payment = new SimpleSchema({
     },
     officeMaintenance: {
         type: String,
-        label: "Office & Maintenance",
-        autoform: {
-            type: "select",
-            options: function () {
-                return Rabbit.List.officeMaintenance();
-            }
-        }
+        label: "Office & Maintenance"
+        //,
+        //autoform: {
+        //    type: "select",
+        //    options: function () {
+        //        return Rabbit.List.officeMaintenance();
+        //    }
+        //}
     },
     paymentDate: {
         type: String,
-        label: 'Payment Date'
+        label: 'Payment Date',
+        defaultValue: function () {
+            var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD H:mm:ss').format('YYYY-MM-DD H:mm:ss');
+            return currentDate;
+        }
 
     },
     price: {
@@ -72,20 +77,20 @@ Rabbit.Schema.Payment = new SimpleSchema({
     },
     officeId: {
         type: String,
-        autoform: {
-            type: "hidden",
-            label: false
-        },
+        //autoform: {
+        //    type: "hidden",
+        //    label: false
+        //},
         optional: true
 
 
     },
     maintenanceId: {
         type: String,
-        autoform: {
-            type: "hidden",
-            label: false
-        },
+        //autoform: {
+        //    type: "hidden",
+        //    label: false
+        //},
         optional: true
     }
 })

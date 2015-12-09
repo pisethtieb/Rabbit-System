@@ -32,6 +32,14 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.events({
+
+    'click .btn-link': function (e, t) {
+
+        var self = this;
+        debugger;
+        checkLastPayment(self);
+        debugger;
+    },
     'click .js-insert': function (e, t) {
 
         alertify.payment(fa("plus", "Payment"), renderTemplate(insertTpl));
@@ -88,6 +96,9 @@ insertTpl.helpers({
     },
     customerId(){
         return FlowRouter.getParam('customerId');
+    },
+    options: function () {
+        return Rabbit.List.officeMaintenance();
     }
 });
 insertTpl.events({
@@ -162,82 +173,75 @@ insertTpl.events({
     }
 });
 updateTpl.events({
-    'change #type': function (e, t) {
+    'change .type': function (e, t) {
         let checkOM = $(e.currentTarget).val();
         Session.set('checkOfficeMaintenance', checkOM);
-
-       /* if (checkOM == 'office') {
-            $('#officeMaintenance').val('');
-            $('#maintenanceId').val('');
-
-
-        } else {*/
-            $('#officeMaintenance').val('');
-            $('#officeId').val('');
-
-       /* }*/
-
+        $('.maintenanceId').val('');
+        $('.officeId').val('');
+        //$('.officeMaintenance').select().val('');
     },
-    //'keyup .paidAmount': function (e, t) {
-    //
-    //    $('#dueAmount').val($('#price').val() - $('#paidAmount').val());
-    //},
-    //
-    //'change .officeMaintenance': function (e) {
-    //
-    //    let checkOM = Session.get('checkOfficeMaintenance');
-    //    if (checkOM == "office") {
-    //        let officeId = $(e.currentTarget).val();
-    //        $('#officeId').val(officeId);
-    //        $('#maintenanceId').val('');
-    //        var office = Rabbit.Collection.Office.findOne({_id: officeId});
-    //        Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
-    //            var payment = Rabbit.Collection.Payment.findOne({
-    //                    officeId: obj._id
-    //                },
-    //                {
-    //                    sort: {
-    //                        _id: -1
-    //                    }
-    //                });
-    //            debugger;
-    //            if (payment != null && payment.price > 0) {
-    //                $('#price').val(payment.dueAmount);
-    //                $('#paidAmount').val(payment.dueAmount);
-    //                $('#dueAmount').val(0);
-    //            } else if (payment == null) {
-    //                $('#price').val(office.price);
-    //                $('#paidAmount').val(office.price);
-    //                $('#dueAmount').val(0);
-    //            }
-    //        });
-    //    } else if (checkOM == 'maintenance') {
-    //        let maintenanceId = $(e.currentTarget).val();
-    //        $('#maintenanceId').val(maintenanceId);
-    //        $('#officeId').val('');
-    //        var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
-    //        Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
-    //            var payment = Rabbit.Collection.Payment.findOne({
-    //                    maintenanceId: obj._id
-    //                },
-    //                {
-    //                    sort: {
-    //                        _id: -1
-    //                    }
-    //                });
-    //            if (payment != null && payment.price > 0) {
-    //                $('#price').val(payment.dueAmount);
-    //                $('#paidAmount').val(payment.dueAmount);
-    //                $('#dueAmount').val(0);
-    //            } else if (payment == null) {
-    //                $('#price').val(maintenance.price);
-    //                $('#paidAmount').val(maintenance.price);
-    //                $('#dueAmount').val(0);
-    //            }
-    //        });
-    //
-    //    }
-    //}
+    'keyup .paidAmount': function (e, t) {
+
+        $('.dueAmount').val($('.price').val() - $('.paidAmount').val());
+    },
+
+    'change .officeMaintenance': function (e) {
+
+        let checkOM = Session.get('checkOfficeMaintenance');
+        if (checkOM == "office") {
+            let officeId = $(e.currentTarget).val();
+            $('.officeId').val(officeId);
+            //$('.officeMaintenance').val('office');
+            $('.maintenanceId').val('');
+            var office = Rabbit.Collection.Office.findOne({_id: officeId});
+            Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
+                var payment = Rabbit.Collection.Payment.findOne({
+                        officeId: obj._id
+                    },
+                    {
+                        sort: {
+                            _id: -1
+                        }
+                    });
+                debugger;
+                if (payment != null && payment.price > 0) {
+                    $('.price').val(payment.dueAmount);
+                    $('.paidAmount').val(payment.dueAmount);
+                    $('.dueAmount').val(0);
+                } else if (payment == null) {
+                    $('.price').val(office.price);
+                    $('.paidAmount').val(office.price);
+                    $('.dueAmount').val(0);
+                }
+            });
+        } else if (checkOM == 'maintenance') {
+            let maintenanceId = $(e.currentTarget).val();
+            //$('.officeMaintenance').val('maintenance');
+            $('.maintenanceId').val(maintenanceId);
+            $('.officeId').val('');
+            var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
+            Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
+                var payment = Rabbit.Collection.Payment.findOne({
+                        maintenanceId: obj._id
+                    },
+                    {
+                        sort: {
+                            _id: -1
+                        }
+                    });
+                if (payment != null && payment.price > 0) {
+                    $('.price').val(payment.dueAmount);
+                    $('.paidAmount').val(payment.dueAmount);
+                    $('.dueAmount').val(0);
+                } else if (payment == null) {
+                    $('.price').val(maintenance.price);
+                    $('.paidAmount').val(maintenance.price);
+                    $('.dueAmount').val(0);
+                }
+            });
+
+        }
+    }
 });
 /**
  * Update
@@ -286,3 +290,29 @@ var configOnRender = function () {
     var dob = $('[name="paymentDate"]');
     DateTimePicker.date(dob);
 };
+
+function checkLastPayment(self) {
+
+    let payment = Rabbit.Collection.Payment.findOne({_id: self._id});
+
+    let checkingLastPaymentForOffice = Rabbit.Collection.Payment.findOne({officeId: payment.officeId}, {sort: {_id: -1}})._id;
+    let checkingLastPaymentForMaintenance = Rabbit.Collection.Payment.findOne({maintenanceId: payment.maintenanceId}, {sort: {_id: -1}})._id;
+    debugger;
+    if (checkingLastPaymentForOffice == self._id) {
+        debugger
+        $('.updatePayment').show();
+        $('.removePayment').show();
+    } else {
+        $('.updatePayment').hide();
+        $('.removePayment').hide();
+    }
+    if (checkingLastPaymentForMaintenance == self._id) {
+        debugger;
+        $('.updatePayment').show();
+        $('.removePayment').show();
+    } else {
+        $('.updatePayment').hide();
+        $('.removePayment').hide();
+    }
+
+}

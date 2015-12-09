@@ -8,8 +8,8 @@
 <!--Action-->
 <template name="rabbit_paymentAction">
     {{#tabularAction}}
-        <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
-        <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
+        <li><a href="#" class="js-update updatePayment">{{fa "pencil"}} Update</a></li>
+        <li><a href="#" class="js-remove removePayment">{{fa "remove"}} Remove</a></li>
         <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
     {{/tabularAction}}
 </template>
@@ -26,9 +26,9 @@
                     {{> afQuickField name="type"  class='type'}}
                 </div>
                 <div class="col-md-6">
-                    {{> afQuickField name="officeMaintenance" class="officeMaintenance" }}
-                    {{> afQuickField name="officeId" class="officeId" }}
-                    {{> afQuickField name="maintenanceId" class="maintenanceId"}}
+                    {{> afQuickField name="officeMaintenance" class="officeMaintenance" options=options }}
+                    {{> afQuickField name="officeId" class="officeId" type='hidden' lable=false}}
+                    {{> afQuickField name="maintenanceId" class="maintenanceId" type='hidden' lable=false}}
                     {{> afQuickField name="price" class='price' readonly=true}}
                     {{> afQuickField name="paidAmount" class="paidAmount" }}
                     {{> afQuickField name="dueAmount" class="dueAmount" readonly=true}}
@@ -50,17 +50,17 @@
                 <div class="col-md-12">
                     <div class="col-md-6">
                         {{> afQuickField name="customerId"  readonly=true}}
-                        {{> afQuickField name="contractId" readonly=true}}
+                        {{> afQuickField name="contractId"  readonly=true}}
                         {{> afQuickField name="paymentDate" }}
-                        {{> afQuickField name="type"  id='type'}}
+                        {{> afQuickField name="type"  class='type'}}
                     </div>
                     <div class="col-md-6">
-                        {{> afQuickField name="officeMaintenance" id="officeMaintenance" }}
-                        {{> afQuickField name="officeId" id="officeId" }}
-                        {{> afQuickField name="maintenanceId" id="maintenanceId"}}
-                        {{> afQuickField name="price" id='price' readonly=true}}
-                        {{> afQuickField name="paidAmount" id="paidAmount" }}
-                        {{> afQuickField name="dueAmount" id="dueAmount" readonly=true}}
+                        {{> afQuickField name="officeMaintenance" class="officeMaintenance"}}
+                        {{> afQuickField name="officeId" class="officeId" type='hidden' lable=false}}
+                        {{> afQuickField name="maintenanceId" class="maintenanceId" type='hidden' lable=false}}
+                        {{> afQuickField name="price" class='price' readonly=true}}
+                        {{> afQuickField name="paidAmount" class="paidAmount" }}
+                        {{> afQuickField name="dueAmount" class="dueAmount" readonly=true}}
                         {{> afQuickField name="des"}}
                     </div>
                 </div>
