@@ -20,6 +20,7 @@ Meteor.methods({
         /****** Content *****/
         let i = 1;
         var totalPrice = 0;
+        let maintenancePrice = 0;
         let office = Rabbit.Collection.Office.find({contractId: contractId});
         if (office.count() > 0) {
             office.forEach(function (obj) {
@@ -28,8 +29,14 @@ Meteor.methods({
                     obj.maintenance = "None";
                 } else {
                     var today = moment().format("YYYY-MM-DD");
+
+                    console.log(maintenance.endDate > today)
+                    console.log(maintenance.endDate)
+                    console.log(today)
                     if (maintenance.endDate > today) {
+
                         obj.maintenance = maintenance.price;
+                        maintenancePrice += parseFloat(maintenance.price)
 
                     } else {
                         obj.maintenance = "Expire";
@@ -90,6 +97,7 @@ Meteor.methods({
         //data.header = labo;
         //
         data.footer.totalPrice = totalPrice;
+        data.footer.maintenancePrice = maintenancePrice;
         return data
 
     }

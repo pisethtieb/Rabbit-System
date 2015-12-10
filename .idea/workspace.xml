@@ -2,19 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a6c191e4-0749-4c02-8796-28c2c3c82501" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/app-dump/.npm/package/.gitignore" afterPath="$PROJECT_DIR$/packages/app-dump/.npm/package/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/npm-container/.npm/package/.gitignore" afterPath="$PROJECT_DIR$/packages/npm-container/.npm/package/.gitignore" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/app-dump/.npm/package/README" afterPath="$PROJECT_DIR$/packages/app-dump/.npm/package/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/npm-container/.npm/package/README" afterPath="$PROJECT_DIR$/packages/npm-container/.npm/package/README" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/contract/contract.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/contract/print/contractInvoice.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/contract/print/contractInvoice.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/contract/print/contractInvoice.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/contract/print/contractInvoice.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/server/methods/contractInvoice.js" afterPath="$PROJECT_DIR$/rabbit/server/methods/contractInvoice.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.js" afterPath="$PROJECT_DIR$/rabbit/client/templates/maintenance/maintenance.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/app-dump/.npm/package/npm-shrinkwrap.json" afterPath="$PROJECT_DIR$/packages/app-dump/.npm/package/npm-shrinkwrap.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/packages/npm-container/.npm/package/npm-shrinkwrap.json" afterPath="$PROJECT_DIR$/packages/npm-container/.npm/package/npm-shrinkwrap.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" afterPath="$PROJECT_DIR$/rabbit/client/templates/payment/payment.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="rabbit.iws" />
@@ -40,7 +29,7 @@
         <entry file="file://$PROJECT_DIR$/rabbit/server/methods/contractInvoice.js">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+              <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
               <folding />
             </state>
           </provider>
@@ -49,19 +38,18 @@
       <file leaf-file-name="contractInvoice.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/contract/print/contractInvoice.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55128205">
-              <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+            <state vertical-scroll-proportion="0.22435898">
+              <caret line="85" column="57" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
               <folding>
                 <element signature="n#style#0;n#div#1;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#0;n#div#3;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#div#0;n#div#3;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#4;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#4;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#0;n#div#0;n#div#4;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#5;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#ul#0;n#div#5;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#5;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#template#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -919,26 +907,25 @@
     <entry file="file://$PROJECT_DIR$/rabbit/server/methods/contractInvoice.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
+          <caret line="100" column="8" selection-start-line="100" selection-start-column="8" selection-end-line="100" selection-end-column="8" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/templates/contract/print/contractInvoice.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55128205">
-          <caret line="90" column="24" selection-start-line="90" selection-start-column="24" selection-end-line="90" selection-end-column="24" />
+        <state vertical-scroll-proportion="0.22435898">
+          <caret line="85" column="57" selection-start-line="85" selection-start-column="57" selection-end-line="85" selection-end-column="57" />
           <folding>
             <element signature="n#style#0;n#div#1;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#0;n#div#3;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#1;n#div#0;n#div#3;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#4;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#4;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#0;n#div#4;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#div#4;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#5;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#ul#0;n#div#5;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#5;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#5;n#template#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
