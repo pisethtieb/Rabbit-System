@@ -66,17 +66,47 @@
                         </th>
                         <th>Product</th>
                         <!--<th>Price</th>-->
-                        <th>Amount</th>
+                        <th>Price</th>
+                        <th>Maintenance</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {{#with content}}
-                        <td>{{index}}</td>
-                        <td>{{_product.name}}</td>
-                        <td>{{price}}</td>
-                    {{/with}}
+                    {{#each content}}
+                        <tr>
+                            <td>{{index}}</td>
+                            <td>{{_product.name}}</td>
+                            <td>{{price}}</td>
+                            <td>{{maintenance}}</td>
+                        </tr>
+                    {{/each}}
                     </tbody>
                 </table>
+                <div style="border-top: 1px solid #000000;">
+                    <div>
+                        <p style="margin: 0px 0px 0px 305px;">
+                            <strong>{{footer.totalPrice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.totalPrice}}</strong>
+                        </p>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                        <strong>-</strong>
+
+                        <p style="margin: 0px 0px 0px 305px;">
+                            <strong>{{footer.totalPrice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.totalPrice}}</strong>
+                        </p>
+
+                    </div>
+                    <!--<ul class="list-unstyled text-right">-->
+                    <!--<li>-->
+                    <!--<strong>Total KHR (R)-->
+                    <!--:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{footer.totalPrice}}-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<strong>Paid Amount-->
+                    <!--(R):</strong>&nbsp;&nbsp; {{totalPaid}}-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                </div>
                 <div style="width: 100%">
                     <!--Deposit-->
                     <div style="width: 50%; float: left">
@@ -91,14 +121,14 @@
                             </thead>
                             <tbody class="report-content-body">
 
-                            {{#each payment}}
+                            <!--{{#each payment}}-->
 
-                                <tr class="td-custom">
-                                    <td class="index-style">{{index}}</td>
-                                    <td>{{paymentDate}}</td>
-                                    <td>{{paidAmount}}</td>
-                                </tr>
-                            {{/each}}
+                            <tr class="td-custom">
+                                <td class="index-style">{{index}}</td>
+                                <td>{{paymentDate}}</td>
+                                <td>{{paidAmount}}</td>
+                            </tr>
+                                    <!--{{/each}}-->
 
                             </tbody>
                         </table>
@@ -119,7 +149,7 @@
                     <ul class="list-unstyled text-right">
                         <li>
                             <strong>Total KHR (R)
-                                :</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{footer.total}}
+                                :</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{footer.totalPrice}}
                         </li>
                         <li>
                             <strong>Paid Amount

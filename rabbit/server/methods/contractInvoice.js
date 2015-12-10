@@ -3,7 +3,7 @@ Meteor.methods({
         var data = {
             title: {},
             header: {},
-            content: [{index: 'No Item'}],
+            content: [],
             footer: {},
             custom: {}
         };
@@ -18,11 +18,31 @@ Meteor.methods({
 
         data.header = customer;
         /****** Content *****/
-        let office = Rabbit.Collection.Office.findOne(contractId);
-        var index = 1;
-        data.content.index = index++;
-        data.content = office;
-        console.log(data.content.index)
+        let i = 1;
+        var totalPrice = 0;
+        let office = Rabbit.Collection.Office.find({contractId: contractId});
+        if (office.count() > 0) {
+            office.forEach(function (obj) {
+                let maintenance = Rabbit.Collection.Maintenance.findOne({officeId: obj._id}, {sort: {_id: -1}});
+                if (maintenance == null) {
+                    obj.maintenance = "None";
+                } else {
+                    var today = moment().format("YYYY-MM-DD");
+                    if (maintenance.endDate > today) {
+                        obj.maintenance = maintenance.price;
+
+                    } else {
+                        obj.maintenance = "Expire";
+                    }
+                }
+                totalPrice += parseFloat(obj.price);
+                obj.index = i;
+                data.content.push(obj);
+                i++;
+
+
+            })
+        }
 
 
         //lastPayment = Rabbit.Collection.Payment.findOne({contractId: contractId}, {sort: {_id: -1}});
@@ -42,7 +62,7 @@ Meteor.methods({
         //    var i = 1;
         //
         //    payment.forEach(function (obj) {
-        //        obj.index = i;
+        //        obj. data.content = office;;
         //        totalPaid += parseFloat(obj.paidAmount);
         //        i++;
         //        data.payment.push(obj);
@@ -69,7 +89,7 @@ Meteor.methods({
         //data.content = content;
         //data.header = labo;
         //
-        //data.footer = labo;
+        data.footer.totalPrice = totalPrice;
         return data
 
     }

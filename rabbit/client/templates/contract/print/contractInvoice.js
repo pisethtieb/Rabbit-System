@@ -6,7 +6,7 @@ contractInvoiceTPL.helpers({
         // paper = a4, a5, mini
         // orientation = portrait, landscape
         return {
-            //fontSize: 'bg',
+            fontSize: 'bg',
             paper: 'a5',
             orientation: 'portrait'
         };
@@ -18,14 +18,14 @@ contractInvoiceTPL.helpers({
 
         var callId = 'contractInvoice' + q;
         var call = Meteor.callAsync(callId, 'contractInvoice', q);
-
+        debugger;
         if (!call.ready()) {
             return false;
         }
 
         return call.result();
-    },
-    isUndefinded: function (normalValue) {
-        return normalValue == null;
     }
+    //isUndefinded: function (normalValue) {
+    //    return normalValue == null;
+    //}
 });
