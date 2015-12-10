@@ -3,14 +3,35 @@ Rabbit.Collection.Customer = new Mongo.Collection("rabbit_customer");
 
 // Schema
 Rabbit.Schema.Customer = new SimpleSchema({
-    companyName: {
+    contractName: {
         type: String,
-        label: "Company Name",
-        max: 200
+        label: "Contract Name"
+    },
+    gender: {
+        type: String,
+        label: 'Gender',
+        autoform: {
+            type: "selectize",
+            options: function () {
+                return Rabbit.List.gender();
+            }
+        }
+    },
+    dob: {
+        type: String,
+        label: 'Dob'
+    },
+    id: {
+        type: String,
+        label: 'ID'
+    },
+    position: {
+        type: String,
+        label: "Position"
     },
     address: {
         type: String,
-        label: "Address",
+        label: 'Address',
         autoform: {
             afFieldInput: {
                 type: "textarea"
@@ -19,7 +40,39 @@ Rabbit.Schema.Customer = new SimpleSchema({
     },
     telephone: {
         type: String,
+        label: 'Telephone'
+    },
+    email: {
+        type: String,
+        label: 'Email'
+    },
+
+
+    companyName: {
+        type: String,
+        label: "Company Name",
+        max: 200
+    },
+    companyAddress: {
+        type: String,
+        label: "Address",
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        }
+    },
+    companyTelephone: {
+        type: String,
         label: "Telephone"
+    },
+    companyEmail: {
+        type: String,
+        label: "Email"
+    },
+    companyWebsite: {
+        type: String,
+        label: "Website"
     },
     contactPerson: {
         type: Array,
@@ -43,14 +96,6 @@ Rabbit.Schema.Customer = new SimpleSchema({
     },
     'contactPerson.$.position': {
         type: String
-    },
-    'contactPerson.$.age': {
-        type: String,
-        optional: true
-    },
-    'contactPerson.$.idCard': {
-        type: String,
-        optional: true
     },
     'contactPerson.$.tel': {
         type: String

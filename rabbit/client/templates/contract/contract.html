@@ -7,8 +7,9 @@
         <small>
 
             {{#with customer}}
-                <a href="#" class="jsCustomerInfo">{{_id}} : {{companyName}} | Tel: {{telephone}}|
-                    Address: {{address}}</a>
+                <a href="#" class="jsCustomerInfo">{{_id}} | ContractPerson: {{contractName}} | Tel: {{telephone}}|
+                    || Company: {{companyName}}  |
+                    CompanyTel: {{companyTelephone}}</a>
             {{/with}}
         </small>
     </div>
@@ -21,6 +22,11 @@
         <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
         <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
         <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
+        <b>
+            <li role="separator" class="divider"></li>
+        </b>
+        <li><a href="/rabbit/contract/invoice/{{this._id}}" target="_blank">{{fa "print"}} Invoice</a></li>
+
     {{/tabularAction}}
 </template>
 
@@ -158,6 +164,7 @@
         {{/if}}
     </button>
 </template>
+
 <template name="rabbit_paymentLinkAction">
     <button type="button" class="btn btn-primary btn-sm paymentAction">
         {{#if _paymentCount}}

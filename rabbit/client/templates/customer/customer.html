@@ -1,5 +1,5 @@
 <!--Index-->
-<template name="rabbit_customer">
+<template name="rabbit_customer" xmlns="http://www.w3.org/1999/html">
     <p>
         <button type="button" class="btn btn-primary js-insert">{{fa "plus"}} Add New</button>
     </p>
@@ -12,6 +12,7 @@
         <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
         <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
         <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
+
     {{/tabularAction}}
 </template>
 
@@ -20,11 +21,37 @@
     {{#autoForm collection=Rabbit.Collection.Customer id="rabbit_customerInsert" type="insert"}}
         <div class="row">
             <div class="col-md-6">
-                {{> afQuickField name="companyName"}}
-                {{> afQuickField name="telephone"}}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Contract Person</div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+
+                            {{> afQuickField name="contractName"}}
+                            {{> afQuickField name="gender"}}
+                            {{> afQuickField name="dob"}}
+                            {{> afQuickField name="id"}}
+                        </div>
+                        <div class="col-md-6">
+                            {{> afQuickField name="position"}}
+                            {{> afQuickField name="telephone"}}
+                            {{> afQuickField name="email"}}
+                            {{> afQuickField name="address"}}
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6">
-                {{> afQuickField name="address"}}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Company</div>
+                    <div class="panel-body">
+                        {{> afQuickField name="companyName"}}
+                        {{> afQuickField name="companyTelephone"}}
+                        {{> afQuickField name="companyEmail"}}
+                        {{> afQuickField name="companyWebsite"}}
+                        {{> afQuickField name="companyAddress"}}
+                    </div>
+                </div>
+
             </div>
             <div class="col-md-12">
                 {{> afArrayField name="contactPerson" id="contactPerson" template="customArrayField" subtemplate="customObjectField"}}
@@ -32,6 +59,7 @@
                 <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
             </div>
         </div>
+
     {{/autoForm}}
 </template>
 
@@ -42,11 +70,37 @@
         {{#autoForm collection=Rabbit.Collection.Customer id="rabbit_customerUpdate" doc=this type="update"}}
             <div class="row">
                 <div class="col-md-6">
-                    {{> afQuickField name="companyName"}}
-                    {{> afQuickField name="telephone"}}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Contract Person</div>
+                        <div class="panel-body">
+                            <div class="col-md-6">
+
+                                {{> afQuickField name="contractName"}}
+                                {{> afQuickField name="gender"}}
+                                {{> afQuickField name="dob"}}
+                                {{> afQuickField name="id"}}
+                            </div>
+                            <div class="col-md-6">
+                                {{> afQuickField name="position"}}
+                                {{> afQuickField name="telephone"}}
+                                {{> afQuickField name="email"}}
+                                {{> afQuickField name="address"}}
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
-                    {{> afQuickField name="address"}}
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Company</div>
+                        <div class="panel-body">
+                            {{> afQuickField name="companyName"}}
+                            {{> afQuickField name="companyTelephone"}}
+                            {{> afQuickField name="companyEmail"}}
+                            {{> afQuickField name="companyWebsite"}}
+                            {{> afQuickField name="companyAddress"}}
+                        </div>
+                    </div>
+
                 </div>
                 <div class="col-md-12">
                     {{> afArrayField name="contactPerson" id="contactPerson" template="customArrayField" subtemplate="customObjectField"}}
@@ -131,22 +185,16 @@
 </template>
 <!--Custom object field-->
 <template name="customObjectField">
-    <div class="col-sm-2">
+    <div class="col-sm-4">
         {{> afQuickField name=current.name template="bootstrap3" label=false class="input-sm" placeholder="Name"}}
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.gender template="bootstrap3" label=false class="input-sm"}}
     </div>
-    <div class="col-sm-1">
-        {{> afQuickField name=current.age template="bootstrap3" label=false class="input-sm" placeholder="age"}}
-    </div>
-    <div class="col-sm-2">
-        {{> afQuickField name=current.idCard template="bootstrap3" label=false class="input-sm" placeholder="IdCard"}}
-    </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.position template="bootstrap3" label=false class="input-sm" placeholder="Position"}}
     </div>
-    <div class="col-sm-2">
+    <div class="col-sm-3">
         {{> afQuickField name=current.tel template="bootstrap3" label=false class="input-sm" placeholder="Telephone"}}
     </div>
 </template>

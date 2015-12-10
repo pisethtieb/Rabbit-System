@@ -24,15 +24,6 @@ indexTpl.onCreated(function () {
     createNewAlertify(["contractShow"]);
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
-Template.rabbit_addOffice.events({
-    'click #addOffice'() {
-        FlowRouter.go('rabbit.office', {
-            contractId: this._id
-        });
-        Meteor.subscribe('rabbit_office');
-        alertify.contract(fa("plus", "Office"), renderTemplate(Template.rabbit_officeInsert));
-    }
-});
 indexTpl.helpers({
     selector: function () {
         let id = FlowRouter.getParam('customerId');

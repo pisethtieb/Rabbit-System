@@ -12,9 +12,7 @@ var indexTpl = Template.rabbit_payment,
 
 //locationAddOnTpl = Template.rabbit_locationAddOnPayment;
 
-insertTpl.onRendered(function () {
-    configOnRender();
-});
+
 /**
  * Index
  */
@@ -34,11 +32,8 @@ indexTpl.onCreated(function () {
 indexTpl.events({
 
     'click .btn-link': function (e, t) {
-
         var self = this;
-        debugger;
         checkLastPayment(self);
-        debugger;
     },
     'click .js-insert': function (e, t) {
 
@@ -101,13 +96,23 @@ insertTpl.helpers({
         return Rabbit.List.officeMaintenance();
     }
 });
+insertTpl.onRendered(function () {
+    configOnRender();
+    $('#officeMaintenance').attr('disabled', "disabled");
+});
 insertTpl.events({
     'change .type': function (e, t) {
         let checkOM = $(e.currentTarget).val();
         Session.set('checkOfficeMaintenance', checkOM);
-        $('.maintenanceId').val('');
-        $('.officeId').val('');
-        //$('.officeMaintenance').select().val('');
+        if (checkOM == '') {
+            $('#officeMaintenance').attr('disabled', true);
+        } else {
+            $('#officeMaintenance').attr('disabled', false);
+            $('.maintenanceId').val('');
+            $('.officeId').val('');
+        }
+
+
     },
     'keyup .paidAmount': function (e, t) {
 
@@ -132,7 +137,6 @@ insertTpl.events({
                             _id: -1
                         }
                     });
-                debugger;
                 if (payment != null && payment.price > 0) {
                     $('.price').val(payment.dueAmount);
                     $('.paidAmount').val(payment.dueAmount);
@@ -296,18 +300,20 @@ function checkLastPayment(self) {
     let payment = Rabbit.Collection.Payment.findOne({_id: self._id});
 
     let checkingLastPaymentForOffice = Rabbit.Collection.Payment.findOne({officeId: payment.officeId}, {sort: {_id: -1}})._id;
-    let checkingLastPaymentForMaintenance = Rabbit.Collection.Payment.findOne({maintenanceId: payment.maintenanceId}, {sort: {_id: -1}})._id;
     debugger;
     if (checkingLastPaymentForOffice == self._id) {
-        debugger
+        debugger;
         $('.updatePayment').show();
         $('.removePayment').show();
     } else {
+        debugger;
         $('.updatePayment').hide();
         $('.removePayment').hide();
     }
+    let checkingLastPaymentForMaintenance = Rabbit.Collection.Payment.findOne({maintenanceId: payment.maintenanceId}, {sort: {_id: -1}})._id;
+
     if (checkingLastPaymentForMaintenance == self._id) {
-        debugger;
+
         $('.updatePayment').show();
         $('.removePayment').show();
     } else {
