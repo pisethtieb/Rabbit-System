@@ -105,9 +105,9 @@ insertTpl.events({
         var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
         //let types = Rabbit.List.getProduct(type);
         if (type == 'HO') {
-            $('[name=price]').val(contract._product.basePrice[0].headOffice);
+            $('[name=price]').val(contract.basePrice[0].headOffice);
         } else if (type == "BO") {
-            $('[name=price]').val(contract._product.basePrice[0].branch);
+            $('[name=price]').val(contract.basePrice[0].branch);
         } else {
             $('[name=price]').val("");
         }

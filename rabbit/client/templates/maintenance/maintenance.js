@@ -58,11 +58,6 @@ indexTpl.events({
     'click .js-show': function (e, t) {
         alertify.maintenanceShow(fa("eye", "Maintenance"), renderTemplate(showTpl, this));
     },
-    'click #addMaitenance'(){
-        FlowRouter.go('rabbit.maintenance', {
-            maintenanceId: this._id
-        })
-    }
     //'dblclick tbody > tr': function (event) {
     //    var dataTable = $(event.target)
     //        .closest('table')
@@ -103,9 +98,9 @@ insertTpl.helpers({
         let officeId = FlowRouter.getParam('officeId');
         let office = Rabbit.Collection.Office.findOne({_id: officeId});
         if (office.type == 'HO') {
-            return office._product.maintenancePrice[0].headOffice;
+            return office._contract.maintenancePrice[0].headOffice;
         } else if (office.type == 'BO') {
-            return office._product.maintenancePrice[0].branch;
+            return office._contract.maintenancePrice[0].branch;
         }
     }
 });

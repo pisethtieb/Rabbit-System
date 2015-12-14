@@ -18,6 +18,11 @@ Meteor.methods({
 
         data.header = customer;
         /****** Content *****/
+        let office = Rabbit.Collection.Office.findOne(contractId);
+        var index = 1;
+        data.content.index = index++;
+        data.content = office;
+        console.log(data.content.index)
 
 
         //lastPayment = Rabbit.Collection.Payment.findOne({contractId: contractId}, {sort: {_id: -1}});

@@ -35,25 +35,25 @@
                 <div style="width: 50%; padding-top: 12px; float: left;">
                     <ul class="list-unstyled">
                         <li>
-                            <strong>ContractName :</strong> {{header.contractName}}</li>
+                            <strong>CompanyName :</strong> {{header.companyName}}</li>
                         <li>
-                            <strong>PatientName</strong> {{header._patient.name}}</li>
+                            <strong>Tel :</strong> {{header.companyTelephone}}</li>
                         <li>
-                            <strong>Gender:</strong> {{header._patient.gender}}</li>
+                            <strong>Address:</strong> {{header.companyAddress}}</li>
                         <li>
-                            <strong>Age:</strong> {{header._patient.age}}</li>
+                            <strong>Website</strong> {{header.companyWebsite}}</li>
                     </ul>
                 </div>
                 <div style="width: 50%; padding-top: 12px; float: right;">
                     <ul class="list-unstyled">
                         <li>
-                            <strong>LaboId: </strong> {{header._id}}</li>
+                            <strong>ContractName: </strong> {{header.contractName}}</li>
                         <li>
-                            <strong>LaboDate: </strong> {{header.laboDate}}</li>
+                            <strong>Tel: </strong> {{header.telephone}}</li>
                         <li>
-                            <strong>PaymentDate:</strong> {{paymentDate}}</li>
+                            <strong>Address:</strong> {{header.address}}</li>
                         <li>
-                            <strong>Staff:</strong> {{paymentStaff.name}}</li>
+                            <strong>Email:</strong> {{header.email}}</li>
                     </ul>
                 </div>
 
@@ -64,24 +64,17 @@
                         <th>
                             N<sup>o</sup>
                         </th>
-                        <th>Itemname</th>
-                        <th>Qty</th>
-                        <th>Price</th>
+                        <th>Product</th>
+                        <!--<th>Price</th>-->
                         <th>Amount</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {{#each content}}
-                        {{#each laboItem}}
-                            <tr>
-                                <td>{{index}}</td>
-                                <td>{{itemName}}</td>
-                                <td>{{qty}}</td>
-                                <td>{{price}}</td>
-                                <td>{{amount}}</td>
-                            </tr>
-                        {{/each}}
-                    {{/each}}
+                    {{#with content}}
+                        <td>{{index}}</td>
+                        <td>{{_product.name}}</td>
+                        <td>{{price}}</td>
+                    {{/with}}
                     </tbody>
                 </table>
                 <div style="width: 100%">
