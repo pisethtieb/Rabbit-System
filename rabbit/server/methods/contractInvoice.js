@@ -50,6 +50,18 @@ Meteor.methods({
 
             })
         }
+        let payment = Rabbit.Collection.Payment.find({contractId: contractId});
+        
+        if (payment.count() > 0) {
+            payment.forEach(function (obj) {
+                console.log(officeId)
+                if (obj.officeId) {
+                    data.footer.paidAmount += obj.price(obj.officeId)
+                    console.log(data.footer.paidAmount)
+                }
+
+            })
+        }
 
 
         //lastPayment = Rabbit.Collection.Payment.findOne({contractId: contractId}, {sort: {_id: -1}});
