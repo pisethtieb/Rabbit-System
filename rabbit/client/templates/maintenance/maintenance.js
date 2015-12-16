@@ -113,6 +113,7 @@ updateTpl.onCreated(function () {
 });
 
 updateTpl.onRendered(function () {
+    debugger;
     configOnRender();
 });
 
@@ -149,6 +150,7 @@ AutoForm.hooks({
             }
         },
         onSuccess: function (formType, result) {
+            alertify.maintenance().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {
@@ -167,8 +169,12 @@ AutoForm.hooks({
 });
 var configOnRender = function () {
     // date
-    var startDate = $('[name="startDate"]');
+    var startDate = $('.startDate');
     DateTimePicker.date(startDate);
-    var endDate = $('[name="endDate"]');
+    var endDate = $('.endDate');
     DateTimePicker.date(endDate);
+    var startDates = $('#startDate');
+    DateTimePicker.date(startDates);
+    var endDates = $('#endDate');
+    DateTimePicker.date(endDates);
 };

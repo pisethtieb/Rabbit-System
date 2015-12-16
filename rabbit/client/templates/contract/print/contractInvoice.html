@@ -86,31 +86,18 @@
                         <p style="margin: 0px 0px 0px 262px;">
                             Total :&nbsp;&nbsp;&nbsp; <strong>{{footer.totalPrice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.maintenancePrice}}</strong>
                         </p>
-                        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-                        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-                        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-                        <!--<strong>-</strong>-->
 
                         <p style="margin: 0px 0px 0px 221px;">
-                            paid Amount :&nbsp;&nbsp;&nbsp; <strong>{{footer.totalPrice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.totalPrice}}</strong>
+                            paid Amount :&nbsp;&nbsp;&nbsp; <strong>{{footer.paidAmountOffice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.paidAmountMaitenance}}</strong>
                         </p>
 
                     </div>
-                    <!--<ul class="list-unstyled text-right">-->
-                    <!--<li>-->
-                    <!--<strong>Total KHR (R)-->
-                    <!--:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{footer.totalPrice}}-->
-                    <!--</li>-->
-                    <!--<li>-->
-                    <!--<strong>Paid Amount-->
-                    <!--(R):</strong>&nbsp;&nbsp; {{totalPaid}}-->
-                    <!--</li>-->
-                    <!--</ul>-->
+
                 </div>
                 <div style="border-top: 1px solid #000000;">
                     <div>
                         <p style="margin: 0px 0px 0px 222px;">
-                            Due Amount :&nbsp;&nbsp;&nbsp; <strong>{{footer.totalPrice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.totalPrice}}</strong>
+                            Due Amount :&nbsp;&nbsp;&nbsp; <strong>{{footer.dueAmountOffice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.dueAmountMaintenance}}</strong>
                         </p>
 
                     </div>
@@ -127,26 +114,32 @@
                 </div>
                 <div style="width: 100%">
                     <!--Deposit-->
-                    <div style="width: 50%; float: left">
+                    <div style="width: 100%; float: left">
                         <table class="table">
                             <caption>Payment History</caption>
                             <thead>
                             <tr>
                                 <th>N<sup>o</sup></th>
                                 <th>PaymentDate</th>
-                                <th>Paid Amount</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>paid</th>
+                                <th>Due</th>
                             </tr>
                             </thead>
-                            <tbody class="report-content-body">
+                            <tbody>
 
-                            <!--{{#each payment}}-->
+                            {{#each payment}}
 
-                            <tr class="td-custom">
-                                <td class="index-style">{{index}}</td>
-                                <td>{{paymentDate}}</td>
-                                <td>{{paidAmount}}</td>
-                            </tr>
-                                    <!--{{/each}}-->
+                                <tr class="td-custom">
+                                    <td class="index-style">{{index}}</td>
+                                    <td>{{paymentDate}}</td>
+                                    <td>{{type}}</td>
+                                    <td>{{price}}</td>
+                                    <td>{{paidAmount}}</td>
+                                    <td>{{dueAmount}}</td>
+                                </tr>
+                            {{/each}}
 
                             </tbody>
                         </table>

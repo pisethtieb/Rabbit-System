@@ -5,7 +5,11 @@ Rabbit.Collection.Maintenance = new Mongo.Collection("rabbit_maintenance");
 Rabbit.Schema.Maintenance = new SimpleSchema({
     startDate: {
         type: String,
-        label: 'Start Date'
+        label: 'Start Date',
+        defaultValue: function () {
+            var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
+            return currentDate;
+        }
 
     },
     endDate: {

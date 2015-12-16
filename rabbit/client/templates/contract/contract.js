@@ -250,6 +250,7 @@ AutoForm.hooks({
             }
         },
         onSuccess: function (formType, result) {
+            alertify.contract().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {

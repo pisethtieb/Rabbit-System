@@ -5,7 +5,8 @@ Meteor.methods({
             header: {},
             content: [],
             footer: {},
-            custom: {}
+            custom: {},
+            payment: []
         };
         //var exchange = Cpanel.Collection.Exchange.findOne({}, {sort: {dateTime: -1}});
         //fx.base = exchange.base;
@@ -50,66 +51,35 @@ Meteor.methods({
 
             })
         }
+        let j = 1;
         let payment = Rabbit.Collection.Payment.find({contractId: contractId});
-        
+        let paidAmountOffice = 0;
+        let paidAmountMaintenance = 0;
         if (payment.count() > 0) {
             payment.forEach(function (obj) {
-                console.log(officeId)
-                if (obj.officeId) {
-                    data.footer.paidAmount += obj.price(obj.officeId)
-                    console.log(data.footer.paidAmount)
+                obj.index = j;
+                data.payment.push(obj);
+                j++;
+                console.log(obj.officeId);
+                if (obj.type == 'office' && obj.officeId) {
+                    paidAmountOffice += parseFloat(obj.paidAmount);
+                    console.log(paidAmountOffice)
+                } else if (obj.type == 'maintenance' && obj.maintenanceId) {
+                    paidAmountMaintenance += parseFloat(obj.paidAmount);
+                    console.log(paidAmountMaintenance)
                 }
 
             })
         }
 
 
-        //lastPayment = Rabbit.Collection.Payment.findOne({contractId: contractId}, {sort: {_id: -1}});
-        //let contract = Rabbit.Collection.Contract.findOne(contractId);
-        ////var content = [labo];
-        //var index = 1;
-        //labo.laboItem.forEach(function (item) {
-        //    item.itemName = Rabbit.Collection.Items.findOne({_id: item.itemId}).name;
-        //    item.index = index++;
-        //});
-        //data.payment = [];
-        //var payment = Rabbit.Collection.Payment.find({
-        //    laboId: laboId
-        //});
-        //var totalPaid = 0;
-        //if (payment.count() > 0) {
-        //    var i = 1;
-        //
-        //    payment.forEach(function (obj) {
-        //        obj. data.content = office;;
-        //        totalPaid += parseFloat(obj.paidAmount);
-        //        i++;
-        //        data.payment.push(obj);
-        //        data.outstadingAmount = labo.total - totalPaid;
-        //        data.outstadingAmountIndolar = numeral(fx.convert(data.outstadingAmount, {
-        //            from: 'KHR',
-        //            to: 'USD'
-        //        })).format('0,0.00');
-        //        data.paymentStaff = lastPayment._staff;
-        //        data.paymentDate = lastPayment.paymentDate;
-        //    });
-        //}
-        //
-        //if (lastPayment == null || undefined) {
-        //    data.outstadingAmount = labo.total;
-        //    data.outstadingAmountIndolar = numeral(fx.convert(data.outstadingAmount, {
-        //        from: 'KHR',
-        //        to: 'USD'
-        //    })).format('0,0.00');
-        //    data.paymentStaff = labo._staff;
-        //    data.paymentDate = moment().format('DD-MM-YYYY');
-        //}
-        //data.totalPaid = totalPaid;
-        //data.content = content;
-        //data.header = labo;
-        //
         data.footer.totalPrice = totalPrice;
         data.footer.maintenancePrice = maintenancePrice;
+        data.footer.paidAmountOffice = paidAmountOffice;
+        data.footer.paidAmountMaitenance = paidAmountMaintenance;
+        data.footer.dueAmountOffice = totalPrice - paidAmountOffice;
+        data.footer.dueAmountMaintenance = maintenancePrice - paidAmountMaintenance;
+
         return data
 
     }

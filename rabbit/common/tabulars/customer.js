@@ -14,21 +14,21 @@ Rabbit.TabularTable.Customer = new Tabular.Table({
         {data: "companyName", title: "Company Name"},
         {data: "address", title: "Address"},
         {data: "telephone", title: "Telephone"},
-        {
-            data: "_contractCount",
-            title: "Qu<i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
-        },
+        //{
+        //    data: "_contractCount",
+        //    title: "Qu<i class='fa fa-arrow-up'></i>",
+        //    tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
+        //},
         {
             data: "_contractCount",
             title: "Mis<i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
         },
-        {
-            data: "_contractCount",
-            title: "Web<i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
-        }
+        //{
+        //    data: "_contractCount",
+        //    title: "Web<i class='fa fa-arrow-up'></i>",
+        //    tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
+        //}
     ], extraFields: ['contactPerson', 'contractName', 'age', 'telephone', 'dob', 'id', 'position', 'gender', 'email',
         'companyName', 'companyAddress', 'companyWebsite', 'companyTelephone', 'companyEmail']
 });

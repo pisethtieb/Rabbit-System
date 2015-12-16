@@ -273,6 +273,7 @@ AutoForm.hooks({
             }
         },
         onSuccess: function (formType, result) {
+            alertify.payment().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {
