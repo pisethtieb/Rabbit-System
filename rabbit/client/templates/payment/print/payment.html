@@ -1,0 +1,194 @@
+<template name='rabbit_paymentInvoice'>
+
+
+    <!--Is ready-->
+    {{#if data}}
+        {{#reportTpl options}}
+            {{#with data}}
+                {{#with title}}
+                    <div class="title">
+                        <table class="report-title">
+                            <tr>
+                                <td>
+                                    <img src="/rabbit1.png">
+                                </td>
+                                <td>
+                                    <div class="header-style">
+                                        <span class="report-company-name"
+                                              style="font-family: 'Khmer OS Muol">{{khName}}</span>
+                                        <br>
+                                        <span class="report-company-name">{{enName}}</span>
+                                        <br>
+                                        <span class="report-company-name">{{enAddress}}</span>
+                                        <br>
+                                        <u> វិក្កយបត្រ (Invoice)</u>
+                                        <br>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {{/with}}
+
+                <div style="width: 50%; padding-top: 12px; float: left;">
+                    <ul class="list-unstyled">
+                        <li>
+                            <strong>CompanyName :</strong> {{header.companyName}}</li>
+                        <li>
+                            <strong>Tel :</strong> {{header.companyTelephone}}</li>
+                        <li>
+                            <strong>Address:</strong> {{header.companyAddress}}</li>
+                        <li>
+                            <strong>Website</strong> {{header.companyWebsite}}</li>
+                    </ul>
+                </div>
+                <div style="width: 50%; padding-top: 12px; float: right;">
+                    <ul class="list-unstyled">
+                        <li>
+                            <strong>ContractName: </strong> {{header.contractName}}</li>
+                        <li>
+                            <strong>Tel: </strong> {{header.telephone}}</li>
+                        <li>
+                            <strong>Address:</strong> {{header.address}}</li>
+                        <li>
+                            <strong>Email:</strong> {{header.email}}</li>
+                    </ul>
+                </div>
+
+                <!--Header-->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            N<sup>o</sup>
+                        </th>
+                        <th>Product</th>
+                        <th>Office</th>
+                        <!--<th>Price</th>-->
+                        <th>Price</th>
+                        <th>sum</th>
+                        <th>paid</th>
+                        <th>balance</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each content}}
+                        <tr>
+                            <td>{{index}}</td>
+                            <td>{{_product.name}}</td>
+                            <td>{{type}}</td>
+                            <td>{{price}}</td>
+                            <td>{{sumAmount}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                </table>
+                <div style="border-top: 1px solid #000000;">
+                    <div>
+                        <p style="margin: 0px 0px 0px 262px;">
+                            Total :&nbsp;&nbsp;&nbsp; <strong>{{footer.totalPrice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.maintenancePrice}}</strong>
+                        </p>
+
+                        <p style="margin: 0px 0px 0px 221px;">
+                            paid Amount :&nbsp;&nbsp;&nbsp; <strong>{{footer.paidAmountOffice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.paidAmountMaitenance}}</strong>
+                        </p>
+
+                    </div>
+
+                </div>
+                <div style="border-top: 1px solid #000000;">
+                    <div>
+                        <p style="margin: 0px 0px 0px 222px;">
+                            Due Amount :&nbsp;&nbsp;&nbsp; <strong>{{footer.dueAmountOffice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.dueAmountMaintenance}}</strong>
+                        </p>
+
+                    </div>
+                    <!--<ul class="list-unstyled text-right">-->
+                    <!--<li>-->
+                    <!--<strong>Total KHR (R)-->
+                    <!--:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{footer.totalPrice}}-->
+                    <!--</li>-->
+                    <!--<li>-->
+                    <!--<strong>Paid Amount-->
+                    <!--(R):</strong>&nbsp;&nbsp; {{totalPaid}}-->
+                    <!--</li>-->
+                    <!--</ul>-->
+                </div>
+                <div style="width: 100%">
+                    <!--Deposit-->
+                    <div style="width: 100%; float: left">
+                        <table class="table">
+                            <caption>Payment History</caption>
+                            <thead>
+                            <tr>
+                                <th>N<sup>o</sup></th>
+                                <th>PaymentDate</th>
+                                <th>Type</th>
+                                <th>Price</th>
+                                <th>paid</th>
+                                <th>Due</th>
+                            </tr>
+                            </thead>
+                            <tbody>
+
+                            <!--{{#each payment}}-->
+
+                            <!--<tr class="td-custom">-->
+                            <!--<td class="index-style">{{index}}</td>-->
+                            <!--<td>{{paymentDate}}</td>-->
+                            <!--<td>{{type}}</td>-->
+                            <!--<td>{{price}}</td>-->
+                            <!--<td>{{paidAmount}}</td>-->
+                            <!--<td>{{dueAmount}}</td>-->
+                            <!--</tr>-->
+                                    <!--{{/each}}-->
+
+                            </tbody>
+                        </table>
+                        <div style="width: 69%; margin-top: 20px">
+                            <ul class="list-unstyled">
+                                <li>
+                                    <strong>Staff Sign:</strong> __________________
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!--Total-->
+
+                </div>
+                <!--<div style="width: 48%; float: right; margin-top: 20px">-->
+
+                <!--<ul class="list-unstyled text-right">-->
+                <!--<li>-->
+                <!--<strong>Total KHR (R)-->
+                <!--:</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{footer.totalPrice}}-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<strong>Paid Amount-->
+                <!--(R):</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{totalPaid}}-->
+                <!--</li>-->
+
+                <!--<div style=" margin-top: 20px;border-top:1px solid #000000; padding-top: 20px;">-->
+                <!--<li>-->
+                <!--<strong>OutStanding Balance KHR (R):</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{outstadingAmount}}-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<strong>OutStanding Balance USD ($):-->
+                <!--</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; {{outstadingAmountIndolar}}-->
+                <!--</li>-->
+                <!--</div>-->
+                <!--</ul>-->
+
+                <!--</div>-->
+
+            {{/with}}
+            <!--Sign-->
+        {{/reportTpl}}
+        <!--Auto print-->
+        <!--{{autoprint close="true"}}-->
+    {{else}}
+        {{> loading}}
+    {{/if}}
+
+</template>
