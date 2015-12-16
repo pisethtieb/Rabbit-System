@@ -29,14 +29,12 @@ Meteor.methods({
         let office = Rabbit.Collection.Office.find({contractId: payment.contractId});
         if (office.count() > 0) {
             office.forEach(function (obj) {
-                let payment = Rabbit.Collection.Payment.find({officeId: payment.officeId});
+                var officeId = Rabbit.Collection.Payment.findOne(paymentId).officeId;
+                let payment = Rabbit.Collection.Payment.find({officeId: officeId});
                 payment.forEach(function (pay) {
-
-
                     //parseFloat(pay.paidAmount);
                     obj.sumAmount = parseFloat(pay.paidAmount);
                     console.log(obj.sumAmount);
-
                     //console.log(obj.sumAmount)
                 });
                 //obj.sumAmount += parseFloat(payment.paidAmount);
