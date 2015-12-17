@@ -127,10 +127,13 @@ insertTpl.events({
     'change .officeId': function (e) {
         debugger;
 
+
         //let checkOM = Session.get('checkOfficeMaintenance');
         //if (checkOM == "office") {
         var thisObje = $(e.currentTarget);
         var officeId = $(e.currentTarget).val();
+
+
         debugger;
         //    //$('.officeId').val(officeId);
         //$('.officeMaintenance').val('office');
@@ -153,18 +156,33 @@ insertTpl.events({
                     if (payObj.dueAmount > 0) {
                         thisObje.parents('div.item-list').find('.office').val(payObj.office);
                         thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
-                        thisObje.parents('div.item-list').find('.paidAmount').val(payObj.dueAmount);
-                        thisObje.parents('div.item-list').find('.dueAmount').val(0);
+                        thisObje.parents('div.item-list').find('.paidAmount').val(0);
+                        thisObje.parents('div.item-list').find('.dueAmount').val(payObj.dueAmount);
                     }
                 })
             } else if (payment == null) {
                 debugger;
                 thisObje.parents('div.item-list').find('.office').val(office.type);
                 thisObje.parents('div.item-list').find('.price').val(office.price);
-                thisObje.parents('div.item-list').find('.paidAmount').val(office.price);
-                thisObje.parents('div.item-list').find('.dueAmount').val(0);
+                thisObje.parents('div.item-list').find('.paidAmount').val(0);
+                thisObje.parents('div.item-list').find('.dueAmount').val(office.price);
             }
         });
+        var num = 0;
+        $('.officeId').each(function () {
+            if (officeId == $(this).val()) {
+                num += 1;
+            }
+        });
+        if (num > 1) {
+
+            thisObje.parents('div.item-list').find('.officeId').val('');
+            thisObje.parents('div.item-list').find('.office').val('');
+            thisObje.parents('div.item-list').find('.price').val('');
+            thisObje.parents('div.item-list').find('.paidAmount').val('');
+            thisObje.parents('div.item-list').find('.dueAmount').val('');
+        }
+
         //} else if (checkOM == 'maintenance') {
         //    let maintenanceId = $(e.currentTarget).val();
         //    //$('.officeMaintenance').val('maintenance');
@@ -201,69 +219,69 @@ updateTpl.events({
         $('.maintenanceId').val('');
         $('.officeId').val('');
         //$('.officeMaintenance').select().val('');
-    },
-    'keyup .paidAmount': function (e, t) {
-
-        $('.dueAmount').val($('.price').val() - $('.paidAmount').val());
-    },
-
-    'change .officeMaintenance': function (e) {
-
-        let checkOM = Session.get('checkOfficeMaintenance');
-        if (checkOM == "office") {
-            let officeId = $(e.currentTarget).val();
-            $('.officeId').val(officeId);
-            //$('.officeMaintenance').val('office');
-            $('.maintenanceId').val('');
-            var office = Rabbit.Collection.Office.findOne({_id: officeId});
-            Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
-                var payment = Rabbit.Collection.Payment.findOne({
-                        officeId: obj._id
-                    },
-                    {
-                        sort: {
-                            _id: -1
-                        }
-                    });
-                debugger;
-                if (payment != null && payment.price > 0) {
-                    $('.price').val(payment.dueAmount);
-                    $('.paidAmount').val(payment.dueAmount);
-                    $('.dueAmount').val(0);
-                } else if (payment == null) {
-                    $('.price').val(office.price);
-                    $('.paidAmount').val(office.price);
-                    $('.dueAmount').val(0);
-                }
-            });
-        } else if (checkOM == 'maintenance') {
-            let maintenanceId = $(e.currentTarget).val();
-            //$('.officeMaintenance').val('maintenance');
-            $('.maintenanceId').val(maintenanceId);
-            $('.officeId').val('');
-            var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
-            Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
-                var payment = Rabbit.Collection.Payment.findOne({
-                        maintenanceId: obj._id
-                    },
-                    {
-                        sort: {
-                            _id: -1
-                        }
-                    });
-                if (payment != null && payment.price > 0) {
-                    $('.price').val(payment.dueAmount);
-                    $('.paidAmount').val(payment.dueAmount);
-                    $('.dueAmount').val(0);
-                } else if (payment == null) {
-                    $('.price').val(maintenance.price);
-                    $('.paidAmount').val(maintenance.price);
-                    $('.dueAmount').val(0);
-                }
-            });
-
-        }
     }
+    //'keyup .paidAmount': function (e, t) {
+    //
+    //    $('.dueAmount').val($('.price').val() - $('.paidAmount').val());
+    //},
+    //
+    //'change .officeMaintenance': function (e) {
+    //
+    //    let checkOM = Session.get('checkOfficeMaintenance');
+    //    if (checkOM == "office") {
+    //        let officeId = $(e.currentTarget).val();
+    //        $('.officeId').val(officeId);
+    //        //$('.officeMaintenance').val('office');
+    //        $('.maintenanceId').val('');
+    //        var office = Rabbit.Collection.Office.findOne({_id: officeId});
+    //        Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
+    //            var payment = Rabbit.Collection.Payment.findOne({
+    //                    officeId: obj._id
+    //                },
+    //                {
+    //                    sort: {
+    //                        _id: -1
+    //                    }
+    //                });
+    //            debugger;
+    //            if (payment != null && payment.price > 0) {
+    //                $('.price').val(payment.dueAmount);
+    //                $('.paidAmount').val(payment.dueAmount);
+    //                $('.dueAmount').val(0);
+    //            } else if (payment == null) {
+    //                $('.price').val(office.price);
+    //                $('.paidAmount').val(office.price);
+    //                $('.dueAmount').val(0);
+    //            }
+    //        });
+    //    } else if (checkOM == 'maintenance') {
+    //        let maintenanceId = $(e.currentTarget).val();
+    //        //$('.officeMaintenance').val('maintenance');
+    //        $('.maintenanceId').val(maintenanceId);
+    //        $('.officeId').val('');
+    //        var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
+    //        Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
+    //            var payment = Rabbit.Collection.Payment.findOne({
+    //                    maintenanceId: obj._id
+    //                },
+    //                {
+    //                    sort: {
+    //                        _id: -1
+    //                    }
+    //                });
+    //            if (payment != null && payment.price > 0) {
+    //                $('.price').val(payment.dueAmount);
+    //                $('.paidAmount').val(payment.dueAmount);
+    //                $('.dueAmount').val(0);
+    //            } else if (payment == null) {
+    //                $('.price').val(maintenance.price);
+    //                $('.paidAmount').val(maintenance.price);
+    //                $('.dueAmount').val(0);
+    //            }
+    //        });
+    //
+    //    }
+    //}
 });
 /**
  * Update

@@ -86,38 +86,36 @@ Rabbit.List = {
         Rabbit.Collection.Office.find({contractId: contractId}).forEach(function (obj) {
 
                 var payment = Rabbit.Collection.Payment.findOne({
-                        'office.officeId': obj._id
-                    },
-                    {
-                        sort: {
-                            _id: -1
-                        }
-                    });
+                    'office.officeId': obj._id
+                });
                 debugger;
                 if (payment != null) {
                     payment.office.forEach(function (payObj) {
                         debugger;
-                        if (payment != null && payObj.dueAmount > 0) {
+                        if (payObj.dueAmount > 0) {
+                            console.log(payObj.officeId);
 
                             list.push({
-                                    label: "ID : " + payObj.officeId + " | " + " Price: " + payObj.dueAmount,
+                                    label: "ID : " + payObj.officeId + " | " + " Prices: " + payObj.dueAmount,
                                     value: payObj.officeId
                                 }
                             )
                             ;
                         }
-
                     });
                 }
+
                 else if (payment == null) {
                     list.push({
                         label: "ID : " + obj._id + " | " + "price : " + obj.price,
                         value: obj._id
                     });
                 }
+
             }
         )
         ;
+        return list;
 
         //} else if (checkOM == "maintenance") {
         //    Rabbit.Collection.Maintenance.find({"_office.contractId": contractId}).forEach(function (obj) {
@@ -148,7 +146,7 @@ Rabbit.List = {
         //    });
         //}
 
-        return list;
+
     }
 }
 ;
