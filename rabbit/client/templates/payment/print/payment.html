@@ -47,12 +47,11 @@
                     <ul class="list-unstyled">
 
                         <li>
-                            <strong>paymentDate: </strong> {{header.telephone}}</li>
+                            <strong>PaymentDate: </strong> {{payment.paymentDate}}</li>
                         <li>
                             <strong>Product: </strong> {{product.name}}</li>
                     </ul>
                 </div>
-                Bought Product Name <strong>"{{product.name}}"</strong>
                 <!--Header-->
                 <table class="table">
                     <thead>
@@ -64,7 +63,7 @@
                         <th>Type</th>
                         <!--<th>Price</th>-->
                         <th>Price</th>
-                        <th>Sum</th>
+                        <th>TotalSum</th>
                         <th>Paid</th>
                         <th>Balance</th>
                     </tr>
@@ -75,7 +74,7 @@
                             <td>{{index}}</td>
                             <td>{{officeName}}</td>
                             <td>{{office}}</td>
-                            <td>{{price}}</td>
+                            <td>{{priceOffice}}</td>
                             <td>{{{sumAmount}}}</td>
                             <td>{{{paidAmount}}}</td>
                             <td>{{{dueAmount}}}</td>

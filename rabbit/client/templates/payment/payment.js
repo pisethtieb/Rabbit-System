@@ -153,7 +153,7 @@ insertTpl.events({
                 debugger;
                 payment.office.forEach(function (payObj) {
                     debugger;
-                    if (payObj.dueAmount > 0) {
+                    if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
                         thisObje.parents('div.item-list').find('.office').val(payObj.office);
                         thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
                         thisObje.parents('div.item-list').find('.paidAmount').val(0);

@@ -87,12 +87,16 @@ Rabbit.List = {
 
                 var payment = Rabbit.Collection.Payment.findOne({
                     'office.officeId': obj._id
+                }, {
+                    sort: {
+                        _id: -1
+                    }
                 });
                 debugger;
                 if (payment != null) {
                     payment.office.forEach(function (payObj) {
                         debugger;
-                        if (payObj.dueAmount > 0) {
+                        if (obj._id==payObj.officeId && payObj.dueAmount > 0) {
                             console.log(payObj.officeId);
 
                             list.push({

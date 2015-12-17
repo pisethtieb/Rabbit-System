@@ -31,7 +31,8 @@ Meteor.methods({
 
             let office = Rabbit.Collection.Office.findOne(obj.officeId);
             obj.index = i;
-            obj.sumAmount = obj.price - obj.dueAmount;
+            obj.priceOffice = office.price;
+            obj.sumAmount = office.price - obj.dueAmount;
             obj.officeName = office.name;
             data.content.push(obj);
             i++;
