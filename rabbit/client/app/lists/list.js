@@ -74,6 +74,8 @@ Rabbit.List = {
     officeMaintenance: function () {
 
         var list = [];
+
+
         var contractId = FlowRouter.getParam("contractId");
         debugger;
         //var checkOM = Session.get('checkOfficeMaintenance');
@@ -84,22 +86,28 @@ Rabbit.List = {
         Rabbit.Collection.Office.find({contractId: contractId}).forEach(function (obj) {
 
                 var payment = Rabbit.Collection.Payment.findOne({
-                        officeId: obj._id
+                        'office.officeId': obj._id
                     },
                     {
                         sort: {
                             _id: -1
                         }
                     });
-                if (payment != null && payment.dueAmount > 0) {
-                    debugger;
-                    list.push({
-                            label: "ID : " + obj._id + " | " + " Price: " + payment.dueAmount,
-                            value: obj._id
+                debugger;
+                if (payment != null) {
+                    payment.office.forEach(function (payObj) {
+                        debugger;
+                        if (payment != null && payObj.dueAmount > 0) {
 
+                            list.push({
+                                    label: "ID : " + payObj.officeId + " | " + " Price: " + payObj.dueAmount,
+                                    value: payObj.officeId
+                                }
+                            )
+                            ;
                         }
-                    )
-                    ;
+
+                    });
                 }
                 else if (payment == null) {
                     list.push({
@@ -139,9 +147,8 @@ Rabbit.List = {
         //        }
         //    });
         //}
+
         return list;
-
-
     }
 }
 ;

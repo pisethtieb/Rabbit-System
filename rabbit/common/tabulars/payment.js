@@ -12,12 +12,7 @@ Rabbit.TabularTable.Payment = new Tabular.Table({
         {data: "_id", title: "ID"},
         {data: "_customer.companyName", title: "customer"},
         {data: "contractId", title: "Contract ID"},
-        {data: "type", title: "Type"},
-        {data: "officeMaintenance", title: "officeMaintenance"},
-        {data: "price", title: "Price"},
-        {data: "paidAmount", title: "PaidAmount"},
-        {data: "dueAmount", title: "DueAmount"},
         {data: "des", title: "des"}
     ],
-    extraFields: ['customerId', 'paymentDate', 'paidAmount', 'dueAmount', 'des', 'officeMaintenance', 'officeId', 'maintenanceId']
+    extraFields: ['office', 'paymentDate']
 });

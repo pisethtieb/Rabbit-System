@@ -116,7 +116,7 @@ insertTpl.events({
     },
     'keyup .paidAmount': function (e, t) {
 
-        $('.dueAmount').val($('.price').val() - $('.paidAmount').val());
+        $('.dueAmount').val($('#price').val() - $('#paidAmount').val());
     },
 
     'change .officeId': function (e) {
@@ -124,30 +124,42 @@ insertTpl.events({
 
         //let checkOM = Session.get('checkOfficeMaintenance');
         //if (checkOM == "office") {
-        //let officeId = $(e.currentTarget).val();
-        ////    //$('.officeId').val(officeId);
-        ////$('.officeMaintenance').val('office');
-        ////    $('.maintenanceId').val('');
-        //var office = Rabbit.Collection.Office.findOne({_id: officeId});
-        //Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
-        //    var payment = Rabbit.Collection.Payment.findOne({
-        //            officeId: obj._id
-        //        },
-        //        {
-        //            sort: {
-        //                _id: -1
-        //            }
-        //        });
-        //    if (payment != null && payment.price > 0) {
-        //        $('.price').val(payment.dueAmount);
-        //        $('.paidAmount').val(payment.dueAmount);
-        //        $('.dueAmount').val(0);
-        //    } else if (payment == null) {
-        //        $('.price').val(office.price);
-        //        $('.paidAmount').val(office.price);
-        //        $('.dueAmount').val(0);
-        //    }
-        //});
+        var thisObje = $(e.currentTarget);
+        var officeId = $(e.currentTarget).val();
+        debugger;
+        //    //$('.officeId').val(officeId);
+        //$('.officeMaintenance').val('office');
+        //    $('.maintenanceId').val('');
+        var office = Rabbit.Collection.Office.findOne({_id: officeId});
+        Rabbit.Collection.Office.find(officeId).forEach(function (obj) {
+            var payment = Rabbit.Collection.Payment.findOne({
+                    'office.officeId': obj._id
+                },
+                {
+                    sort: {
+                        _id: -1
+                    }
+                });
+            debugger;
+            if (payment != null) {
+                debugger;
+                payment.office.forEach(function (payObj) {
+                    debugger;
+                    if (payObj.dueAmount > 0) {
+                        thisObje.parents('div.row').find('.office').val(payObj.office);
+                        thisObje.parents('div.row').find('.price').val(payObj.dueAmount);
+                        thisObje.parents('div.row').find('.paidAmount').val(payObj.dueAmount);
+                        thisObje.parents('div.row').find('.dueAmount').val(0);
+                    }
+                })
+            } else if (payment == null) {
+                debugger;
+                thisObje.parents('div.row').find('.office').val(office.type);
+                thisObje.parents('div.row').find('.price').val(office.price);
+                thisObje.parents('div.row').find('.paidAmount').val(office.price);
+                thisObje.parents('div.row').find('.dueAmount').val(0);
+            }
+        });
         //} else if (checkOM == 'maintenance') {
         //    let maintenanceId = $(e.currentTarget).val();
         //    //$('.officeMaintenance').val('maintenance');

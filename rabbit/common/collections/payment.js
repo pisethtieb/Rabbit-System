@@ -7,6 +7,16 @@ Rabbit.Schema.Payment = new SimpleSchema({
         type: String,
         label: 'CustomerId'
     },
+    des: {
+        type: String,
+        label: "Description",
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        }
+    },
     contractId: {
         type: String,
         label: 'ContractId'
@@ -36,29 +46,39 @@ Rabbit.Schema.Payment = new SimpleSchema({
             options: function () {
                 return Rabbit.List.officeMaintenance();
             }
-            }
-        },
-        'office.$.price': {
-            type: Number,
-            decimal: true
-
-        },
-        'office.$.paidAmount': {
-            type: Number
-        },
-        'office.$.dueAmount': {
-            type: Number
         }
-        //type: {
-        //    type: String,
-        //    label: 'Type',
-        //    autoform: {
-        //        type: "select",
-        //        options: function () {
-        //            return Rabbit.List.contractPaymentType();
-        //        }
-        //    }
-        //}
+    },
+    'office.$.price': {
+        type: Number,
+        decimal: true
+
+    },
+    'office.$.office': {
+        type: String,
+        decimal: true
+
+    },
+    'office.$.paidAmount': {
+        type: Number,
+        custom: function () {
+            if (this.value > this.field('office.$.paidAmount').value) {
+                return "greaterThan";
+            }
+        }
+    },
+    'office.$.dueAmount': {
+        type: Number
+    }
+    //type: {
+    //    type: String,
+    //    label: 'Type',
+    //    autoform: {
+    //        type: "select",
+    //        options: function () {
+    //            return Rabbit.List.contractPaymentType();
+    //        }
+    //    }
+    //}
 //    officeMaintenance: {
 //        type: String,
 //        label: "Office & Maintenance"
@@ -131,7 +151,7 @@ Rabbit.Schema.Payment = new SimpleSchema({
 //        //},
 //        optional: true
 //    }
-    })
+})
 ;
 
 // Attach schema
