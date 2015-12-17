@@ -11,27 +11,6 @@ Rabbit.Schema.Payment = new SimpleSchema({
         type: String,
         label: 'ContractId'
     },
-    type: {
-        type: String,
-        label: 'Type',
-        autoform: {
-            type: "select",
-            options: function () {
-                return Rabbit.List.contractPaymentType();
-            }
-        }
-    },
-    officeMaintenance: {
-        type: String,
-        label: "Office & Maintenance"
-        //,
-        //autoform: {
-        //    type: "select",
-        //    options: function () {
-        //        return Rabbit.List.officeMaintenance();
-        //    }
-        //}
-    },
     paymentDate: {
         type: String,
         label: 'Payment Date',
@@ -41,59 +20,118 @@ Rabbit.Schema.Payment = new SimpleSchema({
         }
 
     },
-    price: {
-        type: Number,
-        label: 'price'
 
+    office: {
+        type: Array,
+        minCount: 1,
+        optional: true
     },
-    paidAmount: {
-        type: Number,
-        label: "Paid Amount",
-        min: 1,
-        custom: function () {
-            if (this.value > this.field('price').value) {
-                return "greaterThan";
-            }
-        }
+    'office.$': {
+        type: Object
     },
-    dueAmount: {
-        type: Number,
-        label: 'Due Amount'
-    },
-    des: {
+    'office.$.officeId': {
         type: String,
-        label: "Description",
-        optional: true,
         autoform: {
-            afFieldInput: {
-                type: "textarea"
+            type: "select",
+            options: function () {
+                return Rabbit.List.officeMaintenance();
             }
+            }
+        },
+        'office.$.price': {
+            type: Number,
+            decimal: true
+
+        },
+        'office.$.paidAmount': {
+            type: Number
+        },
+        'office.$.dueAmount': {
+            type: Number
         }
-    },
-    branchId: {
-        type: String,
-        label: "Branch",
-        optional: true
-    },
-    officeId: {
-        type: String,
-        //autoform: {
-        //    type: "hidden",
-        //    label: false
-        //},
-        optional: true
-
-
-    },
-    maintenanceId: {
-        type: String,
-        //autoform: {
-        //    type: "hidden",
-        //    label: false
-        //},
-        optional: true
-    }
-})
+        //type: {
+        //    type: String,
+        //    label: 'Type',
+        //    autoform: {
+        //        type: "select",
+        //        options: function () {
+        //            return Rabbit.List.contractPaymentType();
+        //        }
+        //    }
+        //}
+//    officeMaintenance: {
+//        type: String,
+//        label: "Office & Maintenance"
+//        //,
+//        //autoform: {
+//        //    type: "select",
+//        //    options: function () {
+//        //        return Rabbit.List.officeMaintenance();
+//        //    }
+//        //}
+//    },
+//    paymentDate: {
+//        type: String,
+//        label: 'Payment Date',
+//        defaultValue: function () {
+//            var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
+//            return currentDate;
+//        }
+//
+//    },
+//    price: {
+//        type: Number,
+//        label: 'price'
+//
+//    },
+//    paidAmount: {
+//        type: Number,
+//        label: "Paid Amount",
+//        min: 1,
+//        custom: function () {
+//            if (this.value > this.field('price').value) {
+//                return "greaterThan";
+//            }
+//        }
+//    },
+//    dueAmount: {
+//        type: Number,
+//        label: 'Due Amount'
+//    },
+//    des: {
+//        type: String,
+//        label: "Description",
+//        optional: true,
+//        autoform: {
+//            afFieldInput: {
+//                type: "textarea"
+//            }
+//        }
+//    },
+//    branchId: {
+//        type: String,
+//        label: "Branch",
+//        optional: true
+//    },
+//    officeId: {
+//        type: String,
+//        //autoform: {
+//        //    type: "hidden",
+//        //    label: false
+//        //},
+//        optional: true
+//
+//
+//    },
+//    maintenanceId: {
+//        type: String,
+//        //autoform: {
+//        //    type: "hidden",
+//        //    label: false
+//        //},
+//        optional: true
+//    }
+    })
 ;
 
 // Attach schema

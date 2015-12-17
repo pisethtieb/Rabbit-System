@@ -79,6 +79,8 @@
                             <td>{{type}}</td>
                             <td>{{price}}</td>
                             <td>{{{sumAmount}}}</td>
+                            <td>{{{paidAmount}}}</td>
+                            <td>{{{dueAmount}}}</td>
                         </tr>
                     {{/each}}
 
@@ -132,17 +134,17 @@
                             </thead>
                             <tbody>
 
-                            <!--{{#each payment}}-->
+                            {{#each payment}}
 
-                            <!--<tr class="td-custom">-->
-                            <!--<td class="index-style">{{index}}</td>-->
-                            <!--<td>{{paymentDate}}</td>-->
-                            <!--<td>{{type}}</td>-->
-                            <!--<td>{{price}}</td>-->
-                            <!--<td>{{paidAmount}}</td>-->
-                            <!--<td>{{dueAmount}}</td>-->
-                            <!--</tr>-->
-                                    <!--{{/each}}-->
+                                <tr class="td-custom">
+                                    <td class="index-style">{{index}}</td>
+                                    <td>{{paymentDate}}</td>
+                                    <td>{{type}}</td>
+                                    <td>{{price}}</td>
+                                    <td>{{paidAmount}}</td>
+                                    <td>{{dueAmount}}</td>
+                                </tr>
+                            {{/each}}
 
                             </tbody>
                         </table>

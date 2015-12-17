@@ -72,48 +72,19 @@ Rabbit.List = {
         return list;
     },
     officeMaintenance: function () {
+
         var list = [];
         var contractId = FlowRouter.getParam("contractId");
-        var checkOM = Session.get('checkOfficeMaintenance');
+        debugger;
+        //var checkOM = Session.get('checkOfficeMaintenance');
+        //
+        //if (checkOM == "office") {
+        //var patientId = Labo.ListForSale.get('patientId');
 
-        if (checkOM == "office") {
-            //var patientId = Labo.ListForSale.get('patientId');
+        Rabbit.Collection.Office.find({contractId: contractId}).forEach(function (obj) {
 
-            Rabbit.Collection.Office.find({contractId: contractId}).forEach(function (obj) {
-
-                    var payment = Rabbit.Collection.Payment.findOne({
-                            officeId: obj._id
-                        },
-                        {
-                            sort: {
-                                _id: -1
-                            }
-                        });
-                    if (payment != null && payment.dueAmount > 0) {
-                        debugger;
-                        list.push({
-                                label: "ID : " + obj._id + " | " + " Price: " + payment.dueAmount,
-                                value: obj._id
-
-                            }
-                        )
-                        ;
-                    }
-                    else if (payment == null) {
-                        list.push({
-                            label: "ID : " + obj._id + " | " + "price : " + obj.price,
-                            value: obj._id
-                        });
-                    }
-                }
-            )
-            ;
-
-        } else if (checkOM == "maintenance") {
-            Rabbit.Collection.Maintenance.find({"_office.contractId": contractId}).forEach(function (obj) {
-                //var patient = Dental.Collection.Patient.findOne({_id: obj.patientId});
                 var payment = Rabbit.Collection.Payment.findOne({
-                        maintenanceId: obj._id,
+                        officeId: obj._id
                     },
                     {
                         sort: {
@@ -121,8 +92,9 @@ Rabbit.List = {
                         }
                     });
                 if (payment != null && payment.dueAmount > 0) {
+                    debugger;
                     list.push({
-                            label: "ID : " + obj._id + " | " + " : " + payment.dueAmount,
+                            label: "ID : " + obj._id + " | " + " Price: " + payment.dueAmount,
                             value: obj._id
 
                         }
@@ -135,8 +107,38 @@ Rabbit.List = {
                         value: obj._id
                     });
                 }
-            });
-        }
+            }
+        )
+        ;
+
+        //} else if (checkOM == "maintenance") {
+        //    Rabbit.Collection.Maintenance.find({"_office.contractId": contractId}).forEach(function (obj) {
+        //        //var patient = Dental.Collection.Patient.findOne({_id: obj.patientId});
+        //        var payment = Rabbit.Collection.Payment.findOne({
+        //                maintenanceId: obj._id,
+        //            },
+        //            {
+        //                sort: {
+        //                    _id: -1
+        //                }
+        //            });
+        //        if (payment != null && payment.dueAmount > 0) {
+        //            list.push({
+        //                    label: "ID : " + obj._id + " | " + " : " + payment.dueAmount,
+        //                    value: obj._id
+        //
+        //                }
+        //            )
+        //            ;
+        //        }
+        //        else if (payment == null) {
+        //            list.push({
+        //                label: "ID : " + obj._id + " | " + "price : " + obj.price,
+        //                value: obj._id
+        //            });
+        //        }
+        //    });
+        //}
         return list;
 
 

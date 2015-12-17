@@ -119,61 +119,62 @@ insertTpl.events({
         $('.dueAmount').val($('.price').val() - $('.paidAmount').val());
     },
 
-    'change .officeMaintenance': function (e) {
+    'change .officeId': function (e) {
+        debugger;
 
-        let checkOM = Session.get('checkOfficeMaintenance');
-        if (checkOM == "office") {
-            let officeId = $(e.currentTarget).val();
-            $('.officeId').val(officeId);
-            //$('.officeMaintenance').val('office');
-            $('.maintenanceId').val('');
-            var office = Rabbit.Collection.Office.findOne({_id: officeId});
-            Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
-                var payment = Rabbit.Collection.Payment.findOne({
-                        officeId: obj._id
-                    },
-                    {
-                        sort: {
-                            _id: -1
-                        }
-                    });
-                if (payment != null && payment.price > 0) {
-                    $('.price').val(payment.dueAmount);
-                    $('.paidAmount').val(payment.dueAmount);
-                    $('.dueAmount').val(0);
-                } else if (payment == null) {
-                    $('.price').val(office.price);
-                    $('.paidAmount').val(office.price);
-                    $('.dueAmount').val(0);
-                }
-            });
-        } else if (checkOM == 'maintenance') {
-            let maintenanceId = $(e.currentTarget).val();
-            //$('.officeMaintenance').val('maintenance');
-            $('.maintenanceId').val(maintenanceId);
-            $('.officeId').val('');
-            var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
-            Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
-                var payment = Rabbit.Collection.Payment.findOne({
-                        maintenanceId: obj._id
-                    },
-                    {
-                        sort: {
-                            _id: -1
-                        }
-                    });
-                if (payment != null && payment.price > 0) {
-                    $('.price').val(payment.dueAmount);
-                    $('.paidAmount').val(payment.dueAmount);
-                    $('.dueAmount').val(0);
-                } else if (payment == null) {
-                    $('.price').val(maintenance.price);
-                    $('.paidAmount').val(maintenance.price);
-                    $('.dueAmount').val(0);
-                }
-            });
-
-        }
+        //let checkOM = Session.get('checkOfficeMaintenance');
+        //if (checkOM == "office") {
+        //let officeId = $(e.currentTarget).val();
+        ////    //$('.officeId').val(officeId);
+        ////$('.officeMaintenance').val('office');
+        ////    $('.maintenanceId').val('');
+        //var office = Rabbit.Collection.Office.findOne({_id: officeId});
+        //Rabbit.Collection.Office.find(office._id).forEach(function (obj) {
+        //    var payment = Rabbit.Collection.Payment.findOne({
+        //            officeId: obj._id
+        //        },
+        //        {
+        //            sort: {
+        //                _id: -1
+        //            }
+        //        });
+        //    if (payment != null && payment.price > 0) {
+        //        $('.price').val(payment.dueAmount);
+        //        $('.paidAmount').val(payment.dueAmount);
+        //        $('.dueAmount').val(0);
+        //    } else if (payment == null) {
+        //        $('.price').val(office.price);
+        //        $('.paidAmount').val(office.price);
+        //        $('.dueAmount').val(0);
+        //    }
+        //});
+        //} else if (checkOM == 'maintenance') {
+        //    let maintenanceId = $(e.currentTarget).val();
+        //    //$('.officeMaintenance').val('maintenance');
+        //    $('.maintenanceId').val(maintenanceId);
+        //    $('.officeId').val('');
+        //    var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
+        //    Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
+        //        var payment = Rabbit.Collection.Payment.findOne({
+        //                maintenanceId: obj._id
+        //            },
+        //            {
+        //                sort: {
+        //                    _id: -1
+        //                }
+        //            });
+        //        if (payment != null && payment.price > 0) {
+        //            $('.price').val(payment.dueAmount);
+        //            $('.paidAmount').val(payment.dueAmount);
+        //            $('.dueAmount').val(0);
+        //        } else if (payment == null) {
+        //            $('.price').val(maintenance.price);
+        //            $('.paidAmount').val(maintenance.price);
+        //            $('.dueAmount').val(0);
+        //        }
+        //    });
+        //
+        //}
     }
 });
 updateTpl.events({
