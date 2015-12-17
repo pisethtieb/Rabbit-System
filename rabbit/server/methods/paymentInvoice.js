@@ -18,16 +18,25 @@ Meteor.methods({
         //data.header = params;
 
         let payment = Rabbit.Collection.Payment.findOne(paymentId);
+        //show product Name
         let product = Rabbit.Collection.Contract.findOne(payment.contractId);
-
+        data.product = product._product
+        //show payment Info
         data.payment = payment;
-        data.product = product._product;
-        console.log(data.product);
+
+        //console.log(data.product);
         data.header = payment._customer;
+        let i = 1;
         payment.office.forEach(function (obj) {
+
             let office = Rabbit.Collection.Office.findOne(obj.officeId);
+            obj.index = i;
+            obj.sumAmount = obj.price - obj.dueAmount;
+
             obj.officeName = office.name;
+
             data.content.push(obj);
+            i++;
 
         });
         ///****** Content *****/

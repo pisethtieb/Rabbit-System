@@ -115,8 +115,13 @@ insertTpl.events({
 
     },
     'keyup .paidAmount': function (e, t) {
+        var thisObj = $(e.currentTarget);
+        var price = thisObj.parents('div.item-list').find('.price').val();
+        var paidAmount = thisObj.parents('div.item-list').find('.paidAmount').val();
 
-        $('.dueAmount').val($('#price').val() - $('#paidAmount').val());
+        var amount = price - paidAmount;
+
+        thisObj.parents('div.item-list').find('.dueAmount').val(amount);
     },
 
     'change .officeId': function (e) {
@@ -146,18 +151,18 @@ insertTpl.events({
                 payment.office.forEach(function (payObj) {
                     debugger;
                     if (payObj.dueAmount > 0) {
-                        thisObje.parents('div.row').find('.office').val(payObj.office);
-                        thisObje.parents('div.row').find('.price').val(payObj.dueAmount);
-                        thisObje.parents('div.row').find('.paidAmount').val(payObj.dueAmount);
-                        thisObje.parents('div.row').find('.dueAmount').val(0);
+                        thisObje.parents('div.item-list').find('.office').val(payObj.office);
+                        thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
+                        thisObje.parents('div.item-list').find('.paidAmount').val(payObj.dueAmount);
+                        thisObje.parents('div.item-list').find('.dueAmount').val(0);
                     }
                 })
             } else if (payment == null) {
                 debugger;
-                thisObje.parents('div.row').find('.office').val(office.type);
-                thisObje.parents('div.row').find('.price').val(office.price);
-                thisObje.parents('div.row').find('.paidAmount').val(office.price);
-                thisObje.parents('div.row').find('.dueAmount').val(0);
+                thisObje.parents('div.item-list').find('.office').val(office.type);
+                thisObje.parents('div.item-list').find('.price').val(office.price);
+                thisObje.parents('div.item-list').find('.paidAmount').val(office.price);
+                thisObje.parents('div.item-list').find('.dueAmount').val(0);
             }
         });
         //} else if (checkOM == 'maintenance') {
