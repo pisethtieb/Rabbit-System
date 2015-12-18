@@ -132,6 +132,14 @@ insertTpl.events({
         //if (checkOM == "office") {
         var thisObje = $(e.currentTarget);
         var officeId = $(e.currentTarget).val();
+        if (officeId == '') {
+            thisObje.parents('div.item-list').find('.officeId').val('');
+            thisObje.parents('div.item-list').find('.office').val('');
+            thisObje.parents('div.item-list').find('.price').val('');
+            thisObje.parents('div.item-list').find('.paidAmount').val('');
+            thisObje.parents('div.item-list').find('.dueAmount').val('');
+
+        }
 
 
         debugger;

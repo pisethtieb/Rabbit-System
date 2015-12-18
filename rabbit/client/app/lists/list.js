@@ -96,11 +96,11 @@ Rabbit.List = {
                 if (payment != null) {
                     payment.office.forEach(function (payObj) {
                         debugger;
-                        if (obj._id==payObj.officeId && payObj.dueAmount > 0) {
+                        if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
                             console.log(payObj.officeId);
 
                             list.push({
-                                    label: "ID : " + payObj.officeId + " | " + " Prices: " + payObj.dueAmount,
+                                    label: "Name : " + obj.name + " (" + obj.type + ")" + " | " + " Prices: " + payObj.dueAmount,
                                     value: payObj.officeId
                                 }
                             )
@@ -111,7 +111,7 @@ Rabbit.List = {
 
                 else if (payment == null) {
                     list.push({
-                        label: "ID : " + obj._id + " | " + "price : " + obj.price,
+                        label: "Name : " + obj.name + " (" + obj.type + ") " + " | " + "Price: " + obj.price,
                         value: obj._id
                     });
                 }
