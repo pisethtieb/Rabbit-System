@@ -99,6 +99,7 @@ insertTpl.helpers({
 insertTpl.onRendered(function () {
     configOnRender();
     $('#officeMaintenance').attr('disabled', "disabled");
+    $('.btnAdd').attr('disabled', "disabled");
 });
 insertTpl.events({
     'change .type': function (e, t) {
@@ -189,6 +190,14 @@ insertTpl.events({
             thisObje.parents('div.item-list').find('.price').val('');
             thisObje.parents('div.item-list').find('.paidAmount').val('');
             thisObje.parents('div.item-list').find('.dueAmount').val('');
+
+            $('.btnAdd').attr('disabled', 'disabled');
+            debugger;
+        }
+        if (officeId) {
+            $('.btnAdd').removeAttr('disabled');
+        } else {
+            $('.btnAdd').attr('disabled', "disabled");
         }
 
         //} else if (checkOM == 'maintenance') {

@@ -63,7 +63,7 @@ Rabbit.Schema.Payment = new SimpleSchema({
     'office.$.paidAmount': {
         type: Number,
         custom: function () {
-            if (this.value > this.field('price').value) {
+            if (this.value <= this.field('office.$.price').value) {
                 return "greaterThan";
             }
         },
