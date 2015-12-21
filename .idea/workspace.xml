@@ -56,14 +56,13 @@
       <file leaf-file-name="printContract.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/rabbit/client/templates/contract/printContract/printContract.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.3841229">
-              <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+            <state vertical-scroll-proportion="0.60819465">
+              <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#1;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#2;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#p#0;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#b#0;n#p#0;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#strong#0;n#p#0;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#1;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
@@ -74,6 +73,9 @@
                 <element signature="n#style#0;n#p#6;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#7;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#p#8;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#9;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#10;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#p#11;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#table#0;n#template#1;n#!!top" expanded="true" />
               </folding>
             </state>
@@ -1032,14 +1034,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rabbit/client/templates/contract/printContract/printContract.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.3841229">
-          <caret line="90" column="14" selection-start-line="90" selection-start-column="14" selection-end-line="90" selection-end-column="14" />
+        <state vertical-scroll-proportion="0.60819465">
+          <caret line="19" column="94" selection-start-line="19" selection-start-column="94" selection-end-line="19" selection-end-column="94" />
           <folding>
             <element signature="n#style#0;n#div#0;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#1;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#2;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#p#0;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#b#0;n#p#0;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#strong#0;n#p#0;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#1;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
@@ -1050,6 +1051,9 @@
             <element signature="n#style#0;n#p#6;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#7;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#p#8;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#9;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#10;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#11;n#div#3;n#table#0;n#template#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#table#0;n#template#1;n#!!top" expanded="true" />
           </folding>
         </state>
