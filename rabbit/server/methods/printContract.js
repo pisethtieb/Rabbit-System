@@ -1,5 +1,5 @@
 Meteor.methods({
-printContract: function (contractId) {
+    printContract: function (contractId) {
         var data = {
             title: {},
             header: {},
@@ -12,11 +12,14 @@ printContract: function (contractId) {
         //fx.base = exchange.base;
         //fx.rates = exchange.rates;
         /****** Title *****/
-        data.title = Cpanel.Collection.Company.findOne();
+        //data.title = Cpanel.Collection.Company.findOne();
+        let contract = Rabbit.Collection.Contract.findOne(contractId);
         /****** Header *****/
-        ////data.header = params;
-        //let customer = Rabbit.Collection.Contract.findOne(contractId)._customer;
-        //
+            //data.header = params;
+        data.product = contract._product;
+        data.customer = contract._customer;
+        data.customer.age = moment().diff(contract._customer.dob, 'years');
+        console.log(data.customer.age);
         //data.header = customer;
         ///****** Content *****/
         //let i = 1;
@@ -80,7 +83,7 @@ printContract: function (contractId) {
         //data.footer.dueAmountOffice = totalPrice - paidAmountOffice;
         //data.footer.dueAmountMaintenance = maintenancePrice - paidAmountMaintenance;
         //
-        //return data
+        return data
 
     }
 });
