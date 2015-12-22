@@ -83,18 +83,21 @@
                 </div>
                 <div class="col-md-12">
                     {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="contractBasePriceObjectField" id="basePrice"}}
-                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="contractBasePriceArrayField" subtemplate="maintenancePriceObjectField" }}
+                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="contractMaintenancePriceObjectField" }}
                 </div>
                 <div class="col-md-6">
                     {{> afQuickField name="paymentMethod"}}
-                    {{> afQuickField name="type" id='type'}}
-                    <div id="testing">
+                    {{> afQuickField name="type" class='type'}}
+                    <div class="testing">
                         {{> afQuickField name="testing"}}
                     </div>
                 </div>
                 <div class="col-md-6">
+
+
                     {{> afQuickField name="maintenanceFee"}}
                     {{> afQuickField name="des"}}
+                    {{> afQuickField name="addFile"}}
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>

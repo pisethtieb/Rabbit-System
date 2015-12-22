@@ -109,6 +109,17 @@ Rabbit.Schema.Contract = new SimpleSchema({
                 type: "textarea"
             }
         }
+    },
+    addFile: {
+        type: String,
+        autoform: {
+            afFieldInput: {
+                type: 'fileUpload',
+                collection: 'Files',
+                accept: 'image/*'
+            }
+        },
+        optional: true
     }
 })
 ;
