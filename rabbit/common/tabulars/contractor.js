@@ -11,28 +11,15 @@ Rabbit.TabularTable.Contractor = new Tabular.Table({
     columns: [
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_contractorAction},
         {data: "_id", title: "ID"},
-        {data: "_customer.companyName", title: "Customer"},
-        {
-            data: "contractorDate", title: "Contractor Date",
-            render: function (val, type, doc) {
-                return moment(val).format('YYYY-MM-DD');
-            }
-        },
-        {data: "productId", title: "Product ID"},
-        //{
-        //    data: '',
-        //    title: "Office <i class='fa fa-arrow-up'></i>",
-        //    tmpl: Meteor.isClient && Template.rabbit_addOffice
-        //}
-        {
-            data: "_officeCount",
-            title: "O <i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_officeLinkAction
-        }, {
-            data: "_paymentCount",
-            title: "P <i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_paymentLinkAction
-        }
+        {data: "name", title: "Name"},
+        {data: "dob", title: "DOB"},
+        {data: "gender", title: "Gender"},
+        {data: "id", title: "ID"},
+        {data: "telephone", title: "Telephone"},
+        {data: "email", title: "Email"},
+        {data: "address", title: "Address"}
+
+
     ],
-    extraFields: ['customerId', 'contractorDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile']
+    extraFields: ['position', 'contractorDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile']
 });

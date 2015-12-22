@@ -1,6 +1,6 @@
 // Customer
 Rabbit.TabularTable.Contract = new Tabular.Table({
-    name: "rabbit_saleHeadOfficeList",
+    name: "rabbit_saleHeadOfficeLists",
     collection: Rabbit.Collection.Contract,
     pagingType: "full_numbers",
     autoWidth: false,
@@ -33,6 +33,12 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
             title: "P <i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_paymentLinkAction
         }
+        //,
+        //{
+        //    data: "",
+        //    title: "",
+        //    tmpl: Meteor.isClient && Template.rabbit_paymentLinkAction
+        //}
     ],
     extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile']
 });

@@ -37,7 +37,20 @@ Rabbit.List = {
 
         Rabbit.Collection.Product.find()
             .forEach(function (obj) {
+                debugger;
                 list.push({label: obj._id + ' : ' + obj.name, value: obj._id});
+            });
+
+        return list;
+    },
+    contractor: function () {
+        var list = [];
+        list.push({label: "(Select One)", value: ""});
+
+        Rabbit.Collection.Contractor.find()
+            .forEach(function (obj) {
+                list.push({label: obj._id + ' : ' + obj.name, value: obj._id});
+                debugger;
             });
 
         return list;

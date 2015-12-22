@@ -23,7 +23,7 @@ Rabbit.Schema.Contractor = new SimpleSchema({
 
     },
     id: {
-        type: String,
+        type: Number,
         label: 'ID'
     },
     address: {
@@ -38,6 +38,10 @@ Rabbit.Schema.Contractor = new SimpleSchema({
         type: String,
         label: 'Email',
         regEx: SimpleSchema.RegEx.Email
+    },
+    position:{
+        type:String,
+        label:"Position"
     }
 })
 ;
