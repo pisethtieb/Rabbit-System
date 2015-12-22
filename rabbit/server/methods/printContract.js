@@ -17,6 +17,11 @@ Meteor.methods({
         /****** Header *****/
             //data.header = params;
         data.product = contract._product;
+        data.product.priceHead = contract.basePrice[0].headOffice;
+        data.product.priceOffice = contract.basePrice[0].branch;
+        data.product.maintenancePriceHead = contract.maintenancePrice[0].headOffice;
+        data.product.maintenancePriceBrand = contract.maintenancePrice[0].branch;
+
         data.customer = contract._customer;
         data.customer.age = moment().diff(contract._customer.dob, 'years');
         console.log(data.customer.age);
