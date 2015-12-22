@@ -189,6 +189,7 @@ insertTpl.events({
                         _id: -1
                     }
                 });
+            console.log(payment);
             debugger;
             if (payment != null) {
                 debugger;
