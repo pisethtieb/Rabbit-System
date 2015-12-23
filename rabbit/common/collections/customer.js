@@ -22,7 +22,7 @@ Rabbit.Schema.Customer = new SimpleSchema({
         label: 'Dob'
     },
     id: {
-        type: String,
+        type: Number,
         label: 'ID'
     },
     position: {
@@ -44,7 +44,8 @@ Rabbit.Schema.Customer = new SimpleSchema({
     },
     email: {
         type: String,
-        label: 'Email'
+        label: 'Email',
+        regEx: SimpleSchema.RegEx.Email
     },
 
 
@@ -68,7 +69,8 @@ Rabbit.Schema.Customer = new SimpleSchema({
     },
     companyEmail: {
         type: String,
-        label: "Email"
+        label: "Email",
+        regEx: SimpleSchema.RegEx.Email
     },
     companyWebsite: {
         type: String,
