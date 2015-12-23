@@ -5,12 +5,12 @@ Rabbit.ListState = new ReactiveObj();
 /**
  * Declare template
  */
-var indexTpl = Template.rabbit_payment,
-    insertTpl = Template.rabbit_paymentInsert,
-    updateTpl = Template.rabbit_paymentUpdate,
-    showTpl = Template.rabbit_paymentShow;
+var indexTpl = Template.rabbit_paymentMaintenance,
+    insertTpl = Template.rabbit_paymentMaintenanceInsert,
+    updateTpl = Template.rabbit_paymentMaintenanceUpdate,
+    showTpl = Template.rabbit_paymentMaintenanceShow;
 
-//locationAddOnTpl = Template.rabbit_locationAddOnPayment;
+//locationAddOnTpl = Template.rabbit_locationAddOnPaymentMaintenance;
 
 
 /**
@@ -19,13 +19,13 @@ var indexTpl = Template.rabbit_payment,
 indexTpl.onCreated(function () {
     // SEO
     SEO.set({
-        title: 'Sale Branch Payment',
+        title: 'Sale Branch PaymentMaintenance',
         description: 'Description for this page'
     });
 
     // Create new  alertify
-    createNewAlertify(["payment"], {size: 'lg'});
-    createNewAlertify(["paymentShow"]);
+    createNewAlertify(["paymentMaintenance"], {size: 'lg'});
+    createNewAlertify(["paymentMaintenanceShow"]);
     //createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -33,26 +33,26 @@ indexTpl.events({
 
     'click .btn-link': function (e, t) {
         var self = this;
-        checkLastPayment(self);
+        checkLastPaymentMaintenance(self);
     },
     'click .js-insert': function (e, t) {
 
-        alertify.payment(fa("plus", "Payment"), renderTemplate(insertTpl));
+        alertify.paymentMaintenance(fa("plus", "PaymentMaintenance"), renderTemplate(insertTpl));
 
     },
     'click .js-update': function (e, t) {
         debugger;
-        alertify.payment(fa("pencil", "Payment"), renderTemplate(updateTpl, this));
+        alertify.paymentMaintenance(fa("pencil", "PaymentMaintenance"), renderTemplate(updateTpl, this));
         debugger;
     },
     'click .js-remove': function (e, t) {
         var self = this;
 
         alertify.confirm(
-            fa("remove", "Payment"),
+            fa("remove", "PaymentMaintenance"),
             "Are you sure to delete [" + self._id + "]?",
             function () {
-                Rabbit.Collection.Payment.remove(self._id, function (error) {
+                Rabbit.Collection.PaymentMaintenance.remove(self._id, function (error) {
                     if (error) {
                         alertify.error(error.message);
                     } else {
@@ -64,12 +64,12 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.paymentShow(fa("eye", "Payment"), renderTemplate(showTpl, this));
+        alertify.paymentMaintenanceShow(fa("eye", "PaymentMaintenance"), renderTemplate(showTpl, this));
 
     },
     'click .maintenanceAction': function () {
         FlowRouter.go('rabbit.maintenance', {
-            customerId: this._contract.customerId, contractId: this.contractId, paymentId: this._id
+            customerId: this._contract.customerId, contractId: this.contractId, paymentMaintenanceId: this._id
         })
     }
 
@@ -162,15 +162,16 @@ insertTpl.events({
 
         }, 300);
     },
-    'change .officeId': function (e) {
+    'change .maintenanceId': function (e) {
         debugger;
 
 
         //let checkOM = Session.get('checkOfficeMaintenance');
         //if (checkOM == "office") {
         var thisObje = $(e.currentTarget);
-        var officeId = $(e.currentTarget).val();
-        if (officeId == '') {
+        var maintenanceId = $(e.currentTarget).val();
+        debugger;
+        if (maintenanceId == '') {
             thisObje.parents('div.item-list').find('.officeId').val('');
             thisObje.parents('div.item-list').find('.office').val('');
             thisObje.parents('div.item-list').find('.price').val('');
@@ -178,22 +179,22 @@ insertTpl.events({
             thisObje.parents('div.item-list').find('.dueAmount').val('');
 
         }
-
-        var office = Rabbit.Collection.Office.findOne({_id: officeId});
-        Rabbit.Collection.Office.find(officeId).forEach(function (obj) {
-            var payment = Rabbit.Collection.Payment.findOne({
-                    'office.officeId': obj._id
+        debugger;
+        var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
+        Rabbit.Collection.Maintenance.find(maintenanceId).forEach(function (obj) {
+            var paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({
+                    'maintenance.maintenanceId': obj._id
                 },
                 {
                     sort: {
                         _id: -1
                     }
                 });
-            console.log(payment);
+            console.log(paymentMaintenance);
             debugger;
-            if (payment != null) {
+            if (paymentMaintenance != null) {
                 debugger;
-                payment.office.forEach(function (payObj) {
+                paymentMaintenance.office.forEach(function (payObj) {
                     debugger;
                     if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
                         thisObje.parents('div.item-list').find('.office').val(payObj.office);
@@ -202,12 +203,12 @@ insertTpl.events({
                         thisObje.parents('div.item-list').find('.dueAmount').val(payObj.dueAmount);
                     }
                 })
-            } else if (payment == null) {
+            } else if (paymentMaintenance == null) {
                 debugger;
-                thisObje.parents('div.item-list').find('.office').val(office.type);
-                thisObje.parents('div.item-list').find('.price').val(office.price);
+                thisObje.parents('div.item-list').find('.office').val(maintenance.type);
+                thisObje.parents('div.item-list').find('.price').val(maintenance.price);
                 thisObje.parents('div.item-list').find('.paidAmount').val(0);
-                thisObje.parents('div.item-list').find('.dueAmount').val(office.price);
+                thisObje.parents('div.item-list').find('.dueAmount').val(maintenance.price);
             }
         });
         var num = 0;
@@ -229,7 +230,7 @@ insertTpl.events({
             }, 100);
             debugger;
         }
-        if (officeId) {
+        if (maintenanceId) {
             $('.btnAdd').removeAttr('disabled');
         } else {
             $('.btnAdd').attr('disabled', "disabled");
@@ -242,7 +243,7 @@ insertTpl.events({
         //    $('.officeId').val('');
         //    var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
         //    Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
-        //        var payment = Rabbit.Collection.Payment.findOne({
+        //        var paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({
         //                maintenanceId: obj._id
         //            },
         //            {
@@ -250,11 +251,11 @@ insertTpl.events({
         //                    _id: -1
         //                }
         //            });
-        //        if (payment != null && payment.price > 0) {
-        //            $('.price').val(payment.dueAmount);
-        //            $('.paidAmount').val(payment.dueAmount);
+        //        if (paymentMaintenance != null && paymentMaintenance.price > 0) {
+        //            $('.price').val(paymentMaintenance.dueAmount);
+        //            $('.paidAmount').val(paymentMaintenance.dueAmount);
         //            $('.dueAmount').val(0);
-        //        } else if (payment == null) {
+        //        } else if (paymentMaintenance == null) {
         //            $('.price').val(maintenance.price);
         //            $('.paidAmount').val(maintenance.price);
         //            $('.dueAmount').val(0);
@@ -331,7 +332,7 @@ updateTpl.events({
 
         var office = Rabbit.Collection.Office.findOne({_id: officeId});
         Rabbit.Collection.Office.find(officeId).forEach(function (obj) {
-            var payment = Rabbit.Collection.Payment.findOne({
+            var paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({
                     'office.officeId': obj._id
                 },
                 {
@@ -339,11 +340,11 @@ updateTpl.events({
                         _id: -1
                     }
                 });
-            console.log(payment);
+            console.log(paymentMaintenance);
             debugger;
-            if (payment != null) {
+            if (paymentMaintenance != null) {
                 debugger;
-                payment.office.forEach(function (payObj) {
+                paymentMaintenance.office.forEach(function (payObj) {
                     debugger;
                     if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
                         thisObje.parents('div.item-list').find('.office').val(payObj.office);
@@ -352,7 +353,7 @@ updateTpl.events({
                         thisObje.parents('div.item-list').find('.dueAmount').val(payObj.dueAmount);
                     }
                 })
-            } else if (payment == null) {
+            } else if (paymentMaintenance == null) {
                 debugger;
                 thisObje.parents('div.item-list').find('.office').val(office.type);
                 thisObje.parents('div.item-list').find('.price').val(office.price);
@@ -392,7 +393,7 @@ updateTpl.events({
         //    $('.officeId').val('');
         //    var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
         //    Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
-        //        var payment = Rabbit.Collection.Payment.findOne({
+        //        var paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({
         //                maintenanceId: obj._id
         //            },
         //            {
@@ -400,11 +401,11 @@ updateTpl.events({
         //                    _id: -1
         //                }
         //            });
-        //        if (payment != null && payment.price > 0) {
-        //            $('.price').val(payment.dueAmount);
-        //            $('.paidAmount').val(payment.dueAmount);
+        //        if (paymentMaintenance != null && paymentMaintenance.price > 0) {
+        //            $('.price').val(paymentMaintenance.dueAmount);
+        //            $('.paidAmount').val(paymentMaintenance.dueAmount);
         //            $('.dueAmount').val(0);
-        //        } else if (payment == null) {
+        //        } else if (paymentMaintenance == null) {
         //            $('.price').val(maintenance.price);
         //            $('.paidAmount').val(maintenance.price);
         //            $('.dueAmount').val(0);
@@ -418,7 +419,7 @@ updateTpl.events({
  * Update
  */
 updateTpl.onCreated(function () {
-    this.subscribe('rabbit_payment', this.data._id);
+    this.subscribe('rabbit_paymentMaintenance', this.data._id);
 });
 
 updateTpl.onRendered(function () {
@@ -428,8 +429,8 @@ updateTpl.onRendered(function () {
  * Hook
  */
 AutoForm.hooks({
-    // Payment
-    rabbit_paymentInsert: {
+    // PaymentMaintenance
+    rabbit_paymentMaintenanceInsert: {
         before: {
 
             insert: function (doc) {
@@ -440,16 +441,16 @@ AutoForm.hooks({
             }
         },
         onSuccess: function (formType, result) {
-            alertify.payment().close();
+            alertify.paymentMaintenance().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {
             alertify.error(error.message);
         }
     },
-    rabbit_paymentUpdate: {
+    rabbit_paymentMaintenanceUpdate: {
         onSuccess: function (formType, result) {
-            alertify.payment().close();
+            alertify.paymentMaintenance().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {
@@ -459,34 +460,34 @@ AutoForm.hooks({
 });
 var configOnRender = function () {
     // date
-    var dob = $('[name="paymentDate"]');
+    var dob = $('[name="paymentMaintenanceDate"]');
     DateTimePicker.date(dob);
 };
 
-function checkLastPayment(self) {
+function checkLastPaymentMaintenance(self) {
 
-    let payment = Rabbit.Collection.Payment.findOne({_id: self._id});
+    let paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({_id: self._id});
 
-    let checkingLastPaymentForOffice = Rabbit.Collection.Payment.findOne({officeId: payment.officeId}, {sort: {_id: -1}})._id;
+    let checkingLastPaymentMaintenanceForOffice = Rabbit.Collection.PaymentMaintenance.findOne({officeId: paymentMaintenance.officeId}, {sort: {_id: -1}})._id;
     debugger;
-    if (checkingLastPaymentForOffice == self._id) {
+    if (checkingLastPaymentMaintenanceForOffice == self._id) {
         debugger;
-        $('.updatePayment').show();
-        $('.removePayment').show();
+        $('.updatePaymentMaintenance').show();
+        $('.removePaymentMaintenance').show();
     } else {
         debugger;
-        $('.updatePayment').hide();
-        $('.removePayment').hide();
+        $('.updatePaymentMaintenance').hide();
+        $('.removePaymentMaintenance').hide();
     }
-    let checkingLastPaymentForMaintenance = Rabbit.Collection.Payment.findOne({maintenanceId: payment.maintenanceId}, {sort: {_id: -1}})._id;
+    let checkingLastPaymentMaintenanceForMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({maintenanceId: paymentMaintenance.maintenanceId}, {sort: {_id: -1}})._id;
 
-    if (checkingLastPaymentForMaintenance == self._id) {
+    if (checkingLastPaymentMaintenanceForMaintenance == self._id) {
 
-        $('.updatePayment').show();
-        $('.removePayment').show();
+        $('.updatePaymentMaintenance').show();
+        $('.removePaymentMaintenance').show();
     } else {
-        $('.updatePayment').hide();
-        $('.removePayment').hide();
+        $('.updatePaymentMaintenance').hide();
+        $('.removePaymentMaintenance').hide();
     }
 
 }

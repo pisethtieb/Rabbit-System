@@ -77,6 +77,11 @@ indexTpl.events({
             customerId: this.customerId, contractId: this._id
 
         });
+    },'click .paymentMaintenanceAction': function () {
+        FlowRouter.go('rabbit.paymentMaintenance', {
+            customerId: this.customerId, contractId: this._id
+
+        });
     }
     //'dblclick tbody > tr': function (event) {
     //    var dataTable = $(event.target)

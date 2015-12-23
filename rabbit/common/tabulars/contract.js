@@ -32,6 +32,10 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
             data: "_paymentCount",
             title: "P <i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_paymentLinkAction
+        }, {
+            data: "_paymentMaintenanceCount",
+            title: "P <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_paymentMaintenanceLinkAction
         }
         //,
         //{
@@ -40,5 +44,5 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
         //    tmpl: Meteor.isClient && Template.rabbit_paymentLinkAction
         //}
     ],
-    extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile','contractorId']
+    extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId']
 });

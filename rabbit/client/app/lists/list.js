@@ -164,6 +164,56 @@ Rabbit.List = {
         //}
 
 
+    },
+    paymentMaintenance: function () {
+
+        var list = [];
+
+
+        var contractId = FlowRouter.getParam("contractId");
+        debugger;
+        //var checkOM = Session.get('checkOfficeMaintenance');
+        //
+        //if (checkOM == "office") {
+        //var patientId = Labo.ListForSale.get('patientId');
+
+        Rabbit.Collection.Maintenance.find({'_office.contractId': contractId}).forEach(function (obj) {
+
+                var payment = Rabbit.Collection.PaymentMaintenance.findOne({
+                    'maintenance.maintenanceId': obj._id
+                }, {
+                    sort: {
+                        _id: -1
+                    }
+                });
+                debugger;
+                if (payment != null) {
+                    payment.maintenance.forEach(function (payObj) {
+                        debugger;
+                        if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
+                            console.log(payObj.officeId);
+
+                            list.push({
+                                    label: "Name : " + obj.name + " (" + obj.type + ")" + " | " + " Prices: " + payObj.dueAmount,
+                                    value: payObj.officeId
+                                }
+                            )
+                            ;
+                        }
+                    });
+                }
+
+                else if (payment == null) {
+                    list.push({
+                        label: "Name : " + obj._office.name + " (" + obj.type + ") " + " | " + "Price: " + obj.price,
+                        value: obj._id
+                    });
+                }
+
+            }
+        )
+        ;
+        return list;
     }
 }
 ;

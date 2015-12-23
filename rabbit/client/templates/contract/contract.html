@@ -25,7 +25,7 @@
         <b>
             <li role="separator" class="divider"></li>
         </b>
-        <li><a href="/rabbit/contract/printContract/{{this._id}}" target="_blank">{{fa "print"}} Invoice</a></li>
+        <li><a href="/rabbit/contract/printContract/{{this._id}}" target="_blank">{{fa "print"}} Print Contract</a></li>
 
     {{/tabularAction}}
 </template>
@@ -173,6 +173,15 @@
     <button type="button" class="btn btn-primary btn-sm paymentAction">
         {{#if _paymentCount}}
             {{_paymentCount}}
+        {{else}}
+            0
+        {{/if}}
+    </button>
+</template>
+<template name="rabbit_paymentMaintenanceLinkAction">
+    <button type="button" class="btn btn-primary btn-sm paymentMaintenanceAction">
+        {{#if _paymentMaintenanceCount}}
+            {{_paymentMaintenanceCount}}
         {{else}}
             0
         {{/if}}
