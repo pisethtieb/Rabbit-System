@@ -194,10 +194,10 @@ insertTpl.events({
             debugger;
             if (paymentMaintenance != null) {
                 debugger;
-                paymentMaintenance.office.forEach(function (payObj) {
+                paymentMaintenance.maintenance.forEach(function (payObj) {
                     debugger;
-                    if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
-                        thisObje.parents('div.item-list').find('.office').val(payObj.office);
+                    if (obj._id == payObj.maintenanceId && payObj.dueAmount > 0) {
+                        thisObje.parents('div.item-list').find('.maintenance').val(maintenance.type);
                         thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
                         thisObje.parents('div.item-list').find('.paidAmount').val(0);
                         thisObje.parents('div.item-list').find('.dueAmount').val(payObj.dueAmount);
@@ -205,7 +205,7 @@ insertTpl.events({
                 })
             } else if (paymentMaintenance == null) {
                 debugger;
-                thisObje.parents('div.item-list').find('.office').val(maintenance.type);
+                thisObje.parents('div.item-list').find('.maintenance').val(maintenance.type);
                 thisObje.parents('div.item-list').find('.price').val(maintenance.price);
                 thisObje.parents('div.item-list').find('.paidAmount').val(0);
                 thisObje.parents('div.item-list').find('.dueAmount').val(maintenance.price);

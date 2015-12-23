@@ -68,16 +68,13 @@ indexTpl.events({
             customerId: this._id
         })
 
+    },
+    'click .quotationAction': function () {
+        FlowRouter.go('rabbit.quotation', {
+            customerId: this._id
+        })
+
     }
-    //'dblclick tbody > tr': function (event) {
-    //    var dataTable = $(event.target)
-    //        .closest('table')
-    //        .DataTable();
-    //    var rowData = dataTable.row(event.currentTarget)
-    //        .data();
-    //
-    //    FlowRouter.go('rabbit.order', {customerId: rowData._id});
-    //}
 });
 
 /**

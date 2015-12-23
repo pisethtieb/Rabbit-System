@@ -13,7 +13,13 @@ Rabbit.Schema.Quotation = new SimpleSchema({
     },
     customerId: {
         type: String,
-        label: 'Customer Id'
+        label: 'Customer Id',
+        autoform: {
+            type: 'select2',
+            options(){
+                return Rabbit.List.customer();
+            }
+        }
     },
     productId: {
         type: String,
@@ -58,43 +64,7 @@ Rabbit.Schema.Quotation = new SimpleSchema({
         type: Number,
         decimal: true
     },
-    paymentMethod: {
-        type: String,
-        label: "Payment Method"
-        //,
-        //autoform: {
-        //    type: 'select2',
-        //    options(){
-        //        return Rabbit.List.paymentMethod();
-        //    }
-        //}
-    },
-    //paymentMethod: {
-    //    type: Array,
-    //    minCount: 1,
-    //    maxCount: 1
-    //},
-    type: {
-        type: String,
-        label: 'type',
-        autoform: {
-            type: 'select2',
-            options(){
-                return Rabbit.List.quotationType();
-            }
-        }
-    },
-    testing: {
-        type: String,
-        label: "Testing Duration",
-        optional: true
-    },
-    maintenanceFee: {
-        type: String,
-        label: "MaintenanceFee"
-        //example
-        //" 1 year,one month"
-    },
+
     branchId: {
         type: String,
         label: "Branch"
@@ -108,28 +78,9 @@ Rabbit.Schema.Quotation = new SimpleSchema({
                 type: "textarea"
             }
         }
-    },
-    addFile: {
-        type: String,
-        autoform: {
-            afFieldInput: {
-                type: 'fileUpload',
-                collection: 'Files',
-                accept: 'image/*'
-            }
-        },
-        optional: true
-    },
-    contractorId: {
-        type: String,
-        label: "quotationId",
-        autoform: {
-            type: 'select2',
-            options(){
-                return Rabbit.List.contractors();
-            }
-        }
     }
+
+
 })
 ;
 // Attach schema

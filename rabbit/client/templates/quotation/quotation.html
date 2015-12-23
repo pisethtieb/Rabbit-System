@@ -25,7 +25,8 @@
         <b>
             <li role="separator" class="divider"></li>
         </b>
-        <li><a href="/rabbit/quotation/printQuotation/{{this._id}}" target="_blank">{{fa "print"}} Print Quotation</a></li>
+        <li><a href="/rabbit/quotation/printQuotation/{{this._id}}" target="_blank">{{fa "print"}} Print Quotation</a>
+        </li>
 
     {{/tabularAction}}
 </template>
@@ -35,29 +36,16 @@
     {{#autoForm collection=Rabbit.Collection.Quotation id="rabbit_quotationInsert" type="insert"}}
         <div class="row">
             <div class="col-md-6">
-                {{> afQuickField name="customerId"  readOnly=true value=customerId}}
+                {{> afQuickField name="customerId"}}
                 {{> afQuickField name="quotationDate"}}
             </div>
             <div class="col-md-6">
-                {{> afQuickField name="quotationorId"}}
                 {{> afQuickField name="productId" class='productId'}}
+                {{> afQuickField name="des"}}
             </div>
             <div class="col-md-12">
                 {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
                 {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
-            </div>
-            <div class="col-md-6">
-                {{> afQuickField name="paymentMethod"}}
-                {{> afQuickField name="type" class='type'}}
-                <div class="testing">
-                    {{> afQuickField name="testing"}}
-                </div>
-            </div>
-            <div class="col-md-6">
-
-
-                {{> afQuickField name="maintenanceFee"}}
-                {{> afQuickField name="des"}}
             </div>
         </div>
         <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -65,10 +53,7 @@
 
     {{/autoForm}}
 </template>
-<template name="rabbit_addOffice">
-    <button id="addOffice" class="btn btn-default">Add Office</button>
-    <button id="addBranch" class="btn btn-default">Add Branch</button>
-</template>
+
 <!--Update-->
 <template name="rabbit_quotationUpdate">
     <!--Built-in template sub ready by all-->
@@ -157,33 +142,4 @@
     <div class="col-sm-6">
         {{> afQuickField name=current.branch id='MaintenaceBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
     </div>
-</template>
-
-<template name="rabbit_officeLinkAction">
-    <button type="button" class="btn btn-primary btn-sm officeAction">
-        {{#if _officeCount}}
-            {{_officeCount}}
-        {{else}}
-            0
-        {{/if}}
-    </button>
-</template>
-
-<template name="rabbit_paymentLinkAction">
-    <button type="button" class="btn btn-primary btn-sm paymentAction">
-        {{#if _paymentCount}}
-            {{_paymentCount}}
-        {{else}}
-            0
-        {{/if}}
-    </button>
-</template>
-<template name="rabbit_paymentMaintenanceLinkAction">
-    <button type="button" class="btn btn-primary btn-sm paymentMaintenanceAction">
-        {{#if _paymentMaintenanceCount}}
-            {{_paymentMaintenanceCount}}
-        {{else}}
-            0
-        {{/if}}
-    </button>
 </template>

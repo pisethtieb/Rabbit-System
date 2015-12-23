@@ -190,12 +190,11 @@ Rabbit.List = {
                 if (payment != null) {
                     payment.maintenance.forEach(function (payObj) {
                         debugger;
-                        if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
-                            console.log(payObj.officeId);
+                        if (obj._id == payObj.maintenanceId && payObj.dueAmount > 0) {
 
                             list.push({
-                                    label: "Name : " + obj.name + " (" + obj.type + ")" + " | " + " Prices: " + payObj.dueAmount,
-                                    value: payObj.officeId
+                                    label: "Name : " + obj._office.name + " (" + obj.type + ")" + " | " + " Prices: " + payObj.dueAmount,
+                                    value: payObj.maintenanceId
                                 }
                             )
                             ;

@@ -115,7 +115,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
             afFieldInput: {
                 type: 'fileUpload',
                 collection: 'Files',
-                accept: 'image/*'
+                accept: 'all/*'
             }
         },
         optional: true

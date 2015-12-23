@@ -22,7 +22,7 @@ Rabbit.Schema.Customer = new SimpleSchema({
         label: 'Dob'
     },
     id: {
-        type: Number,
+        type: String,
         label: 'ID'
     },
     position: {

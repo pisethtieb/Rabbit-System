@@ -29,11 +29,14 @@ Meteor.methods({
         let i = 1;
         payment.maintenance.forEach(function (obj) {
 
-            //let office = Rabbit.Collection.Office.findOne(obj.officeId);
+            let maintenance = Rabbit.Collection.Maintenance.findOne(obj.maintenanceId);
             obj.index = i;
-            obj.priceOffice = obj.price;
-            //obj.sumAmount = office.price - obj.dueAmount;
-            //obj.officeName = office.name;
+            obj.priceOffice = maintenance.price;
+
+            obj.sumAmount = maintenance.price - obj.dueAmount;
+            obj.type = maintenance.type;
+            obj.officeName = maintenance._office.name;
+
             data.content.push(obj);
             i++;
 

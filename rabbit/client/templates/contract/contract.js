@@ -21,6 +21,7 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["contract"], {size: 'lg'});
+    createNewAlertify(["addFile"]);
     createNewAlertify(["contractShow"]);
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
@@ -77,11 +78,14 @@ indexTpl.events({
             customerId: this.customerId, contractId: this._id
 
         });
-    },'click .paymentMaintenanceAction': function () {
+    },
+    'click .paymentMaintenanceAction': function () {
         FlowRouter.go('rabbit.paymentMaintenance', {
             customerId: this.customerId, contractId: this._id
 
         });
+    }, 'click .addFile': function () {
+        alertify.addFile(fa("pencil", "Contract"), renderTemplate(Template.rabbit_UpdateAddFile, this)).minimize()
     }
     //'dblclick tbody > tr': function (event) {
     //    var dataTable = $(event.target)
@@ -265,12 +269,14 @@ AutoForm.hooks({
     rabbit_contractUpdate: {
         onSuccess: function (formType, result) {
             alertify.contract().close();
+            alertify.addFile().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {
             alertify.error(error.message);
         }
     }
+
 });
 // Config date picker
 var configOnRender = function () {

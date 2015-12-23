@@ -1,6 +1,6 @@
 var subs = new SubsManager();
 
-rabbitRoutes.route('/quotation/:customerId', {
+rabbitRoutes.route('/quotation', {
     name: 'rabbit.quotation',
     subscriptions: function (params, queryParams) {
         // Customer
@@ -14,6 +14,6 @@ rabbitRoutes.route('/quotation/:customerId', {
         params: ['customerId'],
         //queryParams: ['show', 'color'],
         title: 'quotation',
-        parent: 'rabbit.customer'
+        parent: 'rabbit.home'
     }
 });
