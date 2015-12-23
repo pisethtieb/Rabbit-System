@@ -5,7 +5,7 @@ rabbitRoutes.route('/contract/:customerId', {
     subscriptions: function (params, queryParams) {
         // Customer
         this.register('rabbit_customer', subs.subscribe('rabbit_customer', Session.get('currentBranch')));
-        this.register('rabbit_contractor', subs.subscribe('rabbit_contractor', Session.get('currentBranch')));
+        this.register('rabbit_contractor', subs.subscribe('rabbit_contractor'));
     },
     action: function (params, queryParams) {
         Layout.main('rabbit_contract');

@@ -43,7 +43,7 @@ Rabbit.List = {
 
         return list;
     },
-    contractor: function () {
+    contractors: function () {
         var list = [];
         list.push({label: "(Select One)", value: ""});
 

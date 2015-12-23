@@ -40,5 +40,5 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
         //    tmpl: Meteor.isClient && Template.rabbit_paymentLinkAction
         //}
     ],
-    extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile']
+    extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile','contractorId']
 });

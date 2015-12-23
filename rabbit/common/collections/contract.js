@@ -120,13 +120,13 @@ Rabbit.Schema.Contract = new SimpleSchema({
         },
         optional: true
     },
-    contractId: {
+    contractorId: {
         type: String,
         label: "ContractorId",
         autoform: {
             type: 'select2',
             options(){
-                return Rabbit.List.contractor();
+                return Rabbit.List.contractors();
             }
         }
     }

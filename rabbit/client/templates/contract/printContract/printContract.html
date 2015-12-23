@@ -23,10 +23,10 @@
                 <div class='col-md-12' style="padding: 20px;">
                     <p style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;text-align: justify">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;កិច្ចសន្យានេះធ្វើឡើងរវាងលោក<b
-                            style="font-family:Khmer Os Muol Light">​​​​ យួម ធារ៉ា</b> អាយុ <b
-                            style="font-family:Khmer Viravuth"> ៣៣</b> ឆ្នាំ
-                        កាន់អត្តសញ្ញាណប័ណ្ណលេខ <b style="font-family:Khmer Viravuth">១៧០៤០៦៣០៤</b> មុខងារជា <b
-                            style="font-family:Khmer Viravuth">នាយក</b>
+                            style="font-family:Khmer Os Muol Light">​​​​ {{contractor.name}} </b> អាយុ <b
+                            style="font-family:Khmer Viravuth"> {{contractor.age}}</b> ឆ្នាំ
+                        កាន់អត្តសញ្ញាណប័ណ្ណលេខ <b style="font-family:Khmer Viravuth">{{contractor.id}}</b> មុខងារជា <b
+                            style="font-family:Khmer Viravuth">{{contractor.position}}</b>
                         ដែលតំណាងឱ្យ <b style="font-family:Khmer Viravuth">មជ្ឈមណ្ឌលបណ្តុះបណ្តាល
                         រ៉ាប៊ីត </b>
                         ដែលហៅកាត់ថាភាគី <b style="font-family:Khmer Viravuth">”ក”</b> (អ្នកលក់) ជាមួយលោក
@@ -40,32 +40,38 @@
                         (អ្នកទិញ)</b>។
                     </p>
 
+                    <p align="center" style="font-family: khmer os battambang;font-size: 13px; line-height: 9px;">
+                        ភាគីទាំងពីរបានព្រមព្រៀងចុះកិច្ចសន្យា
+                        តាមខ្លឹមសារដែលមានចែងដូចខាងក្រោម៖</p>
+
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        ភាគីទាំងពីរបានព្រមព្រៀងចុះកិច្ចសន្យា តាមខ្លឹមសារដែលមានចែងដូចខាងក្រោម៖<br>
-                        <b style="font-family:Khmer Viravuth"> ប្រការ១</b> ភាគី <b style="font-family:Khmer Viravuth">”ក”</b>
+                        <b style="font-family:Khmer Viravuth"><u> ប្រការ១</u></b> ភាគី <b
+                            style="font-family:Khmer Viravuth">”ក”</b>
                         យល់ព្រមលក់ ប្រព័ន្ធគ្រប់គ្រង <b style="font-family:Khmer Viravuth">{{product.name}}</b>
                         ឱ្យទៅភាគី <b style="font-family:Khmer Viravuth">”ខ”</b>
                         ក្នុងតម្លៃ <b style="font-family:Khmer Viravuth"> {{product.priceHead}}
                         USD
-                        ({{product.priceHeadKh}}ដុល្លារអាមេរិក)</b> ដើម្បីប្រើប្រាស់ក្នុងពេទ្យធ្មេញរបស់ខ្លួន ដែលមានអាសយដ្ឋាន ក្រុង
+                        ({{product.priceHeadKh}}ដុល្លារអាមេរិក)</b> ដើម្បីប្រើប្រាស់ក្នុងពេទ្យធ្មេញរបស់ខ្លួន
+                        ដែលមានអាសយដ្ឋាន ក្រុង
                         ប៉ោយប៉ែត
                         ខេត្តបន្ទាយមានជ័យ (ការិយាល័យកណ្តាល)។
                     </p>
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth"> ប្រការ២ </b>ក្នុងករណីភាគី <b
+                        <b style="font-family:Khmer Viravuth"><u>ប្រការ២ </u> </b>ក្នុងករណីភាគី <b
                             style="font-family:Khmer Viravuth">”ខ”</b> ចង់បង្កើតសាខាថ្មីនៅលើប្រព័ន្ធ
                         ដើម្បីប្រើប្រាស់បន្ថែម ភាគី <b style="font-family:Khmer Viravuth">”ខ”</b> ត្រូវបង់
                         ប្រាក់ចំនួន <b style="font-family:Khmer Viravuth">{{product.priceOffice}}  USD
-                        ({{product.priceOfficeKh}}ដុល្លារអាមេរិក)</b> ឱ្យទៅភាគី <b style="font-family:Khmer Viravuth">”ក”</b> ក្នុងមួយសាខា។
+                        ({{product.priceOfficeKh}}ដុល្លារអាមេរិក)</b> ឱ្យទៅភាគី <b style="font-family:Khmer Viravuth">”ក”</b>
+                        ក្នុងមួយសាខា។
                     </p>
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth"> ប្រការ៣ </b> ភាគី <b style="font-family:Khmer Viravuth">”ខ”</b>
+                        <b style="font-family:Khmer Viravuth"> <U>ប្រការ៣</U> </b> ភាគី <b
+                            style="font-family:Khmer Viravuth">”ខ”</b>
                         ត្រូវបង់ប្រាក់ លើការអភិវឌ្ឍន៍ប្រព័ន្ធជា <b style="font-family:Khmer Viravuth">៣ លើក</b> គឺ៖<br>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b
                             style="font-family:Khmer Viravuth">- លើកទី១</b>
@@ -84,7 +90,8 @@
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth"> ប្រការ៤ </b> ភាគី <b style="font-family:Khmer Viravuth">”ក”</b>
+                        <b style="font-family:Khmer Viravuth"><u>ប្រការ៤</u> </b> ភាគី <b
+                            style="font-family:Khmer Viravuth">”ក”</b>
                         ត្រូវប្រគ្រល់ប្រាក់ទាំងអស់ដែលទទួលបាន ឱ្យទៅភាគី<b style="font-family:Khmer Viravuth"> ”ខ” </b>
                         វិញក្នុងករណីភាគី <b style="font-family:Khmer Viravuth">”ក”</b>
                         បរាជ័យក្នុងការអភិវឌ្ឍន៍ ឬកែរាល់កំហុសផ្សេងៗដែលកើតមាន ក្នុងកំឡុងពេលប្រើប្រាស់សាកល្បង។
@@ -92,15 +99,17 @@
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth"> ប្រការ៥</b> ភាគី <b style="font-family:Khmer Viravuth">”ខ”</b>
+                        <b style="font-family:Khmer Viravuth"><u>ប្រការ៥</u> </b> ភាគី <b
+                            style="font-family:Khmer Viravuth">”ខ”</b>
                         ត្រូវបន្តកិច្ចសន្យាក្នុងការថែទាំប្រព័ន្ធជាមួយភាគី <b style="font-family:Khmer Viravuth">”ក”</b>
                         ដោយការិយាល័យកណ្តាល
                         ត្រូវបង់ប្រាក់សេវាចំនួន <b style="font-family:Khmer Viravuth">{{product.maintenancePriceHead}}
                         USD ({{product.maintenancePriceHeadKh}}ដុល្លារអាមេរិក)</b>
                         និងសាខាត្រូវបង់ <b style="font-family:Khmer Viravuth">{{product.maintenancePriceBrand}} USD
-                        ({{product.maintenancePriceBrandKh}}ដុល្លារអាមេរិក)</b> ក្នុងមួយសាខា (ក្នុងមួយឆ្នាំ)។ កិច្ចសន្យាថែទាំប្រព័ន្ធនេះ
+                        ({{product.maintenancePriceBrandKh}}ដុល្លារអាមេរិក)</b> ក្នុងមួយសាខា (ក្នុងមួយឆ្នាំ)។
+                        កិច្ចសន្យាថែទាំប្រព័ន្ធនេះ
                         ត្រូវធ្វើឡើងរៀងរាល់
-                        មួយឆ្នាំម្តង។<b style="font-family:Khmer Viravuth"> បញ្ជាក់៖</b> ភាគី <b
+                        មួយឆ្នាំម្តង។<b style="font-family:Khmer Viravuth"><u>បញ្ជាក់៖ </u></b> ភាគី <b
                             style="font-family:Khmer Viravuth">”ខ”</b> នឹងទទួលបាននូវសេវាថែទាំដោយឥតគិតថ្លៃ
                         ដូចជាការធ្វើបច្ចុប្បន្នភាព
                         ជាប្រចាំលើប្រព័ន្ធចាស់ (Update) និងដំណោះស្រាយផ្សេងៗសម្រាប់គ្រប់សាខា តាមរយៈទូរស័ព្ទ អ៊ីម៉ែល
@@ -110,14 +119,15 @@
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth"> ប្រការ៦</b> ភាគី <b style="font-family:Khmer Viravuth">”ខ”</b>
+                        <b style="font-family:Khmer Viravuth"><u>ប្រការ៦</u> </b> ភាគី <b
+                            style="font-family:Khmer Viravuth">”ខ”</b>
                         ត្រូវទទួលបាននូវការតម្លើង បណ្តុះបណ្តាល (សម្រាប់លើកដំបូង) និងការប្រើប្រាស់
                         ប្រព័ន្ធសាកល្បងរយៈពេលមួយខែ ព្រមទាំងការថែទាំរយៈពេលបីខែ ដោយឥតគិតថ្លៃ។
                     </p>
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth">ប្រការ៧</b> ភាគី <b
+                        <b style="font-family:Khmer Viravuth"><u>ប្រការ៧</u></b> ភាគី <b
                             style="font-family:Khmer Viravuth">”ខ”</b> មានសិទ្ធិស្នើរឱ្យភាគី <b
                             style="font-family:Khmer Viravuth">”ក”</b> អភិវឌ្ឍលើចំនុចថ្មីៗបន្ថែម តាមរយៈការចរចារគ្នាជាក់
                         ស្តែង
@@ -125,20 +135,22 @@
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth"> ប្រការ៨ </b> ភាគី <b style="font-family:Khmer Viravuth">”ខ”</b>
+                        <b style="font-family:Khmer Viravuth"><u>ប្រការ៨</u> </b> ភាគី <b
+                            style="font-family:Khmer Viravuth">”ខ”</b>
                         មិនត្រូវបានអនុញ្ញាតឱ្យចែកចាយ ឬលក់ប្រព័ន្ធនេះបន្តឱ្យទៅស្ថាប័នផ្សេង ទៀត ឡើយ។
                     </p>
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth"> ប្រការ៩</b> ភាគី <b style="font-family:Khmer Viravuth">”ខ”</b>
+                        <b style="font-family:Khmer Viravuth"><u>ប្រការ៩</u> </b> ភាគី <b
+                            style="font-family:Khmer Viravuth">”ខ”</b>
                         ត្រូវទទួលខុសត្រូវចំពោះបញ្ហាផ្សេងៗ ដែលបង្កឡើងដោយភាគី ”ខ” ខ្លួនឯងមាន ដូចជា
                         ការបញ្ចូលព័ត៌មានខុសបច្ចេកទេស ការខូចម៉ាស៊ីនកុំព្យូទ័រ ឬមានមេរោគជាដើម។ល។
                     </p>
 
                     <p align="justify" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
-                        <b style="font-family:Khmer Viravuth"> ប្រការ១០</b> កិច្ចសន្យានេះមានពីរទំព័រ
+                        <b style="font-family:Khmer Viravuth"><u>ប្រការ១០</u> </b> កិច្ចសន្យានេះមានពីរទំព័រ
                         និងធ្វើឡើងចំនួនពីរច្បាប់ដើមសម្រាប់ភាគី <b style="font-family:Khmer Viravuth">”ក”</b> មួយច្បាប់
                         និង
                         សម្រាប់ភាគី <b style="font-family:Khmer Viravuth">”ខ”</b> មួយច្បាប់។
@@ -159,6 +171,15 @@
                         បាត់ដំបង, ថ្ងៃទី........... ខែ................ ឆ្នាំ២០១៥
                     </p>
 
+                    <!--<div class="row">-->
+                        <!--<div class="col-md-6" align="center">-->
+                            <!--<b style="font-family:Khmer Viravuth"> ហត្ថលេខាភាគី ”ខ” </b>-->
+                        <!--</div>-->
+                        <!--<div class="col-md-6" align="center">-->
+                            <!--<b style="font-family:Khmer Viravuth"> ហត្ថលេខាភាគី ”ខ” </b>-->
+                        <!--</div>-->
+                    <!--</div>-->
+
                     <p align="center" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
 
                         <b style="font-family:Khmer Viravuth"> ហត្ថលេខាភាគី ”ខ” </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -169,11 +190,10 @@
                     </p> <br><br><br><br><br><br><br><br><br>
 
                     <p align="center" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-
                         <b style="font-family:Khmer Viravuth"> សាក្សីភាគី ”ខ” </b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-family:Khmer Viravuth"> សាក្សីភាគី
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b style="font-family:Khmer Viravuth"> សាក្សីភាគី
                         ”ក” </b>
                     </p>
                 </div>

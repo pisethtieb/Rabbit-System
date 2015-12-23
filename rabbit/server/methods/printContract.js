@@ -15,7 +15,7 @@ Meteor.methods({
         //data.title = Cpanel.Collection.Company.findOne();
         let contract = Rabbit.Collection.Contract.findOne(contractId);
         /****** Header *****/
-            //data.header = params;
+        //data.header = params;
 
         var a = ['', 'មួយ ', 'ពីរ', 'បី', 'បួន ', 'ប្រាំ ', 'ប្រាំមួយ ', 'ប្រាំពីរ', 'ប្រាំបី ', 'ប្រាំបួន '];
 //, 'eleven ', 'twelve ', 'thirteen ', 'fourteen ', 'fifteen ', 'sixteen ', 'seventeen ', 'eighteen ', 'nineteen '];
@@ -35,12 +35,15 @@ Meteor.methods({
             return str;
         }
 
+        data.contractor = contract._contractor;
+        data.contractor.age = moment().diff(contract._contractor.dob, 'years');
+
         data.product = contract._product;
 
         data.product.priceHeadKh = toWords(contract.basePrice[0].headOffice);
         data.product.priceOfficeKh = toWords(contract.basePrice[0].branch);
-        data.product.maintenancePriceHeadKh =toWords( contract.maintenancePrice[0].headOffice);
-        data.product.maintenancePriceBrandKh = toWords( contract.maintenancePrice[0].branch);
+        data.product.maintenancePriceHeadKh = toWords(contract.maintenancePrice[0].headOffice);
+        data.product.maintenancePriceBrandKh = toWords(contract.maintenancePrice[0].branch);
 
 
         data.product.priceHead = contract.basePrice[0].headOffice;
