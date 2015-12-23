@@ -61,29 +61,16 @@
         {{#autoForm collection=Rabbit.Collection.Quotation id="rabbit_quotationUpdate" doc=this type="update"}}
             <div class="row">
                 <div class="col-md-6">
-                    {{> afQuickField name="customerId"  readOnly=true value=customerId}}
+                    {{> afQuickField name="customerId"}}
                     {{> afQuickField name="quotationDate"}}
                 </div>
                 <div class="col-md-6">
-                    {{> afQuickField name="quotationorId"}}
                     {{> afQuickField name="productId" class='productId'}}
+                    {{> afQuickField name="des"}}
                 </div>
                 <div class="col-md-12">
                     {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
                     {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
-                </div>
-                <div class="col-md-6">
-                    {{> afQuickField name="paymentMethod"}}
-                    {{> afQuickField name="type" class='type'}}
-                    <div class="testing">
-                        {{> afQuickField name="testing"}}
-                    </div>
-                </div>
-                <div class="col-md-6">
-
-
-                    {{> afQuickField name="maintenanceFee"}}
-                    {{> afQuickField name="des"}}
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -114,8 +101,6 @@
                 <dd>{{base}}</dd>
                 <dt>Maintenance Price:</dt>
                 <dd>{{maintenance}}</dd>
-                <dt>Type:</dt>
-                <dd>{{type}}</dd>
                 <dt>maintenanceFee:</dt>
                 <dd>{{maintenanceFee}}</dd>
                 <dt>Des:</dt>

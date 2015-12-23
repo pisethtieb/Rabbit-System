@@ -9,11 +9,11 @@ Rabbit.TabularTable.Quotation = new Tabular.Table({
     ],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_QuotationAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_quotationAction},
         {data: "_id", title: "ID"},
         {data: "_customer.companyName", title: "Customer"},
         {
-            data: "QuotationDate", title: "Quotation Date",
+            data: "quotationDate", title: "Quotation Date",
             render: function (val, type, doc) {
                 return moment(val).format('YYYY-MM-DD');
             }
@@ -21,5 +21,5 @@ Rabbit.TabularTable.Quotation = new Tabular.Table({
         {data: "productId", title: "Product ID"}
 
     ],
-    extraFields: ['customerId', 'QuotationDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId']
+    extraFields: ['customerId', 'quotationDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId']
 });
