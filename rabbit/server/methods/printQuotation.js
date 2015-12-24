@@ -16,6 +16,12 @@ Meteor.methods({
         let quotation = Rabbit.Collection.Quotation.findOne(quotationId);
         data.product = quotation._product;
         data.customer = quotation._customer;
+        data.contractor = quotation._contractor;
+        data.product.priceHead = quotation.basePrice[0].headOffice;
+        data.product.priceBrand = quotation.basePrice[0].branch;
+        data.product.maintenancePriceHead = quotation.maintenancePrice[0].headOffice;
+        data.product.maintenancePriceBrand = quotation.maintenancePrice[0].branch;
+
 
 
         ///****** Header *****/

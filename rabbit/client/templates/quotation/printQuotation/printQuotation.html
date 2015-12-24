@@ -1,0 +1,139 @@
+<template name='rabbit_printQuotation'>
+    {{#if data}}
+        {{#reportTpl options}}
+            {{#with data}}
+                {{#with title}}
+                    <div class="title">
+                        <table class="report-title">
+                            <tr>
+                                <td class="quotation">
+                                    <img src="/rabbit1.png">
+                                </td>
+                                <td>
+                                    <div class="header-style">
+                                        <span class="report-company-name"
+                                              style="font-family: 'Khmer OS Muol">{{khName}}</span>
+                                        <br>
+                                        <span class="report-company-name">{{enName}}</span>
+                                        <br>
+                                        <span class="report-company-name"
+                                              style="font-family: 'Khmer OS battambang">{{khAddress}}</span>
+                                        <br>
+                                       <span class="report-company-name"
+                                             style="font-family: 'Khmer OS battambang"><i
+                                               class="fa fa-phone"> {{telephone}}</i></span>
+                                        <br>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {{/with}}
+
+                <div align="center">
+                     <span class="report-company-name"
+                           style="font-family: 'Khmer OS Muol">{{product.name}}</span>
+                    <br>
+                    <span class="report-company-name"
+                          style="font-family: 'Khmer OS Muol"><u>ការចំណាយ និងសេវាផ្សេងៗ</u></span>
+                </div>
+                <div class='col-md-12' style="padding: 20px;">
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - តម្លៃ <b style="font-family:Khmer Viravuth">{{product.priceHead}}USD</b> (ការិយាល័យកណ្តាល
+                        តែមួយគត់)។
+
+                    </p>
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - កំរ៉ៃសេវាថែទាំសំរាប់ការិយាល័យកណ្តាល <b
+                            style="font-family:Khmer Viravuth">{{product.maintenancePriceHead}}USD</b> ក្នុងមួយឆ្នាំ
+
+                    </p>
+
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - បើកសាខាថ្មី <b style="font-family:Khmer Viravuth">{{product.priceBrand}} USD</b> ក្នុងមួយសាខាាំ
+
+                    </p>
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - កំរ៉ៃសេវាថែទាំសំរាប់សាខាបើកថ្មី <b
+                            style="font-family:Khmer Viravuth">{{product.maintenancePriceBrand}} USD</b> ក្នុងមួយសាខា
+                    </p>
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - ឥតគិតថ្លៃសេវា ក្នុងការតំឡើង និងការណែនាំប្រើប្រាស់ប្រព័ន្ធ
+                    </p>
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - ឥតគិតថ្លៃសេវា ក្នុងការប្រើប្រាស់សាកល្បងមួយខែ និងថែទាំប្រព័ន្ធរយៈពេលបីខែ </p>
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - ការបង់ប្រាក់៖ </p>
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <b
+                            style="font-family:Khmer Viravuth">40%</b>
+                        នៅពេលចុះកិច្ចសន្យាដំបូង</p>
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <b
+                            style="font-family:Khmer Viravuth">30%</b>
+                        នៅពេលដាក់ឱ្យប្រើប្រាស់សាកល្បងូង</p>
+
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <b
+                            style="font-family:Khmer Viravuth">30%</b>
+                        បញ្ចប់នៅពេលដាក់ឱ្យប្រើប្រាស់ផ្លូវការងូង</p>
+
+                    <p style="font-family: khmer os battambang;font-size: 13px; line-height: 27px; text-align:right">
+                        បាត់ដំបង, ថ្ងៃទី........... ខែ................ ឆ្នាំ២០១៥&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+
+                    <p style="font-family: khmer os battambang;font-size: 13px; line-height: 27px; text-align:right">
+                        <b style="font-family:Khmer Viravuth"> រៀបចំដោយ</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+                    <br>
+                    <br>
+                    <br>
+
+                    <p style="font-family: khmer os Muol;font-size: 13px; line-height: 27px; text-align:right">
+                        {{contractor.name}}
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
+
+                    <p style="font-family: khmer os battambang;font-size: 13px; line-height: 27px; text-align:right">
+                        <b style="font-family:Khmer Viravuth"> {{contractor.telephone}}</b>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    </p>
+
+                </div>
+            {{/with}}
+            <!--Sign-->
+        {{/reportTpl}}
+        <!--Auto print-->
+        <!--{{autoprint close="true"}}-->
+    {{else}}
+        {{> loading}}
+    {{/if}}
+
+</template>
+
+<template name="lendingSignFooter">
+    <!--<table width="100%" border="0" style="font-family: khmer os battambang; font-size: 13px;text-align: center">-->
+    <!--<tr>-->
+    <!--<td width="33%">-->
+    <!--អ្នកខ្ចី-->
+    <!--__________________-->
+    <!--</td>-->
+    <!--<td width="33%">-->
+    <!--សាក្សី-->
+    <!--__________________-->
+    <!--</td>-->
+    <!--<td>តំណាងក្រុមហ៊ុន-->
+    <!--__________________-->
+    <!--</td>-->
+    <!--</tr>-->
+
+    <!--</table>-->
+</template>
