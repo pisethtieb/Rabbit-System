@@ -26,14 +26,20 @@ Meteor.methods({
 
         //console.log(data.product);
         data.header = payment._customer;
+
         let i = 1;
+        let totalPrice = 0;
+        let sumPaid = 0;
+        let dueAmount = 0;
         payment.maintenance.forEach(function (obj) {
 
             let maintenance = Rabbit.Collection.Maintenance.findOne(obj.maintenanceId);
             obj.index = i;
-            obj.priceOffice = maintenance.price;
-
+            obj.priceOffice = parseFloat(maintenance.price);
+            totalPrice += parseFloat(maintenance.price);
             obj.sumAmount = maintenance.price - obj.dueAmount;
+            sumPaid +=obj.sumAmount;
+            dueAmount += obj.dueAmount
             obj.type = maintenance.type;
             obj.officeName = maintenance._office.name;
 
@@ -73,9 +79,10 @@ Meteor.methods({
         //
         ////
         //
-        //data.footer.totalPrice = totalPrice;
+        data.footer.totalPrice = totalPrice;
         //data.footer.maintenancePrice = maintenancePrice;
-        //data.footer.paidAmountOffice = paidAmountOffice;
+        data.footer.sumPaid = sumPaid;
+        data.footer.dueAmount = dueAmount;
         //data.footer.paidAmountMaitenance = paidAmountMaintenance;
         //data.content.dueAmountOffice = totalPrice - paidAmountOffice;
         //data.footer.dueAmountMaintenance = maintenancePrice - paidAmountMaintenance;
