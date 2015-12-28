@@ -84,7 +84,6 @@ indexTpl.events({
  * Insert
  */
 insertTpl.onRendered(function () {
-    toWords();
     configOnRender();
 });
 
@@ -178,6 +177,7 @@ AutoForm.hooks({
 
 // Config date picker
 var configOnRender = function () {
+    debugger;
     // date
     var dob = $('[name="dob"]');
     DateTimePicker.date(dob);

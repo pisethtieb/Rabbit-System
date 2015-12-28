@@ -212,15 +212,15 @@ insertTpl.events({
             }
         });
         var num = 0;
-        $('.officeId').each(function () {
-            if (officeId == $(this).val()) {
+        $('.maintenanceId').each(function () {
+            if (maintenanceId == $(this).val()) {
                 num += 1;
             }
         });
         if (num > 1) {
 
-            thisObje.parents('div.item-list').find('.officeId').val('');
-            thisObje.parents('div.item-list').find('.office').val('');
+            thisObje.parents('div.item-list').find('.maintenanceId').val('');
+            thisObje.parents('div.item-list').find('.maintenance').val('');
             thisObje.parents('div.item-list').find('.price').val('');
             thisObje.parents('div.item-list').find('.paidAmount').val('');
             thisObje.parents('div.item-list').find('.dueAmount').val('');
@@ -231,6 +231,7 @@ insertTpl.events({
             debugger;
         }
         if (maintenanceId) {
+            debugger;
             $('.btnAdd').removeAttr('disabled');
         } else {
             $('.btnAdd').attr('disabled', "disabled");
@@ -266,6 +267,19 @@ insertTpl.events({
     }
 });
 updateTpl.events({
+    //'change .type': function (e, t) {
+    //    let checkOM = $(e.currentTarget).val();
+    //    Session.set('checkOfficeMaintenance', checkOM);
+    //    if (checkOM == '') {
+    //        $('#officeMaintenance').attr('disabled', true);
+    //    } else {
+    //        $('#officeMaintenance').attr('disabled', false);
+    //        $('.maintenanceId').val('');
+    //        $('.officeId').val('');
+    //    }
+    //
+    //
+    //},
     'click .btnRemove': function (e) {
 
         setTimeout(function () {
@@ -313,15 +327,16 @@ updateTpl.events({
 
         }, 300);
     },
-    'change .officeId': function (e) {
+    'change .maintenanceId': function (e) {
         debugger;
 
 
         //let checkOM = Session.get('checkOfficeMaintenance');
         //if (checkOM == "office") {
         var thisObje = $(e.currentTarget);
-        var officeId = $(e.currentTarget).val();
-        if (officeId == '') {
+        var maintenanceId = $(e.currentTarget).val();
+        debugger;
+        if (maintenanceId == '') {
             thisObje.parents('div.item-list').find('.officeId').val('');
             thisObje.parents('div.item-list').find('.office').val('');
             thisObje.parents('div.item-list').find('.price').val('');
@@ -329,11 +344,11 @@ updateTpl.events({
             thisObje.parents('div.item-list').find('.dueAmount').val('');
 
         }
-
-        var office = Rabbit.Collection.Office.findOne({_id: officeId});
-        Rabbit.Collection.Office.find(officeId).forEach(function (obj) {
+        debugger;
+        var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
+        Rabbit.Collection.Maintenance.find(maintenanceId).forEach(function (obj) {
             var paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({
-                    'office.officeId': obj._id
+                    'maintenance.maintenanceId': obj._id
                 },
                 {
                     sort: {
@@ -355,22 +370,22 @@ updateTpl.events({
                 })
             } else if (paymentMaintenance == null) {
                 debugger;
-                thisObje.parents('div.item-list').find('.office').val(office.type);
-                thisObje.parents('div.item-list').find('.price').val(office.price);
+                thisObje.parents('div.item-list').find('.office').val(maintenance.type);
+                thisObje.parents('div.item-list').find('.price').val(maintenance.price);
                 thisObje.parents('div.item-list').find('.paidAmount').val(0);
-                thisObje.parents('div.item-list').find('.dueAmount').val(office.price);
+                thisObje.parents('div.item-list').find('.dueAmount').val(maintenance.price);
             }
         });
         var num = 0;
-        $('.officeId').each(function () {
-            if (officeId == $(this).val()) {
+        $('.maintenanceId').each(function () {
+            if (maintenanceId == $(this).val()) {
                 num += 1;
             }
         });
         if (num > 1) {
 
-            thisObje.parents('div.item-list').find('.officeId').val('');
-            thisObje.parents('div.item-list').find('.office').val('');
+            thisObje.parents('div.item-list').find('.maintenanceId').val('');
+            thisObje.parents('div.item-list').find('.maintenance').val('');
             thisObje.parents('div.item-list').find('.price').val('');
             thisObje.parents('div.item-list').find('.paidAmount').val('');
             thisObje.parents('div.item-list').find('.dueAmount').val('');
@@ -380,7 +395,8 @@ updateTpl.events({
             }, 100);
             debugger;
         }
-        if (officeId) {
+        if (maintenanceId) {
+            debugger;
             $('.btnAdd').removeAttr('disabled');
         } else {
             $('.btnAdd').attr('disabled', "disabled");

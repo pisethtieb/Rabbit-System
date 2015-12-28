@@ -14,5 +14,5 @@ Rabbit.TabularTable.PaymentMaintenance = new Tabular.Table({
         {data: "contractId", title: "Contract ID"},
         {data: "des", title: "des"}
     ],
-    extraFields: ['office', 'paymentMaintenanceDate']
+    extraFields: ['maintenance', 'paymentMaintenanceDate']
 });
