@@ -1,6 +1,12 @@
 .select2-dropdown {
     z-index: 9999;
 }
-.selectize-dropdown, .selectize-input, .selectize-input input{
-   font-size: 12px;
+
+.selectize-dropdown, .selectize-input, .selectize-input input {
+    font-size: 12px;
+}
+
+.quotation {
+    padding-right: 37px;
+    padding-left: 11px;
 }

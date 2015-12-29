@@ -5,10 +5,9 @@
     </p>
     <div class="pull-right" style="display: inline">
         <small>
-
             {{#with customer}}
                 <a href="#" class="jsCustomerInfo">{{_id}} | QuotationPerson: {{quotationName}} | Tel: {{telephone}}|
-                    || Company: {{companyName}}  |
+                    || Company: {{companyName}} |
                     CompanyTel: {{companyTelephone}}</a>
             {{/with}}
         </small>
@@ -38,14 +37,17 @@
             <div class="col-md-6">
                 {{> afQuickField name="customerId"}}
                 {{> afQuickField name="quotationDate"}}
+                {{> afQuickField name="contractorId"}}
             </div>
             <div class="col-md-6">
                 {{> afQuickField name="productId" class='productId'}}
                 {{> afQuickField name="des"}}
             </div>
             <div class="col-md-12">
-                {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
-                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
+                {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField"
+                id="basePrice"}}
+                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField"
+                subtemplate="quotationMaintenancePriceObjectField" }}
             </div>
         </div>
         <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -69,8 +71,10 @@
                     {{> afQuickField name="des"}}
                 </div>
                 <div class="col-md-12">
-                    {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
-                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
+                    {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField"
+                    id="basePrice"}}
+                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField"
+                    subtemplate="quotationMaintenancePriceObjectField" }}
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -114,17 +118,21 @@
 
 <template name="quotationBasePriceObjectField">
     <div class="col-sm-6">
-        {{> afQuickField name=current.headOffice id='basePriceHeadOffice'  template="bootstrap3" label=false class="input-sm" placeholder="Head Office"}}
+        {{> afQuickField name=current.headOffice id='basePriceHeadOffice' template="bootstrap3" label=false
+        class="input-sm" placeholder="Head Office"}}
     </div>
     <div class="col-sm-6">
-        {{> afQuickField name=current.branch id='basePriceBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
+        {{> afQuickField name=current.branch id='basePriceBranch' template="bootstrap3" label=false class="input-sm"
+        placeholder="Branch Office"}}
     </div>
 </template>
 <template name="quotationMaintenancePriceObjectField">
     <div class="col-sm-6">
-        {{> afQuickField name=current.headOffice template="bootstrap3" id='MaintenaceHeadOffice' label=false class="input-sm" placeholder="Head Office"}}
+        {{> afQuickField name=current.headOffice template="bootstrap3" id='MaintenaceHeadOffice' label=false
+        class="input-sm" placeholder="Head Office"}}
     </div>
     <div class="col-sm-6">
-        {{> afQuickField name=current.branch id='MaintenaceBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
+        {{> afQuickField name=current.branch id='MaintenaceBranch' template="bootstrap3" label=false class="input-sm"
+        placeholder="Branch Office"}}
     </div>
 </template>

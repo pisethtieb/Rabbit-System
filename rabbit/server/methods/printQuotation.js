@@ -12,7 +12,7 @@ Meteor.methods({
         //fx.base = exchange.base;
         //fx.rates = exchange.rates;
         /****** Title *****/
-        ////data.title = Cpanel.Collection.Company.findOne();
+        data.title = Cpanel.Collection.Company.findOne();
         let quotation = Rabbit.Collection.Quotation.findOne(quotationId);
         data.product = quotation._product;
         data.customer = quotation._customer;

@@ -78,6 +78,16 @@ Rabbit.Schema.Quotation = new SimpleSchema({
                 type: "textarea"
             }
         }
+    },
+    contractorId: {
+        type: String,
+        label: "ContractorId",
+        autoform: {
+            type: 'select2',
+            options(){
+                return Rabbit.List.contractors();
+            }
+        }
     }
 
 
