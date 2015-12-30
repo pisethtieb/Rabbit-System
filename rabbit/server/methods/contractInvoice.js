@@ -31,9 +31,7 @@ Meteor.methods({
                 } else {
                     var today = moment().format("YYYY-MM-DD");
 
-                    console.log(maintenance.endDate > today)
-                    console.log(maintenance.endDate)
-                    console.log(today)
+
                     if (maintenance.endDate > today) {
 
                         obj.maintenance = maintenance.price;

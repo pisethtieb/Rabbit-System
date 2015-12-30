@@ -178,36 +178,46 @@ Rabbit.List = {
         //var patientId = Labo.ListForSale.get('patientId');
 
         Rabbit.Collection.Maintenance.find({'_office.contractId': contractId}).forEach(function (obj) {
+                console.log(obj.endDate)
+                var today = moment().format("YYYY-MM-DD");
 
-                var payment = Rabbit.Collection.PaymentMaintenance.findOne({
-                    'maintenance.maintenanceId': obj._id
-                }, {
-                    sort: {
-                        _id: -1
-                    }
-                });
-                debugger;
-                if (payment != null) {
-                    payment.maintenance.forEach(function (payObj) {
-                        debugger;
-                        if (obj._id == payObj.maintenanceId && payObj.dueAmount > 0) {
 
-                            list.push({
-                                    label: "Name : " + obj._office.name + " (" + obj.type + ")" + " | " + " Prices: " + payObj.dueAmount,
-                                    value: payObj.maintenanceId
-                                }
-                            )
-                            ;
+                if (obj.endDate > today) {
+                    var payment = Rabbit.Collection.PaymentMaintenance.findOne({
+                        'maintenance.maintenanceId': obj._id
+                    }, {
+                        sort: {
+                            _id: -1
                         }
                     });
+                    debugger;
+                    if (payment != null) {
+                        payment.maintenance.forEach(function (payObj) {
+                            debugger;
+                            if (obj._id == payObj.maintenanceId && payObj.dueAmount > 0) {
+
+                                list.push({
+                                        label: "Name : " + obj._office.name + " (" + obj.type + ")" + " | " + " Prices: " + payObj.dueAmount,
+                                        value: payObj.maintenanceId
+                                    }
+                                )
+                                ;
+                            }
+                        });
+                    }
+
+                    else if (payment == null) {
+                        list.push({
+                            label: "Name : " + obj._office.name + " (" + obj.type + ") " + " | " + "Price: " + obj.price,
+                            value: obj._id
+                        });
+                    }
+                } else {
+
+                    list.push({label: "Select One", value: ""});
+
                 }
 
-                else if (payment == null) {
-                    list.push({
-                        label: "Name : " + obj._office.name + " (" + obj.type + ") " + " | " + "Price: " + obj.price,
-                        value: obj._id
-                    });
-                }
 
             }
         )
