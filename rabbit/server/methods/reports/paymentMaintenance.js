@@ -1,5 +1,5 @@
 Meteor.methods({
-    rabbit_paymentReport: function (params) {
+    rabbit_paymentMaintenanceReport: function (params) {
         var data = {
             title: {},
             header: {},
@@ -24,7 +24,7 @@ Meteor.methods({
         /****** Content *****/
         var content = [];
         var selector = {};
-        selector.paymentDate = {$gte: fDate, $lte: tDate};
+        selector.paymentMaintenanceDate = {$gte: fDate, $lte: tDate};
         //
         if (!_.isEmpty(params.branch)) {
             selector.branchId = params.branch;
@@ -42,9 +42,10 @@ Meteor.methods({
         let totalPaidAmount = 0;
         let totalDueAmount = 0;
 
-        Rabbit.Collection.Payment.find(selector)
+        Rabbit.Collection.PaymentMaintenance.find(selector)
 
             .forEach(function (obj) {
+                console.log(obj);
                 //if (obj._office.contractId == params.contractId) {
                 //    console.log(obj._id);
                 // Do something

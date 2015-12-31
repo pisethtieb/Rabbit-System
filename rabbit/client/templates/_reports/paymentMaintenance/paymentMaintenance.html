@@ -1,13 +1,14 @@
 <!--Form-->
-<template name="rabbit_paymentReport">
-    {{#autoForm schema=Rabbit.Schema.PaymentReport id="rabbit_paymentReport" action="paymentReportGen" target="_blank"}}
+<template name="rabbit_paymentMaintenanceReport">
+    {{#autoForm schema=Rabbit.Schema.PaymentMaintenanceReport id="rabbit_paymentMaintenanceReport" action="paymentMaintenanceReportGen" target="_blank"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name="branch"}}
                 {{> afQuickField name="contractId"}}
+                {{> afQuickField name="officeId"}}
             </div>
             <div class="col-md-6">
-                {{> afQuickField name="officeId"}}
+                {{> afQuickField name="maintenanceId"}}
                 {{> afQuickField name="date"}}
 
                 <button type="submit" class="btn btn-primary">{{fa "file-text"}} Generate</button>
@@ -18,7 +19,7 @@
 </template>
 
 <!--Generate-->
-<template name="rabbit_paymentReportGen">
+<template name="rabbit_paymentMaintenanceReportGen">
     <!--Is ready-->
     {{#if data}}
         {{#reportTpl options}}
@@ -30,7 +31,7 @@
                 <!--<div class="title">-->
                 <!--<div class="title-1x-kh-muol">{{khName}}</div>-->
                 <!--<div class="title-1x">{{enName}}</div>-->
-                <!--<div><u>Payment Report</u></div>-->
+                <!--<div><u>PaymentMaintenance Report</u></div>-->
                 <!--<div class="title-2x">{{enAddress}}</div>-->
                 <!--</div>-->
                     <!--{{/with}}-->
@@ -49,7 +50,7 @@
                   <span class="report-company-name"
                         style="font-family: 'Khmer OS Muol">{{khName}}</span><br>
                                     <span class="report-company-name">{{enName}}</span><br>
-                                    <u>Payment Report</u><br>
+                                    <u>PaymentMaintenance Report</u><br>
                                     {{khAddress}}, {{telephone}}
                                 </td>
 
@@ -79,10 +80,10 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>PaymentDate</th>
+                        <th>PaymentMaintenanceDate</th>
                         <th>contractId</th>
                         <th>customerName</th>
-                        <th>payment</th>
+                        <th>paymentMaintenance</th>
                         <th>Amount</th>
                         <th>paid</th>
                         <th>Due</th>
@@ -94,10 +95,10 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
-                            <td>{{paymentDate}}</td>
+                            <td>{{paymentMaintenanceDate}}</td>
                             <td>{{contractId}}</td>
                             <td>{{customerId}}</td>
-                            <td>{{{payment}}}</td>
+                            <td>{{{paymentMaintenance}}}</td>
                             <td>{{{amount}}}</td>
                             <td>{{{paid}}}</td>
                             <td>{{{due}}}</td>

@@ -53,7 +53,6 @@ Meteor.methods({
 
         data.customer = contract._customer;
         data.customer.age = moment().diff(contract._customer.dob, 'years');
-        console.log(data.customer.age);
         //data.header = customer;
         ///****** Content *****/
         //let i = 1;

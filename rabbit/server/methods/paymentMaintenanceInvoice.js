@@ -20,7 +20,7 @@ Meteor.methods({
         let payment = Rabbit.Collection.PaymentMaintenance.findOne(paymentMaintenanceId);
         //show product Name
         let product = Rabbit.Collection.Contract.findOne(payment.contractId);
-        data.product = product._product
+        data.product = product._product;
         //show payment Info
         data.payment = payment;
 
