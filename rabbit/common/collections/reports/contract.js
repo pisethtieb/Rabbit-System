@@ -1,5 +1,5 @@
 // Schema
-Rabbit.Schema.QuotationReport = new SimpleSchema({
+Rabbit.Schema.ContractReport = new SimpleSchema({
     branch: {
         type: String,
         autoform: {
@@ -10,15 +10,15 @@ Rabbit.Schema.QuotationReport = new SimpleSchema({
         },
         optional: true
     },
-    productId: {
+    customerId: {
         type: String,
         max: 100,
         optional: true,
-        label: "ProductId",
+        label: "CustomerId",
         autoform: {
             type: 'select2',
             options(){
-                return Rabbit.ListForReport.product();
+                return Rabbit.ListForReport.customer();
             }
         }
     },

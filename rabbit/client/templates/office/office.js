@@ -77,6 +77,7 @@ indexTpl.helpers({
 
 /*Insert*/
 insertTpl.onRendered(function () {
+    configOnRender();
     //auto selected on office selected"HeadOffice"
     var contractId = FlowRouter.getParam('contractId');
     let office = Rabbit.Collection.Office.findOne({contractId: contractId});
@@ -201,3 +202,9 @@ AutoForm.hooks({
         }
     }
 });
+var configOnRender = function () {
+    debugger;
+    // date
+    var officeDate = $('[name="officeDate"]');
+    DateTimePicker.date(officeDate);
+};
