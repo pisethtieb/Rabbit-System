@@ -42,19 +42,17 @@ Meteor.methods({
         let totalPaidAmount = 0;
         let totalDueAmount = 0;
 
-        Rabbit.Collection.PaymentMaintenance.find(selector)
-
-            .forEach(function (obj) {
+        Rabbit.Collection.PaymentMaintenance.find(selector).forEach(function (obj) {
                 console.log(obj);
                 //if (obj._office.contractId == params.contractId) {
                 //    console.log(obj._id);
                 // Do something
-                obj.payment = JSON.stringify(obj.office);
+                obj.payment = JSON.stringify(obj.maintenance);
                 obj.index = index;
                 let amount = 0;
                 let paidAmount = 0;
                 let dueAmount = 0;
-                obj.office.forEach(function (office) {
+                obj.maintenance.forEach(function (office) {
                     paidAmount += parseFloat(office.paidAmount);
                     amount += parseFloat(office.price);
                     dueAmount += parseFloat(office.dueAmount);

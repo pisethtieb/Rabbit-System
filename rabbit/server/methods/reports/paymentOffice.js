@@ -29,9 +29,9 @@ Meteor.methods({
         if (!_.isEmpty(params.branch)) {
             selector.branchId = params.branch;
         }
-        //if (!_.isEmpty(params.contractId)) {
-        //    selector.{office.contractId}= params.contractId
-        //}
+        if (!_.isEmpty(params.contractId)) {
+            selector.contractId= params.contractId
+        }
         if (!_.isEmpty(params.officeId)) {
             selector.officeId = params.officeId;
         }

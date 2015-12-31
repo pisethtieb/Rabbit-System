@@ -34,18 +34,6 @@ Rabbit.Schema.PaymentMaintenanceReport = new SimpleSchema({
             }
         }
     },
-    maintenanceId: {
-        type: String,
-        max: 100,
-        optional: true,
-        label: "Maintenance",
-        autoform: {
-            type: 'select2',
-            options(){
-                return Rabbit.ListForReport.Maintenance();
-            }
-        }
-    },
     date: {
         type: String,
         defaultValue: function () {

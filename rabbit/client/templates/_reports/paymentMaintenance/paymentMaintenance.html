@@ -5,10 +5,10 @@
             <div class="col-md-6">
                 {{> afQuickField name="branch"}}
                 {{> afQuickField name="contractId"}}
-                {{> afQuickField name="officeId"}}
+
             </div>
             <div class="col-md-6">
-                {{> afQuickField name="maintenanceId"}}
+                {{> afQuickField name="officeId"}}
                 {{> afQuickField name="date"}}
 
                 <button type="submit" class="btn btn-primary">{{fa "file-text"}} Generate</button>
@@ -69,6 +69,8 @@
                         </div>
 
                         <div style="width: 50%; float: right">
+                            <div><strong>officeId:</strong> {{officeId}}</div>
+
                             <div><strong>Date:</strong> {{date}}</div>
                         </div>
                     </div>
@@ -80,10 +82,10 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>PaymentMaintenanceDate</th>
+                        <th>PaymentDate</th>
                         <th>contractId</th>
                         <th>customerName</th>
-                        <th>paymentMaintenance</th>
+                        <th>payment</th>
                         <th>Amount</th>
                         <th>paid</th>
                         <th>Due</th>
@@ -98,7 +100,7 @@
                             <td>{{paymentMaintenanceDate}}</td>
                             <td>{{contractId}}</td>
                             <td>{{customerId}}</td>
-                            <td>{{{paymentMaintenance}}}</td>
+                            <td>{{{payment}}}</td>
                             <td>{{{amount}}}</td>
                             <td>{{{paid}}}</td>
                             <td>{{{due}}}</td>
