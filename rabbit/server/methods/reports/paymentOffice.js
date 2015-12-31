@@ -1,5 +1,5 @@
 Meteor.methods({
-    rabbit_officeReport: function (params) {
+    rabbit_paymentReport: function (params) {
         var data = {
             title: {},
             header: {},
@@ -20,11 +20,12 @@ Meteor.methods({
 
         /****** Header *****/
         data.header = params;
+        console.log(params);
 
         /****** Content *****/
         var content = [];
         var selector = {};
-        selector.officeDate = {$gte: fDate, $lte: tDate};
+        selector.paymentDate = {$gte: fDate, $lte: tDate};
 
 
         //
@@ -32,19 +33,28 @@ Meteor.methods({
             selector.branchId = params.branch;
         }
 
-        if (!_.isEmpty(params.contractId)) {
-            selector.contractId = params.contractId;
+        //if (!_.isEmpty(params.contractId)) {
+        //    selector.{office.contractId}= params.contractId
+        //}
+        if (!_.isEmpty(params.officeId)) {
+            selector.officeId = params.officeId;
         }
 
         var index = 1;
-        Rabbit.Collection.Office.find(selector)
+        console.log(selector._office);
+        Rabbit.Collection.Payment.find(selector)
+
             .forEach(function (obj) {
+                //if (obj._office.contractId == params.contractId) {
+                //    console.log(obj._id);
                 // Do something
+                obj.payment = JSON.stringify(obj.office);
                 obj.index = index;
 
                 content.push(obj);
 
                 index++;
+                //}
             });
 
         if (content.length > 0) {

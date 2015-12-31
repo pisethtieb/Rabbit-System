@@ -1,8 +1,8 @@
 /**
  * Declare template
  */
-var formTpl = Template.rabbit_officeReport,
-    genTpl = Template.rabbit_officeReportGen;
+var formTpl = Template.rabbit_maintenanceReport,
+    genTpl = Template.rabbit_maintenanceReportGen;
 
 /**
  * Form
@@ -32,7 +32,7 @@ genTpl.helpers({
 
         // Use Fetcher
         Fetcher.setDefault("data", false);
-        Fetcher.retrieve('data', 'rabbit_officeReport', q);
+        Fetcher.retrieve('data', 'rabbit_maintenanceReport', q);
 
         return Fetcher.get('data');
     }

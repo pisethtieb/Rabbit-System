@@ -1,8 +1,8 @@
 /**
  * Declare template
  */
-var formTpl = Template.rabbit_officeReport,
-    genTpl = Template.rabbit_officeReportGen;
+var formTpl = Template.rabbit_paymentReport,
+    genTpl = Template.rabbit_paymentReportGen;
 
 /**
  * Form
@@ -20,9 +20,9 @@ genTpl.helpers({
         // paper = a4, a5, mini
         // orientation = portrait, landscape
         return {
-            //fontSize: 'bg',
+            fontSize: 'bg',
             paper: 'a4',
-            orientation: 'portrait'
+            orientation: 'landscape'
         };
     },
     data: function () {
@@ -32,7 +32,7 @@ genTpl.helpers({
 
         // Use Fetcher
         Fetcher.setDefault("data", false);
-        Fetcher.retrieve('data', 'rabbit_officeReport', q);
+        Fetcher.retrieve('data', 'rabbit_paymentReport', q);
 
         return Fetcher.get('data');
     }

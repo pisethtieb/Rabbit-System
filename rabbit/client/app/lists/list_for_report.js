@@ -42,5 +42,15 @@ Rabbit.ListForReport = {
             });
 
         return list;
+    },
+    office: function () {
+        var list = [];
+        list.push({label: "(Select All)", value: ""});
+        Rabbit.Collection.Office.find()
+            .forEach(function (obj) {
+                list.push({label: obj._id + ' : ' + obj.name, value: obj._id});
+            });
+
+        return list;
     }
 };

@@ -1,12 +1,13 @@
 <!--Form-->
-<template name="rabbit_officeReport">
-    {{#autoForm schema=Rabbit.Schema.OfficeReport id="rabbit_officeReport" action="officeReportGen" target="_blank"}}
+<template name="rabbit_maintenanceReport">
+    {{#autoForm schema=Rabbit.Schema.MaintenanceReport id="rabbit_maintenanceReport" action="maintenanceReportGen" target="_blank"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name="branch"}}
                 {{> afQuickField name="contractId"}}
             </div>
             <div class="col-md-6">
+                {{> afQuickField name="officeId"}}
                 {{> afQuickField name="date"}}
 
                 <button type="submit" class="btn btn-primary">{{fa "file-text"}} Generate</button>
@@ -17,7 +18,7 @@
 </template>
 
 <!--Generate-->
-<template name="rabbit_officeReportGen">
+<template name="rabbit_maintenanceReportGen">
     <!--Is ready-->
     {{#if data}}
         {{#reportTpl options}}
@@ -29,7 +30,7 @@
                 <!--<div class="title">-->
                 <!--<div class="title-1x-kh-muol">{{khName}}</div>-->
                 <!--<div class="title-1x">{{enName}}</div>-->
-                <!--<div><u>Office Report</u></div>-->
+                <!--<div><u>Maintenance Report</u></div>-->
                 <!--<div class="title-2x">{{enAddress}}</div>-->
                 <!--</div>-->
                     <!--{{/with}}-->
@@ -48,7 +49,7 @@
                   <span class="report-company-name"
                         style="font-family: 'Khmer OS Muol">{{khName}}</span><br>
                                     <span class="report-company-name">{{enName}}</span><br>
-                                    <u>Office Report</u><br>
+                                    <u>Maintenance Report</u><br>
                                     {{khAddress}}, {{telephone}}
                                 </td>
 
@@ -78,9 +79,10 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>ProductName</th>
                         <th>OfficeName</th>
-                        <th>Type</th>
+                        <th>type</th>
+                        <th>StartDate</th>
+                        <th>EndDate</th>
                         <th>Price</th>
                     </tr>
                     </thead>
@@ -89,16 +91,14 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
-                            <td>{{_product.name}}</td>
-                            <td>{{name}}</td>
+                            <td>{{_office.name}}</td>
                             <td>{{type}}</td>
+                            <td>{{startDate}}</td>
+                            <td>{{endDate}}</td>
                             <td>{{price}}</td>
-
-
                         </tr>
                     {{/each}}
                     </tbody>
-
                     <!--<tfoot class="content-footer">-->
                     <!--<tr>-->
                     <!--<td></td>-->
