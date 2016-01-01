@@ -54,6 +54,12 @@ Rabbit.Schema.Payment = new SimpleSchema({
         optional: true
 
     },
+    'office.$.discount': {
+        type: String,
+        decimal: true,
+        optional: true
+
+    },
     'office.$.office': {
         type: String,
         decimal: true,

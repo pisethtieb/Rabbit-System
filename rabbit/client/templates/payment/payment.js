@@ -134,14 +134,25 @@ insertTpl.events({
             }
         }, 300);
     },
-    'keyup .paidAmount': function (e, t) {
+    'keyup .discount': function (e, t) {
         var thisObj = $(e.currentTarget);
         var price = thisObj.parents('div.item-list').find('.price').val();
-        var paidAmount = thisObj.parents('div.item-list').find('.paidAmount').val();
+        var discount = thisObj.parents('div.item-list').find('.discount').val();
 
-        var amount = price - paidAmount;
+        let rightPrice = price - (price * (discount / 100));
+        //
+        //var paidAmount = thisObj.parents('div.item-list').find('.paidAmount').val();
+        //
+        //var amount = rightPrice - paidAmount;
 
-        thisObj.parents('div.item-list').find('.dueAmount').val(amount);
+        thisObj.parents('div.item-list').find('.dueAmount').val(rightPrice);
+    },
+    'keyup .paid': function (e, t) {
+        var thisObj = $(e.currentTarget);
+        var price = thisObj.parents('div.item-list').find('.price').val();
+        var dueAmount = thisObj.parents('div.item-list').find('.dueAmount').val();
+     amount=
+        thisObj.parents('div.item-list').find('.dueAmount').val(rightPrice);
     },
     'click .btnAdd': function (e) {
         setTimeout(function () {
@@ -199,6 +210,7 @@ insertTpl.events({
                         thisObje.parents('div.item-list').find('.office').val(payObj.office);
                         thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
                         thisObje.parents('div.item-list').find('.paidAmount').val(0);
+                        thisObje.parents('div.item-list').find('.discount').val(0);
                         thisObje.parents('div.item-list').find('.dueAmount').val(payObj.dueAmount);
                     }
                 })
@@ -207,6 +219,7 @@ insertTpl.events({
                 thisObje.parents('div.item-list').find('.office').val(office.type);
                 thisObje.parents('div.item-list').find('.price').val(office.price);
                 thisObje.parents('div.item-list').find('.paidAmount').val(0);
+                thisObje.parents('div.item-list').find('.discount').val(0);
                 thisObje.parents('div.item-list').find('.dueAmount').val(office.price);
             }
         });
