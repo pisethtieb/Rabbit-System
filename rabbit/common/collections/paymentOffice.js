@@ -55,7 +55,7 @@ Rabbit.Schema.Payment = new SimpleSchema({
 
     },
     'office.$.discount': {
-        type: String,
+        type: Number,
         decimal: true,
         optional: true
 
@@ -73,10 +73,12 @@ Rabbit.Schema.Payment = new SimpleSchema({
                 return "greaterThan";
             }
         },
-        optional: true
+        optional: true,
+        decimal:true
     },
     'office.$.dueAmount': {
-        type: Number
+        type: Number,
+        decimal:true
     }
     //type: {
     //    type: String,

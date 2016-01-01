@@ -135,9 +135,14 @@ insertTpl.events({
         }, 300);
     },
     'keyup .discount': function (e, t) {
+
         var thisObj = $(e.currentTarget);
+        if (thisObj.val() >= 100) {
+            thisObj.val(0)
+        }
         var price = thisObj.parents('div.item-list').find('.price').val();
         var discount = thisObj.parents('div.item-list').find('.discount').val();
+        thisObj.parents('div.item-list').find('.paidAmount').val(0);
 
         let rightPrice = price - (price * (discount / 100));
         Session.set('amount', rightPrice);
@@ -151,20 +156,38 @@ insertTpl.events({
         var price = thisObj.parents('div.item-list').find('.price').val();
         var paid = thisObj.parents('div.item-list').find('.paidAmount').val();
         //thisObj.parents('div.item-list').find('.dueAmount').val(0);
-        let subAmount = amount - paid;
-        if (subAmount) {
-            thisObj.parents('div.item-list').find('.dueAmount').val(subAmount);
-        } else if (amount == null) {
 
-            thisObj.parents('div.item-list').find('.dueAmount').val(price-paid);
+        let subAmount = amount - paid;
+        if (amount) {
+            thisObj.parents('div.item-list').find('.dueAmount').val(subAmount);
+            if (parseFloat(amount) < parseFloat(paid)) {
+                thisObj.parents('div.item-list').find('.paidAmount').val(0);
+                thisObj.parents('div.item-list').find('.dueAmount').val('');
+            }
+        } else if (!amount) {
+            let dueAmount = price - paid;
+            thisObj.parents('div.item-list').find('.dueAmount').val(dueAmount);
+            if (parseFloat(price) < parseFloat(paid)) {
+                thisObj.parents('div.item-list').find('.paidAmount').val(0);
+                thisObj.parents('div.item-list').find('.dueAmount').val('');
+            }
 
         } else {
-            //thisObj.parents('div.item-list').find('.dueAmount').val();
+            thisObj.parents('div.item-list').find('.dueAmount').val(price);
 
         }
-        debugger;
+        //debugger;
         //
 
+    },
+    'keypress .paidAmount,.discount,.dueAmount,.price': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     },
     'click .btnAdd': function (e) {
         setTimeout(function () {
