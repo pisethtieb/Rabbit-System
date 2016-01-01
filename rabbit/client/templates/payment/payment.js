@@ -162,14 +162,14 @@ insertTpl.events({
             thisObj.parents('div.item-list').find('.dueAmount').val(subAmount);
             if (parseFloat(amount) < parseFloat(paid)) {
                 thisObj.parents('div.item-list').find('.paidAmount').val(0);
-                thisObj.parents('div.item-list').find('.dueAmount').val('');
+                thisObj.parents('div.item-list').find('.dueAmount').val(amount);
             }
         } else if (!amount) {
             let dueAmount = price - paid;
             thisObj.parents('div.item-list').find('.dueAmount').val(dueAmount);
             if (parseFloat(price) < parseFloat(paid)) {
                 thisObj.parents('div.item-list').find('.paidAmount').val(0);
-                thisObj.parents('div.item-list').find('.dueAmount').val('');
+                thisObj.parents('div.item-list').find('.dueAmount').val(price);
             }
 
         } else {
