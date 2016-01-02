@@ -1,6 +1,6 @@
-var paymentMaintenanceInvoiceTPL = Template.rabbit_paymentMaintenanceInvoice;
+var ProductFeatureTPL = Template.rabbit_printProductFeature;
 
-paymentMaintenanceInvoiceTPL.helpers({
+ProductFeatureTPL.helpers({
     options: function () {
         debugger;
         // font size = null (default), bg
@@ -15,12 +15,12 @@ paymentMaintenanceInvoiceTPL.helpers({
     data: function () {
         // Get query params
         //FlowRouter.watchPathChange();
-        var q = FlowRouter.getParam('paymentMaintenanceId');
+        var q = FlowRouter.getParam('productId');
         debugger;
         console.log(q);
 
-        var callId = 'paymentMaintenanceInvoice' + q;
-        var call = Meteor.callAsync(callId, 'paymentMaintenanceInvoice', q);
+        var callId = 'printFeature' + q;
+        var call = Meteor.callAsync(callId, 'printFeature', q);
         debugger;
         if (!call.ready()) {
             return false;

@@ -24,6 +24,8 @@ Rabbit.TabularTable.Product = new Tabular.Table({
                 return JSON.stringify(val);
             }
         },
-        {data: "feature", title: "Feature"}
-    ]
+        {data: "_contractCunt", title: "Contract"},
+        {data: "_quotationCount", title: "Quotation"}
+    ],
+    extraFields: ['feature']
 });

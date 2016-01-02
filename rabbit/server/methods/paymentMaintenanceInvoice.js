@@ -32,20 +32,20 @@ Meteor.methods({
         let sumPaid = 0;
         let dueAmount = 0;
         payment.maintenance.forEach(function (obj) {
-
             let maintenance = Rabbit.Collection.Maintenance.findOne(obj.maintenanceId);
+
             obj.index = i;
             obj.priceOffice = parseFloat(maintenance.price);
             totalPrice += parseFloat(maintenance.price);
             obj.sumAmount = maintenance.price - obj.dueAmount;
             sumPaid +=obj.sumAmount;
-            dueAmount += obj.dueAmount
+            dueAmount += obj.dueAmount;
+            obj.startDate=maintenance.startDate;
+            obj.endDate=maintenance.endDate;
             obj.type = maintenance.type;
             obj.officeName = maintenance._office.name;
-
             data.content.push(obj);
             i++;
-
         });
         ///****** Content *****/
         //let i = 1;

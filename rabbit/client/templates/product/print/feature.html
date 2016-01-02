@@ -1,0 +1,56 @@
+<template name='rabbit_printProductFeature'>
+
+
+    <!--Is ready-->
+    {{#if data}}
+        {{#reportTpl options}}
+            {{#with data}}
+                {{#with title}}
+                    <div class="title">
+                        <table class="report-title">
+                            <tr>
+                                <td>
+                                    <img src="/rabbit1.png">
+                                </td>
+                                <td>
+                                    <div class="header-style" style="margin: 0px 0px 0px 33px;">
+                                        <span class="report-company-name"
+                                              style="font-family: 'Khmer OS Muol">{{khName}}</span>
+                                        <br>
+                                        <span class="report-company-name">{{enName}}</span>
+                                        <br>
+                                        <span class="report-company-name">{{enAddress}}</span>
+                                        <br>
+                                        <u> Product Feature</u>
+                                        <br>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+
+
+                {{/with}}
+                {{#with content}}
+                    <div align="center">
+                     <!--<span class="report-company-name"-->
+                           <!--style="font-family: 'Khmer OS Muol">{{name}}</span>-->
+                    </div>
+                    <div class='col-md-12' style="padding: 20px;" >
+
+                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                            {{{feature}}}
+                        </p>
+
+                    </div>
+                {{/with}}
+            {{/with}}
+            <!--Sign-->
+        {{/reportTpl}}
+        <!--Auto print-->
+        <!--{{autoprint close="true"}}-->
+    {{else}}
+        {{> loading}}
+    {{/if}}
+
+</template>

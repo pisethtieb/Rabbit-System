@@ -146,18 +146,18 @@
         {{> afQuickField name=current.maintenanceId template="bootstrap3" label=false class="input-sm maintenanceId"  placeholder="maintenanceId" }}
     </div>
     <div class="col-sm-1">
-        {{> afQuickField name=current.maintenance template="bootstrap3" label=false class="input-sm maintenance" id='price' placeholder="maintenance" }}
+        {{> afQuickField name=current.maintenance template="bootstrap3" label=false class="input-sm maintenance" id='price' placeholder="maintenance" readOnly=true}}
     </div>
     <div class="col-sm-2">
-        {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price' placeholder="price" }}
+        {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price' placeholder="price" readOnly=true}}
     </div>
     <div class="col-sm-1">
-        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount' placeholder="Dis(%)" }}
+        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount' placeholder="Dis(%)"  readOnly=true }}
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.paidAmount template="bootstrap3" label=false class="input-sm paidAmount" id='paidAmount' placeholder="Paid Amount"}}
     </div>
     <div class="col-sm-2">
-        {{> afQuickField name=current.dueAmount template="bootstrap3" label=false class="input-sm dueAmount" id='dueAmount'  placeholder="Due Amount"}}
+        {{> afQuickField name=current.dueAmount template="bootstrap3" label=false class="input-sm dueAmount" id='dueAmount'  placeholder="Due Amount" readOnly=true}}
     </div>
 </template>

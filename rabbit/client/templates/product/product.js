@@ -62,7 +62,13 @@ indexTpl.events({
     },
     'click .js-show': function (e, t) {
         alertify.productShow(fa("eye", "Product"), renderTemplate(showTpl, this));
-    }
+    },
+    //'click .feature': function () {
+    //    FlowRouter.go('rabbit.quotation', {
+    //        customerId: this._id
+    //    })
+    //
+    //}
 
 
     //'dblclick tbody > tr': function (event) {
