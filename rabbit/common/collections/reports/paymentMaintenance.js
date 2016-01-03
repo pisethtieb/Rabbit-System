@@ -22,18 +22,18 @@ Rabbit.Schema.PaymentMaintenanceReport = new SimpleSchema({
             }
         }
     },
-    officeId: {
-        type: String,
-        max: 100,
-        optional: true,
-        label: "OfficeId",
-        autoform: {
-            type: 'select2',
-            options(){
-                return Rabbit.ListForReport.office();
-            }
-        }
-    },
+    //officeId: {
+    //    type: String,
+    //    max: 100,
+    //    optional: true,
+    //    label: "OfficeId",
+    //    autoform: {
+    //        type: 'select2',
+    //        options(){
+    //            return Rabbit.ListForReport.office();
+    //        }
+    //    }
+    //},
     date: {
         type: String,
         defaultValue: function () {

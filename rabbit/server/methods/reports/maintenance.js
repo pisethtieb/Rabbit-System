@@ -41,13 +41,18 @@ Meteor.methods({
         }
 
         var index = 1;
-        console.log(selector._office);
+        //console.log(selector._office);
         Rabbit.Collection.Maintenance.find(selector)
 
             .forEach(function (obj) {
                 if (obj._office.contractId == params.contractId) {
-                    console.log(obj._id);
-                    // Do something
+                    obj.index = index;
+
+                    content.push(obj);
+
+                    index++;
+
+                } else {
                     obj.index = index;
 
                     content.push(obj);

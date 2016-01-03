@@ -32,8 +32,8 @@ Meteor.methods({
         //if (!_.isEmpty(params.contractId)) {
         //    selector.{office.contractId}= params.contractId
         //}
-        if (!_.isEmpty(params.officeId)) {
-            selector.officeId = params.officeId;
+        if (!_.isEmpty(params.contractId)) {
+            selector.contractId = params.contractId;
         }
 
         var index = 1;
@@ -43,38 +43,37 @@ Meteor.methods({
         let totalDueAmount = 0;
 
         Rabbit.Collection.PaymentMaintenance.find(selector).forEach(function (obj) {
-                console.log(obj);
-                //if (obj._office.contractId == params.contractId) {
-                //    console.log(obj._id);
-                // Do something
-                obj.payment = JSON.stringify(obj.maintenance);
-                obj.index = index;
-                let amount = 0;
-                let paidAmount = 0;
-                let dueAmount = 0;
-                obj.maintenance.forEach(function (office) {
-                    paidAmount += parseFloat(office.paidAmount);
-                    amount += parseFloat(office.price);
-                    dueAmount += parseFloat(office.dueAmount);
-                });
-
-                //amount
-                obj.amount = amount;
-                obj.paid = paidAmount;
-                obj.due = dueAmount;
-                //total
-                total += amount;
-                totalDueAmount += dueAmount;
-                totalPaidAmount += paidAmount;
-                //paidAmount
-                //obj.paidAmount = paidAmount;
-                //paidAmount += obj.paidAmount;
-                //dueAmount
-
-                content.push(obj);
-                index++;
-                //}
+            //if (obj._office.contractId == params.contractId) {
+            //    console.log(obj._id);
+            // Do something
+            obj.payment = JSON.stringify(obj.maintenance);
+            obj.index = index;
+            let amount = 0;
+            let paidAmount = 0;
+            let dueAmount = 0;
+            obj.maintenance.forEach(function (office) {
+                paidAmount += parseFloat(office.paidAmount);
+                amount += parseFloat(office.price);
+                dueAmount += parseFloat(office.dueAmount);
             });
+
+            //amount
+            obj.amount = amount;
+            obj.paid = paidAmount;
+            obj.due = dueAmount;
+            //total
+            total += amount;
+            totalDueAmount += dueAmount;
+            totalPaidAmount += paidAmount;
+            //paidAmount
+            //obj.paidAmount = paidAmount;
+            //paidAmount += obj.paidAmount;
+            //dueAmount
+
+            content.push(obj);
+            index++;
+            //}
+        });
 
         if (content.length > 0) {
             data.content = content;

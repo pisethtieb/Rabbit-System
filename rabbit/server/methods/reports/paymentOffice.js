@@ -32,9 +32,9 @@ Meteor.methods({
         if (!_.isEmpty(params.contractId)) {
             selector.contractId= params.contractId
         }
-        if (!_.isEmpty(params.officeId)) {
-            selector.officeId = params.officeId;
-        }
+        //if (!_.isEmpty(params.officeId)) {
+        //    selector.officeId = params.officeId;
+        //}
 
         var index = 1;
 

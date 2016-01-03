@@ -25,8 +25,6 @@ Meteor.methods({
         var content = [];
         var selector = {};
         selector.officeDate = {$gte: fDate, $lte: tDate};
-
-
         //
         if (!_.isEmpty(params.branch)) {
             selector.branchId = params.branch;
@@ -37,10 +35,12 @@ Meteor.methods({
         }
 
         var index = 1;
+
         Rabbit.Collection.Office.find(selector)
             .forEach(function (obj) {
                 // Do something
                 obj.index = index;
+                //console.log('hello');
 
                 content.push(obj);
 
