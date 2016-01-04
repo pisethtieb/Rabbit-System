@@ -140,19 +140,31 @@ insertTpl.events({
         var discount = thisObj.parents('div.item-list').find('.discount').val();
 
         let rightPrice = price - (price * (discount / 100));
-        //
-        //var paidAmount = thisObj.parents('div.item-list').find('.paidAmount').val();
-        //
-        //var amount = rightPrice - paidAmount;
+        Session.set('amount', rightPrice);
 
         thisObj.parents('div.item-list').find('.dueAmount').val(rightPrice);
     },
-    'keyup .paid': function (e, t) {
+    'keyup .paidAmount': function (e, t) {
+
         var thisObj = $(e.currentTarget);
+        var amount = Session.get('amount');
         var price = thisObj.parents('div.item-list').find('.price').val();
-        var dueAmount = thisObj.parents('div.item-list').find('.dueAmount').val();
-     amount=
-        thisObj.parents('div.item-list').find('.dueAmount').val(rightPrice);
+        var paid = thisObj.parents('div.item-list').find('.paidAmount').val();
+        //thisObj.parents('div.item-list').find('.dueAmount').val(0);
+        let subAmount = amount - paid;
+        if (subAmount) {
+            thisObj.parents('div.item-list').find('.dueAmount').val(subAmount);
+        } else if (amount == null) {
+
+            thisObj.parents('div.item-list').find('.dueAmount').val(price-paid);
+
+        } else {
+            //thisObj.parents('div.item-list').find('.dueAmount').val();
+
+        }
+        debugger;
+        //
+
     },
     'click .btnAdd': function (e) {
         setTimeout(function () {
