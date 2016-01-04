@@ -49,15 +49,11 @@
                 <div class="col-md-6">
                     {{> afQuickField name="customerId" value=contractId readOnly=true}}
                     {{> afQuickField name="contractId" value=contractId readOnly=true}}
-
                 </div>
                 <div class="col-md-6">
-
                     {{> afQuickField name="paymentDate"}}
                     {{> afQuickField name="des"}}
                 </div>
-
-
                 <div class="col-md-12">
                     {{> afArrayField name="office" template="officeCustomArrayField" subtemplate="officeCustomObjectField"}}
                     <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -70,10 +66,6 @@
     {{/if}}
 
 </template>
-<!--<template name="rabbit_addMaintenance">-->
-<!--<button id="addMaintenance" class="btn btn-default">Add Maintenance</button>-->
-<!--</template>-->
-<!--Show-->
 <template name="rabbit_paymentShow">
     <!--&lt;!&ndash;Payment template sub ready by all&ndash;&gt;-->
         <!--{{#if templateSubReady}}-->
@@ -144,7 +136,7 @@
 </template>
 <!--Custom object field-->
 <template name="officeCustomObjectField">
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         {{> afQuickField name=current.officeId template="bootstrap3" label=false class="input-sm officeId"  placeholder="officeId" }}
     </div>
     <div class="col-sm-1">
@@ -152,6 +144,9 @@
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price' placeholder="price" }}
+    </div>
+    <div class="col-sm-1">
+        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount' placeholder="discount" }}
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.paidAmount template="bootstrap3" label=false class="input-sm paidAmount" id='paidAmount' placeholder="Paid Amount"}}

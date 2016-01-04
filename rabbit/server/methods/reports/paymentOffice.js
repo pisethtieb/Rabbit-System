@@ -43,7 +43,6 @@ Meteor.methods({
         let totalDueAmount = 0;
 
         Rabbit.Collection.Payment.find(selector)
-
             .forEach(function (obj) {
                 //if (obj._office.contractId == params.contractId) {
                 //    console.log(obj._id);
@@ -76,7 +75,6 @@ Meteor.methods({
                 index++;
                 //}
             });
-
         if (content.length > 0) {
             data.content = content;
             data.footer.totalPrice = total;
@@ -84,7 +82,6 @@ Meteor.methods({
             data.footer.totalPaidAmount = totalPaidAmount;
             //data.footer.paidAmount = numeral(fx.convert(paidAmount, {from: 'KHR', to: 'USD'})).format('0,0.00')
         }
-
         return data
     }
 });
