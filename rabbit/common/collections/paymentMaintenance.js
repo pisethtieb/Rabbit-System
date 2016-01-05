@@ -48,6 +48,12 @@ Rabbit.Schema.PaymentMaintenance = new SimpleSchema({
             }
         }
     },
+    'maintenance.$.discount': {
+        type: Number,
+        decimal: true,
+        optional: true
+
+    },
     'maintenance.$.price': {
         type: Number,
         decimal: true,

@@ -142,7 +142,7 @@
 </template>
 <!--Custom object field-->
 <template name="maintenanceCustomObjectField">
-    <div class="col-sm-4">
+    <div class="col-sm-3">
         {{> afQuickField name=current.maintenanceId template="bootstrap3" label=false class="input-sm maintenanceId"  placeholder="maintenanceId" }}
     </div>
     <div class="col-sm-1">
@@ -150,6 +150,9 @@
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price' placeholder="price" }}
+    </div>
+    <div class="col-sm-1">
+        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount' placeholder="Dis(%)" }}
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.paidAmount template="bootstrap3" label=false class="input-sm paidAmount" id='paidAmount' placeholder="Paid Amount"}}
