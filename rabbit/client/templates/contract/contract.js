@@ -109,6 +109,14 @@ insertTpl.onRendered(function () {
     configOnRender();
 });
 insertTpl.helpers({
+    contractObj(){
+
+        return {
+            paymentMethod: [
+                {paymentDuration: "- លើកទី១ ត្រូវបង់ប្រាក់ ៤០% ពេលចុះកិច្ចសន្យាដំបូង។"}, {paymentDuration: " - លើកទី២ ត្រូវបង់ប្រាក់ ៣០% ពេលដាក់ឱ្យប្រើប្រាស់សាកល្បង។"}, {paymentDuration: "  - លើកទី៣ ត្រូវបង់ប្រាក់ ៣០% ចុងក្រោយនៅពេលដាក់ឱ្យប្រើប្រាស់ជាផ្លូវការ។"}
+            ]
+        }
+    },
     customerId(){
         return FlowRouter.getParam('customerId');
     }

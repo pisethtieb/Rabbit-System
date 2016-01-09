@@ -53,6 +53,16 @@ Meteor.methods({
 
         data.customer = contract._customer;
         data.customer.age = moment().diff(contract._customer.dob, 'years');
+        data.product.number = contract.paymentMethod.count();
+        contract.paymentMethod.forEach(function (obj) {
+
+            data.content.paymentDuration = obj.paymentDuration;
+            data.content.push(obj)
+
+        });
+        //console.log(contract.paymentMethod.count());
+
+
         //data.header = customer;
         ///****** Content *****/
         //let i = 1;

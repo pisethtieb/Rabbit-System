@@ -59,21 +59,18 @@ Rabbit.Schema.Contract = new SimpleSchema({
         decimal: true
     },
     paymentMethod: {
-        type: String,
-        label: "Payment Method"
-        //,
-        //autoform: {
-        //    type: 'select2',
-        //    options(){
-        //        return Rabbit.List.paymentMethod();
-        //    }
-        //}
+        type: Array,
+        minCount: 1,
+        maxCount: 3
     },
-    //paymentMethod: {
-    //    type: Array,
-    //    minCount: 1,
-    //    maxCount: 1
-    //},
+    'paymentMethod.$': {
+        type: Object
+    },
+    'paymentMethod.$.paymentDuration': {
+        type: String
+    },
+
+
     type: {
         type: String,
         label: 'type',
@@ -84,17 +81,12 @@ Rabbit.Schema.Contract = new SimpleSchema({
             }
         }
     },
-    testing: {
-        type: String,
-        label: "Testing Duration",
-        optional: true
-    },
-    maintenanceFee: {
-        type: String,
-        label: "MaintenanceFee"
-        //example
-        //" 1 year,one month"
-    },
+    //maintenanceFee: {
+    //    type: String,
+    //    label: "MaintenanceFee"
+    //    //example
+    //    //" 1 year,one month"
+    //},
     branchId: {
         type: String,
         label: "Branch"
@@ -129,6 +121,20 @@ Rabbit.Schema.Contract = new SimpleSchema({
                 return Rabbit.List.contractors();
             }
         }
+    },
+    agentId: {
+        type: String,
+        label: 'AgentId',
+        autoform: {
+            type: 'select2',
+            options(){
+                return Rabbit.List.agent();
+            }
+        }
+    },
+    amount: {
+        type: String,
+        label: 'Amount'
     }
 })
 ;

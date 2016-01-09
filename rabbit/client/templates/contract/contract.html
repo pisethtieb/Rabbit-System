@@ -32,31 +32,21 @@
 
 <!--Insert-->
 <template name="rabbit_contractInsert">
-    {{#autoForm collection=Rabbit.Collection.Contract id="rabbit_contractInsert" type="insert"}}
+    {{#autoForm collection=Rabbit.Collection.Contract id="rabbit_contractInsert" doc=contractObj type="insert"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name="customerId"  readOnly=true value=customerId}}
                 {{> afQuickField name="contractDate"}}
-            </div>
-            <div class="col-md-6">
                 {{> afQuickField name="contractorId"}}
                 {{> afQuickField name="productId" class='productId'}}
-            </div>
-            <div class="col-md-12">
                 {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="contractBasePriceObjectField" id="basePrice"}}
                 {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="contractMaintenancePriceObjectField" }}
             </div>
             <div class="col-md-6">
-                {{> afQuickField name="paymentMethod"}}
+                {{> afArrayField name="paymentMethod" template='paymentMethodArrayField' subtemplate="paymentMethodObjectField" id="payment"}}
                 {{> afQuickField name="type" class='type'}}
-                <div class="testing">
-                    {{> afQuickField name="testing"}}
-                </div>
-            </div>
-            <div class="col-md-6">
-
-
-                {{> afQuickField name="maintenanceFee"}}
+                {{> afQuickField name="agentId"}}
+                {{> afQuickField name="amount"}}
                 {{> afQuickField name="des"}}
             </div>
         </div>
@@ -75,30 +65,22 @@
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Contract id="rabbit_contractUpdate" doc=this type="update"}}
             <div class="row">
-                <div class="col-md-6">
-                    {{> afQuickField name="customerId"  readOnly=true value=customerId}}
-                    {{> afQuickField name="contractDate"}}
-                </div>
-                <div class="col-md-6">
-                    {{> afQuickField name="contractorId"}}
-                    {{> afQuickField name="productId" class='productId'}}
-                </div>
-                <div class="col-md-12">
-                    {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="contractBasePriceObjectField" id="basePrice"}}
-                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="contractMaintenancePriceObjectField" }}
-                </div>
-                <div class="col-md-6">
-                    {{> afQuickField name="paymentMethod"}}
-                    {{> afQuickField name="type" class='type'}}
-                    <div class="testing">
-                        {{> afQuickField name="testing"}}
+                <div class="row">
+                    <div class="col-md-6">
+                        {{> afQuickField name="customerId"  readOnly=true value=customerId}}
+                        {{> afQuickField name="contractDate"}}
+                        {{> afQuickField name="contractorId"}}
+                        {{> afQuickField name="productId" class='productId'}}
+                        {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="contractBasePriceObjectField" id="basePrice"}}
+                        {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="contractMaintenancePriceObjectField" }}
                     </div>
-                </div>
-                <div class="col-md-6">
-
-
-                    {{> afQuickField name="maintenanceFee"}}
-                    {{> afQuickField name="des"}}
+                    <div class="col-md-6">
+                        {{> afArrayField name="paymentMethod" template='paymentMethodArrayField' subtemplate="paymentMethodObjectField" id="payment"}}
+                        {{> afQuickField name="type" class='type'}}
+                        {{> afQuickField name="agentId"}}
+                        {{> afQuickField name="amount"}}
+                        {{> afQuickField name="des"}}
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -158,6 +140,56 @@
         {{> afQuickField name=current.branch id='MaintenaceBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
     </div>
 </template>
+
+<!--paymentMethod-->
+
+<template name="afArrayField_paymentMethodArrayField">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
+        <div class="panel-body">
+            {{#if afFieldIsInvalid name=this.atts.name}}
+                <div class="has-error">
+                    <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
+                </div>
+            {{/if}}
+
+            {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+                <div class="row item-list">
+                    {{> UI.dynamic template=../atts.subtemplate}}
+
+                    <div class="col-sm-1">
+                        {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
+                            <button type="button" class="btn btn-sm btn-danger autoform-remove-item btnRemove">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/afEachArrayItem}}
+
+            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+                <div class="row">
+                    <div class="col-sm-1 pull-right">
+                        <button type="button" class="btn btn-primary autoform-add-item btn-sm btnAdd"
+                                data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}"
+                                data-autoform-maxCount="{{this.atts.maxCount}}">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            {{/if}}
+
+        </div>
+    </div>
+</template>
+<!--Custom object field-->
+<template name="paymentMethodObjectField">
+    <div class="col-sm-11">
+        {{> afQuickField name=current.paymentDuration template="bootstrap3" label=false class="input-sm officeId"  placeholder="PaymentMethod" }}
+    </div>
+
+</template>
+
 
 <template name="rabbit_officeLinkAction">
     <button type="button" class="btn btn-primary btn-sm officeAction">
