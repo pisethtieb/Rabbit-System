@@ -1,5 +1,5 @@
 Meteor.methods({
-    rabbit_contractReport: function (params) {
+    rabbit_agentReport: function (params) {
         var data = {
             title: {},
             header: {},
@@ -32,15 +32,18 @@ Meteor.methods({
             selector.branchId = params.branch;
         }
 
-        if (!_.isEmpty(params.customerId)) {
-            selector.customerId = params.customerId;
+        if (!_.isEmpty(params.agentId)) {
+            selector.agentId = params.agentId;
         }
 
         var index = 1;
+        let totalFee = 0;
         Rabbit.Collection.Contract.find(selector)
             .forEach(function (obj) {
                 // Do something
                 obj.index = index;
+                totalFee += parseFloat(obj.amount);
+
 
                 content.push(obj);
 
@@ -49,6 +52,7 @@ Meteor.methods({
 
         if (content.length > 0) {
             data.content = content;
+            data.footer.totalFee = totalFee;
         }
 
         return data

@@ -1,0 +1,123 @@
+<!--Form-->
+<template name="rabbit_agentReport">
+    {{#autoForm schema=Rabbit.Schema.AgentReport id="rabbit_agentReport" action="agentReportGen" target="_blank"}}
+        <div class="row">
+            <div class="col-md-6">
+                {{> afQuickField name="branch"}}
+                {{> afQuickField name="agentId"}}
+            </div>
+            <div class="col-md-6">
+                {{> afQuickField name="date"}}
+
+                <button type="submit" class="btn btn-primary">{{fa "file-text"}} Generate</button>
+                <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+            </div>
+        </div>
+    {{/autoForm}}
+</template>
+
+<!--Generate-->
+<template name="rabbit_agentReportGen">
+    <!--Is ready-->
+    {{#if data}}
+        {{#reportTpl options}}
+
+            {{#with data}}
+                <!--Title-->
+                    <!--{{#with title}}-->
+                <!--<div class="title">-->
+                <!--<div class="title-1x-kh-muol">{{khName}}</div>-->
+                <!--<div class="title-1x">{{enName}}</div>-->
+                <!--<div><u>Agent Report</u></div>-->
+                <!--<div class="title-2x">{{enAddress}}</div>-->
+                <!--</div>-->
+                    <!--{{/with}}-->
+                <!--Title-->
+                {{#with title}}
+                    <div class="title">
+                        <table class="report-title" style="width:100%;">
+                            <tr align="center">
+
+                                <td colspan="2">
+                                <td>
+                                    <img src="/rabbit1.png">&nbsp;
+                                </td>
+
+                                <td>
+                  <span class="report-company-name"
+                        style="font-family: 'Khmer OS Muol">{{khName}}</span><br>
+                                    <span class="report-company-name">{{enName}}</span><br>
+                                    <u>Agent Report</u><br>
+                                    {{khAddress}}, {{telephone}}
+                                </td>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {{/with}}
+                <!--Header-->
+                {{#with header}}
+                    <div style="width: 100%">
+                        <div style="width: 50%; float: left">
+                            <div><strong>Branch:</strong> {{branch}}</div>
+                            <div><strong>agentId:</strong> {{customerId}}</div>
+                        </div>
+
+                        <div style="width: 50%; float: right">
+                            <div><strong>Date:</strong> {{date}}</div>
+                        </div>
+                    </div>
+                {{/with}}
+
+                <!--Content-->
+                <table class="report-content">
+                    <thead class="content-header">
+                    <tr>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>ProductName</th>
+                        <th>CompanyName</th>
+                        <th>AgentName</th>
+                        <th>Telephone</th>
+                        <th>Fee Amount</th>
+                    </tr>
+                    </thead>
+                    <tbody class="content-body">
+                    {{#each content}}
+                        <tr>
+                            <td>{{index}}</td>
+                            <td>{{_id}}</td>
+                            <td>{{_product.name}}</td>
+                            <td>{{_customer.companyName}}</td>
+                            <td>{{_agent.name}}</td>
+                            <td>{{_agent.telephone}}</td>
+                            <td>{{amount}}</td>
+
+                        </tr>
+                    {{/each}}
+                    </tbody>
+
+                    <tr>
+                        <td colspan="6" align="right">
+                            Total Fee:
+                        </td>
+                        <td>{{footer.totalFee}}</td>
+                    </tr>
+
+                </table>
+
+            {{/with}}
+
+            <!--Sign-->
+            {{> signFooter}}
+
+        {{/reportTpl}}
+
+        <!--Auto print-->
+        <!--{{autoprint close="true"}}-->
+
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>

@@ -8,6 +8,9 @@
             <li class="{{isActiveRoute name='rabbit.customer'}}">
                 <a href="{{pathFor 'rabbit.customer'}}">Customer</a>
             </li>
+            <li class="{{isActiveRoute name='rabbit.agent'}}">
+                <a href="{{pathFor 'rabbit.agent'}}">Agent</a>
+            </li>
             <li class="{{isActiveRoute name='rabbit.quotation'}}">
                 <a href="{{pathFor 'rabbit.quotation'}}">Quotation</a>
             </li>
@@ -23,6 +26,9 @@
             <ul class="dropdown-menu" role="menu">
                 <li class="{{isActiveRoute name='rabbit.quotationReport'}}">
                     <a href="{{pathFor 'rabbit.quotationReport'}}">Quotation</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.agentReport'}}">
+                    <a href="{{pathFor 'rabbit.agentReport'}}">Agent</a>
                 </li>
                 <!--<li class="{{isActiveRoute name='rabbit.customerExcelReport'}}">-->
                 <!--<a href="{{pathFor 'rabbit.customerExcelReport'}}">Customer (Excel)</a>-->
