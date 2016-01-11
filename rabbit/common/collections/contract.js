@@ -5,11 +5,8 @@ Rabbit.Collection.Contract = new Mongo.Collection("rabbit_contract");
 Rabbit.Schema.Contract = new SimpleSchema({
     contractDate: {
         type: String,
-        label: "Contract Date",
-        defaultValue: function () {
-            var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
-            return currentDate;
-        }
+        label: "Contract Date"
+
     },
     customerId: {
         type: String,

@@ -114,7 +114,10 @@ insertTpl.helpers({
         return {
             paymentMethod: [
                 {paymentDuration: "- លើកទី១ ត្រូវបង់ប្រាក់ ៤០% ពេលចុះកិច្ចសន្យាដំបូង។"}, {paymentDuration: "- លើកទី២ ត្រូវបង់ប្រាក់ ៣០% ពេលដាក់ឱ្យប្រើប្រាស់សាកល្បង។"}, {paymentDuration: "- លើកទី៣ ត្រូវបង់ប្រាក់ ៣០% ចុងក្រោយនៅពេលដាក់ឱ្យប្រើប្រាស់ជាផ្លូវការ។"}
-            ]
+            ],
+
+            contractDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD')
+
         }
     },
     customerId(){

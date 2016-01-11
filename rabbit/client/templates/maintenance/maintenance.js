@@ -58,15 +58,11 @@ indexTpl.events({
     'click .js-show': function (e, t) {
         alertify.maintenanceShow(fa("eye", "Maintenance"), renderTemplate(showTpl, this));
     },
-    //'dblclick tbody > tr': function (event) {
-    //    var dataTable = $(event.target)
-    //        .closest('table')
-    //        .DataTable();
-    //    var rowData = dataTable.row(event.currentTarget)
-    //        .data();
-    //
-    //    FlowRouter.go('rabbit.order', {maintenanceId: rowData._id});
-    //}
+    'click .endDate': function (e, t) {
+
+        let hell = moment().add(1, 'year').calendar();
+        console.log(hell);
+    }
 });
 
 indexTpl.helpers({
