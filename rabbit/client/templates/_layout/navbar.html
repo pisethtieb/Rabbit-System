@@ -56,6 +56,13 @@
                 <li class="{{isActiveRoute name='rabbit.paymentMaintenanceReport'}}">
                     <a href="{{pathFor 'rabbit.paymentMaintenanceReport'}}">=>PaymentMaintenance</a>
                 </li>
+                <li class="dropdown-header">Payment Balance</li>
+                <li class="{{isActiveRoute name='rabbit.paymentOfficeBalanceReport'}}">
+                    <a href="{{pathFor 'rabbit.paymentOfficeBalanceReport'}}">=>PaymentOffice</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.paymentMaintenanceBalanceReport'}}">
+                    <a href="{{pathFor 'rabbit.paymentMaintenanceBalanceReport'}}">=>PaymentMaintenance</a>
+                </li>
             </ul>
         </li>
     {{/if}}

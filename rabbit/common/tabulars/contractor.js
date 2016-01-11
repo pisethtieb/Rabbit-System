@@ -22,5 +22,5 @@ Rabbit.TabularTable.Contractor = new Tabular.Table({
 
 
     ],
-    extraFields: ['position', 'contractorDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile']
+    extraFields: ['position', 'contractorDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'address']
 });
