@@ -43,8 +43,15 @@ indexTpl.events({
         alertify.product(fa("pencil", "Product"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
-        var self = this;
 
+        var self = this;
+        let contract = Rabbit.Collection.Contract.findOne({productId: self._id});
+        let quotation = Rabbit.Collection.Quotation.findOne({productId: self._id});
+        if (contract != null || quotation != null) {
+            alertify.message(self._id + '|' + self.name + '  is in used !');
+            return false;
+
+        }
         alertify.confirm(
             fa("remove", "Product"),
             "Are you sure to delete [" + self._id + "]?",

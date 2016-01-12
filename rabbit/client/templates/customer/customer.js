@@ -44,6 +44,13 @@ indexTpl.events({
     },
     'click .js-remove': function (e, t) {
         var self = this;
+        let contract = Rabbit.Collection.Contract.findOne({customerId: self._id});
+        let quotation = Rabbit.Collection.Quotation.findOne({customerId: self._id});
+        if (contract != null || quotation != null) {
+            alertify.error(self._id + '|' + self.companyName + '  is in used !');
+            return false;
+
+        }
 
         alertify.confirm(
             fa("remove", "Customer"),

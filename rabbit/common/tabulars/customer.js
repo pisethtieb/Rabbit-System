@@ -21,7 +21,7 @@ Rabbit.TabularTable.Customer = new Tabular.Table({
             tmpl: Meteor.isClient && Template.rabbit_contractLinkAction
         },
         {
-            data: "_contractCount",
+            data: "_quotationCount",
             title: "Q<i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_quotationLinkAction
         }

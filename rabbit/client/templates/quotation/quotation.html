@@ -38,16 +38,13 @@
                 {{> afQuickField name="customerId"}}
                 {{> afQuickField name="quotationDate"}}
                 {{> afQuickField name="contractorId"}}
+                {{> afQuickField name="productId" class='productId'}}
             </div>
             <div class="col-md-6">
-                {{> afQuickField name="productId" class='productId'}}
+                {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
+                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
+
                 {{> afQuickField name="des"}}
-            </div>
-            <div class="col-md-12">
-                {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField"
-                id="basePrice"}}
-                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField"
-                subtemplate="quotationMaintenancePriceObjectField" }}
             </div>
         </div>
         <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -66,16 +63,13 @@
                     {{> afQuickField name="customerId"}}
                     {{> afQuickField name="quotationDate"}}
                     {{> afQuickField name="contractorId"}}
+                    {{> afQuickField name="productId" class='productId'}}
                 </div>
                 <div class="col-md-6">
-                    {{> afQuickField name="productId" class='productId'}}
+                    {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
+                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
+
                     {{> afQuickField name="des"}}
-                </div>
-                <div class="col-md-12">
-                    {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField"
-                    id="basePrice"}}
-                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField"
-                    subtemplate="quotationMaintenancePriceObjectField" }}
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
