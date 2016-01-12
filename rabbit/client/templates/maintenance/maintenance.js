@@ -58,11 +58,7 @@ indexTpl.events({
     'click .js-show': function (e, t) {
         alertify.maintenanceShow(fa("eye", "Maintenance"), renderTemplate(showTpl, this));
     },
-    'click .endDate': function (e, t) {
 
-        let hell = moment().add(1, 'year').calendar();
-        console.log(hell);
-    }
 });
 
 indexTpl.helpers({
@@ -83,13 +79,16 @@ insertTpl.helpers({
     //officeId(){
     //    return FlowRouter.getParam('officeId');
     //},
-    office(){
+    office()
+    {
         Meteor.subscribe('rabbit_office');
         let officeId = FlowRouter.getParam('officeId');
         let office = Rabbit.Collection.Office.findOne({_id: officeId});
         return office;
-    },
-    price(){
+    }
+    ,
+    price()
+    {
         Meteor.subscribe('rabbit_office');
         let officeId = FlowRouter.getParam('officeId');
         let office = Rabbit.Collection.Office.findOne({_id: officeId});
@@ -99,8 +98,15 @@ insertTpl.helpers({
             return office._contract.maintenancePrice[0].branch;
         }
     }
+})
+;
+insertTpl.events({
+    'click .endDate': function (e, t) {
+
+        $('.endDate').val(moment().add(1, 'years').format('YYYY-MM-DD'))
+    }
 });
-insertTpl.events({});
+
 /**
  * Update
  */
