@@ -30,18 +30,15 @@ Meteor.methods({
             selector.branchId = params.branch;
         }
         if (!_.isEmpty(params.contractId)) {
-            selector.contractId= params.contractId
+            selector.contractId = params.contractId
         }
         //if (!_.isEmpty(params.officeId)) {
         //    selector.officeId = params.officeId;
         //}
 
         var index = 1;
-
-        let total = 0;
         let totalPaidAmount = 0;
         let totalDueAmount = 0;
-
         Rabbit.Collection.Payment.find(selector)
             .forEach(function (obj) {
                 //if (obj._office.contractId == params.contractId) {
@@ -49,7 +46,7 @@ Meteor.methods({
                 // Do something
                 obj.payment = JSON.stringify(obj.office);
                 obj.index = index;
-                let amount = 0;
+                amount = 0;
                 let paidAmount = 0;
                 let dueAmount = 0;
                 obj.office.forEach(function (office) {
@@ -57,26 +54,31 @@ Meteor.methods({
                     amount += parseFloat(office.price);
                     dueAmount += parseFloat(office.dueAmount);
                 });
-
                 //amount
                 obj.amount = amount;
                 obj.paid = paidAmount;
                 obj.due = dueAmount;
                 //total
-                total += amount;
-                totalDueAmount += dueAmount;
                 totalPaidAmount += paidAmount;
                 //paidAmount
                 //obj.paidAmount = paidAmount;
                 //paidAmount += obj.paidAmount;
                 //dueAmount
-
                 content.push(obj);
                 index++;
                 //}
             });
+
+        let total = 0;
+        let office = Rabbit.Collection.Office.find();
+        office.forEach(function (o) {
+            total += o.price;
+        });
+
+        totalDueAmount = total - totalPaidAmount;
         if (content.length > 0) {
             data.content = content;
+
             data.footer.totalPrice = total;
             data.footer.totalDueAmount = totalDueAmount;
             data.footer.totalPaidAmount = totalPaidAmount;

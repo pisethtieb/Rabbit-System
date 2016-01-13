@@ -68,15 +68,12 @@ Rabbit.Schema.PaymentMaintenance = new SimpleSchema({
     },
     'maintenance.$.paidAmount': {
         type: Number,
-        custom: function () {
-            if (this.value <= this.field('maintenance.$.price').value) {
-                return "greaterThan";
-            }
-        },
+        decimal: true,
         optional: true
     },
     'maintenance.$.dueAmount': {
-        type: Number
+        type: Number,
+        decimal: true
     }
     //type: {
     //    type: String,
@@ -168,6 +165,3 @@ Rabbit.Collection.PaymentMaintenance.attachSchema(Rabbit.Schema.PaymentMaintenan
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');
-SimpleSchema.messages({
-    "greaterThan": "PaidAmount mustn't be greater than price!"
-});

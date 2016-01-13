@@ -73,6 +73,7 @@ indexTpl.helpers({
         //console.log(id);
         return {contractId: id}
     }
+
 });
 
 /*Insert*/
@@ -81,15 +82,17 @@ insertTpl.onRendered(function () {
     //auto selected on office selected"HeadOffice"
     var contractId = FlowRouter.getParam('contractId');
     let office = Rabbit.Collection.Office.findOne({contractId: contractId});
+    let contract = Rabbit.Collection.Contract.findOne({_id: contractId});
     if (office == null || undefined) {
         $('.type').val("HO");
-        $('.type').change()
+        $('.type').change();
+        $('[name=price]').val(contract._product.basePrice[0].headOffice);
     }
 });
 insertTpl.helpers({
     contractId(){
         return FlowRouter.getParam('contractId');
-        console.log(FlowRouter.getParam('contractId'));
+        //console.log(FlowRouter.getParam('contractId'));
     },
     productId(){
         Meteor.subscribe('rabbit_product');
@@ -106,7 +109,10 @@ insertTpl.events({
         var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
         //let types = Rabbit.List.getProduct(type);
         if (type == 'HO') {
-            $('[name=price]').val(contract.basePrice[0].headOffice);
+            $('[name=price]').val(contract.basePrice[0].branch);
+            $('.type').val("BO");
+            $('.type').change();
+
         } else if (type == "BO") {
             $('[name=price]').val(contract.basePrice[0].branch);
         } else {
@@ -133,6 +139,7 @@ updateTpl.events({
         var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
         //let types = Rabbit.List.getProduct(type);
         if (type == 'HO') {
+
             $('[name=price]').val(contract._product.basePrice[0].headOffice);
         } else if (type == "BO") {
             $('[name=price]').val(contract._product.basePrice[0].branch);

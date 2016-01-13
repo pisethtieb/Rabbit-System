@@ -68,17 +68,12 @@ Rabbit.Schema.Payment = new SimpleSchema({
     },
     'office.$.paidAmount': {
         type: Number,
-        custom: function () {
-            if (this.value <= this.field('office.$.price').value) {
-                return "greaterThan";
-            }
-        },
         optional: true,
-        decimal:true
+        decimal: true
     },
     'office.$.dueAmount': {
         type: Number,
-        decimal:true
+        decimal: true
     }
     //type: {
     //    type: String,
@@ -170,6 +165,3 @@ Rabbit.Collection.Payment.attachSchema(Rabbit.Schema.Payment);
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');
-SimpleSchema.messages({
-    "greaterThan": "PaidAmount mustn't be greater than price!"
-});
