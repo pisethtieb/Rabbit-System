@@ -38,12 +38,12 @@ Meteor.methods({
         }
 
         var index = 1;
-
         let total = 0;
+        var totalDueAmount = 0;
         let totalPaidAmount = 0;
-        let totalDueAmount = 0;
 
-        Rabbit.Collection.PaymentMaintenance.find(selector).forEach(function (obj) {
+        let paymentMaintenance = Rabbit.Collection.PaymentMaintenance.find(selector);
+        paymentMaintenance.forEach(function (obj) {
             //if (obj._office.contractId == params.contractId) {
             //    console.log(obj._id);
             // Do something
@@ -57,24 +57,26 @@ Meteor.methods({
                 amount += parseFloat(office.price);
                 dueAmount += parseFloat(office.dueAmount);
             });
-
             //amount
             obj.amount = amount;
             obj.paid = paidAmount;
             obj.due = dueAmount;
-            //total
-            total += amount;
-            totalDueAmount += dueAmount;
-            totalPaidAmount += paidAmount;
-            //paidAmount
-            //obj.paidAmount = paidAmount;
-            //paidAmount += obj.paidAmount;
-            //dueAmount
-
+            contractId = obj.contractId;
             content.push(obj);
             index++;
             //}
         });
+        if (paymentMaintenance.count() == 1) {
+            let office = Rabbit.Collection.Maintenance.find({'_office.contractId': contractId});
+            office.forEach(function (o) {
+                total += o.price;
+            })
+        } else {
+            let office = Rabbit.Collection.Maintenance.find();
+            office.forEach(function (o) {
+                total += o.price;
+            })
+        };
 
         if (content.length > 0) {
             data.content = content;
