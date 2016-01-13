@@ -54,12 +54,13 @@ Meteor.methods({
             obj.maintenance.forEach(function (office) {
                 paidAmount += parseFloat(office.paidAmount);
                 amount += parseFloat(office.price);
-                //dueAmount += parseFloat(office.dueAmount);
+                dueAmount += parseFloat(office.dueAmount);
             });
             //amount
             obj.amount = amount;
             obj.paid = paidAmount;
             obj.due = dueAmount;
+            totalPaidAmount += paidAmount;
             contractId = obj.contractId;
             content.push(obj);
             index++;
@@ -68,14 +69,14 @@ Meteor.methods({
         if (paymentMaintenance.count() == 1) {
             let office = Rabbit.Collection.Maintenance.find({'_office.contractId': contractId});
             office.forEach(function (o) {
-                total += o.price;
+                total += parseFloat(o.price);
             })
         } else {
             let office = Rabbit.Collection.Maintenance.find();
             office.forEach(function (o) {
-                total += o.price;
+                total += parseFloat(o.price);
             })
-        };
+        }
 
         totalDueAmount = total - totalPaidAmount;
 
