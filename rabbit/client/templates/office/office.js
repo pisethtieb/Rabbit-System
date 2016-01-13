@@ -82,11 +82,10 @@ insertTpl.onRendered(function () {
     //auto selected on office selected"HeadOffice"
     var contractId = FlowRouter.getParam('contractId');
     let office = Rabbit.Collection.Office.findOne({contractId: contractId});
-    let contract = Rabbit.Collection.Contract.findOne({_id: contractId});
     if (office == null || undefined) {
         $('.type').val("HO");
         $('.type').change();
-        $('[name=price]').val(contract._product.basePrice[0].headOffice);
+        //$('[name=price]').val(contract.basePrice[0].headOffice);
     }
 });
 insertTpl.helpers({
@@ -108,13 +107,21 @@ insertTpl.events({
         var contractId = FlowRouter.getParam('contractId');
         var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
         //let types = Rabbit.List.getProduct(type);
-        if (type == 'HO') {
-            $('[name=price]').val(contract.basePrice[0].branch);
+        let office = Rabbit.Collection.Office.findOne({contractId: contractId});
+        if (type == 'HO' && office != null) {
             $('.type').val("BO");
             $('.type').change();
-
-        } else if (type == "BO") {
             $('[name=price]').val(contract.basePrice[0].branch);
+
+        } else if (type == 'BO' && office == null) {
+            $('.type').val("HO");
+            $('.type').change();
+            $('[name=price]').val(contract.basePrice[0].headOffice);
+        } else if (type == 'BO') {
+            $('[name=price]').val(contract.basePrice[0].branch);
+        } else if (type == "HO") {
+            $('[name=price]').val(contract.basePrice[0].headOffice);
+
         } else {
             $('[name=price]').val("");
         }
