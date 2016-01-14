@@ -6,7 +6,6 @@ Meteor.methods({
             content: [{index: 'No Result'}],
             footer: {}
         };
-
         date = s.words(params.date, ' To '),
             fDate = date[0],
             newDate = new Date(date[1]);

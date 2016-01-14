@@ -131,7 +131,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     amount: {
         type: Number,
-        label: 'Amount',
+        label: 'Agent Fee',
         decimal: true
     }
 })
