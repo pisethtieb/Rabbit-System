@@ -574,10 +574,9 @@ var configOnRender = function () {
 
 function checkLastPaymentMaintenance(self) {
 
-    let paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({_id: self._id});
 
-    let checkingLastPaymentMaintenanceForOffice = Rabbit.Collection.PaymentMaintenance.findOne({officeId: paymentMaintenance.officeId}, {sort: {_id: -1}})._id;
-    debugger;
+    let checkingLastPaymentMaintenanceForOffice = Rabbit.Collection.PaymentMaintenance.findOne({contractId: self.contractId}, {sort: {_id: -1}})._id;
+    
     if (checkingLastPaymentMaintenanceForOffice == self._id) {
         debugger;
         $('.updatePaymentMaintenance').show();
@@ -587,15 +586,15 @@ function checkLastPaymentMaintenance(self) {
         $('.updatePaymentMaintenance').hide();
         $('.removePaymentMaintenance').hide();
     }
-    let checkingLastPaymentMaintenanceForMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({maintenanceId: paymentMaintenance.maintenanceId}, {sort: {_id: -1}})._id;
-
-    if (checkingLastPaymentMaintenanceForMaintenance == self._id) {
-
-        $('.updatePaymentMaintenance').show();
-        $('.removePaymentMaintenance').show();
-    } else {
-        $('.updatePaymentMaintenance').hide();
-        $('.removePaymentMaintenance').hide();
-    }
+    //let checkingLastPaymentMaintenanceForMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({maintenanceId: paymentMaintenance.maintenanceId}, {sort: {_id: -1}})._id;
+    //
+    //if (checkingLastPaymentMaintenanceForMaintenance == self._id) {
+    //
+    //    $('.updatePaymentMaintenance').show();
+    //    $('.removePaymentMaintenance').show();
+    //} else {
+    //    $('.updatePaymentMaintenance').hide();
+    //    $('.removePaymentMaintenance').hide();
+    //}
 
 }

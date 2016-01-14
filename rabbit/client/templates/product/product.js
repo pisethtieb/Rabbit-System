@@ -133,8 +133,8 @@ showTpl.helpers({
         var str = "<table class='table table-bordered'><thead>" +
             "<tr>" +
             "<th>Head Office</th>" +
-            "<th>Branch</th>" + +
-                "</tr>" +
+            "<th>Branch</th>" +
+            "</tr>" +
             "</thead><tbody>";
         this.basePrice.forEach(function (o) {
             str += '<tr>' +
@@ -149,8 +149,8 @@ showTpl.helpers({
         var str = "<table class='table table-bordered'><thead>" +
             "<tr>" +
             "<th>Head Office</th>" +
-            "<th>Branch</th>" + +
-                "</tr>" +
+            "<th>Branch</th>" +
+            "</tr>" +
             "</thead><tbody>";
         this.maintenancePrice.forEach(function (o) {
             str += '<tr>' +

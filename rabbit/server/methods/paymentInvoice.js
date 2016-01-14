@@ -77,10 +77,10 @@ Meteor.methods({
         //
         ////
         //
-        data.footer.totalPrice = totalPrice;
+        data.footer.totalPrice = numeral(totalPrice).format('$0,0.00');
         //data.footer.maintenancePrice = maintenancePrice;
-        data.footer.sumPaid = sumPaid;
-        data.footer.dueAmount = dueAmount;
+        data.footer.sumPaid = numeral(sumPaid).format('$0,0.00');
+        data.footer.dueAmount = numeral(dueAmount).format('$0,0.00');
         //data.footer.paidAmountMaitenance = paidAmountMaintenance;
         //data.content.dueAmountOffice = totalPrice - paidAmountOffice;
         //data.footer.dueAmountMaintenance = maintenancePrice - paidAmountMaintenance;

@@ -25,7 +25,7 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["payment"], {size: 'lg'});
-    createNewAlertify(["paymentShow"]);
+    createNewAlertify(["paymentShow"], {size: 'lg'});
     //createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -74,6 +74,33 @@ indexTpl.events({
     }
 
 });
+showTpl.helpers({
+
+    office: function () {
+        var str = "<table class='table table-bordered'><thead>" +
+            "<tr>" +
+            "<th>OfficeId</th>" +
+            "<th>Office Type</th>" +
+            "<th>Price</th>" +
+            "<th>Discount</th>" +
+            "<th>PaidAmount</th>" +
+            "<th>DueAmount</th>" +
+            "</tr>" +
+            "</thead><tbody>";
+        this.office.forEach(function (o) {
+            str += '<tr>' +
+                '<td>' + o.officeId + '</td>' +
+                '<td>' + o.office + '</td>' +
+                '<td>' + o.price + '</td>' +
+                '<td>' + o.discount + '</td>' +
+                '<td>' + o.paidAmount + '</td>' +
+                '<td>' + o.dueAmount + '</td>' +
+                '</tr>'
+        });
+        str += "</tbody></table>";
+        return new Spacebars.SafeString(str);
+    }
+});
 
 indexTpl.helpers({
     selector: function () {
@@ -91,12 +118,6 @@ insertTpl.helpers({
     },
     customerId(){
         return FlowRouter.getParam('customerId');
-    },
-    options: function () {
-        return Rabbit.List.officeMaintenance();
-    },
-    options: function () {
-        return Rabbit.List.officeMaintenance();
     },
     contractObj(){
 
@@ -213,7 +234,7 @@ insertTpl.events({
         var price = thisObj.parents('div.item-list').find('.price').val();
         setTimeout(function () {
             if (officeId != "" && price != 0) {
-                debugger;
+                debuggerdes;
                 $('.btnAdd').attr('disabled', false);
             } else {
                 debugger;
@@ -519,7 +540,7 @@ updateTpl.events({
         //            $('.paidAmount').val(maintenance.price);
         //            $('.dueAmount').val(0);
         //        }
-        //    });
+        //    });des
         //
         //}
     }
@@ -575,9 +596,8 @@ var configOnRender = function () {
 
 function checkLastPayment(self) {
 
-    let payment = Rabbit.Collection.Payment.findOne({_id: self._id});
 
-    let checkingLastPaymentForOffice = Rabbit.Collection.Payment.findOne({officeId: payment.officeId}, {sort: {_id: -1}})._id;
+    let checkingLastPaymentForOffice = Rabbit.Collection.Payment.findOne({contractId: self.contractId}, {sort: {_id: -1}})._id;
     debugger;
     if (checkingLastPaymentForOffice == self._id) {
         debugger;
@@ -588,15 +608,15 @@ function checkLastPayment(self) {
         $('.updatePayment').hide();
         $('.removePayment').hide();
     }
-    let checkingLastPaymentForMaintenance = Rabbit.Collection.Payment.findOne({maintenanceId: payment.maintenanceId}, {sort: {_id: -1}})._id;
-
-    if (checkingLastPaymentForMaintenance == self._id) {
-
-        $('.updatePayment').show();
-        $('.removePayment').show();
-    } else {
-        $('.updatePayment').hide();
-        $('.removePayment').hide();
-    }
+    //let checkingLastPaymentForMaintenance = Rabbit.Collection.Payment.findOne({maintenanceId: payment.maintenanceId}, {sort: {_id: -1}})._id;
+    //
+    //if (checkingLastPaymentForMaintenance == self._id) {
+    //
+    //    $('.updatePayment').show();
+    //    $('.removePayment').show();
+    //} else {
+    //    $('.updatePayment').hide();
+    //    $('.removePayment').hide();
+    //}
 
 }

@@ -58,9 +58,10 @@ Meteor.methods({
                 dueAmount += parseFloat(office.dueAmount);
             });
             //amount
-            obj.amount = amount;
-            obj.paid = paidAmount;
-            obj.due = dueAmount;
+            obj.amount = numeral(amount).format('0,0.00');
+            obj.paid = numeral(paidAmount).format('0,0.00');
+            obj.due = numeral(dueAmount).format('0,0.00');
+            totalPaidAmount += paidAmount;
             contractId = obj.contractId;
             content.push(obj);
             index++;
@@ -69,20 +70,21 @@ Meteor.methods({
         if (paymentMaintenance.count() == 1) {
             let office = Rabbit.Collection.Maintenance.find({'_office.contractId': contractId});
             office.forEach(function (o) {
-                total += o.price;
+                total += parseFloat(o.price);
             })
         } else {
             let office = Rabbit.Collection.Maintenance.find();
             office.forEach(function (o) {
-                total += o.price;
+                total += parseFloat(o.price);
             })
-        };
-
+        }
+        ;
+        totalDueAmount = total - totalPaidAmount;
         if (content.length > 0) {
             data.content = content;
-            data.footer.totalPrice = total;
-            data.footer.totalDueAmount = totalDueAmount;
-            data.footer.totalPaidAmount = totalPaidAmount;
+            data.footer.totalPrice = numeral(total).format('$0,0.00');
+            data.footer.totalDueAmount = numeral(totalDueAmount).format('$0,0.00');
+            data.footer.totalPaidAmount = numeral(totalPaidAmount).format('$0,0.00');
             //data.footer.paidAmount = numeral(fx.convert(paidAmount, {from: 'KHR', to: 'USD'})).format('0,0.00')
         }
 

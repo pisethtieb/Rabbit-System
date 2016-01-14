@@ -38,10 +38,10 @@ Meteor.methods({
             obj.priceOffice = parseFloat(maintenance.price);
             totalPrice += parseFloat(maintenance.price);
             obj.sumAmount = maintenance.price - obj.dueAmount;
-            sumPaid +=obj.sumAmount;
+            sumPaid += obj.sumAmount;
             dueAmount += obj.dueAmount;
-            obj.startDate=maintenance.startDate;
-            obj.endDate=maintenance.endDate;
+            obj.startDate = maintenance.startDate;
+            obj.endDate = maintenance.endDate;
             obj.type = maintenance.type;
             obj.officeName = maintenance._office.name;
             data.content.push(obj);
@@ -79,10 +79,11 @@ Meteor.methods({
         //
         ////
         //
-        data.footer.totalPrice = totalPrice;
+        //
+        data.footer.totalPrice = numeral(totalPrice).format('$0,0.00');
         //data.footer.maintenancePrice = maintenancePrice;
-        data.footer.sumPaid = sumPaid;
-        data.footer.dueAmount = dueAmount;
+        data.footer.sumPaid = numeral(sumPaid).format('$0,0.00');
+        data.footer.dueAmount = numeral(dueAmount).format('$0,0.00');
         //data.footer.paidAmountMaitenance = paidAmountMaintenance;
         //data.content.dueAmountOffice = totalPrice - paidAmountOffice;
         //data.footer.dueAmountMaintenance = maintenancePrice - paidAmountMaintenance;

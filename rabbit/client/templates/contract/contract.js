@@ -22,7 +22,7 @@ indexTpl.onCreated(function () {
     // Create new  alertify
     createNewAlertify(["contract"], {size: 'lg'});
     createNewAlertify(["addFile"]);
-    createNewAlertify(["contractShow"]);
+    createNewAlertify(["contractShow"], {size: 'lg'});
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 indexTpl.helpers({
@@ -226,8 +226,8 @@ showTpl.helpers({
         var str = "<table class='table table-bordered'><thead>" +
             "<tr>" +
             "<th>Head Office</th>" +
-            "<th>Branch</th>" + +
-                "</tr>" +
+            "<th>Branch</th>" +
+            "</tr>" +
             "</thead><tbody>";
         this.basePrice.forEach(function (o) {
             str += '<tr>' +
@@ -242,8 +242,8 @@ showTpl.helpers({
         var str = "<table class='table table-bordered'><thead>" +
             "<tr>" +
             "<th>Head Office</th>" +
-            "<th>Branch</th>" + +
-                "</tr>" +
+            "<th>Branch</th>" +
+            "</tr>" +
             "</thead><tbody>";
         this.maintenancePrice.forEach(function (o) {
             str += '<tr>' +
@@ -253,6 +253,22 @@ showTpl.helpers({
         });
         str += "</tbody></table>";
         return new Spacebars.SafeString(str);
+    },
+    paymentMethod(){
+
+        var str = "<table class='table table-bordered'><thead>" +
+            "<tr>" +
+            "<th>PaymentDuration</th>" +
+            "</tr>" +
+            "</thead><tbody>";
+        this.paymentMethod.forEach(function (o) {
+            str += '<tr>' +
+                '<td>' + o.paymentDuration + '</td>' +
+                '</tr>'
+        });
+        str += "</tbody></table>";
+        return new Spacebars.SafeString(str);
+
     }
 });
 /**

@@ -59,7 +59,7 @@ Meteor.methods({
             //amount
             obj.amount = amount;
             obj.paid = paidAmount;
-            obj.due = dueAmount;
+            obj.due = amount - paidAmount;
             totalPaidAmount += paidAmount;
             contractId = obj.contractId;
             content.push(obj);

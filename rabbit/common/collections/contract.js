@@ -130,8 +130,9 @@ Rabbit.Schema.Contract = new SimpleSchema({
         }
     },
     amount: {
-        type: String,
-        label: 'Amount'
+        type: Number,
+        label: 'Amount',
+        decimal: true
     }
 })
 ;

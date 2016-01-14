@@ -16,7 +16,8 @@
         <b>
             <li role="separator" class="divider"></li>
         </b>
-        <li><a href="/rabbit/product/print/{{this._id}}" target="_blank" class="feature">{{fa "print"}} Print Feature</a>
+        <li><a href="/rabbit/product/print/{{this._id}}" target="_blank" class="feature">{{fa "print"}} Print
+            Feature</a>
         </li>
     {{/tabularAction}}
 </template>
@@ -81,11 +82,11 @@
                 <dt>Name:</dt>
                 <dd>{{name}}</dd>
                 <dt>Base Price:</dt>
-                <dd>{{base}}</dd>
+                <dd>{{{base}}}</dd>
                 <dt>Maintenance Price:</dt>
-                <dd>{{maintenance}}</dd>
+                <dd>{{{maintenance}}}</dd>
                 <dt>Feature:</dt>
-                <dd>{{feature}}</dd>
+                <dd>{{{feature}}}</dd>
             </dl>
         {{/with}}
     {{else}}

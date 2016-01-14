@@ -103,20 +103,25 @@
                 <dd>{{customerId}}</dd>
                 <dt>contract Date:</dt>
                 <dd>{{contractDate}}</dd>
+                <dt>contractor:</dt>
+                <dd>{{contractorId}}</dd>
                 <dt>Product:</dt>
                 <dd>{{_product.name}}</dd>
-                <dt>Payment Method:</dt>
-                <dd>{{paymentMethod}}</dd>
                 <dt>Base Price:</dt>
                 <dd>{{base}}</dd>
                 <dt>Maintenance Price:</dt>
                 <dd>{{maintenance}}</dd>
+                <dt>Payment Method:</dt>
+                <dd>{{{paymentMethod}}}</dd>
                 <dt>Type:</dt>
                 <dd>{{type}}</dd>
-                <dt>maintenanceFee:</dt>
-                <dd>{{maintenanceFee}}</dd>
+                <dt>agentId:</dt>
+                <dd>{{_agent.name}}</dd>
+                <dt>amount:</dt>
+                <dd>{{amount}}</dd>
                 <dt>Des:</dt>
                 <dd>{{des}}</dd>
+
             </dl>
         {{/with}}
     {{else}}
