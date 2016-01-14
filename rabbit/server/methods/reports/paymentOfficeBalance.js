@@ -86,9 +86,9 @@ Meteor.methods({
 
         if (content.length > 0) {
             data.content = content;
-            data.footer.totalPrice = total;
-            data.footer.totalDueAmount = totalDueAmount;
-            data.footer.totalPaidAmount = totalPaidAmount;
+            data.footer.totalPrice = numeral(total).format('$0,0.00');
+            data.footer.totalDueAmount = numeral(totalDueAmount).format('$0,0.00');
+            data.footer.totalPaidAmount = numeral(totalPaidAmount).format('$0,0.00');
             //data.footer.paidAmount = numeral(fx.convert(paidAmount, {from: 'KHR', to: 'USD'})).format('0,0.00')
         }
         return data

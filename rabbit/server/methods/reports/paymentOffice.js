@@ -47,7 +47,7 @@ Meteor.methods({
             // Do something
             obj.payment = JSON.stringify(obj.office);
             obj.index = index;
-            amount = 0;
+            let amount = 0;
             let paidAmount = 0;
             let dueAmount = 0;
             obj.office.forEach(function (office) {
@@ -56,9 +56,9 @@ Meteor.methods({
                 dueAmount += parseFloat(office.dueAmount);
             });
             //amount
-            obj.amount = amount;
-            obj.paid = paidAmount;
-            obj.due = dueAmount;
+            obj.amount = numeral(amount).format('$0,0.00');
+            obj.paid = numeral(paidAmount).format('$0,0.00');
+            obj.due = numeral(dueAmount).format('$0,0.00');
             //total
             totalPaidAmount += paidAmount;
             //paidAmount
@@ -83,9 +83,9 @@ Meteor.methods({
         totalDueAmount = total - totalPaidAmount;
         if (content.length > 0) {
             data.content = content;
-            data.footer.totalPrice = total;
-            data.footer.totalDueAmount = totalDueAmount;
-            data.footer.totalPaidAmount = totalPaidAmount;
+            data.footer.totalPrice = numeral(total).format('$0,0.00');
+            data.footer.totalDueAmount = numeral(totalDueAmount).format('$0,0.00');
+            data.footer.totalPaidAmount = numeral(totalPaidAmount).format('$0,0.00');
             //data.footer.paidAmount = numeral(fx.convert(paidAmount, {from: 'KHR', to: 'USD'})).format('0,0.00')
         }
         return data
