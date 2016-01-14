@@ -72,6 +72,13 @@ indexTpl.helpers({
         let id = FlowRouter.getParam('contractId');
         //console.log(id);
         return {contractId: id}
+    },
+    contract: function () {
+        let id = FlowRouter.getParam('contractId');
+        let contract = Rabbit.Collection.Contract.findOne({_id: id});
+
+        return contract;
+
     }
 
 });

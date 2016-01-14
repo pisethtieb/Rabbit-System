@@ -2,6 +2,17 @@
     <p>
         <button type="button" class="btn btn-primary js-insert">{{fa "plus"}} Add New</button>
     </p>
+    <div class="pull-right" style="display: inline">
+        <small>
+
+            {{#with contract}}
+                <a href="#" class="jsInfo">{{_id}} | ContractDate : {{contractDate}} |
+                    Product : {{_product.name}}|
+                    || Customer(company) : {{_customer.companyName}}  |
+                    ContractName : {{_customer.contractName}}</a>
+            {{/with}}
+        </small>
+    </div>
     {{> tabular table=Rabbit.TabularTable.PaymentMaintenance selector=selector class="table table-striped table-bordered table-condensed table-hover-pointer"}}
 </template>
 

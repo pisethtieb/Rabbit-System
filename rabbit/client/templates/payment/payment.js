@@ -107,6 +107,13 @@ indexTpl.helpers({
         let id = FlowRouter.getParam('contractId');
         //console.log(id);
         return {contractId: id}
+    },
+    contract: function () {
+        let id = FlowRouter.getParam('contractId');
+        let contract = Rabbit.Collection.Contract.findOne({_id: id});
+
+        return contract;
+
     }
 });
 
@@ -118,18 +125,7 @@ insertTpl.helpers({
     },
     customerId(){
         return FlowRouter.getParam('customerId');
-    },
-    contractObj(){
-
-        return {
-            officeId: [
-                {paymentDuration: "- លើកទី១ ត្រូវបង់ប្រាក់ ៤០% ពេលចុះកិច្ចសន្យាដំបូង។"}, {paymentDuration: "- លើកទី២ ត្រូវបង់ប្រាក់ ៣០% ពេលដាក់ឱ្យប្រើប្រាស់សាកល្បង។"}, {paymentDuration: "- លើកទី៣ ត្រូវបង់ប្រាក់ ៣០% ចុងក្រោយនៅពេលដាក់ឱ្យប្រើប្រាស់ជាផ្លូវការ។"}
-            ],
-
-            contractDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD')
-
-        }
-    },
+    }
 });
 insertTpl.onRendered(function () {
     configOnRender();

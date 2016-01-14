@@ -66,6 +66,12 @@ indexTpl.helpers({
         let id = FlowRouter.getParam('officeId');
         //console.log(id);
         return {officeId: id}
+    },
+    office(){
+        let officeId = FlowRouter.getParam('officeId');
+        let office = Rabbit.Collection.Office.findOne({_id: officeId});
+
+        return office;
     }
 
 });

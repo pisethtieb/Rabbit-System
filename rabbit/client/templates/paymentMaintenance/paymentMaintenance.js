@@ -80,21 +80,23 @@ indexTpl.helpers({
         let id = FlowRouter.getParam('contractId');
         //console.log(id);
         return {contractId: id}
+    },
+    contract: function () {
+        let id = FlowRouter.getParam('contractId');
+        let contract = Rabbit.Collection.Contract.findOne({_id: id});
+
+        return contract;
+
     }
 });
 
 /*Insert*/
 insertTpl.helpers({
-    contractId(){
-        return FlowRouter.getParam('contractId');
 
-    },
-    customerId(){
-        return FlowRouter.getParam('customerId');
-    },
     options: function () {
         return Rabbit.List.officeMaintenance();
-    }
+    },
+
 });
 insertTpl.onRendered(function () {
     configOnRender();
@@ -576,7 +578,7 @@ function checkLastPaymentMaintenance(self) {
 
 
     let checkingLastPaymentMaintenanceForOffice = Rabbit.Collection.PaymentMaintenance.findOne({contractId: self.contractId}, {sort: {_id: -1}})._id;
-    
+
     if (checkingLastPaymentMaintenanceForOffice == self._id) {
         debugger;
         $('.updatePaymentMaintenance').show();
