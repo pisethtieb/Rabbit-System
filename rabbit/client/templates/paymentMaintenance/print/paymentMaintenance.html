@@ -1,6 +1,4 @@
 <template name='rabbit_paymentMaintenanceInvoice'>
-
-
     <!--Is ready-->
     {{#if data}}
         {{#reportTpl options}}
@@ -69,8 +67,8 @@
                         <th>Type</th>
                         <th>StartDate</th>
                         <th>EndDate</th>
-                        <!--<th>Price</th>-->
                         <th>Price</th>
+                        <th>Dis(%)</th>
                         <th>TotalSum</th>
                         <th>Paid</th>
                         <th>Balance</th>
@@ -85,6 +83,7 @@
                             <td>{{startDate}}</td>
                             <td>{{endDate}}</td>
                             <td>{{priceOffice}}</td>
+                            <td>{{discount}}</td>
                             <td>{{{sumAmount}}}</td>
                             <td>{{{paidAmount}}}</td>
                             <td>{{{dueAmount}}}</td>
