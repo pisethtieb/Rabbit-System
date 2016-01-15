@@ -16,11 +16,11 @@ Rabbit.TabularTable.Agent = new Tabular.Table({
         {data: "gender", title: "Gender"},
         //{data: "id", title: "ID"},
         {data: "telephone", title: "Telephone"},
+        {data: "address", title: "Address"},
         //{data: "email", title: "Email"},
-        {data: "_contractCount", title: "contract"}
+        {data: "_agentCount", title: "contract"}
 
 
-
-    ]
-    //extraFields: ['position', 'contractorDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile']
+    ],
+    extraFields: ['position', 'contractorDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile']
 });

@@ -79,6 +79,7 @@ Rabbit.Schema.Customer = new SimpleSchema({
     contactPerson: {
         type: Array,
         minCount: 1,
+        maxCount: 5,
         optional: true
     },
     'contactPerson.$': {

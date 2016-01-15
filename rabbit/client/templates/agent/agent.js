@@ -8,7 +8,6 @@ var indexTpl = Template.rabbit_agent,
 
 //locationAddOnTpl = Template.rabbit_locationAddOnContractor;
 
-
 /**
  * Index
  */
@@ -69,14 +68,6 @@ indexTpl.events({
         })
 
     }
-    //'dblclick tbody > tr': function (event) {
-    //    var dataTable = $(event.target)
-    //        .closest('table')
-    //        .DataTable();
-    //    var rowData = dataTable.row(event.currentTarget)
-    //        .data();
-    //
-    //    FlowRouter.go('rabbit.order', {contractorId: rowData._id});
     //}
 });
 
@@ -112,34 +103,6 @@ updateTpl.helpers({
  */
 showTpl.onCreated(function () {
     this.subscribe('rabbit_agent', this.data._id);
-});
-
-showTpl.helpers({
-    data: function () {
-        var data = Rabbit.Collection.Contractor.findOne(this._id);
-        return data;
-
-    },
-    contactPerson: function () {
-        var str = "<table class='table table-bordered'><thead>" +
-            "<tr>" +
-            "<th>Name</th>" +
-            "<th>Gender</th>" +
-            "<th>Position</th>" +
-            "<th>Telephone</th>" +
-            "</tr>" +
-            "</thead><tbody>";
-        this.contactPerson.forEach(function (o) {
-            str += '<tr>' +
-                '<td>' + o.name + '</td>' +
-                '<td>' + o.gender + '</td>' +
-                '<td>' + o.position + '</td>' +
-                '<td>' + o.tel + '</td>' +
-                '</tr>'
-        });
-        str += "</tbody></table>";
-        return new Spacebars.SafeString(str);
-    }
 });
 
 

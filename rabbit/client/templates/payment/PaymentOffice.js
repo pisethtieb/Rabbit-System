@@ -37,8 +37,6 @@ indexTpl.events({
     },
     'click .js-insert': function (e, t) {
         let id = FlowRouter.getParam('contractId');
-        var data = Rabbit.Collection.Office.findOne({contractId: id});
-        data.paymentDate = moment().format("YYYY-MM-DD HH:mm:ss");
 
         alertify.payment(fa("plus", "Payment"), renderTemplate(insertTpl)).maximize();
 

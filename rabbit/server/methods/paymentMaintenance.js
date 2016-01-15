@@ -19,8 +19,8 @@ Meteor.methods({
                             maintenanceId: payObj.maintenanceId,
                             maintenance: payObj.maintenance,
                             price: payObj.dueAmount,
-                            dueAmount: 0,
-                            discount: payObj.discount
+                            dueAmount: payObj.dueAmount,
+                            discount: 0
                         });
                     }
                 });

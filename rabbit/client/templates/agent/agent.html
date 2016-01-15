@@ -79,30 +79,19 @@
 <!--Show-->
 <template name="rabbit_agentShow">
     <!--Agenttemplate sub ready by all-->
-    {{#if templateSubReady}}
-        {{#with data}}
-            <dl class="dl-horizontal">
-                <dt>ID:</dt>
-                <dd>{{name}}</dd>
-                <dt>gender:</dt>
-                <dd>{{gender}}</dd>
-                <dt>DOB:</dt>
-                <dd>{{dob}}</dd>
-                <dt>ID:</dt>
-                <dd>{{id}}</dd>
-                <dt>Position:</dt>
-                <dd>{{position}}</dd>
-                <dt>telephone:</dt>
-                <dd>{{telephone}}</dd>
-                <dt>Email:</dt>
-                <dd>{{email}}</dd>
-                <dt>address:</dt>
-                <dd>{{address}}</dd>
-            </dl>
-        {{/with}}
-    {{else}}
-        {{> loading}}
-    {{/if}}
+
+    <dl class="dl-horizontal">
+        <dt>ID:</dt>
+        <dd>{{_id}}</dd>
+        <dt>Name:</dt>
+        <dd>{{name}}</dd>
+        <dt>Gender:</dt>
+        <dd>{{gender}}</dd>
+        <dt>telephone:</dt>
+        <dd>{{telephone}}</dd>
+        <dt>address:</dt>
+        <dd>{{address}}</dd>
+    </dl>
 </template>
 
 <!--Location add on-->

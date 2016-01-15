@@ -19,7 +19,7 @@ Meteor.methods({
                             office: payObj.office,
                             price: payObj.dueAmount,
                             dueAmount: payObj.dueAmount,
-                            discount: payObj.discount
+                            discount: 0
                         });
                     }
                 });

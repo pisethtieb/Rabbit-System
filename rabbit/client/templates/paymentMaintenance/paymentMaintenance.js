@@ -25,7 +25,7 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["paymentMaintenance"], {size: 'lg'});
-    createNewAlertify(["paymentMaintenanceShow"]);
+    createNewAlertify(["paymentMaintenanceShow"], {size: 'lg'});
     //createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -37,7 +37,7 @@ indexTpl.events({
     },
     'click .js-insert': function (e, t) {
 
-        alertify.paymentMaintenance(fa("plus", "PaymentMaintenance"), renderTemplate(insertTpl));
+        alertify.paymentMaintenance(fa("plus", "PaymentMaintenance"), renderTemplate(insertTpl)).maximize();
 
     },
     'click .js-update': function (e, t) {
@@ -108,19 +108,6 @@ insertTpl.onRendered(function () {
     $('.btnAdd').attr('disabled', "disabled");
 });
 insertTpl.events({
-    //'change .type': function (e, t) {
-    //    let checkOM = $(e.currentTarget).val();
-    //    Session.set('checkOfficeMaintenance', checkOM);
-    //    if (checkOM == '') {
-    //        $('#officeMaintenance').attr('disabled', true);
-    //    } else {
-    //        $('#officeMaintenance').attr('disabled', false);
-    //        $('.maintenanceId').val('');
-    //        $('.officeId').val('');
-    //    }
-    //
-    //
-    //},
     'click .btnRemove': function (e) {
 
         setTimeout(function () {
@@ -182,8 +169,6 @@ insertTpl.events({
             thisObj.parents('div.item-list').find('.dueAmount').val(price);
 
         }
-        //debugger;
-        //
 
     },
     'keypress .paidAmount,.discount,.dueAmount,.price': function (evt) {
@@ -199,30 +184,20 @@ insertTpl.events({
         setTimeout(function () {
             $('.btnAdd').attr('disabled', 'disabled');
         }, 300);
-
         var thisObj = $(e.currentTarget);
         var officeId = thisObj.parents('div.item-list').find('.officeId').val();
         var price = thisObj.parents('div.item-list').find('.price').val();
         setTimeout(function () {
             if (officeId != "" && price != 0) {
-                debugger;
                 $('.btnAdd').attr('disabled', false);
             } else {
-                debugger;
                 $('.btnAdd').attr('disabled', true);
             }
-
         }, 300);
     },
     'change .maintenanceId': function (e) {
-        debugger;
-
-
-        //let checkOM = Session.get('checkOfficeMaintenance');
-        //if (checkOM == "office") {
         var thisObje = $(e.currentTarget);
         var maintenanceId = $(e.currentTarget).val();
-        debugger;
         if (maintenanceId == '') {
             thisObje.parents('div.item-list').find('.officeId').val('');
             thisObje.parents('div.item-list').find('.office').val('');
@@ -283,55 +258,15 @@ insertTpl.events({
             debugger;
         }
         if (maintenanceId) {
-            debugger;
             $('.btnAdd').removeAttr('disabled');
         } else {
             $('.btnAdd').attr('disabled', "disabled");
         }
 
-        //} else if (checkOM == 'maintenance') {
-        //    let maintenanceId = $(e.currentTarget).val();
-        //    //$('.officeMaintenance').val('maintenance');
-        //    $('.maintenanceId').val(maintenanceId);
-        //    $('.officeId').val('');
-        //    var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
-        //    Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
-        //        var paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({
-        //                maintenanceId: obj._id
-        //            },
-        //            {
-        //                sort: {
-        //                    _id: -1
-        //                }
-        //            });
-        //        if (paymentMaintenance != null && paymentMaintenance.price > 0) {
-        //            $('.price').val(paymentMaintenance.dueAmount);
-        //            $('.paidAmount').val(paymentMaintenance.dueAmount);
-        //            $('.dueAmount').val(0);
-        //        } else if (paymentMaintenance == null) {
-        //            $('.price').val(maintenance.price);
-        //            $('.paidAmount').val(maintenance.price);
-        //            $('.dueAmount').val(0);
-        //        }
-        //    });
-        //
-        //}
+
     }
 });
 updateTpl.events({
-    //'change .type': function (e, t) {
-    //    let checkOM = $(e.currentTarget).val();
-    //    Session.set('checkOfficeMaintenance', checkOM);
-    //    if (checkOM == '') {
-    //        $('#officeMaintenance').attr('disabled', true);
-    //    } else {
-    //        $('#officeMaintenance').attr('disabled', false);
-    //        $('.maintenanceId').val('');
-    //        $('.officeId').val('');
-    //    }
-    //
-    //
-    //},
     'click .btnRemove': function (e) {
 
         setTimeout(function () {
@@ -500,35 +435,37 @@ updateTpl.events({
             $('.btnAdd').attr('disabled', "disabled");
         }
 
-        //} else if (checkOM == 'maintenance') {
-        //    let maintenanceId = $(e.currentTarget).val();
-        //    //$('.officeMaintenance').val('maintenance');
-        //    $('.maintenanceId').val(maintenanceId);
-        //    $('.officeId').val('');
-        //    var maintenance = Rabbit.Collection.Maintenance.findOne({_id: maintenanceId});
-        //    Rabbit.Collection.Maintenance.find(maintenance._id).forEach(function (obj) {
-        //        var paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({
-        //                maintenanceId: obj._id
-        //            },
-        //            {
-        //                sort: {
-        //                    _id: -1
-        //                }
-        //            });
-        //        if (paymentMaintenance != null && paymentMaintenance.price > 0) {
-        //            $('.price').val(paymentMaintenance.dueAmount);
-        //            $('.paidAmount').val(paymentMaintenance.dueAmount);
-        //            $('.dueAmount').val(0);
-        //        } else if (paymentMaintenance == null) {
-        //            $('.price').val(maintenance.price);
-        //            $('.paidAmount').val(maintenance.price);
-        //            $('.dueAmount').val(0);
-        //        }
-        //    });
-        //
-        //}
     }
 });
+//show
+showTpl.helpers({
+
+    maintenance: function () {
+        var str = "<table class='table table-bordered'><thead>" +
+            "<tr>" +
+            "<th>MaintenanceId</th>" +
+            "<th>Office Type</th>" +
+            "<th>Price</th>" +
+            "<th>Discount</th>" +
+            "<th>PaidAmount</th>" +
+            "<th>DueAmount</th>" +
+            "</tr>" +
+            "</thead><tbody>";
+        this.maintenance.forEach(function (o) {
+            str += '<tr>' +
+                '<td>' + o.maintenanceId + '</td>' +
+                '<td>' + o.maintenance + '</td>' +
+                '<td>' + o.price + '</td>' +
+                '<td>' + o.discount + '</td>' +
+                '<td>' + o.paidAmount + '</td>' +
+                '<td>' + o.dueAmount + '</td>' +
+                '</tr>'
+        });
+        str += "</tbody></table>";
+        return new Spacebars.SafeString(str);
+    }
+});
+
 /**
  * Update
  */

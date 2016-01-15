@@ -183,7 +183,6 @@
                     </div>
                 </div>
             {{/if}}
-
         </div>
     </div>
 </template>
@@ -232,7 +231,7 @@
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Contract id="rabbit_contractUpdate" doc=this type="update"}}
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-12">
                     {{> afQuickField name="addFile" }}
                 </div>
             </div>
