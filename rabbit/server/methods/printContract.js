@@ -27,12 +27,12 @@ Meteor.methods({
             n = ('000000000' + num).substr(-9).match(/^(\d{2})(\d{2})(\d{2})(\d{1})(\d{2})$/);
             if (!n) return;
             var str = '';
-            str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + ' ' + a[n[1][1]]) + 'សែន ' : '';
-            str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + ' ' + a[n[2][1]]) + 'មឺុន  ' : '';
-            str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + ' ' + a[n[3][1]]) + 'ពាន់ ' : '';
-            str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + ' ' + a[n[4][1]]) + 'រយ ' : '';
+            str += (n[1] != 0) ? (a[Number(n[1])] || b[n[1][0]] + a[n[1][1]]) + 'សែន ' : '';
+            str += (n[2] != 0) ? (a[Number(n[2])] || b[n[2][0]] + a[n[2][1]]) + 'មឺុន  ' : '';
+            str += (n[3] != 0) ? (a[Number(n[3])] || b[n[3][0]] + a[n[3][1]]) + 'ពាន់ ' : '';
+            str += (n[4] != 0) ? (a[Number(n[4])] || b[n[4][0]] + a[n[4][1]]) + 'រយ ' : '';
             str += (n[5] != 0) ? ((str != '') ? '' : '') + (a[Number(n[5])] || b[n[5][0]] + ' ' + a[n[5][1]]) + ' ' : '';
-            return str;
+            return (str);
         }
 
         data.contractor = contract._contractor;
@@ -45,7 +45,7 @@ Meteor.methods({
         data.product.maintenancePriceHeadKh = toWords(contract.maintenancePrice[0].headOffice);
         data.product.maintenancePriceBrandKh = toWords(contract.maintenancePrice[0].branch);
 
-
+        console.log(data.product.maintenancePriceBrandKh);
         data.product.priceHead = contract.basePrice[0].headOffice;
         data.product.priceOffice = contract.basePrice[0].branch;
         data.product.maintenancePriceHead = contract.maintenancePrice[0].headOffice;

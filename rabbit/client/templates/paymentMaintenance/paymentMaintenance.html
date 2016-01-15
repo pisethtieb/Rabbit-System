@@ -33,11 +33,11 @@
 
 <!--Insert-->
 <template name="rabbit_paymentMaintenanceInsert">
-    {{#autoForm collection=Rabbit.Collection.PaymentMaintenance id="rabbit_paymentMaintenanceInsert" type="insert"}}
+    {{#autoForm collection=Rabbit.Collection.PaymentMaintenance doc=contract id="rabbit_paymentMaintenanceInsert" type="insert"}}
         <div class="row">
             <div class="col-md-6">
-                {{> afQuickField name="customerId" value=customerId readOnly=true}}
-                {{> afQuickField name="contractId" value=contractId readOnly=true}}
+                {{> afQuickField name="customerId"  readOnly=true}}
+                {{> afQuickField name="contractId"  readOnly=true}}
 
             </div>
             <div class="col-md-6">

@@ -102,7 +102,6 @@ Rabbit.List = {
 
 
         var contractId = FlowRouter.getParam("contractId");
-        debugger;
         //var checkOM = Session.get('checkOfficeMaintenance');
         //
         //if (checkOM == "office") {
@@ -117,10 +116,8 @@ Rabbit.List = {
                         _id: -1
                     }
                 });
-                debugger;
                 if (payment != null) {
                     payment.office.forEach(function (payObj) {
-                        debugger;
                         if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
                             console.log(payObj.officeId);
 
@@ -202,7 +199,6 @@ Rabbit.List = {
                             _id: -1
                         }
                     });
-                    debugger;
                     if (payment != null) {
                         payment.maintenance.forEach(function (payObj) {
                             debugger;

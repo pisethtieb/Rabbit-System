@@ -36,8 +36,11 @@ indexTpl.events({
         checkLastPayment(self);
     },
     'click .js-insert': function (e, t) {
+        let id = FlowRouter.getParam('contractId');
+        var data = Rabbit.Collection.Office.findOne({contractId: id});
+        data.paymentDate = moment().format("YYYY-MM-DD HH:mm:ss");
 
-        alertify.payment(fa("plus", "Payment"), renderTemplate(insertTpl));
+        alertify.payment(fa("plus", "Payment"), renderTemplate(insertTpl)).maximize();
 
     },
     'click .js-update': function (e, t) {
@@ -119,12 +122,13 @@ indexTpl.helpers({
 
 /*Insert*/
 insertTpl.helpers({
-    contractId(){
-        return FlowRouter.getParam('contractId');
-
-    },
-    customerId(){
-        return FlowRouter.getParam('customerId');
+    contract(){
+        var contractId = FlowRouter.getParam('contractId');
+        var office = ReactiveMethod.call('getOfficeWithContract', contractId);
+        office.contractId = contractId;
+        office.customerId = FlowRouter.getParam('customerId');
+        office.paymentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
+        return office;
     }
 });
 insertTpl.onRendered(function () {
@@ -187,7 +191,6 @@ insertTpl.events({
         var price = thisObj.parents('div.item-list').find('.price').val();
         var paid = thisObj.parents('div.item-list').find('.paidAmount').val();
         //thisObj.parents('div.item-list').find('.dueAmount').val(0);
-
         let subAmount = amount - paid;
         if (amount) {
             thisObj.parents('div.item-list').find('.dueAmount').val(subAmount);
@@ -207,7 +210,7 @@ insertTpl.events({
             thisObj.parents('div.item-list').find('.dueAmount').val(price);
 
         }
-        //debugger;
+        debugger;
         //
 
     },
@@ -230,19 +233,14 @@ insertTpl.events({
         var price = thisObj.parents('div.item-list').find('.price').val();
         setTimeout(function () {
             if (officeId != "" && price != 0) {
-                debuggerdes;
                 $('.btnAdd').attr('disabled', false);
             } else {
-                debugger;
                 $('.btnAdd').attr('disabled', true);
             }
 
         }, 300);
     },
     'change .officeId': function (e) {
-        debugger;
-
-
         //let checkOM = Session.get('checkOfficeMaintenance');
         //if (checkOM == "office") {
         var thisObje = $(e.currentTarget);
@@ -266,12 +264,12 @@ insertTpl.events({
                         _id: -1
                     }
                 });
-            console.log(payment);
-            debugger;
+
+
             if (payment != null) {
-                debugger;
+
                 payment.office.forEach(function (payObj) {
-                    debugger;
+
                     if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
                         thisObje.parents('div.item-list').find('.office').val(payObj.office);
                         thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
@@ -281,7 +279,7 @@ insertTpl.events({
                     }
                 })
             } else if (payment == null) {
-                debugger;
+
                 thisObje.parents('div.item-list').find('.office').val(office.type);
                 thisObje.parents('div.item-list').find('.price').val(office.price);
                 thisObje.parents('div.item-list').find('.paidAmount').val(0);
@@ -306,7 +304,6 @@ insertTpl.events({
                 $('.btnAdd').attr('disabled', 'disabled');
 
             }, 100);
-            debugger;
         }
         if (officeId) {
             $('.btnAdd').removeAttr('disabled');
@@ -438,9 +435,6 @@ updateTpl.events({
         }, 300);
     },
     'change .officeId': function (e) {
-        debugger;
-
-
         //let checkOM = Session.get('checkOfficeMaintenance');
         //if (checkOM == "office") {
         var thisObje = $(e.currentTarget);
@@ -465,11 +459,8 @@ updateTpl.events({
                     }
                 });
             console.log(payment);
-            debugger;
             if (payment != null) {
-                debugger;
                 payment.office.forEach(function (payObj) {
-                    debugger;
                     if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
                         thisObje.parents('div.item-list').find('.office').val(payObj.office);
                         thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
@@ -479,7 +470,6 @@ updateTpl.events({
                     }
                 })
             } else if (payment == null) {
-                debugger;
                 thisObje.parents('div.item-list').find('.office').val(office.type);
                 thisObje.parents('div.item-list').find('.price').val(office.price);
                 thisObje.parents('div.item-list').find('.paidAmount').val(0);
@@ -504,7 +494,6 @@ updateTpl.events({
                 $('.btnAdd').attr('disabled', 'disabled');
 
             }, 100);
-            debugger;
         }
         if (officeId) {
             $('.btnAdd').removeAttr('disabled');
@@ -591,16 +580,11 @@ var configOnRender = function () {
 };
 
 function checkLastPayment(self) {
-
-
     let checkingLastPaymentForOffice = Rabbit.Collection.Payment.findOne({contractId: self.contractId}, {sort: {_id: -1}})._id;
-    debugger;
     if (checkingLastPaymentForOffice == self._id) {
-        debugger;
         $('.updatePayment').show();
         $('.removePayment').show();
     } else {
-        debugger;
         $('.updatePayment').hide();
         $('.removePayment').hide();
     }

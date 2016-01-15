@@ -11,7 +11,12 @@
     padding-left: 110px;
 }
 
+.maintenance {
+    padding-right: 37px;
+    padding-left: 23px;
+}
+
 .jsInfo {
-    color:#BB6622;
+    color: #BB6622;
     font-size: large;
 }

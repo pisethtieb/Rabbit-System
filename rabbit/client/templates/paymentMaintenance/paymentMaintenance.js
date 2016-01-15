@@ -93,10 +93,14 @@ indexTpl.helpers({
 /*Insert*/
 insertTpl.helpers({
 
-    options: function () {
-        return Rabbit.List.officeMaintenance();
-    },
-
+    contract(){
+        var contractId = FlowRouter.getParam('contractId');
+        var maintenance = ReactiveMethod.call('getMaintenanceWithContract', contractId);
+        maintenance.contractId = contractId;
+        maintenance.customerId = FlowRouter.getParam('customerId');
+        maintenance.paymentMaintenanceDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
+        return maintenance;
+    }
 });
 insertTpl.onRendered(function () {
     configOnRender();
