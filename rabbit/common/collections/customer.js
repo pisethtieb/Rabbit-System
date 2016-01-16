@@ -108,9 +108,4 @@ Rabbit.Schema.Customer = new SimpleSchema({
         label: "Branch"
     }
 });
-
-// Attach schema
 Rabbit.Collection.Customer.attachSchema(Rabbit.Schema.Customer);
-
-// Attach soft remove
-//Rabbit.Collection.Customer.attachBehaviour('softRemovable');

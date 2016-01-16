@@ -104,6 +104,31 @@
     <div class="panel panel-default">
         <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
         <div class="panel-body">
+
+            <div class="row">
+                <div class="col-md-3">
+                    <p><b>OfficeId</b></p>
+                </div>
+                <div class="col-md-1">
+                    <p><b>Office Type</b></p>
+                </div>
+                <div class="col-md-2">
+                    <p><b>Price</b></p>
+                </div>
+                <div class="col-md-1">
+                    <p><b>Discount(%)</b></p>
+                </div>
+                <div class="col-md-2">
+                    <p><b>Paid Amount</b></p>
+
+                </div>
+                <div class="col-md-2">
+                    <p><b>Due Amount</b></p>
+                </div>
+                <div class="col-md-1">
+                    <p><b>Act</b></p>
+                </div>
+            </div>
             {{#if afFieldIsInvalid name=this.atts.name}}
                 <div class="has-error">
                     <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
@@ -128,7 +153,8 @@
                 <div class="row">
                     <div class="col-sm-1 pull-right">
                         <button type="button" class="btn btn-primary autoform-add-item btn-sm btnAdd"
-                                data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}"
+                                data-autoform-field="{{this.atts.name}}"
+                                data-autoform-minCount="{{this.atts.minCount}}"
                                 data-autoform-maxCount="{{this.atts.maxCount}}">
                             <span class="glyphicon glyphicon-plus"></span>
                         </button>

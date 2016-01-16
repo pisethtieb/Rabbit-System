@@ -12,7 +12,12 @@ Rabbit.TabularTable.PaymentMaintenance = new Tabular.Table({
         {data: "_id", title: "ID"},
         {data: "_customer.companyName", title: "customer"},
         {data: "contractId", title: "Contract ID"},
-        {data: "des", title: "des"}
+        {
+            data: "maintenance", title: "payment",
+            render: function (val, type, doc) {
+                return JSON.stringify(val);
+            }
+        }
     ],
-    extraFields: ['maintenance', 'paymentMaintenanceDate', 'customerId']
+    extraFields: ['maintenance', 'paymentMaintenanceDate', 'customerId', 'des']
 });

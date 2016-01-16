@@ -6,7 +6,7 @@ var indexTpl = Template.rabbit_agent,
     updateTpl = Template.rabbit_agentUpdate,
     showTpl = Template.rabbit_agentShow;
 
-//locationAddOnTpl = Template.rabbit_locationAddOnContractor;
+
 
 /**
  * Index
@@ -14,13 +14,13 @@ var indexTpl = Template.rabbit_agent,
 indexTpl.onCreated(function () {
     // SEO
     SEO.set({
-        title: 'Contractor',
+        title: 'agent',
         description: 'Description for this page'
     });
 
     // Create new  alertify
-    createNewAlertify(["contractor"], {size: 'lg'});
-    createNewAlertify(["contractorShow"], {size: 'lg'});
+    createNewAlertify(["agent"], {size: 'lg'});
+    createNewAlertify(["agentShow"], {size: 'lg'});
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -36,19 +36,19 @@ indexTpl.helpers({
 
 indexTpl.events({
     'click .js-insert': function (e, t) {
-        alertify.contractor(fa("plus", "Contractor"), renderTemplate(insertTpl));
+        alertify.agent(fa("plus", "agent"), renderTemplate(insertTpl));
     },
     'click .js-update': function (e, t) {
-        alertify.contractor(fa("pencil", "Contractor"), renderTemplate(updateTpl, this));
+        alertify.agent(fa("pencil", "agent"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
         var self = this;
 
         alertify.confirm(
-            fa("remove", "Contractor"),
+            fa("remove", "agent"),
             "Are you sure to delete [" + self._id + "]?",
             function () {
-                Rabbit.Collection.Contractor.remove(self._id, function (error) {
+                Rabbit.Collection.agent.remove(self._id, function (error) {
                     if (error) {
                         alertify.error(error.message);
                     } else {
@@ -60,15 +60,10 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.contractorShow(fa("eye", "Contractor"), renderTemplate(showTpl, this));
-    },
-    'click .contractAction': function () {
-        FlowRouter.go('rabbit.contract', {
-            contractorId: this._id
-        })
-
+        alertify.agentShow(fa("eye", "agent"), renderTemplate(showTpl, this));
     }
-    //}
+
+
 });
 
 /**
@@ -92,7 +87,7 @@ updateTpl.onRendered(function () {
 
 updateTpl.helpers({
     data: function () {
-        var data = Rabbit.Collection.Contractor.findOne(this._id);
+        var data = Rabbit.Collection.agent.findOne(this._id);
         return data;
     }
 });
@@ -110,7 +105,7 @@ showTpl.onCreated(function () {
  * Hook
  */
 AutoForm.hooks({
-    // Contractor
+    // agent
     rabbit_agentInsert: {
         before: {
             insert: function (doc) {
@@ -129,7 +124,7 @@ AutoForm.hooks({
     },
     rabbit_agentUpdate: {
         onSuccess: function (formType, result) {
-            alertify.contractor().close();
+            alertify.agent().close();
             alertify.success('Success');
         },
         onError: function (formType, error) {

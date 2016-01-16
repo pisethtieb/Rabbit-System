@@ -66,8 +66,6 @@ Rabbit.Schema.Contract = new SimpleSchema({
     'paymentMethod.$.paymentDuration': {
         type: String
     },
-
-
     type: {
         type: String,
         label: 'type',
@@ -78,12 +76,6 @@ Rabbit.Schema.Contract = new SimpleSchema({
             }
         }
     },
-    //maintenanceFee: {
-    //    type: String,
-    //    label: "MaintenanceFee"
-    //    //example
-    //    //" 1 year,one month"
-    //},
     branchId: {
         type: String,
         label: "Branch"
@@ -98,8 +90,6 @@ Rabbit.Schema.Contract = new SimpleSchema({
             }
         }
     },
-
-
     addFile: {
         type: [String],
         label: 'Choose file',
@@ -113,8 +103,6 @@ Rabbit.Schema.Contract = new SimpleSchema({
             }
         }
     },
-
-
     contractorId: {
         type: String,
         label: "ContractorId",
@@ -140,10 +128,8 @@ Rabbit.Schema.Contract = new SimpleSchema({
         label: 'Agent Fee',
         decimal: true
     }
-})
-;
+});
+
 // Attach schema
 Rabbit.Collection.Contract.attachSchema(Rabbit.Schema.Contract);
 
-// Attach soft remove
-//Rabbit.Collection.Customer.attachBehaviour('softRemovable');

@@ -17,36 +17,20 @@ Rabbit.Schema.Agent= new SimpleSchema({
             }
         }
     },
-    //dob: {
-    //    type: String,
-    //    label: "DOB"
-    //
-    //},
-    //id: {
-    //    type: String,
-    //    label: 'ID'
-    //},
     address: {
         type: String,
-        label: 'address'
+        label: 'address',
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        }
     },
     telephone: {
         type: String,
         label: "Telephone"
     }
-    //email: {
-    //    type: String,
-    //    label: 'Email',
-    //    regEx: SimpleSchema.RegEx.Email
-    //},
-    //position: {
-    //    type: String,
-    //    label: "Position"
-    //}
 })
 ;
 // Attach schema
 Rabbit.Collection.Agent.attachSchema(Rabbit.Schema.Agent);
-
-// Attach soft remove
-//Rabbit.Collection.Customer.attachBehaviour('softRemovable');

@@ -47,6 +47,3 @@ Rabbit.Schema.Contractor = new SimpleSchema({
 ;
 // Attach schema
 Rabbit.Collection.Contractor.attachSchema(Rabbit.Schema.Contractor);
-
-// Attach soft remove
-//Rabbit.Collection.Customer.attachBehaviour('softRemovable');

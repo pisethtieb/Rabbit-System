@@ -168,6 +168,24 @@
     <div class="panel panel-default">
         <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
         <div class="panel-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <p><b>Name</b></p>
+                </div>
+                <div class="col-md-2">
+                    <p><b>Gender</b></p>
+                </div>
+                <div class="col-md-3">
+                    <p><b>Position</b></p>
+                </div>
+
+                <div class="col-md-3">
+                    <p><b>Telephone</b></p>
+                </div>
+                <div class="col-md-1">
+                    <p><b>Act</b></p>
+                </div>
+            </div>
             {{#if afFieldIsInvalid name=this.atts.name}}
                 <div class="has-error">
                     <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
@@ -218,16 +236,6 @@
         {{> afQuickField name=current.tel template="bootstrap3" label=false class="input-sm" placeholder="Telephone"}}
     </div>
 </template>
-<!--<template name="rabbit_quotationLinkAction">-->
-    <!--<button type="button" class="btn btn-primary btn-sm quotationAction">-->
-        <!--{{#if _quotationCount}}-->
-            <!--{{_quotationCount}}-->
-        <!--{{else}}-->
-            <!--0-->
-        <!--{{/if}}-->
-    <!--</button>-->
-<!--</template>-->
-<!--link to contract-->
 <template name="rabbit_contractLinkAction">
     <button type="button" class="btn btn-primary btn-sm contractAction">
         {{#if _contractCount}}

@@ -13,8 +13,12 @@ Rabbit.TabularTable.Payment = new Tabular.Table({
         {data: "_customer.companyName", title: "customer"},
         {data: "contractId", title: "Contract ID"},
         {data: "paymentDate", title: "paymentDate"},
-        {data: "paymentDate", title: "paymentDate"},
-        {data: "des", title: "des"}
+        {
+            data: "office", title: "Payment",
+            render: function (val, type, doc) {
+                return JSON.stringify(val);
+            }
+        }
     ],
     extraFields: ['office', 'paymentDate', 'officeId']
 });
