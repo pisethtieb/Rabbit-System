@@ -40,13 +40,14 @@ Rabbit.Schema.Payment = new SimpleSchema({
         type: Object
     },
     'office.$.officeId': {
-        type: String,
-        autoform: {
-            type: "select",
-            options: function () {
-                return Rabbit.List.officeMaintenance();
-            }
-        }
+        type: String
+        //,
+        //autoform: {
+        //    type: "select",
+        //    options: function () {
+        //        return Rabbit.List.officeMaintenance();
+        //    }
+        //}
     },
     'office.$.price': {
         type: Number,

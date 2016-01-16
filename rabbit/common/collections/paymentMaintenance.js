@@ -40,13 +40,14 @@ Rabbit.Schema.PaymentMaintenance = new SimpleSchema({
         type: Object
     },
     'maintenance.$.maintenanceId': {
-        type: String,
-        autoform: {
-            type: "select",
-            options: function () {
-                return Rabbit.List.paymentMaintenance();
-            }
-        }
+        type: String
+        //,
+        //autoform: {
+        //    type: "select",
+        //    options: function () {
+        //        return Rabbit.List.paymentMaintenance();
+        //    }
+        //}
     },
     'maintenance.$.discount': {
         type: Number,
