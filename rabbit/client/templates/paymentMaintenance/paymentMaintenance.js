@@ -136,28 +136,24 @@ insertTpl.events({
         var price = thisObj.parents('div.item-list').find('.price').val();
         var discount = thisObj.parents('div.item-list').find('.discount').val();
         thisObj.parents('div.item-list').find('.paidAmount').val(0);
-
         let rightPrice = price - (price * (discount / 100));
-        Session.set('amount', rightPrice);
-
         thisObj.parents('div.item-list').find('.dueAmount').val(rightPrice);
     },
     'keyup .paidAmount': function (e, t) {
-
         var thisObj = $(e.currentTarget);
-        var amount = Session.get('amount');
         var price = thisObj.parents('div.item-list').find('.price').val();
         var paid = thisObj.parents('div.item-list').find('.paidAmount').val();
-        //thisObj.parents('div.item-list').find('.dueAmount').val(0);
-
-        let subAmount = amount - paid;
-        if (amount) {
+        var discount = thisObj.parents('div.item-list').find('.discount').val();
+        if (discount > 0) {
+            let disAmount = (price - ((price * (discount / 100))));
+            let subAmount = disAmount - paid;
             thisObj.parents('div.item-list').find('.dueAmount').val(subAmount);
-            if (parseFloat(amount) < parseFloat(paid)) {
+            if (disAmount < paid) {
                 thisObj.parents('div.item-list').find('.paidAmount').val(0);
-                thisObj.parents('div.item-list').find('.dueAmount').val(amount);
+                thisObj.parents('div.item-list').find('.dueAmount').val(subAmount);
             }
-        } else if (!amount) {
+            debugger;
+        } else if (discount == 0 || discount == null) {
             let dueAmount = price - paid;
             thisObj.parents('div.item-list').find('.dueAmount').val(dueAmount);
             if (parseFloat(price) < parseFloat(paid)) {
@@ -179,6 +175,13 @@ insertTpl.events({
             }
         }
         return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    },
+    'keypress .paidAmount'(e){
+        var thisObj = $(e.currentTarget);
+        var paid = thisObj.parents('div.item-list').find('.paidAmount').val();
+        if (paid == 0) {
+            thisObj.parents('div.item-list').find('.paidAmount').val('');
+        }
     },
     'click .btnAdd': function (e) {
         setTimeout(function () {
