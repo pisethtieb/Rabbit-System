@@ -5,7 +5,7 @@ Rabbit.Collection.Quotation = new Mongo.Collection("rabbit_quotation");
 Rabbit.Schema.Quotation = new SimpleSchema({
     quotationDate: {
         type: String,
-        label: "quotation Date",
+        label: "Quotation Date",
         defaultValue: function () {
             var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
             return currentDate;
@@ -13,7 +13,7 @@ Rabbit.Schema.Quotation = new SimpleSchema({
     },
     customerId: {
         type: String,
-        label: 'Customer Id',
+        label: 'Customer ID',
         autoform: {
             type: 'select2',
             options(){
@@ -23,7 +23,7 @@ Rabbit.Schema.Quotation = new SimpleSchema({
     },
     productId: {
         type: String,
-        label: "Product Id",
+        label: "Product ID",
         autoform: {
             type: 'select2',
             options(){
@@ -77,11 +77,12 @@ Rabbit.Schema.Quotation = new SimpleSchema({
             afFieldInput: {
                 type: "textarea"
             }
-        }
+        },
+        optional: true
     },
     contractorId: {
         type: String,
-        label: "ContractorId",
+        label: "Contractor ID",
         autoform: {
             type: 'select2',
             options(){

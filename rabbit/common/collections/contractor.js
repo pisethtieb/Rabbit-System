@@ -5,7 +5,7 @@ Rabbit.Collection.Contractor = new Mongo.Collection("rabbit_contractor");
 Rabbit.Schema.Contractor = new SimpleSchema({
     name: {
         type: String,
-        label: "name"
+        label: "Name"
     },
     gender: {
         type: String,
@@ -19,16 +19,16 @@ Rabbit.Schema.Contractor = new SimpleSchema({
     },
     dob: {
         type: String,
-        label: "DOB"
+        label: "Date Of Birth"
 
     },
     id: {
         type: String,
-        label: 'ID'
+        label: 'ID Card'
     },
     address: {
         type: String,
-        label: 'address'
+        label: 'Address'
     },
     telephone: {
         type: String,
@@ -37,6 +37,7 @@ Rabbit.Schema.Contractor = new SimpleSchema({
     email: {
         type: String,
         label: 'Email',
+        optional: true,
         regEx: SimpleSchema.RegEx.Email
     },
     position: {

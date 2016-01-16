@@ -70,11 +70,13 @@ Rabbit.Schema.Customer = new SimpleSchema({
     companyEmail: {
         type: String,
         label: "Email",
-        regEx: SimpleSchema.RegEx.Email
+        regEx: SimpleSchema.RegEx.Email,
+        optional:true
     },
     companyWebsite: {
         type: String,
-        label: "Website"
+        label: "Website",
+        optional:true
     },
     contactPerson: {
         type: Array,

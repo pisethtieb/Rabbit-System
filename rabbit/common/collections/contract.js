@@ -10,11 +10,11 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     customerId: {
         type: String,
-        label: 'Customer Id'
+        label: 'Customer ID'
     },
     productId: {
         type: String,
-        label: "Product Id",
+        label: "Product ID",
         autoform: {
             type: 'select2',
             options(){
@@ -68,7 +68,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     type: {
         type: String,
-        label: 'type',
+        label: 'Type',
         autoform: {
             type: 'select2',
             options(){

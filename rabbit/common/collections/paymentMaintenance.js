@@ -5,7 +5,7 @@ Rabbit.Collection.PaymentMaintenance = new Mongo.Collection("rabbit_paymentMaint
 Rabbit.Schema.PaymentMaintenance = new SimpleSchema({
     customerId: {
         type: String,
-        label: 'CustomerId'
+        label: 'Customer ID'
     },
     des: {
         type: String,
@@ -19,11 +19,11 @@ Rabbit.Schema.PaymentMaintenance = new SimpleSchema({
     },
     contractId: {
         type: String,
-        label: 'ContractId'
+        label: 'Contract ID'
     },
     paymentMaintenanceDate: {
         type: String,
-        label: 'PaymentMaintenance Date',
+        label: 'Payment Maintenance Date',
         defaultValue: function () {
             var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
             return currentDate;
@@ -75,88 +75,6 @@ Rabbit.Schema.PaymentMaintenance = new SimpleSchema({
         type: Number,
         decimal: true
     }
-    //type: {
-    //    type: String,
-    //    label: 'Type',
-    //    autoform: {
-    //        type: "select",
-    //        options: function () {
-    //            return Rabbit.List.contractPaymentMaintenanceType();
-    //        }
-    //    }
-    //}
-//    maintenanceMaintenance: {
-//        type: String,
-//        label: "maintenance & Maintenance"
-//        //,
-//        //autoform: {
-//        //    type: "select",
-//        //    options: function () {
-//        //        return Rabbit.List.maintenanceMaintenance();
-//        //    }
-//        //}
-//    },
-//    paymentMaintenanceDate: {
-//        type: String,
-//        label: 'PaymentMaintenance Date',
-//        defaultValue: function () {
-//            var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
-//            return currentDate;
-//        }
-//
-//    },
-//    price: {
-//        type: Number,
-//        label: 'price'
-//
-//    },
-//    paidAmount: {
-//        type: Number,
-//        label: "Paid Amount",
-//        min: 1,
-//        custom: function () {
-//            if (this.value > this.field('price').value) {
-//                return "greaterThan";
-//            }
-//        }
-//    },
-//    dueAmount: {
-//        type: Number,
-//        label: 'Due Amount'
-//    },
-//    des: {
-//        type: String,
-//        label: "Description",
-//        optional: true,
-//        autoform: {
-//            afFieldInput: {
-//                type: "textarea"
-//            }
-//        }
-//    },
-//    branchId: {
-//        type: String,
-//        label: "Branch",
-//        optional: true
-//    },
-//    maintenanceId: {
-//        type: String,
-//        //autoform: {
-//        //    type: "hidden",
-//        //    label: false
-//        //},
-//        optional: true
-//
-//
-//    },
-//    maintenanceId: {
-//        type: String,
-//        //autoform: {
-//        //    type: "hidden",
-//        //    label: false
-//        //},
-//        optional: true
-//    }
 })
 ;
 

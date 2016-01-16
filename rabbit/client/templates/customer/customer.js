@@ -91,7 +91,6 @@ insertTpl.onRendered(function () {
     configOnRender();
 });
 
-
 /**
  * Update
  */

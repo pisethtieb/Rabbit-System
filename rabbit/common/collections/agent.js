@@ -5,7 +5,7 @@ Rabbit.Collection.Agent= new Mongo.Collection("rabbit_agent");
 Rabbit.Schema.Agent= new SimpleSchema({
     name: {
         type: String,
-        label: "name"
+        label: "Name"
     },
     gender: {
         type: String,
@@ -19,7 +19,7 @@ Rabbit.Schema.Agent= new SimpleSchema({
     },
     address: {
         type: String,
-        label: 'address',
+        label: 'Address',
         autoform: {
             afFieldInput: {
                 type: "textarea"

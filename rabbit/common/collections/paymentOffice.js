@@ -5,7 +5,7 @@ Rabbit.Collection.Payment = new Mongo.Collection("rabbit_payment");
 Rabbit.Schema.Payment = new SimpleSchema({
     customerId: {
         type: String,
-        label: 'CustomerId'
+        label: 'Customer ID'
     },
     des: {
         type: String,
@@ -15,11 +15,11 @@ Rabbit.Schema.Payment = new SimpleSchema({
             afFieldInput: {
                 type: "textarea"
             }
-        }
+        },
     },
     contractId: {
         type: String,
-        label: 'ContractId'
+        label: 'Contract ID'
     },
     paymentDate: {
         type: String,
@@ -75,88 +75,6 @@ Rabbit.Schema.Payment = new SimpleSchema({
         type: Number,
         decimal: true
     }
-    //type: {
-    //    type: String,
-    //    label: 'Type',
-    //    autoform: {
-    //        type: "select",
-    //        options: function () {
-    //            return Rabbit.List.contractPaymentType();
-    //        }
-    //    }
-    //}
-//    officeMaintenance: {
-//        type: String,
-//        label: "Office & Maintenance"
-//        //,
-//        //autoform: {
-//        //    type: "select",
-//        //    options: function () {
-//        //        return Rabbit.List.officeMaintenance();
-//        //    }
-//        //}
-//    },
-//    paymentDate: {
-//        type: String,
-//        label: 'Payment Date',
-//        defaultValue: function () {
-//            var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
-//            return currentDate;
-//        }
-//
-//    },
-//    price: {
-//        type: Number,
-//        label: 'price'
-//
-//    },
-//    paidAmount: {
-//        type: Number,
-//        label: "Paid Amount",
-//        min: 1,
-//        custom: function () {
-//            if (this.value > this.field('price').value) {
-//                return "greaterThan";
-//            }
-//        }
-//    },
-//    dueAmount: {
-//        type: Number,
-//        label: 'Due Amount'
-//    },
-//    des: {
-//        type: String,
-//        label: "Description",
-//        optional: true,
-//        autoform: {
-//            afFieldInput: {
-//                type: "textarea"
-//            }
-//        }
-//    },
-//    branchId: {
-//        type: String,
-//        label: "Branch",
-//        optional: true
-//    },
-//    officeId: {
-//        type: String,
-//        //autoform: {
-//        //    type: "hidden",
-//        //    label: false
-//        //},
-//        optional: true
-//
-//
-//    },
-//    maintenanceId: {
-//        type: String,
-//        //autoform: {
-//        //    type: "hidden",
-//        //    label: false
-//        //},
-//        optional: true
-//    }
 })
 ;
 
