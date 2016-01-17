@@ -35,9 +35,10 @@
     {{#autoForm collection=Rabbit.Collection.Quotation id="rabbit_quotationInsert" type="insert"}}
         <div class="row">
             <div class="col-md-6">
-                {{> afQuickField name="customerId"}}
                 {{> afQuickField name="quotationDate"}}
-                {{> afQuickField name="contractorId"}}
+                {{> afQuickField name="customerId" value=customer}}
+
+                {{> afQuickField name="contractorId" value=contractor}}
                 {{> afQuickField name="productId" class='productId'}}
             </div>
             <div class="col-md-6">

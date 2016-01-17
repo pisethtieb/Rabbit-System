@@ -82,26 +82,25 @@ insertTpl.onRendered(function () {
 
 });
 insertTpl.helpers({
-    //officeId(){
-    //    return FlowRouter.getParam('officeId');
-    //},
-    office()
-    {
-        Meteor.subscribe('rabbit_office');
-        let officeId = FlowRouter.getParam('officeId');
-        let office = Rabbit.Collection.Office.findOne({_id: officeId});
-        return office;
-    }
-    ,
-    price()
-    {
-        Meteor.subscribe('rabbit_office');
+
+    maintenance(){
         let officeId = FlowRouter.getParam('officeId');
         let office = Rabbit.Collection.Office.findOne({_id: officeId});
         if (office.type == 'HO') {
-            return office._contract.maintenancePrice[0].headOffice;
-        } else if (office.type == 'BO') {
-            return office._contract.maintenancePrice[0].branch;
+            return {
+                price: office._contract.maintenancePrice[0].headOffice,
+                officeId: office._id,
+                type: office.type,
+                startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD')
+            }
+        } else {
+            return {
+                price: office._contract.maintenancePrice[0].branch,
+                officeId: office._id,
+                type: office.type,
+                startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD')
+
+            }
         }
     }
 })

@@ -94,15 +94,6 @@ indexTpl.events({
     }, 'click .addFile': function () {
         alertify.addFile(fa("pencil", "Contract"), renderTemplate(Template.rabbit_UpdateAddFile, this)).minimize()
     }
-    //'dblclick tbody > tr': function (event) {
-    //    var dataTable = $(event.target)
-    //        .closest('table')
-    //        .DataTable();
-    //    var rowData = dataTable.row(event.currentTarget)
-    //        .data();
-    //
-    //    FlowRouter.go('rabbit.order', {contractId: rowData._id});
-    //}
 });
 
 /**
@@ -150,9 +141,6 @@ insertTpl.events({
             $('#MaintenaceHeadOffice').val("");
             $('#MaintenaceBranch').val("");
         }
-        debugger;
-
-
     },
     'change .type': function (e, t) {
         let type = $(e.currentTarget).val();
@@ -216,12 +204,6 @@ updateTpl.events({
     }
 
 });
-//updateTpl.helpers({
-//    data: function () {
-//        var data = Rabbit.Collection.Contract.findOne(this._id);
-//        return data;
-//    }
-//})
 /**
  * Show
  */

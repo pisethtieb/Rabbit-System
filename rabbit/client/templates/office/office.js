@@ -96,16 +96,12 @@ insertTpl.onRendered(function () {
     }
 });
 insertTpl.helpers({
-    contractId(){
-        return FlowRouter.getParam('contractId');
-        //console.log(FlowRouter.getParam('contractId'));
-    },
-    productId(){
-        Meteor.subscribe('rabbit_product');
+    office(){
         let contractId = FlowRouter.getParam('contractId');
-        let productId = Rabbit.Collection.Contract.findOne({_id: contractId}).productId;
-
-        return productId;
+        return {
+            contractId: contractId,
+            officeDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+        }
     }
 });
 insertTpl.events({

@@ -31,10 +31,9 @@ indexTpl.helpers({
         return {customerId: id}
     },
     customer: function () {
-        let id = FlowRouter.getParam('customerId');
-        let customer = Rabbit.Collection.Customer.findOne({_id: id});
-        console.log(customer);
-        return customer;
+        //let id = FlowRouter.getParam('customerId');
+        let customer = Rabbit.Collection.Customer.findOne({_id: '001-000001'});
+        return customer
 
     }
 });
@@ -77,7 +76,7 @@ indexTpl.events({
             customerId: this.customerId, quotationId: this._id
 
         });
-    },'click .paymentMaintenanceAction': function () {
+    }, 'click .paymentMaintenanceAction': function () {
         FlowRouter.go('rabbit.paymentMaintenance', {
             customerId: this.customerId, quotationId: this._id
 
@@ -105,9 +104,16 @@ insertTpl.onRendered(function () {
     configOnRender();
 });
 insertTpl.helpers({
-    customerId(){
-        return FlowRouter.getParam('customerId');
+    customer: function () {
+        //let id = FlowRouter.getParam('customerId');
+        let customer = Rabbit.Collection.Customer.findOne({_id: '001-000001'})._id;
+        return customer
+    }, contractor: function () {
+        //let id = FlowRouter.getParam('customerId');
+        let contractor = Rabbit.Collection.Contractor.findOne({_id: '001-01'})._id;
+        return contractor
     }
+
 });
 insertTpl.events({
     'change .productId': function (e, t) {
@@ -212,7 +218,7 @@ showTpl.helpers({
             "<tr>" +
             "<th>Head Office</th>" +
             "<th>Branch</th>" +
-                "</tr>" +
+            "</tr>" +
             "</thead><tbody>";
         this.basePrice.forEach(function (o) {
             str += '<tr>' +
@@ -228,7 +234,7 @@ showTpl.helpers({
             "<tr>" +
             "<th>Head Office</th>" +
             "<th>Branch</th>" +
-                "</tr>" +
+            "</tr>" +
             "</thead><tbody>";
         this.maintenancePrice.forEach(function (o) {
             str += '<tr>' +

@@ -1,7 +1,7 @@
 Meteor.methods({
     getOfficeWithContract(contractId){
-        var officeObj = {}
-        var arr = []
+        var officeObj = {};
+        var arr = [];
         var offices = Rabbit.Collection.Office.find({contractId: contractId}).fetch();
         offices.forEach((office)=> {
             var payment = Rabbit.Collection.Payment.findOne({

@@ -27,13 +27,13 @@
 
 <!--Insert-->
 <template name="rabbit_officeInsert">
-    {{#autoForm collection=Rabbit.Collection.Office id="rabbit_officeInsert" type="insert"}}
+    {{#autoForm collection=Rabbit.Collection.Office id="rabbit_officeInsert" doc=office type="insert"}}
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
                     {{> afQuickField name="name"}}
                     {{> afQuickField name="officeDate"}}
-                    {{> afQuickField name="contractId" value=contractId readonly=true}}
+                    {{> afQuickField name="contractId" readonly=true}}
                     {{> afQuickField name="type"  class='type'}}
                 </div>
                 <div class="col-md-6">
