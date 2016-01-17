@@ -71,26 +71,6 @@ indexTpl.events({
 
         });
     },
-    'click .paymentAction': function () {
-        FlowRouter.go('rabbit.payment', {
-            customerId: this.customerId, quotationId: this._id
-
-        });
-    }, 'click .paymentMaintenanceAction': function () {
-        FlowRouter.go('rabbit.paymentMaintenance', {
-            customerId: this.customerId, quotationId: this._id
-
-        });
-    }
-    //'dblclick tbody > tr': function (event) {
-    //    var dataTable = $(event.target)
-    //        .closest('table')
-    //        .DataTable();
-    //    var rowData = dataTable.row(event.currentTarget)
-    //        .data();
-    //
-    //    FlowRouter.go('rabbit.order', {quotationId: rowData._id});
-    //}
 });
 
 /**
@@ -104,18 +84,32 @@ insertTpl.onRendered(function () {
     configOnRender();
 });
 insertTpl.helpers({
-    customer: function () {
-        //let id = FlowRouter.getParam('customerId');
-        let customer = Rabbit.Collection.Customer.findOne({_id: '001-000001'})._id;
-        return customer
-    }, contractor: function () {
-        //let id = FlowRouter.getParam('customerId');
-        let contractor = Rabbit.Collection.Contractor.findOne({_id: '001-01'})._id;
-        return contractor
+    quotationData(){
+        debugger;
+        return {
+            quotationDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+            customerId: Rabbit.Collection.Customer.findOne({_id: '001-000001'})._id,
+            contractorId: Rabbit.Collection.Contractor.findOne({_id: '001-01'})._id
+        }
     }
+    //customer: function () {
+    //    //let id = FlowRouter.getParam('customerId');
+    //    let customer = Rabbit.Collection.Customer.findOne({_id: '001-000001'})._id;
+    //    return customer
+    //},
+    //contractor: function () {
+    //    //let id = FlowRouter.getParam('customerId');
+    //    let contractor = Rabbit.Collection.Contractor.findOne({_id: '001-01'})._id;
+    //    return contractor
+    //}
 
 });
 insertTpl.events({
+
+    'click .customerAddon': function () {
+        alertify.quotationShow(fa("plus", "Quotation"), renderTemplate(Template.rabbit_customerInsert)).maximize()
+
+    },
     'change .productId': function (e, t) {
         let productId = $(e.currentTarget).val();
         let product = Rabbit.Collection.Product.findOne({_id: productId});
@@ -130,21 +124,9 @@ insertTpl.events({
             $('#MaintenaceHeadOffice').val("");
             $('#MaintenaceBranch').val("");
         }
-        debugger;
 
 
-    },
-    'change .type': function (e, t) {
-        let type = $(e.currentTarget).val();
-        if (type == 'product') {
-            $('.testing').hide()
-        } else if (type == "new") {
-            $('.testing').show()
-        } else if (type == '') {
-            $('.testing').hide()
-        }
     }
-
 });
 
 /**
@@ -165,37 +147,7 @@ updateTpl.onRendered(function () {
     }
 });
 
-updateTpl.events({
-    'change .productId': function (e, t) {
-        let productId = $(e.currentTarget).val();
-        let product = Rabbit.Collection.Product.findOne({_id: productId});
-        if (product) {
-            $('#basePriceHeadOffice').val(product.basePrice[0].headOffice);
-            $('#basePriceBranch').val(product.basePrice[0].branch);
-            $('#MaintenaceHeadOffice').val(product.maintenancePrice[0].headOffice);
-            $('#MaintenaceBranch').val(product.maintenancePrice[0].branch);
-        } else if (productId == "") {
-            $('#basePriceHeadOffice').val("");
-            $('#basePriceBranch').val("");
-            $('#MaintenaceHeadOffice').val("");
-            $('#MaintenaceBranch').val("");
-        }
-        debugger;
-
-
-    },
-    'change #type': function (e, t) {
-        let type = $(e.currentTarget).val();
-        if (type == 'product') {
-            $('#testing').hide()
-        } else if (type == "new") {
-            $('#testing').show()
-        } else if (type == '') {
-            $('#testing').hide()
-        }
-    }
-
-});
+updateTpl.events({});
 //updateTpl.helpers({
 //    data: function () {
 //        var data = Rabbit.Collection.Quotation.findOne(this._id);
