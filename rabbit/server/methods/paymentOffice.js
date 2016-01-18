@@ -18,8 +18,7 @@ Meteor.methods({
                             officeId: payObj.officeId,
                             office: payObj.office,
                             price: payObj.dueAmount,
-                            dueAmount: payObj.dueAmount,
-                            discount: 0
+                            dueAmount: payObj.dueAmount
                         });
                     }
                 });
@@ -28,8 +27,7 @@ Meteor.methods({
                     officeId: office._id,
                     office: office.type,
                     price: office.price,
-                    dueAmount: office.price,
-                    discount: 0
+                    dueAmount: office.price
                 });
             }
         });

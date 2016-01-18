@@ -6,9 +6,6 @@ var indexTpl = Template.rabbit_contract,
     updateTpl = Template.rabbit_contractUpdate,
     showTpl = Template.rabbit_contractShow;
 
-//locationAddOnTpl = Template.rabbit_locationAddOnContract;
-
-
 /**
  * Index
  */
@@ -18,17 +15,16 @@ indexTpl.onCreated(function () {
         title: 'Contract',
         description: 'Description for this page'
     });
-
     // Create new  alertify
     createNewAlertify(["contract"], {size: 'lg'});
     createNewAlertify(["addFile"]);
     createNewAlertify(["contractShow"], {size: 'lg'});
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
+
 indexTpl.helpers({
     selector: function () {
         let id = FlowRouter.getParam('customerId');
-        //return FlowRouter.getParam('customerId');
         return {customerId: id}
     },
     customer: function () {
@@ -107,6 +103,7 @@ insertTpl.onRendered(function () {
     configOnRender();
 });
 insertTpl.helpers({
+    //data on insert
     contractObj(){
 
         return {
@@ -158,21 +155,6 @@ insertTpl.events({
 /**
  * Update
  */
-//updateTpl.onCreated(function () {
-//    this.subscribe('rabbit_contract', this.data._id);
-//});
-
-updateTpl.onRendered(function () {
-    configOnRender();
-
-    var type = $('#type').val();
-    if (type == 'product') {
-        $('#testing').hide();
-    } else {
-        $('#testing').show();
-    }
-});
-
 updateTpl.events({
     'change .productId': function (e, t) {
         let productId = $(e.currentTarget).val();
@@ -191,16 +173,6 @@ updateTpl.events({
         debugger;
 
 
-    },
-    'change #type': function (e, t) {
-        let type = $(e.currentTarget).val();
-        if (type == 'product') {
-            $('#testing').hide()
-        } else if (type == "new") {
-            $('#testing').show()
-        } else if (type == '') {
-            $('#testing').hide()
-        }
     }
 
 });

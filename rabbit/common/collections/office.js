@@ -21,9 +21,25 @@ Rabbit.Schema.Office = new SimpleSchema({
                 return Rabbit.List.type();
             }
         }
-    }
-    ,
+    },
+    contractPrice: {
+        label: "Contract Price",
+        type: Number,
+        decimal: true
+    },
+    discount: {
+        label: "Discount(Amount)",
+        type: Number,
+        decimal: true,
+        optional: true,
+        custom: function () {
+            if (this.value > this.field('contractPrice').value) {
+                return "greaterThan";
+            }
+        }
+    },
     price: {
+        label: "price",
         type: Number,
         decimal: true
     },
@@ -62,3 +78,8 @@ Rabbit.Collection.Office.attachSchema(Rabbit.Schema.Office);
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');
+
+SimpleSchema.messages({
+    "greaterThan": "it mustn't be greater than ContractPrice!"
+});
+//Status API Training Shop Blog About Pricing

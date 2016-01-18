@@ -116,7 +116,7 @@
                     <p><b>Price</b></p>
                 </div>
                 <div class="col-md-1">
-                    <p><b>Discount(%)</b></p>
+                    <p><b>Discount(Amount)</b></p>
                 </div>
                 <div class="col-md-2">
                     <p><b>Paid Amount</b></p>
@@ -137,11 +137,11 @@
                     {{> UI.dynamic template=../atts.subtemplate}}
 
                     <div class="col-sm-1">
-                        <!--{{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}-->
-                            <!--<button type="button" class="btn btn-sm btn-danger autoform-remove-item btnRemove">-->
-                                <!--<span class="glyphicon glyphicon-minus"></span>-->
-                            <!--</button>-->
-                        <!--{{/if}}-->
+                    <!--{{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}-->
+                        <!--<button type="button" class="btn btn-sm btn-danger autoform-remove-item btnRemove">-->
+                        <!--<span class="glyphicon glyphicon-minus"></span>-->
+                        <!--</button>-->
+                            <!--{{/if}}-->
                     </div>
                 </div>
             {{/afEachArrayItem}}
@@ -150,10 +150,10 @@
                 <div class="row">
                     <div class="col-sm-1 pull-right">
                         <!--<button type="button" class="btn btn-primary autoform-add-item btn-sm btnAdd"-->
-                                <!--data-autoform-field="{{this.atts.name}}"-->
-                                <!--data-autoform-minCount="{{this.atts.minCount}}"-->
-                                <!--data-autoform-maxCount="{{this.atts.maxCount}}">-->
-                            <!--<span class="glyphicon glyphicon-plus"></span>-->
+                        <!--data-autoform-field="{{this.atts.name}}"-->
+                        <!--data-autoform-minCount="{{this.atts.minCount}}"-->
+                        <!--data-autoform-maxCount="{{this.atts.maxCount}}">-->
+                        <!--<span class="glyphicon glyphicon-plus"></span>-->
                         <!--</button>-->
                     </div>
                 </div>
@@ -165,7 +165,7 @@
 <!--Custom object field-->
 <template name="officeCustomObjectField">
     <div class="col-sm-3">
-        {{> afQuickField name=current.officeId template="bootstrap3" label=false class="input-sm officeId"  placeholder="officeId" }}
+        {{> afQuickField name=current.officeId template="bootstrap3" label=false class="input-sm officeId"  placeholder="officeId" readOnly=true }}
     </div>
     <div class="col-sm-1">
         {{> afQuickField name=current.office template="bootstrap3" label=false class="input-sm office" id='price' placeholder="office" readOnly=true }}
@@ -174,7 +174,7 @@
         {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price' placeholder="price" readOnly=true}}
     </div>
     <div class="col-sm-1">
-        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount' placeholder="Dis(%)" }}
+        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount' placeholder="Dis(Amount)" }}
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.paidAmount template="bootstrap3" label=false class="input-sm paidAmount" id='paidAmount' placeholder="Paid Amount"}}

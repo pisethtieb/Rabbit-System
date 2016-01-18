@@ -20,7 +20,7 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["agent"], {size: 'lg'});
-    createNewAlertify(["agentShow"], {size: 'lg'});
+    createNewAlertify(["agentShow"]) ;
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -84,14 +84,6 @@ updateTpl.onCreated(function () {
 updateTpl.onRendered(function () {
     configOnRender();
 });
-
-updateTpl.helpers({
-    data: function () {
-        var data = Rabbit.Collection.agent.findOne(this._id);
-        return data;
-    }
-});
-
 
 /**
  * Show

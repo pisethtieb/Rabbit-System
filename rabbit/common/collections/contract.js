@@ -88,7 +88,8 @@ Rabbit.Schema.Contract = new SimpleSchema({
             afFieldInput: {
                 type: "textarea"
             }
-        }
+        },
+        optional: true
     },
     addFile: {
         type: [String],

@@ -37,11 +37,26 @@ Meteor.methods({
         }
 
         var index = 1;
+        let totalHeadBasePrice = 0;
+        let totalBranchBasePrice = 0;
+        let totalHeadMainPrice = 0;
+        let totalBranchMainPrice = 0;
+
         Rabbit.Collection.Quotation.find(selector)
             .forEach(function (obj) {
                 // Do something
                 obj.index = index;
+                obj.headBasePrice = obj.basePrice[0].headOffice;
+                totalHeadBasePrice += obj.headBasePrice;
 
+                obj.brachBasePrice = obj.basePrice[0].branch;
+                totalBranchBasePrice += obj.brachBasePrice;
+
+                obj.headMainPrice = obj.maintenancePrice[0].headOffice;
+                totalHeadMainPrice += obj.headMainPrice;
+
+                obj.brachMainPrice = obj.maintenancePrice[0].branch;
+                totalBranchMainPrice += obj.brachMainPrice;
                 content.push(obj);
 
                 index++;
@@ -49,6 +64,12 @@ Meteor.methods({
 
         if (content.length > 0) {
             data.content = content;
+            data.footer.totalHeadBasePrice = numeral(totalHeadBasePrice).format('$0,0.00');
+            data.footer.totalBranchBasePrice = numeral(totalBranchBasePrice).format('$0,0.00');
+            data.footer.totalHeadMainPrice = numeral(totalHeadMainPrice).format('$0,0.00');
+            data.footer.totalBranchMainPrice = numeral(totalBranchMainPrice).format('$0,0.00');
+
+
         }
 
         return data

@@ -15,7 +15,7 @@ Rabbit.Schema.Quotation = new SimpleSchema({
         type: String,
         label: 'Customer ID',
         autoform: {
-            type: 'select2',
+            type: 'selectize',
             options(){
                 return Rabbit.List.customer();
             }
@@ -25,7 +25,7 @@ Rabbit.Schema.Quotation = new SimpleSchema({
         type: String,
         label: "Product ID",
         autoform: {
-            type: 'select2',
+            type: 'selectize',
             options(){
                 return Rabbit.List.product();
             }
@@ -84,7 +84,7 @@ Rabbit.Schema.Quotation = new SimpleSchema({
         type: String,
         label: "Contractor ID",
         autoform: {
-            type: 'select2',
+            type: 'selectize',
             options(){
                 return Rabbit.List.contractors();
             }

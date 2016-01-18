@@ -78,14 +78,16 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>ProductName</th>
-                        <th>CompanyName</th>
-                        <th>Telephone</th>
-                        <th>Address</th>
-                        <th>ContractName</th>
-                        <th>gender</th>
-                        <th>ContractTelephone</th>
-                        <th>ContractAddress</th>
+                        <th>Product Name</th>
+                        <th>Company Name</th>
+                        <th>Tel</th>
+                        <th>contract Name</th>
+                        <th>contract Tel</th>
+                        <th>HO Base Price</th>
+                        <th>BO Base Price</th>
+                        <th>HO Main Price</th>
+                        <th>BO Main Price</th>
+
                     </tr>
                     </thead>
                     <tbody class="content-body">
@@ -96,21 +98,28 @@
                             <td>{{_product.name}}</td>
                             <td>{{_customer.companyName}}</td>
                             <td>{{_customer.companyTelephone}}</td>
-                            <td>{{_customer.companyAddress}}</td>
                             <td>{{_customer.contractName}}</td>
-                            <td>{{_customer.gender}}</td>
                             <td>{{_customer.telephone}}</td>
-                            <td>{{_customer.address}}</td>
+                            <td>{{headBasePrice}}</td>
+                            <td>{{brachBasePrice}}</td>
+                            <td>{{headMainPrice}}</td>
+                            <td>{{brachMainPrice}}</td>
+
 
                         </tr>
                     {{/each}}
                     </tbody>
-
-                    <!--<tfoot class="content-footer">-->
-                    <!--<tr>-->
-                    <!--<td></td>-->
-                    <!--</tr>-->
-                    <!--</tfoot>-->
+                    <tbody class="content-body">
+                    <tr class="">
+                        <td colspan="7" align="right">
+                            Total :
+                        </td>
+                        <td>{{footer.totalHeadBasePrice}}</td>
+                        <td>{{footer.totalBranchBasePrice}}</td>
+                        <td>{{footer.totalHeadMainPrice}}</td>
+                        <td>{{footer.totalBranchMainPrice}}</td>
+                    </tr>
+                    </tbody>
                 </table>
 
             {{/with}}

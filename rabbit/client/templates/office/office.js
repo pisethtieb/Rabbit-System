@@ -93,6 +93,9 @@ insertTpl.onRendered(function () {
         $('.type').val("HO");
         $('.type').change();
         //$('[name=price]').val(contract.basePrice[0].headOffice);
+    } else {
+        $('.type').val("BO");
+        $('.type').change();
     }
 });
 insertTpl.helpers({
@@ -120,14 +123,22 @@ insertTpl.events({
             $('.type').val("HO");
             $('.type').change();
             $('[name=price]').val(contract.basePrice[0].headOffice);
+            $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
         } else if (type == 'BO') {
             $('[name=price]').val(contract.basePrice[0].branch);
+            $('[name=contractPrice]').val(contract.basePrice[0].branch);
         } else if (type == "HO") {
             $('[name=price]').val(contract.basePrice[0].headOffice);
+            $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
 
         } else {
             $('[name=price]').val("");
+            $('[name=contractPrice]').val("");
         }
+    },
+    'keyup .discount'(e){
+
+        $('#price').val($('.contractPrice').val() - $('.discount').val());
     }
 });
 /**
@@ -148,17 +159,32 @@ updateTpl.events({
         var contractId = FlowRouter.getParam('contractId');
         var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
         //let types = Rabbit.List.getProduct(type);
-        if (type == 'HO') {
+        let office = Rabbit.Collection.Office.findOne({contractId: contractId});
+        if (type == 'HO' && office != null) {
+            $('.type').val("BO");
+            $('.type').change();
+            $('[name=price]').val(contract.basePrice[0].branch);
 
-            $('[name=price]').val(contract._product.basePrice[0].headOffice);
-        } else if (type == "BO") {
-            $('[name=price]').val(contract._product.basePrice[0].branch);
+        } else if (type == 'BO' && office == null) {
+            $('.type').val("HO");
+            $('.type').change();
+            $('[name=price]').val(contract.basePrice[0].headOffice);
+            $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
+        } else if (type == 'BO') {
+            $('[name=price]').val(contract.basePrice[0].branch);
+            $('[name=contractPrice]').val(contract.basePrice[0].branch);
+        } else if (type == "HO") {
+            $('[name=price]').val(contract.basePrice[0].headOffice);
+            $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
+
         } else {
             $('[name=price]').val("");
+            $('[name=contractPrice]').val("");
         }
-        //$('[name=headBasePrice]').val(product.basePrice[0].headOffice);
-        //$('[name=headMaintainPrice]').val(product.maintenancePrice[0].headOffice);
-        //$('[name=totalPrice]').val(product.maintenancePrice[0].headOffice + product.basePrice[0].headOffice);
+    },
+    'keyup .discount'(e){
+
+        $('#price').val($('.contractPrice').val() - $('.discount').val());
     }
 });
 //

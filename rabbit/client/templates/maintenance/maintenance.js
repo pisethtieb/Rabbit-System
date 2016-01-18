@@ -89,16 +89,21 @@ insertTpl.helpers({
         if (office.type == 'HO') {
             return {
                 price: office._contract.maintenancePrice[0].headOffice,
+                contractPrice: office._contract.maintenancePrice[0].headOffice,
                 officeId: office._id,
                 type: office.type,
-                startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD')
+                startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+                endDate: moment().add(1, 'years').format('YYYY-MM-DD')
+
             }
         } else {
             return {
+                contractPrice: office._contract.maintenancePrice[0].branch,
                 price: office._contract.maintenancePrice[0].branch,
                 officeId: office._id,
                 type: office.type,
-                startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD')
+                startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+                endDate: moment().add(1, 'years').format('YYYY-MM-DD')
 
             }
         }
@@ -109,6 +114,10 @@ insertTpl.events({
     'click .endDate': function (e, t) {
 
         $('.endDate').val(moment().add(1, 'years').format('YYYY-MM-DD'))
+    },
+    'keyup .discount'(e){
+
+        $('#price').val($('.contractPrice').val() - $('.discount').val());
     }
 });
 

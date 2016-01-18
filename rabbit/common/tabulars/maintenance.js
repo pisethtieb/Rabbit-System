@@ -21,5 +21,5 @@ Rabbit.TabularTable.Maintenance = new Tabular.Table({
         //    title: "Office <i class='fa fa-arrow-up'></i>",
         //    tmpl: Meteor.isClient && Template.rabbit_addMaintenance
         //}
-    ], extraFields: ['des']
+    ], extraFields: ['des', 'contractPrice', 'discount']
 });

@@ -128,7 +128,7 @@
         {{> loading}}
     {{/if}}
 </template>
-
+<!--Office Price-->
 <template name="contractBasePriceObjectField">
     <div class="col-sm-6">
         {{> afQuickField name=current.headOffice id='basePriceHeadOffice'  template="bootstrap3" label=false class="input-sm" placeholder="Head Office"}}
@@ -137,6 +137,7 @@
         {{> afQuickField name=current.branch id='basePriceBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
     </div>
 </template>
+<!--Maintenance Price-->
 <template name="contractMaintenancePriceObjectField">
     <div class="col-sm-6">
         {{> afQuickField name=current.headOffice template="bootstrap3" id='MaintenaceHeadOffice' label=false class="input-sm" placeholder="Head Office"}}
@@ -145,8 +146,6 @@
         {{> afQuickField name=current.branch id='MaintenaceBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
     </div>
 </template>
-
-<!--paymentMethod-->
 
 <template name="afArrayField_paymentMethodArrayField">
     <div class="panel panel-default">
@@ -204,7 +203,7 @@
         {{/if}}
     </button>
 </template>
-
+<!--payment Officer link-->
 <template name="rabbit_paymentLinkAction">
     <button type="button" class="btn btn-primary btn-sm paymentAction">
         {{#if _paymentCount}}
@@ -214,6 +213,7 @@
         {{/if}}
     </button>
 </template>
+<!--payment maintenance Link-->
 <template name="rabbit_paymentMaintenanceLinkAction">
     <button type="button" class="btn btn-primary btn-sm paymentMaintenanceAction">
         {{#if _paymentMaintenanceCount}}
@@ -223,10 +223,12 @@
         {{/if}}
     </button>
 </template>
+<!--template add file on button-->
 <template name="rabbit_addFile">
     <button type="button" class="btn btn-primary btn-sm addFile">File
     </button>
 </template>
+<!--inster and update AddFile-->
 <template name="rabbit_UpdateAddFile">
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Contract id="rabbit_contractUpdate" doc=this type="update"}}
@@ -237,7 +239,6 @@
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
             <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
-
         {{/autoForm}}
     {{else}}
         {{> loading}}

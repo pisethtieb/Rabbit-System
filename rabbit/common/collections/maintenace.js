@@ -22,33 +22,33 @@ Rabbit.Schema.Maintenance = new SimpleSchema({
         label: 'officeId'
 
     },
+    contractPrice: {
+        label: "Contract Price",
+        type: Number,
+        decimal: true
+    },
+    discount: {
+        label: "Discount(Amount)",
+        type: Number,
+        decimal: true,
+        optional: true,
+        custom: function () {
+            if (this.value > this.field('contractPrice').value) {
+                return "greaterThan";
+            }
+        }
+    },
     price: {
-        type: String,
-        label: 'price'
-
+        label: "price",
+        type: Number,
+        decimal: true
     },
     type: {
         type: String,
         label: 'Type'
-        //autoform: {
-        //    type: "select2",
-        //    options: function () {
-        //        return Rabbit.List.type();
-        //    }
-        //}
-    }
-    ,
-    //paidAmount: {
-    //    type: Number,
-    //    label: "Paid Amount",
-    //    min: 1,
-    //    custom: function () {
-    //        if (this.value > this.field('price').value) {
-    //            return "greaterThan";
-    //        }
-    //    }
-    //
-    //},
+
+    },
+
     des: {
         type: String,
         label: "Description",
@@ -72,6 +72,6 @@ Rabbit.Collection.Maintenance.attachSchema(Rabbit.Schema.Maintenance);
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');
-//SimpleSchema.messages({
-//    "greaterThan": "PaidAmount mustn't be greater than price!"
-//});
+SimpleSchema.messages({
+    "greaterThan": "it mustn't be greater than ContractPrice!"
+});

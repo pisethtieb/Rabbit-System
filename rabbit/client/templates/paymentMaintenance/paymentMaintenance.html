@@ -155,9 +155,9 @@
                 <div class="row">
                     <div class="col-sm-1 pull-right">
                         <!--<button type="button" class="btn btn-primary autoform-add-item btn-sm btnAdd"-->
-                                <!--data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}"-->
-                                <!--data-autoform-maxCount="{{this.atts.maxCount}}">-->
-                            <!--<span class="glyphicon glyphicon-plus"></span>-->
+                        <!--data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}"-->
+                        <!--data-autoform-maxCount="{{this.atts.maxCount}}">-->
+                        <!--<span class="glyphicon glyphicon-plus"></span>-->
                         <!--</button>-->
                     </div>
                 </div>
@@ -169,7 +169,7 @@
 <!--Custom object field-->
 <template name="maintenanceCustomObjectField">
     <div class="col-sm-3">
-        {{> afQuickField name=current.maintenanceId template="bootstrap3" label=false class="input-sm maintenanceId"  placeholder="maintenanceId" }}
+        {{> afQuickField name=current.maintenanceId template="bootstrap3" label=false class="input-sm maintenanceId"  placeholder="maintenanceId"  readOnly=true}}
     </div>
     <div class="col-sm-1">
         {{> afQuickField name=current.maintenance template="bootstrap3" label=false class="input-sm maintenance" id='price' placeholder="maintenance" readOnly=true}}
