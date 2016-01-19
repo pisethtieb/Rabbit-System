@@ -79,10 +79,16 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>OfficeName</th>
+                        <th>Contract Date</th>
+                        <th>Cus Name</th>
+                        <th>Tel</th>
+                        <th>Office Name</th>
+                        <th>product</th>
                         <th>type</th>
                         <th>StartDate</th>
-                        <th>EndDate</th>
+                        <th>endDate</th>
+                        <th>Contract Price</th>
+                        <th>Discount</th>
                         <th>Price</th>
                     </tr>
                     </thead>
@@ -91,19 +97,30 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
+                            <td>{{contract.contractDate}}</td>
+                            <td>{{contract._customer.contractName}}</td>
+                            <td>{{contract._customer.telephone}}</td>
                             <td>{{_office.name}}</td>
+                            <td>{{contract._product.name}}</td>
                             <td>{{type}}</td>
                             <td>{{startDate}}</td>
                             <td>{{endDate}}</td>
+                            <td>{{contractPrice}}</td>
+                            <td>{{discount}}</td>
                             <td>{{price}}</td>
                         </tr>
                     {{/each}}
                     </tbody>
-                    <!--<tfoot class="content-footer">-->
-                    <!--<tr>-->
-                    <!--<td></td>-->
-                    <!--</tr>-->
-                    <!--</tfoot>-->
+                    <tbody class="content-body">
+                    <tr class="">
+                        <td colspan="10" align="right">
+                            Total :
+                        </td>
+                        <td>{{footer.totalContractPrice}}</td>
+                        <td>{{footer.totalDiscount}}</td>
+                        <td>{{footer.totalPrice}}</td>
+                    </tr>
+                    </tbody>
                 </table>
 
             {{/with}}

@@ -91,10 +91,12 @@ insertTpl.onRendered(function () {
     let office = Rabbit.Collection.Office.findOne({contractId: contractId});
     if (office == null || undefined) {
         $('.type').val("HO");
+        $('.discount').val(0);
         $('.type').change();
         //$('[name=price]').val(contract.basePrice[0].headOffice);
     } else {
         $('.type').val("BO");
+        $('.discount').val(0);
         $('.type').change();
     }
 });
@@ -117,21 +119,26 @@ insertTpl.events({
         if (type == 'HO' && office != null) {
             $('.type').val("BO");
             $('.type').change();
+            $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].branch);
 
         } else if (type == 'BO' && office == null) {
             $('.type').val("HO");
             $('.type').change();
+            $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].headOffice);
             $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
         } else if (type == 'BO') {
+            $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].branch);
             $('[name=contractPrice]').val(contract.basePrice[0].branch);
         } else if (type == "HO") {
+            $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].headOffice);
             $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
 
         } else {
+            $('.discount').val('');
             $('[name=price]').val("");
             $('[name=contractPrice]').val("");
         }
@@ -163,21 +170,26 @@ updateTpl.events({
         if (type == 'HO' && office != null) {
             $('.type').val("BO");
             $('.type').change();
+            $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].branch);
 
         } else if (type == 'BO' && office == null) {
             $('.type').val("HO");
             $('.type').change();
+            $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].headOffice);
             $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
         } else if (type == 'BO') {
+            $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].branch);
             $('[name=contractPrice]').val(contract.basePrice[0].branch);
         } else if (type == "HO") {
+            $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].headOffice);
             $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
 
         } else {
+            $('.discount').val('');
             $('[name=price]').val("");
             $('[name=contractPrice]').val("");
         }

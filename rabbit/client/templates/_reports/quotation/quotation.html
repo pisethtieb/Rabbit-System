@@ -78,6 +78,7 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
+                        <th>QuotationDate</th>
                         <th>Product Name</th>
                         <th>Company Name</th>
                         <th>Tel</th>
@@ -95,6 +96,7 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
+                            <td>{{quotationDate}}</td>
                             <td>{{_product.name}}</td>
                             <td>{{_customer.companyName}}</td>
                             <td>{{_customer.companyTelephone}}</td>
@@ -111,7 +113,7 @@
                     </tbody>
                     <tbody class="content-body">
                     <tr class="">
-                        <td colspan="7" align="right">
+                        <td colspan="8" align="right">
                             Total :
                         </td>
                         <td>{{footer.totalHeadBasePrice}}</td>

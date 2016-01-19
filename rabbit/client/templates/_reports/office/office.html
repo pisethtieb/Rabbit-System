@@ -78,9 +78,15 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>ProductName</th>
-                        <th>OfficeName</th>
-                        <th>Type</th>
+                        <th>Contract Date</th>
+                        <th>Cus Name</th>
+                        <th>Tel</th>
+                        <th>Office Name</th>
+                        <th>Office Date</th>
+                        <th>product</th>
+                        <th>type</th>
+                        <th>Contract Price</th>
+                        <th>Discount</th>
                         <th>Price</th>
                     </tr>
                     </thead>
@@ -89,21 +95,29 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
-                            <td>{{_product.name}}</td>
+                            <td>{{_contract.contractDate}}</td>
+                            <td>{{customer.contractName}}</td>
+                            <td>{{customer.telephone}}</td>
                             <td>{{name}}</td>
+                            <td>{{officeDate}}</td>
+                            <td>{{product.name}}</td>
                             <td>{{type}}</td>
+                            <td>{{contractPrice}}</td>
+                            <td>{{discount}}</td>
                             <td>{{price}}</td>
-
-
                         </tr>
                     {{/each}}
                     </tbody>
-
-                    <!--<tfoot class="content-footer">-->
-                    <!--<tr>-->
-                    <!--<td></td>-->
-                    <!--</tr>-->
-                    <!--</tfoot>-->
+                    <tbody class="content-body">
+                    <tr class="">
+                        <td colspan="9" align="right">
+                            Total :
+                        </td>
+                        <td>{{footer.totalContractPrice}}</td>
+                        <td>{{footer.totalDiscount}}</td>
+                        <td>{{footer.totalPrice}}</td>
+                    </tr>
+                    </tbody>
                 </table>
 
             {{/with}}

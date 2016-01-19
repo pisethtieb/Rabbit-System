@@ -22,7 +22,7 @@ genTpl.helpers({
         return {
             //fontSize: 'bg',
             paper: 'a4',
-            orientation: 'portrait'
+            orientation: 'landscape'
         };
     },
     data: function () {

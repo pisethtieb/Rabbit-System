@@ -92,6 +92,7 @@ insertTpl.helpers({
                 contractPrice: office._contract.maintenancePrice[0].headOffice,
                 officeId: office._id,
                 type: office.type,
+                discount: 0,
                 startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
                 endDate: moment().add(1, 'years').format('YYYY-MM-DD')
 
@@ -102,6 +103,7 @@ insertTpl.helpers({
                 price: office._contract.maintenancePrice[0].branch,
                 officeId: office._id,
                 type: office.type,
+                discount: 0,
                 startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
                 endDate: moment().add(1, 'years').format('YYYY-MM-DD')
 

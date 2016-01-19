@@ -41,19 +41,28 @@ Meteor.methods({
         }
 
         var index = 1;
-        //console.log(selector._office);
+        let totalContractPrice = 0;
+        let totalDiscount = 0;
+        let totalPrice = 0;
         Rabbit.Collection.Maintenance.find(selector)
 
             .forEach(function (obj) {
                 if (obj._office.contractId == params.contractId) {
                     obj.index = index;
-
                     content.push(obj);
-
                     index++;
 
                 } else {
+
+                    let contract = Rabbit.Collection.Contract.findOne({_id: obj._office.contractId});
+                    obj.contract = contract;
+
                     obj.index = index;
+                    totalContractPrice += obj.contractPrice;
+
+                    totalDiscount += obj.discount;
+
+                    totalPrice += obj.price;
 
                     content.push(obj);
 
@@ -63,6 +72,9 @@ Meteor.methods({
 
         if (content.length > 0) {
             data.content = content;
+            data.footer.totalContractPrice = numeral(totalContractPrice).format('$0,0.00');
+            data.footer.totalDiscount = numeral(totalDiscount).format('$0,0.00');
+            data.footer.totalPrice = numeral(totalPrice).format('$0,0.00');
         }
 
         return data
