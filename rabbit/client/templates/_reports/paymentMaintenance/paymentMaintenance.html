@@ -82,24 +82,38 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>PaymentDate</th>
+                        <th>PaidDate</th>
                         <th>contractId</th>
-                        <th>customerName</th>
-                        <th>payment</th>
-                        <th>Amount</th>
-                        <th>paid</th>
+                        <th>Cus Name</th>
+                        <th>Tel</th>
+                        <th>product</th>
+                        <th>payment Items</th>
                         <th>Due</th>
+                        <th>paid</th>
+                        <th>Balance</th>
 
                     </tr>
                     </thead>
                     <tbody class="content-body">
                     {{#each content}}
                         <tr>
+                            <!--<td>{{index}}</td>-->
+                            <!--<td>{{_id}}</td>-->
+
+                            <!--<td>{{contractId}}</td>-->
+                            <!--<td>{{customerId}}</td>-->
+                            <!--<td>{{{payment}}}</td>-->
+                            <!--<td>{{{amount}}}</td>-->
+                            <!--<td>{{{paid}}}</td>-->
+                            <!--<td>{{{due}}}</td>-->
+
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
                             <td>{{paymentMaintenanceDate}}</td>
                             <td>{{contractId}}</td>
-                            <td>{{customerId}}</td>
+                            <td>{{_customer.contractName}}</td>
+                            <td>{{_customer.telephone}}</td>
+                            <td>{{product.name}}</td>
                             <td>{{{payment}}}</td>
                             <td>{{{amount}}}</td>
                             <td>{{{paid}}}</td>
@@ -108,24 +122,16 @@
                         </tr>
                     {{/each}}
                     </tbody>
+                    <tbody class="content-body">
                     <tr>
                         <td colspan="8" align="right">
                             Total :
                         </td>
                         <td>{{footer.totalPrice}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="8" align="right">
-                            PaidAmount :
-                        </td>
                         <td>{{footer.totalPaidAmount}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="8" align="right">
-                            DueAmount :
-                        </td>
                         <td>{{footer.totalDueAmount}}</td>
                     </tr>
+                    </tbody>
                 </table>
 
             {{/with}}

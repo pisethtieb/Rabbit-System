@@ -46,7 +46,21 @@ Meteor.methods({
             //if (obj._office.contractId == params.contractId) {
             //    console.log(obj._id);
             // Do something
-            obj.payment = JSON.stringify(obj.maintenance);
+
+            var str = "<ul>";
+            if (obj.maintenance != null) {
+                obj.maintenance.forEach(function (o) {
+                    o.discount = o.discount == null ? 0 : o.discount;
+                    str += "<li>mainId: " + o.maintenanceId +
+                        " | type: " + o.maintenance + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                        "</li>";
+                });
+            }
+            str += '</ul>';
+            //console.log(str);
+            let product = Rabbit.Collection.Product.findOne({_id: obj._contract.productId});
+            obj.product = product;
+            obj.payment = str;
             obj.index = index;
             let amount = 0;
             let paidAmount = 0;
@@ -58,25 +72,28 @@ Meteor.methods({
             });
             //amount
             obj.amount = amount;
+
             obj.paid = paidAmount;
             obj.due = amount - paidAmount;
+            total += amount;
             totalPaidAmount += paidAmount;
             contractId = obj.contractId;
             content.push(obj);
             index++;
             //}
         });
-        if (paymentMaintenance.count() == 1) {
-            let office = Rabbit.Collection.Maintenance.find({'_office.contractId': contractId});
-            office.forEach(function (o) {
-                total += parseFloat(o.price);
-            })
-        } else {
-            let office = Rabbit.Collection.Maintenance.find();
-            office.forEach(function (o) {
-                total += parseFloat(o.price);
-            })
-        }
+        //if (paymentMaintenance.count() == 1) {
+        //    let office = Rabbit.Collection.Maintenance.find({'_office.contractId': contractId});
+        //    office.forEach(function (o) {
+        //        total += parseFloat(o.price);
+        //        console.log(total)
+        //    })
+        //} else {
+        //    let office = Rabbit.Collection.Maintenance.find();
+        //    office.forEach(function (o) {
+        //        total += parseFloat(o.price);
+        //    })
+        //}
 
         totalDueAmount = total - totalPaidAmount;
 

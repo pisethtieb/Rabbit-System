@@ -51,6 +51,7 @@ Meteor.methods({
             var str = "<ul>";
             if (obj.office != null) {
                 obj.office.forEach(function (o) {
+                    o.discount = o.discount == null ? 0 : o.discount;
                     str += "<li>officeId: " + o.officeId +
                         " | type: " + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
                         "</li>";
@@ -58,6 +59,8 @@ Meteor.methods({
             }
             str += '</ul>';
             //console.log(str);
+            let product = Rabbit.Collection.Product.findOne({_id: obj._contract.productId});
+            obj.product = product;
             obj.payment = str;
 
 
