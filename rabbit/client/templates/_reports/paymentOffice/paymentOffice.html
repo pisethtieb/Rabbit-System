@@ -79,10 +79,11 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>PaymentDate</th>
+                        <th>PaidDate</th>
                         <th>contractId</th>
-                        <th>customerName</th>
-                        <th>payment</th>
+                        <th>Cus Name</th>
+                        <th>Tel</th>
+                        <th>payment Items</th>
                         <th>Amount</th>
                         <th>paid</th>
                         <th>Due</th>
@@ -96,7 +97,8 @@
                             <td>{{_id}}</td>
                             <td>{{paymentDate}}</td>
                             <td>{{contractId}}</td>
-                            <td>{{customerId}}</td>
+                            <td>{{_customer.contractName}}</td>
+                            <td>{{_customer.telephone}}</td>
                             <td>{{{payment}}}</td>
                             <td>{{{amount}}}</td>
                             <td>{{{paid}}}</td>
@@ -106,19 +108,19 @@
                     {{/each}}
                     </tbody>
                     <tr>
-                        <td colspan="8" align="right">
+                        <td colspan="9" align="right">
                             Total :
                         </td>
                         <td>{{footer.totalPrice}}</td>
                     </tr>
                     <tr>
-                        <td colspan="8" align="right">
+                        <td colspan="9" align="right">
                             PaidAmount :
                         </td>
                         <td>{{footer.totalPaidAmount}}</td>
                     </tr>
                     <tr>
-                        <td colspan="8" align="right">
+                        <td colspan="9" align="right">
                             DueAmount :
                         </td>
                         <td>{{footer.totalDueAmount}}</td>

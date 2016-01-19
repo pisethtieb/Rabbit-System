@@ -45,7 +45,22 @@ Meteor.methods({
             //if (obj._office.contractId == params.contractId) {
             //    console.log(obj._id);
             // Do something
-            obj.payment = JSON.stringify(obj.office);
+            //obj.payment = JSON.stringify(obj.office);
+
+
+            var str = "<ul>";
+            if (obj.office != null) {
+                obj.office.forEach(function (o) {
+                    str += "<li>officeId: " + o.officeId +
+                        " | type: " + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                        "</li>";
+                });
+            }
+            str += '</ul>';
+            //console.log(str);
+            obj.payment = str;
+
+
             obj.index = index;
             let amount = 0;
             let paidAmount = 0;
