@@ -77,27 +77,12 @@ Meteor.methods({
             obj.amount = numeral(amount).format('$0,0.00');
             obj.paid = numeral(paidAmount).format('$0,0.00');
             obj.due = numeral(dueAmount).format('$0,0.00');
-            //total
+            total += amount;
             totalPaidAmount += paidAmount;
-            //paidAmount
-            //obj.paidAmount = paidAmount;
-            //paidAmount += obj.paidAmount;
-            contractId = obj.contractId;
             content.push(obj);
             index++;
             //}
         });
-        if (officePayment.count() == 1) {
-            let office = Rabbit.Collection.Office.find({contractId: contractId});
-            office.forEach(function (o) {
-                total += parseFloat(o.price);
-            })
-        } else {
-            let office = Rabbit.Collection.Office.find();
-            office.forEach(function (o) {
-                total += parseFloat(o.price);
-            })
-        }
         totalDueAmount = total - totalPaidAmount;
         if (content.length > 0) {
             data.content = content;

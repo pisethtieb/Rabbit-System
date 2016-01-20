@@ -39,16 +39,24 @@ Meteor.methods({
 
         var index = 1;
         let total = 0;
-        var totalDueAmount = 0;
         let totalPaidAmount = 0;
         var officePayment = Rabbit.Collection.Payment.find(selector);
         officePayment.forEach(function (obj) {
-            //if (obj._office.contractId == params.contractId) {
-            //    console.log(obj._id);
-            // Do something
-            obj.payment = JSON.stringify(obj.office);
+            let product = Rabbit.Collection.Product.findOne({_id: obj._contract.productId});
+            var str = "<ul>";
+            if (obj.office != null) {
+                obj.office.forEach(function (o) {
+                    o.discount = o.discount == null ? 0 : o.discount;
+                    str += "<li>officeId: " + o.officeId +
+                        " | type: " + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                        "</li>";
+                });
+            }
+            obj.product = product;
+            str += '</ul>';
+            obj.payment = str;
             obj.index = index;
-            amount = 0;
+            let amount = 0;
             let paidAmount = 0;
             let dueAmount = 0;
             obj.office.forEach(function (office) {
@@ -62,26 +70,13 @@ Meteor.methods({
             obj.due = dueAmount;
             //total
             totalPaidAmount += paidAmount;
+            total += obj.amount;
 
-            contractId = obj.contractId;
+            //contractId = obj.contractId;
             content.push(obj);
             index++;
-            //}
+
         });
-        if (officePayment.count() == 1) {
-            let office = Rabbit.Collection.Office.find({contractId: contractId});
-            office.forEach(function (o) {
-                total += parseFloat(o.price);
-            })
-        } else {
-            let office = Rabbit.Collection.Office.find();
-            office.forEach(function (o) {
-                total += parseFloat(o.price);
-            })
-        }
-
-        //}
-
         totalDueAmount = total - totalPaidAmount;
 
         if (content.length > 0) {
@@ -89,7 +84,6 @@ Meteor.methods({
             data.footer.totalPrice = numeral(total).format('$0,0.00');
             data.footer.totalDueAmount = numeral(totalDueAmount).format('$0,0.00');
             data.footer.totalPaidAmount = numeral(totalPaidAmount).format('$0,0.00');
-            //data.footer.paidAmount = numeral(fx.convert(paidAmount, {from: 'KHR', to: 'USD'})).format('0,0.00')
         }
         return data
     }

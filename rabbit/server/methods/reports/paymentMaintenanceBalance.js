@@ -25,14 +25,10 @@ Meteor.methods({
         var content = [];
         var selector = {};
         selector.paymentMaintenanceDate = {$lte: moment(params.date + ' 23:59:59').format('YYYY-MM-DD HH:mm:ss')};
-        //selector.paymentMaintenanceDate = {$gte: fDate, $lte: tDate};
-        //
+
         if (!_.isEmpty(params.branch)) {
             selector.branchId = params.branch;
         }
-        //if (!_.isEmpty(params.contractId)) {
-        //    selector.{office.contractId}= params.contractId
-        //}
         if (!_.isEmpty(params.contractId)) {
             selector.contractId = params.contractId;
         }
@@ -44,10 +40,19 @@ Meteor.methods({
 
         let paymentMaintenance = Rabbit.Collection.PaymentMaintenance.find(selector);
         paymentMaintenance.forEach(function (obj) {
-            //if (obj._office.contractId == params.contractId) {
-            //    console.log(obj._id);
-            // Do something
-            obj.payment = JSON.stringify(obj.maintenance);
+            var str = "<ul>";
+            if (obj.maintenance != null) {
+                obj.maintenance.forEach(function (o) {
+                    o.discount = o.discount == null ? 0 : o.discount;
+                    str += "<li>mainId: " + o.maintenanceId +
+                        " | type: " + o.maintenance + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                        "</li>";
+                });
+            }
+            str += '</ul>';
+            let product = Rabbit.Collection.Product.findOne({_id: obj._contract.productId});
+            obj.product = product;
+            obj.payment = str;
             obj.index = index;
             let amount = 0;
             let paidAmount = 0;
@@ -57,37 +62,21 @@ Meteor.methods({
                 amount += parseFloat(office.price);
                 dueAmount += parseFloat(office.dueAmount);
             });
-            //amount
-            obj.amount = numeral(amount).format('0,0.00');
-            obj.paid = numeral(paidAmount).format('0,0.00');
-            obj.due = numeral(dueAmount).format('0,0.00');
+            obj.amount = amount;
+            obj.paid = paidAmount;
+            obj.due = amount - paidAmount;
+            total += amount;
             totalPaidAmount += paidAmount;
-            contractId = obj.contractId;
             content.push(obj);
             index++;
-            //}
         });
-        if (paymentMaintenance.count() == 1) {
-            let office = Rabbit.Collection.Maintenance.find({'_office.contractId': contractId});
-            office.forEach(function (o) {
-                total += parseFloat(o.price);
-            })
-        } else {
-            let office = Rabbit.Collection.Maintenance.find();
-            office.forEach(function (o) {
-                total += parseFloat(o.price);
-            })
-        }
-        ;
         totalDueAmount = total - totalPaidAmount;
         if (content.length > 0) {
             data.content = content;
             data.footer.totalPrice = numeral(total).format('$0,0.00');
             data.footer.totalDueAmount = numeral(totalDueAmount).format('$0,0.00');
             data.footer.totalPaidAmount = numeral(totalPaidAmount).format('$0,0.00');
-            //data.footer.paidAmount = numeral(fx.convert(paidAmount, {from: 'KHR', to: 'USD'})).format('0,0.00')
         }
-
         return data
     }
 });

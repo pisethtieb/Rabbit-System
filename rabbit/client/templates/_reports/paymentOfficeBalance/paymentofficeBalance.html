@@ -86,10 +86,11 @@
                         <th>contractId</th>
                         <th>Cus Name</th>
                         <th>Tel</th>
+                        <th>product</th>
                         <th>payment Items</th>
-                        <th>Amount</th>
-                        <th>paid</th>
                         <th>Due</th>
+                        <th>paid</th>
+                        <th>Balance</th>
 
                     </tr>
                     </thead>
@@ -102,34 +103,25 @@
                             <td>{{contractId}}</td>
                             <td>{{_customer.contractName}}</td>
                             <td>{{_customer.telephone}}</td>
+                            <td>{{product.name}}</td>
                             <td>{{{payment}}}</td>
                             <td>{{{amount}}}</td>
                             <td>{{{paid}}}</td>
                             <td>{{{due}}}</td>
-
                         </tr>
                     {{/each}}
                     </tbody>
+                    <tbody class="content-body">
                     <tr>
                         <td colspan="8" align="right">
                             Total :
                         </td>
                         <td>{{footer.totalPrice}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="8" align="right">
-                            PaidAmount :
-                        </td>
                         <td>{{footer.totalPaidAmount}}</td>
-                    </tr>
-                    <tr>
-                        <td colspan="8" align="right">
-                            DueAmount :
-                        </td>
                         <td>{{footer.totalDueAmount}}</td>
                     </tr>
+                    </tbody>
                 </table>
-
             {{/with}}
 
             <!--Sign-->
