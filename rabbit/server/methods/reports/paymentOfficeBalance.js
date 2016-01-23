@@ -6,16 +6,6 @@ Meteor.methods({
             content: [{index: 'No Result'}],
             footer: {}
         };
-        //exchange = Cpanel.Collection.Exchange.findOne(exchangeId);
-        //date = s.words(params.date, ' To '),
-        //    fDate = date[0],
-        //    newDate = new Date(date[1]);
-        //var tDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 1);
-        //tDate = moment(tDate).format('YYYY-MM-DD');
-        //var date = s.words(params.date, ' To ');
-        //var fDate = moment(date[0], 'YYYY-MM-DD').toDate();
-        //var tDate = moment(date[1], 'YYYY-MM-DD').add(1, 'days').toDate();
-        //****** Title *****/
         data.title = Cpanel.Collection.Company.findOne();
 
         /****** Header *****/
@@ -33,58 +23,53 @@ Meteor.methods({
         if (!_.isEmpty(params.contractId)) {
             selector._id = params.contractId
         }
-        //if (!_.isEmpty(params.officeId)) {
-        //    selector.officeId = params.officeId;
-        //}
-
         var index = 1;
         let total = 0;
         let totalPaidAmount = 0;
         var contracts = Rabbit.Collection.Contract.find(selector);
-        //var officePayment = Rabbit.Collection.Payment.find(selector);
         contracts.forEach(function (obj) {
             let offPayment = Rabbit.Collection.Payment.findOne({
                 contractId: obj._id,
                 paymentDate: params.paymentDate
             }, {sort: {_id: -1}});
-            var str = "<ul>";
-            if (offPayment.office != null) {
+
+            if (offPayment != null) {
+                var str = "<ul>";
                 offPayment.office.forEach(function (o) {
+                    console.log(o.paidAmount);
                     o.discount = o.discount == null ? 0 : o.discount;
-                    dueAmount = o.dueAmount;
+                    o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
                     str += "<li>officeId: " + o.officeId +
                         " | type: " + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
                         "</li>";
                 });
-            }
-            if (dueAmount != 0) {
                 let product = Rabbit.Collection.Product.findOne({_id: offPayment._contract.productId});
-                offPayment.product = product;
-                str += '</ul>';
-                offPayment.payment = str;
-                offPayment.index = index;
                 let amount = 0;
                 let paidAmount = 0;
                 let dueAmount = 0;
                 offPayment.office.forEach(function (off) {
+                    off.paidAmount = off.paidAmount == null ? 0 : off.paidAmount;
+                    off.discount = off.discount == null ? 0 : off.discount;
                     paidAmount += parseFloat(off.paidAmount);
                     amount += parseFloat(off.price);
                     dueAmount += parseFloat(off.dueAmount);
                 });
-                //amount
-                offPayment.amount = amount;
-                offPayment.paid = paidAmount;
-                offPayment.due = dueAmount;
-                //total
-                totalPaidAmount += paidAmount;
-                total += offPayment.amount;
-                //contractId = obj.contractId;
-                content.push(offPayment);
-                index++;
+                if (dueAmount != 0) {
+                    offPayment.product = product;
+                    str += '</ul>';
+                    offPayment.payment = str;
+                    offPayment.index = index;
+                    offPayment.amount = amount;
+                    offPayment.paid = paidAmount;
+                    offPayment.due = dueAmount;
+                    totalPaidAmount += paidAmount;
+                    total += offPayment.amount;
+                    content.push(offPayment);
+                    index++;
+                }
             }
         });
         totalDueAmount = total - totalPaidAmount;
-
         if (content.length > 0) {
             data.content = content;
             data.footer.totalPrice = numeral(total).format('$0,0.00');

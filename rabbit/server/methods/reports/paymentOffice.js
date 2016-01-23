@@ -52,6 +52,7 @@ Meteor.methods({
             if (obj.office != null) {
                 obj.office.forEach(function (o) {
                     o.discount = o.discount == null ? 0 : o.discount;
+                    o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
                     str += "<li>officeId: " + o.officeId +
                         " | type: " + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
                         "</li>";
@@ -69,6 +70,8 @@ Meteor.methods({
             let paidAmount = 0;
             let dueAmount = 0;
             obj.office.forEach(function (office) {
+                office.discount = office.discount == null ?0  : office.discount;
+                office.paidAmount = office.paidAmount == null ? 0 : office.paidAmount;
                 paidAmount += parseFloat(office.paidAmount);
                 amount += parseFloat(office.price);
                 dueAmount += parseFloat(office.dueAmount);
