@@ -24,14 +24,14 @@ Meteor.methods({
         /****** Content *****/
         var content = [];
         var selector = {};
-        selector.paymentDate = {$lte: moment(params.date + ' 23:59:59').format('YYYY-MM-DD HH:mm:ss')};
+        params.paymentDate = {$lte: moment(params.date + ' 23:59:59').format('YYYY-MM-DD HH:mm:ss')};
 
         //
         if (!_.isEmpty(params.branch)) {
             selector.branchId = params.branch;
         }
         if (!_.isEmpty(params.contractId)) {
-            selector.contractId = params.contractId
+            selector._id = params.contractId
         }
         //if (!_.isEmpty(params.officeId)) {
         //    selector.officeId = params.officeId;
@@ -40,42 +40,48 @@ Meteor.methods({
         var index = 1;
         let total = 0;
         let totalPaidAmount = 0;
-        var officePayment = Rabbit.Collection.Payment.find(selector);
-        officePayment.forEach(function (obj) {
-            let product = Rabbit.Collection.Product.findOne({_id: obj._contract.productId});
+        var contracts = Rabbit.Collection.Contract.find(selector);
+        //var officePayment = Rabbit.Collection.Payment.find(selector);
+        contracts.forEach(function (obj) {
+            let offPayment = Rabbit.Collection.Payment.findOne({
+                contractId: obj._id,
+                paymentDate: params.paymentDate
+            }, {sort: {_id: -1}});
             var str = "<ul>";
-            if (obj.office != null) {
-                obj.office.forEach(function (o) {
+            if (offPayment.office != null) {
+                offPayment.office.forEach(function (o) {
                     o.discount = o.discount == null ? 0 : o.discount;
+                    dueAmount = o.dueAmount;
                     str += "<li>officeId: " + o.officeId +
                         " | type: " + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
                         "</li>";
                 });
             }
-            obj.product = product;
-            str += '</ul>';
-            obj.payment = str;
-            obj.index = index;
-            let amount = 0;
-            let paidAmount = 0;
-            let dueAmount = 0;
-            obj.office.forEach(function (office) {
-                paidAmount += parseFloat(office.paidAmount);
-                amount += parseFloat(office.price);
-                dueAmount += parseFloat(office.dueAmount);
-            });
-            //amount
-            obj.amount = amount;
-            obj.paid = paidAmount;
-            obj.due = dueAmount;
-            //total
-            totalPaidAmount += paidAmount;
-            total += obj.amount;
-
-            //contractId = obj.contractId;
-            content.push(obj);
-            index++;
-
+            if (dueAmount != 0) {
+                let product = Rabbit.Collection.Product.findOne({_id: offPayment._contract.productId});
+                offPayment.product = product;
+                str += '</ul>';
+                offPayment.payment = str;
+                offPayment.index = index;
+                let amount = 0;
+                let paidAmount = 0;
+                let dueAmount = 0;
+                offPayment.office.forEach(function (off) {
+                    paidAmount += parseFloat(off.paidAmount);
+                    amount += parseFloat(off.price);
+                    dueAmount += parseFloat(off.dueAmount);
+                });
+                //amount
+                offPayment.amount = amount;
+                offPayment.paid = paidAmount;
+                offPayment.due = dueAmount;
+                //total
+                totalPaidAmount += paidAmount;
+                total += offPayment.amount;
+                //contractId = obj.contractId;
+                content.push(offPayment);
+                index++;
+            }
         });
         totalDueAmount = total - totalPaidAmount;
 
