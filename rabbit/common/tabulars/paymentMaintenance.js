@@ -15,24 +15,20 @@ Rabbit.TabularTable.PaymentMaintenance = new Tabular.Table({
         {
             data: "maintenance", title: "payment",
             render: function (val, type, doc) {
-                return JSON.stringify(val);
+                var str = "<ul>";
+                if (val != null) {
+                    val.forEach(function (o) {
+                        o.discount = o.discount == null ? 0 : o.discount;
+                        o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
+                        str += "<li>mainId: " + o.maintenanceId +
+                            " | type: " + o.maintenance + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                            "</li>";
+                    });
+                }
+                str += '</ul>';
+                return str
             }
-        },
-        //{
-    //
-    //data: "childItem", title: "Child Item",
-    //render: function (val, type, doc) {
-    //    //return EJSON.stringify(val, true);
-    //    var str = "<ul>";
-    //    if(val!=null) {
-    //        val.forEach(function (o) {
-    //            str += "<li>Name: " + o.name + " | NVal: " + (o.normalValue) + " | PVal: " + o.prependValue + " | AVal: " + (o.appendValue) + "</li>";
-    //        });
-    //    }
-    //    str += '</ul>';
-    //    return str
-    //
-    //},
+        }
     ],
     extraFields: ['maintenance', 'paymentMaintenanceDate', 'customerId', 'des']
 });

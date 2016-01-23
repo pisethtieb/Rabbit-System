@@ -16,7 +16,18 @@ Rabbit.TabularTable.Payment = new Tabular.Table({
         {
             data: "office", title: "Payment",
             render: function (val, type, doc) {
-                return JSON.stringify(val);
+                var str = "<ul>";
+                if (val != null) {
+                    val.forEach(function (o) {
+                        o.discount = o.discount == null ? 0 : o.discount;
+                        o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
+                        str += "<li>officeId: " + o.officeId +
+                            " | type: " + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                            "</li>";
+                    });
+                }
+                str += '</ul>';
+                return str
             }
         }
     ],

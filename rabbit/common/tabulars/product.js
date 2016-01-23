@@ -15,14 +15,33 @@ Rabbit.TabularTable.Product = new Tabular.Table({
         {
             data: "basePrice", title: "Product Price",
             render: function (val, type, doc) {
-                return JSON.stringify(val);
+                var str = "<ul>";
+                if (val != null) {
+                    val.forEach(function (o) {
+
+                        str += "<li>HeadOffice : " + o.headOffice + "| branch :" + o.branch +
+                            "</li>";
+                    });
+                }
+                str += '</ul>';
+                return str
             }
         },
         {
             data: "maintenancePrice", title: "Maintenance Price",
             render: function (val, type, doc) {
-                return JSON.stringify(val);
+                var str = "<ul>";
+                if (val != null) {
+                    val.forEach(function (o) {
+
+                        str += "<li>HeadOffice : " + o.headOffice + "| branch :" + o.branch +
+                            "</li>";
+                    });
+                }
+                str += '</ul>';
+                return str
             }
+
         },
         {data: "_contractCunt", title: "Contract"},
         {data: "_quotationCount", title: "Quotation"}

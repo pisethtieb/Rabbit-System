@@ -32,22 +32,12 @@ Meteor.methods({
         if (!_.isEmpty(params.contractId)) {
             selector.contractId = params.contractId
         }
-        //if (!_.isEmpty(params.officeId)) {
-        //    selector.officeId = params.officeId;
-        //}
-
         var index = 1;
         let total = 0;
         var totalDueAmount = 0;
         let totalPaidAmount = 0;
         var officePayment = Rabbit.Collection.Payment.find(selector);
         officePayment.forEach(function (obj) {
-            //if (obj._office.contractId == params.contractId) {
-            //    console.log(obj._id);
-            // Do something
-            //obj.payment = JSON.stringify(obj.office);
-
-
             var str = "<ul>";
             if (obj.office != null) {
                 obj.office.forEach(function (o) {
@@ -59,12 +49,9 @@ Meteor.methods({
                 });
             }
             str += '</ul>';
-            //console.log(str);
             let product = Rabbit.Collection.Product.findOne({_id: obj._contract.productId});
             obj.product = product;
             obj.payment = str;
-
-
             obj.index = index;
             let amount = 0;
             let paidAmount = 0;
@@ -76,7 +63,6 @@ Meteor.methods({
                 amount += parseFloat(office.price);
                 dueAmount += parseFloat(office.dueAmount);
             });
-            //amount
             obj.amount = numeral(amount).format('$0,0.00');
             obj.paid = numeral(paidAmount).format('$0,0.00');
             obj.due = numeral(dueAmount).format('$0,0.00');
@@ -84,7 +70,6 @@ Meteor.methods({
             totalPaidAmount += paidAmount;
             content.push(obj);
             index++;
-            //}
         });
         totalDueAmount = total - totalPaidAmount;
         if (content.length > 0) {
@@ -92,7 +77,6 @@ Meteor.methods({
             data.footer.totalPrice = numeral(total).format('$0,0.00');
             data.footer.totalDueAmount = numeral(totalDueAmount).format('$0,0.00');
             data.footer.totalPaidAmount = numeral(totalPaidAmount).format('$0,0.00');
-            //data.footer.paidAmount = numeral(fx.convert(paidAmount, {from: 'KHR', to: 'USD'})).format('0,0.00')
         }
         return data
     }
