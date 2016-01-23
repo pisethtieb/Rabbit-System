@@ -8,7 +8,7 @@ paymentInvoiceTPL.helpers({
         // orientation = portrait, landscape
         return {
             fontSize: 'bg',
-            paper: 'a5',
+            paper: 'a4',
             orientation: 'portrait'
         };
     },

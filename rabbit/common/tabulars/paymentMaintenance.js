@@ -17,7 +17,22 @@ Rabbit.TabularTable.PaymentMaintenance = new Tabular.Table({
             render: function (val, type, doc) {
                 return JSON.stringify(val);
             }
-        }
+        },
+        //{
+    //
+    //data: "childItem", title: "Child Item",
+    //render: function (val, type, doc) {
+    //    //return EJSON.stringify(val, true);
+    //    var str = "<ul>";
+    //    if(val!=null) {
+    //        val.forEach(function (o) {
+    //            str += "<li>Name: " + o.name + " | NVal: " + (o.normalValue) + " | PVal: " + o.prependValue + " | AVal: " + (o.appendValue) + "</li>";
+    //        });
+    //    }
+    //    str += '</ul>';
+    //    return str
+    //
+    //},
     ],
     extraFields: ['maintenance', 'paymentMaintenanceDate', 'customerId', 'des']
 });
