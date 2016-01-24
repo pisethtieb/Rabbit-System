@@ -1,7 +1,7 @@
 var subs = new SubsManager();
 
 rabbitRoutes.route('/payment/:customerId/:contractId', {
-    name: 'rabbit.payment',
+    name: 'rabbit.payment', label: 'paymentOffice',
     subscriptions: function (params, queryParams) {
         // Customer
         this.register('rabbit_contract', subs.subscribe('rabbit_contract'));
