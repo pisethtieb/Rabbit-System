@@ -1,23 +1,23 @@
 /**
  * Browser view
  */
-rabbitRoutes.route('/paymentReport', {
-    name: 'rabbit.paymentReport',
+rabbitRoutes.route('/paymentOfficeReport', {
+    name: 'rabbit.paymentOfficeReport',
     action: function (params, queryParams) {
-        Layout.main('rabbit_paymentReport');
+        Layout.main('rabbit_paymentOfficeReport');
     },
     breadcrumb: {
         //params: ['id'],
         //queryParams: ['show', 'color'],
-        title: 'payment Report',
+        title: 'paymentOffice Report',
         parent: 'rabbit.home'
     }
 });
 
-rabbitRoutes.route('/paymentReportGen', {
-    name: 'rabbit.paymentReportGen',
+rabbitRoutes.route('/paymentOfficeReportGen', {
+    name: 'rabbit.paymentOfficeReportGen',
     action: function (params, queryParams) {
-        Layout.report('rabbit_paymentReportGen');
+        Layout.report('rabbit_paymentOfficeReportGen');
     }
 });
 
@@ -32,7 +32,7 @@ rabbitRoutes.route('/paymentReportGen', {
 //    breadcrumb: {
 //        //params: ['id'],
 //        //queryParams: ['show', 'color'],
-//        title: 'payment Excel Report',
+//        title: 'paymentOffice Excel Report',
 //        parent: 'rabbit.home'
 //    }
 //});

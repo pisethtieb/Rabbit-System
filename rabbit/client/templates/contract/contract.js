@@ -76,8 +76,8 @@ indexTpl.events({
 
         });
     },
-    'click .paymentAction': function () {
-        FlowRouter.go('rabbit.payment', {
+    'click .paymentOfficeAction': function () {
+        FlowRouter.go('rabbit.paymentOffice', {
             customerId: this.customerId, contractId: this._id
 
         });

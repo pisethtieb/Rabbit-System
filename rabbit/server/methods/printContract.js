@@ -98,13 +98,13 @@ Meteor.methods({
         //    })
         //}
         //let j = 1;
-        //let payment = Rabbit.Collection.Payment.find({contractId: contractId});
+        //let paymentOffice = Rabbit.Collection.Payment.find({contractId: contractId});
         //let paidAmountOffice = 0;
         //let paidAmountMaintenance = 0;
-        //if (payment.count() > 0) {
-        //    payment.forEach(function (obj) {
+        //if (paymentOffice.count() > 0) {
+        //    paymentOffice.forEach(function (obj) {
         //        obj.index = j;
-        //        data.payment.push(obj);
+        //        data.paymentOffice.push(obj);
         //        j++;
         //        console.log(obj.officeId);
         //        if (obj.type == 'office' && obj.officeId) {

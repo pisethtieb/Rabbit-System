@@ -43,7 +43,7 @@
                 {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="contractMaintenancePriceObjectField" }}
             </div>
             <div class="col-md-6">
-                {{> afArrayField name="paymentMethod" template='paymentMethodArrayField' subtemplate="paymentMethodObjectField" id="payment"}}
+                {{> afArrayField name="paymentMethod" template='paymentMethodArrayField' subtemplate="paymentMethodObjectField" id="paymentOffice"}}
                 {{> afQuickField name="type" class='type'}}
                 {{> afQuickField name="agentId"}}
                 {{> afQuickField name="amount"}}
@@ -75,7 +75,7 @@
                         {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="contractMaintenancePriceObjectField" }}
                     </div>
                     <div class="col-md-6">
-                        {{> afArrayField name="paymentMethod" template='paymentMethodArrayField' subtemplate="paymentMethodObjectField" id="payment"}}
+                        {{> afArrayField name="paymentMethod" template='paymentMethodArrayField' subtemplate="paymentMethodObjectField" id="paymentOffice"}}
                         {{> afQuickField name="type" class='type'}}
                         {{> afQuickField name="agentId"}}
                         {{> afQuickField name="amount"}}
@@ -203,17 +203,17 @@
         {{/if}}
     </button>
 </template>
-<!--payment Officer link-->
-<template name="rabbit_paymentLinkAction">
-    <button type="button" class="btn btn-primary btn-sm paymentAction">
-        {{#if _paymentCount}}
-            {{_paymentCount}}
+<!--paymentOffice Officer link-->
+<template name="rabbit_paymentOfficeLinkAction">
+    <button type="button" class="btn btn-primary btn-sm paymentOfficeAction">
+        {{#if _paymentOfficeCount}}
+            {{_paymentOfficeCount}}
         {{else}}
             0
         {{/if}}
     </button>
 </template>
-<!--payment maintenance Link-->
+<!--paymentOffice maintenance Link-->
 <template name="rabbit_paymentMaintenanceLinkAction">
     <button type="button" class="btn btn-primary btn-sm paymentMaintenanceAction">
         {{#if _paymentMaintenanceCount}}

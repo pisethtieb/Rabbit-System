@@ -1,6 +1,6 @@
 <!--Form-->
-<template name="rabbit_paymentReport">
-    {{#autoForm schema=Rabbit.Schema.PaymentReport id="rabbit_paymentReport" action="paymentReportGen" target="_blank"}}
+<template name="rabbit_paymentOfficeReport">
+    {{#autoForm schema=Rabbit.Schema.paymentOfficeReport id="rabbit_paymentOfficeReport" action="paymentOfficeReportGen" target="_blank"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name="branch"}}
@@ -18,23 +18,12 @@
 </template>
 
 <!--Generate-->
-<template name="rabbit_paymentReportGen">
+<template name="rabbit_paymentOfficeReportGen">
     <!--Is ready-->
     {{#if data}}
         {{#reportTpl options}}
 
             {{#with data}}
-
-                <!--Title-->
-                    <!--{{#with title}}-->
-                <!--<div class="title">-->
-                <!--<div class="title-1x-kh-muol">{{khName}}</div>-->
-                <!--<div class="title-1x">{{enName}}</div>-->
-                <!--<div><u>Payment Report</u></div>-->
-                <!--<div class="title-2x">{{enAddress}}</div>-->
-                <!--</div>-->
-                    <!--{{/with}}-->
-                <!--Title-->
                 {{#with title}}
                     <div class="title">
                         <table class="report-title" style="width:100%;">
@@ -49,7 +38,7 @@
                   <span class="report-company-name"
                         style="font-family: 'Khmer OS Muol">{{khName}}</span><br>
                                     <span class="report-company-name">{{enName}}</span><br>
-                                    <u>Payment Office Report</u><br>
+                                    <u>paymentOffice Report</u><br>
                                     {{khAddress}}, {{telephone}}
                                 </td>
 
@@ -84,7 +73,7 @@
                         <th>Cus Name</th>
                         <th>Tel</th>
                         <th>product</th>
-                        <th>payment Items</th>
+                        <th>paymentOffice Items</th>
                         <th>Due</th>
                         <th>paid</th>
                         <th>Balance</th>
@@ -96,12 +85,12 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
-                            <td>{{paymentDate}}</td>
+                            <td>{{paymentOfficeDate}}</td>
                             <td>{{contractId}}</td>
                             <td>{{_customer.contractName}}</td>
                             <td>{{_customer.telephone}}</td>
                             <td>{{product.name}}</td>
-                            <td>{{{payment}}}</td>
+                            <td>{{{paymentOffice}}}</td>
                             <td>{{{amount}}}</td>
                             <td>{{{paid}}}</td>
                             <td>{{{due}}}</td>

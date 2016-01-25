@@ -23,16 +23,6 @@
         {{#reportTpl options}}
 
             {{#with data}}
-                <!--Title-->
-                    <!--{{#with title}}-->
-                <!--<div class="title">-->
-                <!--<div class="title-1x-kh-muol">{{khName}}</div>-->
-                <!--<div class="title-1x">{{enName}}</div>-->
-                <!--<div><u>Agent Report</u></div>-->
-                <!--<div class="title-2x">{{enAddress}}</div>-->
-                <!--</div>-->
-                    <!--{{/with}}-->
-                <!--Title-->
                 {{#with title}}
                     <div class="title">
                         <table class="report-title" style="width:100%;">
@@ -76,9 +66,9 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
+                          <th>AgentName</th>
+                          <th>cust name</th>
                         <th>ProductName</th>
-                        <th>CompanyName</th>
-                        <th>AgentName</th>
                         <th>Telephone</th>
                         <th>Fee Amount</th>
                     </tr>
@@ -88,23 +78,25 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
-                            <td>{{_product.name}}</td>
-                            <td>{{_customer.companyName}}</td>
                             <td>{{_agent.name}}</td>
+                              <td>{{_customer.companyName}}</td>
+                            <td>{{_product.name}}</td>
+
+
                             <td>{{_agent.telephone}}</td>
                             <td>{{amount}}</td>
 
                         </tr>
                     {{/each}}
                     </tbody>
-
+<tbody class="content-body">
                     <tr>
                         <td colspan="6" align="right">
                             Total Fee:
                         </td>
                         <td>{{footer.totalFee}}</td>
                     </tr>
-
+</tbody>
                 </table>
 
             {{/with}}

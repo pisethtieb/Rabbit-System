@@ -1,8 +1,8 @@
 // Collection
-Rabbit.Collection.Payment = new Mongo.Collection("rabbit_payment");
+Rabbit.Collection.PaymentOffice = new Mongo.Collection("rabbit_paymentOffice");
 
 // Schema
-Rabbit.Schema.Payment = new SimpleSchema({
+Rabbit.Schema.PaymentOffice = new SimpleSchema({
     customerId: {
         type: String,
         label: 'Customer ID'
@@ -21,9 +21,9 @@ Rabbit.Schema.Payment = new SimpleSchema({
         type: String,
         label: 'Contract ID'
     },
-    paymentDate: {
+    paymentOfficeDate: {
         type: String,
-        label: 'Payment Date',
+        label: 'PaymentOffice Date',
         defaultValue: function () {
             var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
             return currentDate;
@@ -80,7 +80,7 @@ Rabbit.Schema.Payment = new SimpleSchema({
 ;
 
 // Attach schema
-Rabbit.Collection.Payment.attachSchema(Rabbit.Schema.Payment);
+Rabbit.Collection.PaymentOffice.attachSchema(Rabbit.Schema.PaymentOffice);
 
 // Attach soft remove
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');

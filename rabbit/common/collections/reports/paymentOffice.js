@@ -1,5 +1,5 @@
 // Schema
-Rabbit.Schema.PaymentReport = new SimpleSchema({
+Rabbit.Schema.paymentOfficeReport = new SimpleSchema({
     branch: {
         type: String,
         autoform: {

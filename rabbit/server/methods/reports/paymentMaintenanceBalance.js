@@ -52,7 +52,7 @@ Meteor.methods({
         //        str += '</ul>';
         //        let product = Rabbit.Collection.Product.findOne({_id: obj._contract.productId});
         //        obj.product = product;
-        //        obj.payment = str;
+        //        obj.paymentOffice = str;
         //        obj.index = index;
         //        let amount = 0;
         //        let paidAmount = 0;

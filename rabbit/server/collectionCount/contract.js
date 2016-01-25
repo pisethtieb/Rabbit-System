@@ -1,6 +1,6 @@
 //cacheCount
 Rabbit.Collection.Contract.cacheCount('officeCount', Rabbit.Collection.Office, 'contractId');
-Rabbit.Collection.Contract.cacheCount('paymentCount', Rabbit.Collection.Payment, 'contractId');
+Rabbit.Collection.Contract.cacheCount('paymentOfficeCount', Rabbit.Collection.PaymentOffice, 'contractId');
 Rabbit.Collection.Contract.cacheCount('paymentMaintenanceCount', Rabbit.Collection.PaymentMaintenance, 'contractId');
 //cacheDoc
 Rabbit.Collection.Contract.cacheDoc('product', Rabbit.Collection.Product, ['_id', 'name', 'basePrice', 'maintenancePrice', 'feature']);

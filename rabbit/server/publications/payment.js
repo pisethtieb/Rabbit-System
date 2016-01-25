@@ -1,5 +1,5 @@
 //Publication
-Meteor.publish('rabbit_payment', function (branchId) {
+Meteor.publish('rabbit_paymentOffice', function (branchId) {
     this.unblock();
     if (this.userId) {
         var selector = {};
@@ -7,7 +7,7 @@ Meteor.publish('rabbit_payment', function (branchId) {
             selector.branchId = branchId;
         }
 
-        return Rabbit.Collection.Payment.find(selector, {removed: true});
+        return Rabbit.Collection.PaymentOffice.find(selector, {removed: true});
     }
 
     this.ready();

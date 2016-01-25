@@ -14,7 +14,7 @@ Meteor.methods({
         /****** Content *****/
         var content = [];
         var selector = {};
-        params.paymentDate = {$lte: moment(params.date + ' 23:59:59').format('YYYY-MM-DD HH:mm:ss')};
+        params.paymentOfficeDate = {$lte: moment(params.date + ' 23:59:59').format('YYYY-MM-DD HH:mm:ss')};
 
         //
         if (!_.isEmpty(params.branch)) {
@@ -28,9 +28,9 @@ Meteor.methods({
         let totalPaidAmount = 0;
         var contracts = Rabbit.Collection.Contract.find(selector);
         contracts.forEach(function (obj) {
-            let offPayment = Rabbit.Collection.Payment.findOne({
+            let offPayment = Rabbit.Collection.PaymentOffice.findOne({
                 contractId: obj._id,
-                paymentDate: params.paymentDate
+                paymentOfficeDate: params.paymentOfficeDate
             }, {sort: {_id: -1}});
 
             if (offPayment != null) {
@@ -57,7 +57,7 @@ Meteor.methods({
                 if (dueAmount != 0) {
                     offPayment.product = product;
                     str += '</ul>';
-                    offPayment.payment = str;
+                    offPayment.paymentOffice = str;
                     offPayment.index = index;
                     offPayment.amount = amount;
                     offPayment.paid = paidAmount;

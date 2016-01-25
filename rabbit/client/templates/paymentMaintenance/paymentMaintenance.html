@@ -19,7 +19,7 @@
 <!--Action-->
 <template name="rabbit_paymentMaintenanceAction">
     {{#tabularAction}}
-        <!--<li><a href="#" class="js-update updatePaymentMaintenance">{{fa "pencil"}} Update</a></li>-->
+        <li><a href="#" class="js-update updatePaymentMaintenance">{{fa "pencil"}} Update</a></li>
         <li><a href="#" class="js-remove removePaymentMaintenance">{{fa "remove"}} Remove</a></li>
         <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
         <b>
@@ -111,16 +111,16 @@
         <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
         <div class="panel-body">
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     <p><b>OfficeId</b></p>
                 </div>
-                <div class="col-md-1">
-                    <p><b>Office Type</b></p>
+                <div class="col-md-2">
+                    <p><b>Type</b></p>
                 </div>
                 <div class="col-md-2">
                     <p><b>Price</b></p>
                 </div>
-                <div class="col-md-1">
+                <div class="col-md-2">
                     <p><b>Discount(%)</b></p>
                 </div>
                 <div class="col-md-2">
@@ -168,16 +168,16 @@
 </template>
 <!--Custom object field-->
 <template name="maintenanceCustomObjectField">
-    <div class="col-sm-3">
+    <div class="col-sm-2">
         {{> afQuickField name=current.maintenanceId template="bootstrap3" label=false class="input-sm maintenanceId"  placeholder="maintenanceId"  readOnly=true}}
     </div>
-    <div class="col-sm-1">
+    <div class="col-sm-2">
         {{> afQuickField name=current.maintenance template="bootstrap3" label=false class="input-sm maintenance" id='price' placeholder="maintenance" readOnly=true}}
     </div>
     <div class="col-sm-2">
         {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price' placeholder="price" readOnly=true}}
     </div>
-    <div class="col-sm-1">
+    <div class="col-sm-2">
         {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount' placeholder="Dis(%)"}}
     </div>
     <div class="col-sm-2">

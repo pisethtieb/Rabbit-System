@@ -9,7 +9,9 @@ Meteor.methods({
 
         date = s.words(params.date, ' To '),
             fDate = date[0],
-            newDate = new Date(date[1]);
+            newDate = new Date(date[1]),
+            branchId=params.branch,
+            agentId=params.agentId;
         var tDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 1);
         tDate = moment(tDate).format('YYYY-MM-DD');
         //var date = s.words(params.date, ' To ');
@@ -18,22 +20,18 @@ Meteor.methods({
         //****** Title *****/
         data.title = Cpanel.Collection.Company.findOne();
 
-        /****** Header *****/
-        data.header = params;
 
         /****** Content *****/
         var content = [];
         var selector = {};
         selector.contractDate = {$gte: fDate, $lte: tDate};
-
-
         //
         if (!_.isEmpty(params.branch)) {
-            selector.branchId = params.branch;
+            selector.branchId =branchId;
         }
 
         if (!_.isEmpty(params.agentId)) {
-            selector.agentId = params.agentId;
+            selector.agentId = agentId;
         }
 
         var index = 1;
@@ -43,17 +41,36 @@ Meteor.methods({
                 // Do something
                 obj.index = index;
                 totalFee += parseFloat(obj.amount);
-
-
                 content.push(obj);
-
                 index++;
             });
 
         if (content.length > 0) {
             data.content = content;
-            data.footer.totalFee = totalFee;
+            data.footer.totalFee = numeral(totalFee).format('$0,0.00');
         }
+
+        // show on header
+        if (params.branch == '') {
+            params.branch = 'All'
+
+        } else {
+
+            params.branch =   params.branch;
+        }
+
+        if (params.agentId == '') {
+            params.agentId = 'All'
+
+        } else {
+          let agent=Rabbit.Collection.Agent.findOne({_id:params.agentId})
+            params.agentId = agent.name;
+        }
+
+
+          /****** Header *****/
+          data.header = params;
+
 
         return data
     }

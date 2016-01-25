@@ -146,7 +146,7 @@ Rabbit.List = {
         //} else if (checkOM == "maintenance") {
         //    Rabbit.Collection.Maintenance.find({"_office.contractId": contractId}).forEach(function (obj) {
         //        //var patient = Dental.Collection.Patient.findOne({_id: obj.patientId});
-        //        var payment = Rabbit.Collection.Payment.findOne({
+        //        var paymentOffice = Rabbit.Collection.Payment.findOne({
         //                maintenanceId: obj._id,
         //            },
         //            {
@@ -154,16 +154,16 @@ Rabbit.List = {
         //                    _id: -1
         //                }
         //            });
-        //        if (payment != null && payment.dueAmount > 0) {
+        //        if (paymentOffice != null && paymentOffice.dueAmount > 0) {
         //            list.push({
-        //                    label: "ID : " + obj._id + " | " + " : " + payment.dueAmount,
+        //                    label: "ID : " + obj._id + " | " + " : " + paymentOffice.dueAmount,
         //                    value: obj._id
         //
         //                }
         //            )
         //            ;
         //        }
-        //        else if (payment == null) {
+        //        else if (paymentOffice == null) {
         //            list.push({
         //                label: "ID : " + obj._id + " | " + "price : " + obj.price,
         //                value: obj._id

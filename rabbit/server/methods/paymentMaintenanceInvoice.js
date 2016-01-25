@@ -21,7 +21,7 @@ Meteor.methods({
         //show product Name
         let product = Rabbit.Collection.Contract.findOne(payment.contractId);
         data.product = product._product;
-        //show payment Info
+        //show paymentOffice Info
         data.payment = payment;
 
         //console.log(data.product);
@@ -52,19 +52,19 @@ Meteor.methods({
         //var totalPrice = 0;
         //let sumAmount = 0;
         ////let maintenancePrice = 0;
-        //let office = Rabbit.Collection.Office.find({contractId: payment.contractId});
+        //let office = Rabbit.Collection.Office.find({contractId: paymentOffice.contractId});
         //if (office.count() > 0) {
         //    office.forEach(function (obj) {
-        //        let payment = Rabbit.Collection.Payment.findOne({officeId: obj._id}, {sort: {_id: -1}});
-        //        data.payment.push(payment);
-        //        if (payment) {
-        //            obj.sumAmount = parseFloat(payment.price);
-        //            obj.paidAmount = parseFloat(payment.paidAmount);
-        //            obj.dueAmount = parseFloat(payment.dueAmount);
+        //        let paymentOffice = Rabbit.Collection.Payment.findOne({officeId: obj._id}, {sort: {_id: -1}});
+        //        data.paymentOffice.push(paymentOffice);
+        //        if (paymentOffice) {
+        //            obj.sumAmount = parseFloat(paymentOffice.price);
+        //            obj.paidAmount = parseFloat(paymentOffice.paidAmount);
+        //            obj.dueAmount = parseFloat(paymentOffice.dueAmount);
         //        } else {
         //            obj.sumAmount = 0;
         //            obj.paidAmount = 0;
-        //            obj.sumAmount = parseFloat(payment.price);
+        //            obj.sumAmount = parseFloat(paymentOffice.price);
         //
         //        }
         //

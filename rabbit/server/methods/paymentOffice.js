@@ -4,15 +4,15 @@ Meteor.methods({
         var arr = [];
         var offices = Rabbit.Collection.Office.find({contractId: contractId}).fetch();
         offices.forEach((office)=> {
-            var payment = Rabbit.Collection.Payment.findOne({
+            var paymentOffice = Rabbit.Collection.PaymentOffice.findOne({
                 'office.officeId': office._id
             }, {
                 sort: {
                     _id: -1
                 }
             });
-            if (payment != null) {
-                payment.office.forEach(function (payObj) {
+            if (paymentOffice != null) {
+                paymentOffice.office.forEach(function (payObj) {
                     if (office._id == payObj.officeId && payObj.dueAmount > 0) {
                         arr.push({
                             officeId: payObj.officeId,
@@ -22,7 +22,7 @@ Meteor.methods({
                         });
                     }
                 });
-            } else if (payment == null) {
+            } else if (paymentOffice == null) {
                 arr.push({
                     officeId: office._id,
                     office: office.type,

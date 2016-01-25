@@ -35,7 +35,7 @@
                     {{> afQuickField name="officeDate"}}
                     {{> afQuickField name="contractId" readonly=true}}
                     {{> afQuickField name="type"  class='type'}}
-                    {{> afQuickField name="contractPrice"  class='contractPrice'}}
+                    {{> afQuickField name="contractPrice"  class='contractPrice' readOnly=true}}
                 </div>
                 <div class="col-md-6">
                     {{> afQuickField name="discount" class="discount"}}
@@ -63,7 +63,7 @@
                         {{> afQuickField name="officeDate"}}
                         {{> afQuickField name="contractId" readonly=true}}
                         {{> afQuickField name="type"  class='type'}}
-                        {{> afQuickField name="contractPrice"  class='contractPrice'}}
+                        {{> afQuickField name="contractPrice"  class='contractPrice' readOnly=true}}
                     </div>
                     <div class="col-md-6">
                         {{> afQuickField name="discount" class="discount"}}
@@ -81,14 +81,7 @@
     {{/if}}
 
 </template>
-<!--<template name="rabbit_addMaintenance">-->
-<!--<button id="addMaintenance" class="btn btn-default">Add Maintenance</button>-->
-<!--</template>-->
-<!--Show-->
 <template name="rabbit_officeShow">
-    <!--&lt;!&ndash;Office template sub ready by all&ndash;&gt;-->
-        <!--{{#if templateSubReady}}-->
-        <!--{{#with data}}-->
         <dl class="dl-horizontal">
             <dt>ID:</dt>
             <dd>{{_id}}</dd>
@@ -109,16 +102,8 @@
             <dt>Des</dt>
             <dd>{{des}}</dd>
         </dl>
-            <!--{{/with}}-->
-        <!--{{else}}-->
-    <!--{{> loading}}-->
-        <!--{{/if}}-->
 </template>
 
-<!--Location add on-->
-<!--<template name="rabbit_locationAddOnOffice">-->
-<!--{{> rabbit_location cssClass="pointer"}}-->
-<!--</template>-->
 <template name="rabbit_maintenanceLinkActions">
     <button type="button" class="btn btn-primary btn-sm maintenanceAction">
         {{#if _maintenanceCount}}

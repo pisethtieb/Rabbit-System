@@ -72,7 +72,25 @@ Meteor.methods({
             data.footer.totalBranchBasePrice = numeral(totalBranchBasePrice).format('$0,0.00');
             data.footer.totalHeadMainPrice = numeral(totalHeadMainPrice).format('$0,0.00');
             data.footer.totalBranchMainPrice = numeral(totalBranchMainPrice).format('$0,0.00');
+        };
+
+        if (params.branch == '') {
+            params.branch = 'All'
+
+        } else {
+
+            params.branch =   params.branch;
         }
+
+        if (params.customerId == '') {
+            params.customerId = 'All'
+
+        } else {
+
+            params.customerId=Rabbit.Collection.Customer.findOne({_id:params.customerId}).companyName;
+        }
+        /****** Header *****/
+        data.header = params;
 
         return data
     }

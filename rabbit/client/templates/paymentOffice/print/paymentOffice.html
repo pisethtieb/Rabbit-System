@@ -1,0 +1,119 @@
+<template name='rabbit_paymentOfficeInvoice'>
+
+    <!--Is ready-->
+    {{#if data}}
+        {{#reportTpl options}}
+            {{#with data}}
+                {{#with title}}
+                    <div class="title">
+                        <table class="report-title">
+                            <tr>
+                                <td class="maintenance">
+                                    <img src="/rabbit1.png">
+                                </td>
+                                <td>
+                                    <div class="header-style">
+                                        <span class="report-company-name"
+                                              style="font-family: 'Khmer OS Muol">{{khName}}</span>
+                                        <br>
+                                        <span class="report-company-name">{{enName}}</span>
+                                        <br>
+                                        <span class="report-company-name">{{enAddress}}</span>
+                                        <br>
+                                        <u> វិក្កយបត្រ (Invoice) Office</u>
+                                        <br>
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {{/with}}
+
+                <div style="width: 50%; padding-top: 12px; float: left;">
+                    <ul class="list-unstyled">
+                        <li>
+                            <strong>Company :</strong> {{header.companyName}}</li>
+                        <li>
+                            <strong>Telephone :</strong> {{header.companyTelephone}}</li>
+                        <li>
+                            <strong>ContractName: </strong> {{header.contractName}}</li>
+                        <li>
+                            <strong>Telephone: </strong> {{header.telephone}}</li>
+
+                    </ul>
+                </div>
+                <div style="width: 50%; padding-top: 12px; float: right;">
+                    <ul class="list-unstyled">
+
+                        <li>
+                            <strong>PaymentOfficeDate: </strong> {{paymentOffice.paymentOfficeDate}}</li>
+                        <li>
+                            <strong>Product: </strong> {{product.name}}</li>
+                    </ul>
+                </div>
+                <!--Header-->
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th>
+                            N<sup>o</sup>
+                        </th>
+                        <th>Office</th>
+                        <th>Type</th>
+                        <!--<th>Price</th>-->
+                        <th>Price</th>
+                        <th>Dis(%)</th>
+                        <th>TotalSum</th>
+                        <th>Paid</th>
+                        <th>Balance</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {{#each content}}
+                        <tr>
+                            <td>{{index}}</td>
+                            <td>{{officeName}}</td>
+                            <td>{{office}}</td>
+
+                            <td>{{priceOffice}}</td>
+                            <td>{{discount}}</td>
+                            <td>{{{sumAmount}}}</td>
+                            <td>{{{paidAmount}}}</td>
+                            <td>{{{dueAmount}}}</td>
+                        </tr>
+                    {{/each}}
+
+                    </tbody>
+                </table>
+                <div style="border-top: 1px solid #000000;">
+                    <div>
+                        <p style="margin: 0px 0px 0px 556px;">
+                            Total :&nbsp;&nbsp;&nbsp; <strong>{{footer.totalPrice}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.maintenancePrice}}</strong>
+                        </p>
+
+                        <p style="margin: 0px 0px 0px 515px;">
+                            paid Amount :&nbsp;&nbsp;&nbsp; <strong>{{footer.sumPaid}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.paidAmountMaitenance}}</strong>
+                        </p>
+
+                    </div>
+
+                </div>
+                <div style="border-top: 1px solid #000000;">
+                    <div>
+                        <p style="margin: 0px 0px 0px 516px;">
+                            Due Amount :&nbsp;&nbsp;&nbsp; <strong>{{footer.dueAmount}}</strong>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<strong>{{footer.dueAmountMaintenance}}</strong>
+                        </p>
+
+                    </div>
+                </div>
+
+            {{/with}}
+            <!--Sign-->
+        {{/reportTpl}}
+        <!--Auto print-->
+        <!--{{autoprint close="true"}}-->
+    {{else}}
+        {{> loading}}
+    {{/if}}
+
+</template>

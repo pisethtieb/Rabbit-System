@@ -1,5 +1,5 @@
 Meteor.methods({
-    rabbit_paymentReport: function (params) {
+    rabbit_paymentOfficeReport: function (params) {
         var data = {
             title: {},
             header: {},
@@ -24,7 +24,7 @@ Meteor.methods({
         /****** Content *****/
         var content = [];
         var selector = {};
-        selector.paymentDate = {$gte: fDate, $lte: tDate};
+        selector.paymentOfficeDate = {$gte: fDate, $lte: tDate};
         //
         if (!_.isEmpty(params.branch)) {
             selector.branchId = params.branch;
@@ -36,7 +36,7 @@ Meteor.methods({
         let total = 0;
         var totalDueAmount = 0;
         let totalPaidAmount = 0;
-        var officePayment = Rabbit.Collection.Payment.find(selector);
+        var officePayment = Rabbit.Collection.PaymentOffice.find(selector);
         officePayment.forEach(function (obj) {
             var str = "<ul>";
             if (obj.office != null) {
@@ -51,13 +51,13 @@ Meteor.methods({
             str += '</ul>';
             let product = Rabbit.Collection.Product.findOne({_id: obj._contract.productId});
             obj.product = product;
-            obj.payment = str;
+            obj.paymentOffice = str;
             obj.index = index;
             let amount = 0;
             let paidAmount = 0;
             let dueAmount = 0;
             obj.office.forEach(function (office) {
-                office.discount = office.discount == null ?0  : office.discount;
+                office.discount = office.discount == null ? 0 : office.discount;
                 office.paidAmount = office.paidAmount == null ? 0 : office.paidAmount;
                 paidAmount += parseFloat(office.paidAmount);
                 amount += parseFloat(office.price);
