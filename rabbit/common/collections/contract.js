@@ -92,17 +92,14 @@ Rabbit.Schema.Contract = new SimpleSchema({
         optional: true
     },
     addFile: {
-        type: [String],
-        label: 'Choose file',
-        optional: true
-    },
-    "addFile.$": {
+        type: String,
         autoform: {
             afFieldInput: {
                 type: 'fileUpload',
                 collection: 'Files'
             }
-        }
+        },
+        optional: true
     },
     contractorId: {
         type: String,

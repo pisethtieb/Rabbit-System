@@ -45,7 +45,7 @@ indexTpl.events({
     'click .js-remove': function (e, t) {
         var self = this;
         let office = Rabbit.Collection.Office.findOne({contractId: self._id});
-        let paymentOffice = Rabbit.Collection.Payment.findOne({contractId: self._id});
+        let paymentOffice = Rabbit.Collection.PaymentOffice.findOne({contractId: self._id});
         let paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({contractId: self._id});
         if (office != null || paymentOffice != null || paymentMaintenance) {
             alertify.message(self._id + '  is in used !');
