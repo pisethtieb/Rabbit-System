@@ -32,12 +32,12 @@ Meteor.methods({
                 contractId: obj._id,
                 paymentMaintenanceDate: params.paymentMaintenanceDate
             }, {sort: {_id: -1}});
-            console.log(offPayment)
+
 
             if (offPayment != null) {
                 var str = "<ul>";
                 offPayment.maintenance.forEach(function (o) {
-                    console.log(o.paidAmount);
+
                     o.discount = o.discount == null ? 0 : o.discount;
                     o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
                     str += "<li>maintenanceId: " + o.maintenanceId +

@@ -18,6 +18,8 @@ Meteor.methods({
         //****** Title *****/
         data.title = Cpanel.Collection.Company.findOne();
 
+        /****** Header *****/
+        data.header = params;
 
         /****** Content *****/
         var content = [];
@@ -25,7 +27,7 @@ Meteor.methods({
         selector.paymentOfficeDate = {$gte: fDate, $lte: tDate};
         //
         if (!_.isEmpty(params.branch)) {
-            selector.branchId = params.branch;
+            //selector.branchId = params.branch;
         }
         if (!_.isEmpty(params.contractId)) {
             selector.contractId = params.contractId
@@ -76,15 +78,15 @@ Meteor.methods({
             data.footer.totalDueAmount = numeral(totalDueAmount).format('$0,0.00');
             data.footer.totalPaidAmount = numeral(totalPaidAmount).format('$0,0.00');
         }
-        ////if (params.branch == '') {
-        ////    params.branch = 'All'
-        ////}
-        //
-        //if (params.contractId == '') {
-        //    params.contractId = 'All'
-        //}
-        ///****** Header *****/
-        //data.header = params;
+        if (params.branch == '') {
+            params.branch = 'All'
+        }
+
+        if (params.contractId == '') {
+            params.contractId = 'All'
+        }
+        /****** Header *****/
+        data.header = params;
 
 
         return data

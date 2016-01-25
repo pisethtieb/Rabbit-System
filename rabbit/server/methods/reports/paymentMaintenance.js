@@ -22,7 +22,7 @@ Meteor.methods({
         selector.paymentMaintenanceDate = {$gte: fDate, $lte: tDate};
         //
         if (!_.isEmpty(params.branch)) {
-            selector.branchId = params.branch;
+            //selector.branchId = params.branch;
         }
         if (!_.isEmpty(params.contractId)) {
             selector.contractId = params.contractId;
@@ -83,12 +83,12 @@ Meteor.methods({
             params.branch = params.branch;
         }
 
-        if (params.officeId == '') {
-            params.officeId = 'All'
+        if (params.contractId == '') {
+            params.contractId = 'All'
 
         } else {
 
-            params.officeId = Rabbit.Collection.Office.findOne({_id: params.officeId}).name;
+            params.contractId = params.contractId;
         }
         //if (params.contractId == '') {
         //    params.contractId = 'All'

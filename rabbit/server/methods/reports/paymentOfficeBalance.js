@@ -8,8 +8,6 @@ Meteor.methods({
         };
         data.title = Cpanel.Collection.Company.findOne();
 
-
-
         /****** Content *****/
         var content = [];
         var selector = {};
@@ -17,7 +15,7 @@ Meteor.methods({
 
         //
         if (!_.isEmpty(params.branch)) {
-            selector.branchId = params.branch;
+            //selector.branchId = params.branch;
         }
         if (!_.isEmpty(params.contractId)) {
             selector._id = params.contractId
@@ -35,7 +33,7 @@ Meteor.methods({
             if (offPayment != null) {
                 var str = "<ul>";
                 offPayment.office.forEach(function (o) {
-                    console.log(o.paidAmount);
+
                     o.discount = o.discount == null ? 0 : o.discount;
                     o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
                     str += "<li>officeId: " + o.officeId +

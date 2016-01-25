@@ -69,24 +69,7 @@ indexTpl.events({
     },
     'click .js-show': function (e, t) {
         alertify.productShow(fa("eye", "Product"), renderTemplate(showTpl, this));
-    },
-    //'click .feature': function () {
-    //    FlowRouter.go('rabbit.quotation', {
-    //        customerId: this._id
-    //    })
-    //
-    //}
-
-
-    //'dblclick tbody > tr': function (event) {
-    //    var dataTable = $(event.target)
-    //        .closest('table')
-    //        .DataTable();
-    //    var rowData = dataTable.row(event.currentTarget)
-    //        .data();
-    //
-    //    FlowRouter.go('rabbit.order', {productId: rowData._id});
-    //}
+    }
 });
 
 /**
@@ -94,6 +77,9 @@ indexTpl.events({
  */
 insertTpl.onRendered(function () {
     configOnRender();
+});
+insertTpl.events({
+   
 });
 
 

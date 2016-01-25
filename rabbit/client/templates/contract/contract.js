@@ -128,10 +128,10 @@ insertTpl.events({
         let productId = $(e.currentTarget).val();
         let product = Rabbit.Collection.Product.findOne({_id: productId});
         if (product) {
-            $('#basePriceHeadOffice').val(product.basePrice[0].headOffice);
-            $('#basePriceBranch').val(product.basePrice[0].branch);
-            $('#MaintenaceHeadOffice').val(product.maintenancePrice[0].headOffice);
-            $('#MaintenaceBranch').val(product.maintenancePrice[0].branch);
+            $('#basePriceHeadOffice').val(numeral(product.basePrice[0].headOffice).format('0'));
+            $('#basePriceBranch').val(numeral(product.basePrice[0].branch).format('0'));
+            $('#MaintenaceHeadOffice').val(numeral(product.maintenancePrice[0].headOffice).format('0'));
+            $('#MaintenaceBranch').val(numeral(product.maintenancePrice[0].branch).format('0'));
         } else if (productId == "") {
             $('#basePriceHeadOffice').val("");
             $('#basePriceBranch').val("");
