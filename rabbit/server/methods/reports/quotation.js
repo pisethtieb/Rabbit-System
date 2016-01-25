@@ -71,6 +71,23 @@ Meteor.methods({
 
 
         }
+        if (params.branch == '') {
+            params.branch = 'All'
+
+        } else {
+
+            params.branch = params.branch;
+        }
+
+        if (params.productId == '') {
+            params.productId = 'All'
+
+        } else {
+
+            params.productId = Rabbit.Collection.Product.findOne(params.productId).name;
+        }
+        /****** Header *****/
+        data.header = params;
 
         return data
     }

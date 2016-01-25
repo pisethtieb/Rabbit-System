@@ -66,6 +66,23 @@ Meteor.methods({
             data.footer.totalPrice = numeral(totalPrice).format('$0,0.00');
 
         }
+        if (params.branch == '') {
+            params.branch = 'All'
+
+        } else {
+
+            params.branch = params.branch;
+        }
+
+        if (params.contractId == '') {
+            params.contractId = 'All'
+
+        } else {
+
+            params.contractId = params.contractId;
+        }
+        /****** Header *****/
+        data.header = params;
 
         return data
     }

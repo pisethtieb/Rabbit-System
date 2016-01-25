@@ -81,7 +81,7 @@ Meteor.methods({
 
         } else {
 
-            params.branch =   params.branch;
+            params.branch = params.branch;
         }
 
         if (params.officeId == '') {
@@ -89,15 +89,15 @@ Meteor.methods({
 
         } else {
 
-            params.officeId=params.officeId;
+            params.officeId = Rabbit.Collection.Office.findOne({_id: params.officeId}).name;
         }
-        if (params.contractId == '') {
-            params.contractId = 'All'
-
-        } else {
-
-            params.contractId=  params.contractId
-        }
+        //if (params.contractId == '') {
+        //    params.contractId = 'All'
+        //
+        //} else {
+        //
+        //    params.contractId=  params.contractId
+        //}
         /****** Header *****/
         data.header = params;
 

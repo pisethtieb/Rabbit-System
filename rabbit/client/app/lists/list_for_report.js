@@ -38,7 +38,7 @@ Rabbit.ListForReport = {
         list.push({label: "(Select All)", value: ""});
         Rabbit.Collection.Contract.find()
             .forEach(function (obj) {
-                list.push({label: obj._id + ' : ' + obj._customer.contractName, value: obj._id});
+                list.push({label: obj._id + ' : ' + obj.contractDate, value: obj._id});
             });
 
         return list;

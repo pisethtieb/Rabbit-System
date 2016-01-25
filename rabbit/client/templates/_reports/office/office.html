@@ -63,7 +63,7 @@
                     <div style="width: 100%">
                         <div style="width: 50%; float: left">
                             <div><strong>Branch:</strong> {{branch}}</div>
-                            <div><strong>ContractId:</strong> {{contract}}</div>
+                            <div><strong>ContractId:</strong> {{contractId}}</div>
                         </div>
 
                         <div style="width: 50%; float: right">
@@ -79,6 +79,7 @@
                         <th>No</th>
                         <th>ID</th>
                         <th>Contract Date</th>
+                        <th>ContractId</th>
                         <th>Cus Name</th>
                         <th>Tel</th>
                         <th>Office Name</th>
@@ -96,6 +97,7 @@
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
                             <td>{{_contract.contractDate}}</td>
+                            <td>{{_contract._id}}</td>
                             <td>{{customer.contractName}}</td>
                             <td>{{customer.telephone}}</td>
                             <td>{{name}}</td>
@@ -110,7 +112,7 @@
                     </tbody>
                     <tbody class="content-body">
                     <tr class="">
-                        <td colspan="9" align="right">
+                        <td colspan="10" align="right">
                             Total :
                         </td>
                         <td>{{footer.totalContractPrice}}</td>

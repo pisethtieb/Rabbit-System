@@ -4,10 +4,11 @@
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name="branch"}}
-                {{> afQuickField name="contractId"}}
+                <!--{{> afQuickField name="contractId"}}-->
+                {{> afQuickField name="officeId"}}
             </div>
             <div class="col-md-6">
-                {{> afQuickField name="officeId"}}
+
                 {{> afQuickField name="date"}}
 
                 <button type="submit" class="btn btn-primary">{{fa "file-text"}} Generate</button>
@@ -64,7 +65,7 @@
                     <div style="width: 100%">
                         <div style="width: 50%; float: left">
                             <div><strong>Branch:</strong> {{branch}}</div>
-                            <div><strong>ContractId:</strong> {{contractId}}</div>
+                            <div><strong>ContractId:</strong> {{officeId}}</div>
                         </div>
 
                         <div style="width: 50%; float: right">
@@ -80,6 +81,7 @@
                         <th>No</th>
                         <th>ID</th>
                         <th>Contract Date</th>
+                        <th>ContractId</th>
                         <th>Cus Name</th>
                         <th>Tel</th>
                         <th>Office Name</th>
@@ -98,6 +100,7 @@
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
                             <td>{{contract.contractDate}}</td>
+                            <td>{{contract._id}}</td>
                             <td>{{contract._customer.contractName}}</td>
                             <td>{{contract._customer.telephone}}</td>
                             <td>{{_office.name}}</td>
@@ -113,7 +116,7 @@
                     </tbody>
                     <tbody class="content-body">
                     <tr class="">
-                        <td colspan="10" align="right">
+                        <td colspan="11" align="right">
                             Total :
                         </td>
                         <td>{{footer.totalContractPrice}}</td>

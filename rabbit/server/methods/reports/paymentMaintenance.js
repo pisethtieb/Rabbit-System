@@ -12,14 +12,9 @@ Meteor.methods({
             newDate = new Date(date[1]);
         var tDate = new Date(newDate.getFullYear(), newDate.getMonth(), newDate.getDate() + 1);
         tDate = moment(tDate).format('YYYY-MM-DD');
-        //var date = s.words(params.date, ' To ');
-        //var fDate = moment(date[0], 'YYYY-MM-DD').toDate();
-        //var tDate = moment(date[1], 'YYYY-MM-DD').add(1, 'days').toDate();
         //****** Title *****/
         data.title = Cpanel.Collection.Company.findOne();
 
-        /****** Header *****/
-        data.header = params;
 
         /****** Content *****/
         var content = [];
@@ -29,9 +24,6 @@ Meteor.methods({
         if (!_.isEmpty(params.branch)) {
             selector.branchId = params.branch;
         }
-        //if (!_.isEmpty(params.contractId)) {
-        //    selector.{office.contractId}= params.contractId
-        //}
         if (!_.isEmpty(params.contractId)) {
             selector.contractId = params.contractId;
         }
@@ -83,6 +75,31 @@ Meteor.methods({
             data.footer.totalDueAmount = numeral(totalDueAmount).format('$0,0.00');
             data.footer.totalPaidAmount = numeral(totalPaidAmount).format('$0,0.00');
         }
+        if (params.branch == '') {
+            params.branch = 'All'
+
+        } else {
+
+            params.branch = params.branch;
+        }
+
+        if (params.officeId == '') {
+            params.officeId = 'All'
+
+        } else {
+
+            params.officeId = Rabbit.Collection.Office.findOne({_id: params.officeId}).name;
+        }
+        //if (params.contractId == '') {
+        //    params.contractId = 'All'
+        //
+        //} else {
+        //
+        //    params.contractId=  params.contractId
+        //}
+        /****** Header *****/
+        data.header = params;
+
         return data
     }
 });
