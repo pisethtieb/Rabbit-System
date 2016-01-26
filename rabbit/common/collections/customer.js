@@ -36,7 +36,8 @@ Rabbit.Schema.Customer = new SimpleSchema({
             afFieldInput: {
                 type: "textarea"
             }
-        }
+        },
+        optional:true
     },
     telephone: {
         type: String,

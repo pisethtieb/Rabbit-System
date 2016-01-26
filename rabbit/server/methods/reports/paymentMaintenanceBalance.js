@@ -84,12 +84,12 @@ Meteor.methods({
             params.branch = params.branch;
         }
 
-        if (params.officeId == '') {
-            params.officeId = 'All'
+        if (params.contractId == '') {
+            params.contractId = 'All'
 
         } else {
 
-            params.officeId = Rabbit.Collection.Office.findOne({_id: params.officeId}).name;
+            params.contractId = params.contractId;
         }
         //if (params.contractId == '') {
         //    params.contractId = 'All'

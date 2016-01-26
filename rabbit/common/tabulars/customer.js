@@ -12,6 +12,7 @@ Rabbit.TabularTable.Customer = new Tabular.Table({
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_customerAction},
         {data: "_id", title: "ID"},
         {data: "companyName", title: "Company Name"},
+        {data: "contractName", title: "contractName"},
         {data: "address", title: "Address"},
         {data: "telephone", title: "Telephone"},
 
