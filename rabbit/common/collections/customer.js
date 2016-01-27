@@ -23,7 +23,8 @@ Rabbit.Schema.Customer = new SimpleSchema({
     },
     id: {
         type: String,
-        label: 'ID'
+        label: 'IdCard',
+        optional: true
     },
     position: {
         type: String,
@@ -37,7 +38,7 @@ Rabbit.Schema.Customer = new SimpleSchema({
                 type: "textarea"
             }
         },
-        optional:true
+        optional: true
     },
     telephone: {
         type: String,
