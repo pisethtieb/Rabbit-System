@@ -114,7 +114,6 @@ insertTpl.helpers({
 ;
 insertTpl.events({
     'click .endDate': function (e, t) {
-
         $('.endDate').val(moment().add(1, 'years').format('YYYY-MM-DD'))
     },
     'keyup .discount'(e){
@@ -131,7 +130,6 @@ updateTpl.onCreated(function () {
 });
 
 updateTpl.onRendered(function () {
-    debugger;
     configOnRender();
 });
 
@@ -191,8 +189,5 @@ var configOnRender = function () {
     DateTimePicker.date(startDate);
     var endDate = $('.endDate');
     DateTimePicker.date(endDate);
-    var startDates = $('#startDate');
-    DateTimePicker.date(startDates);
-    var endDates = $('#endDate');
-    DateTimePicker.date(endDates);
+
 };
