@@ -71,7 +71,7 @@
                         <div style="width: 50%; float: right">
                             <!--<div><strong>officeId:</strong> {{officeId}}</div>-->
 
-                            <div><strong>Date:</strong> {{date}}</div>
+                            <div><strong>Date:</strong> {{moFormat date "DD/MM/YYYY"}}</div>
                         </div>
                     </div>
                 {{/with}}
@@ -82,14 +82,14 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>PaidDate</th>
-                        <th>contractId</th>
+                        <th>Paid Date</th>
+                        <th>ContractId</th>
                         <th>Cus Name</th>
                         <th>Tel</th>
-                        <th>product</th>
-                        <th>payment Items</th>
+                        <th>Product</th>
+                        <th width="365px">Payment Items</th>
                         <th>Due</th>
-                        <th>paid</th>
+                        <th>Paid</th>
                         <th>Balance</th>
 
                     </tr>
@@ -99,15 +99,15 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
-                            <td>{{paymentOfficeDate}}</td>
+                            <td>{{moFormat paymentOfficeDate "DD/MM/YYYY"}}</td>
                             <td>{{contractId}}</td>
                             <td>{{_customer.contractName}}</td>
                             <td>{{_customer.telephone}}</td>
                             <td>{{product.name}}</td>
                             <td>{{{paymentOffice}}}</td>
-                            <td>{{{amount}}}</td>
-                            <td>{{{paid}}}</td>
-                            <td>{{{due}}}</td>
+                            <td>{{numFormat amount "$0,0.00"}}</td>
+                            <td>{{numFormat paid "$0,0.00"}}</td>
+                            <td>{{numFormat due "$0,0.00"}}</td>
                         </tr>
                     {{/each}}
                     </tbody>
