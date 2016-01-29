@@ -69,8 +69,10 @@
                 </b>
                 <li class="dropdown-header">ReNew Maintenance</li>
                 <li class="{{isActiveRoute name='rabbit.renewMaintenanceReport'}}">
-                    <a href="{{pathFor 'rabbit.renewMaintenanceReport'}}">Renew Maintenance </a>
+                    <a href="{{pathFor 'rabbit.renewMaintenanceReport'}}">{{> dental_alertEventMsg}} Renew Maintenance
+                        ​ </a>
                 </li>
+
             </ul>
         </li>
     {{/if}}
