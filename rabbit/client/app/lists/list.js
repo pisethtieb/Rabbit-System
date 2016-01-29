@@ -18,6 +18,14 @@ Rabbit.List = {
 
         return list;
     },
+    webType: function () {
+        var list = [];
+        list.push({label: "Select One", value: ""});
+        list.push({label: 'Advertise', value: 'advertise'});
+        list.push({label: 'Post', value: 'post'});
+
+        return list;
+    },
     address: function () {
         var list = [];
         list.push({label: "(Select One)", value: ""});

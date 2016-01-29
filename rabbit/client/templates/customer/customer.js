@@ -76,11 +76,10 @@ indexTpl.events({
         })
 
     },
-    'click .quotationAction': function () {
-        FlowRouter.go('rabbit.quotation', {
+    'click .websiteAction': function () {
+        FlowRouter.go('rabbit.website', {
             customerId: this._id
         })
-
     }
 });
 
