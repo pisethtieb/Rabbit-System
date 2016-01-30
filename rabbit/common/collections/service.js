@@ -5,17 +5,22 @@ Rabbit.Collection.Service = new Mongo.Collection("rabbit_service");
 Rabbit.Schema.Service = new SimpleSchema({
     websiteId: {
         type: String,
-        label: 'WebSite'
+        label: 'WebSiteID'
 
     },
     serviceDate: {
         type: String,
-        label: 'serviceDate'
+        label: 'ServiceDate'
     },
     des: {
         type: String,
         label: 'Description',
-        optional: true
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        }
     },
 //    domainName
     domainName: {
@@ -26,7 +31,6 @@ Rabbit.Schema.Service = new SimpleSchema({
                 type: "boolean-checkbox"
             }
         }
-
     },
     domainNamePrice: {
         type: Number,
@@ -44,9 +48,16 @@ Rabbit.Schema.Service = new SimpleSchema({
         label: "EndDate",
         optional: true
     },
-
 //    Hosting
-
+    hosting: {
+        type: String,
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: "boolean-checkbox"
+            }
+        }
+    },
     hostingPrice: {
         type: Number,
         label: "Price",
@@ -64,6 +75,15 @@ Rabbit.Schema.Service = new SimpleSchema({
         optional: true
     },
     //    maintenance
+    maintenance: {
+        type: String,
+        optional: true,
+        autoform: {
+            afFieldInput: {
+                type: "boolean-checkbox"
+            }
+        }
+    },
     maintenancePrice: {
         type: Number,
         label: "Price",
@@ -80,10 +100,7 @@ Rabbit.Schema.Service = new SimpleSchema({
         label: "EndDate",
         optional: true
     }
-
-})
-;
-
+});
 // Attach schema
 Rabbit.Collection.Service.attachSchema(Rabbit.Schema.Service);
 
