@@ -5,7 +5,6 @@ var indexTpl = Template.rabbit_website,
     insertTpl = Template.rabbit_websiteInsert,
     updateTpl = Template.rabbit_websiteUpdate,
     showTpl = Template.rabbit_websiteShow;
-
 /**
  * Index
  */
@@ -19,7 +18,6 @@ indexTpl.onCreated(function () {
     createNewAlertify(["website"], {size: 'lg'});
     createNewAlertify(["addFile"]);
     createNewAlertify(["websiteShow"], {size: 'lg'});
-    createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
 indexTpl.helpers({
@@ -30,7 +28,6 @@ indexTpl.helpers({
     customer: function () {
         let id = FlowRouter.getParam('customerId');
         let customer = Rabbit.Collection.Customer.findOne({_id: id});
-        console.log(customer);
         return customer;
 
     }
@@ -70,27 +67,13 @@ indexTpl.events({
     'click .js-show': function (e, t) {
         alertify.websiteShow(fa("eye", "Website"), renderTemplate(showTpl, this));
     },
-    'click .officeAction': function () {
-        FlowRouter.go('rabbit.office', {
-            customerId: this.customerId, websiteId: this._id
-
+    'click .serviceAction': function () {
+        FlowRouter.go('rabbit.service', {
+            customerId: this.customerId, websiteId:this._id
         });
-    },
-    'click .paymentOfficeAction': function () {
-        FlowRouter.go('rabbit.paymentOffice', {
-            customerId: this.customerId, websiteId: this._id
-
-        });
-    },
-    'click .paymentMaintenanceAction': function () {
-        FlowRouter.go('rabbit.paymentMaintenance', {
-            customerId: this.customerId, websiteId: this._id
-
-        });
-    }, 'click .addFile': function () {
-        alertify.addFile(fa("pencil", "Website"), renderTemplate(Template.rabbit_UpdateAddFile, this)).minimize()
     }
 });
+
 
 /**
  * Insert
@@ -105,24 +88,19 @@ insertTpl.onRendered(function () {
 insertTpl.helpers({
     //data on insert
     websiteObj(){
-
         return {
             paymentMethod: [
                 {paymentDuration: "- លើកទី១ ត្រូវបង់ប្រាក់ ៤០% ពេលចុះកិច្ចសន្យាដំបូង។"}, {paymentDuration: "- លើកទី២ ត្រូវបង់ប្រាក់ ៣០% ពេលដាក់ឱ្យប្រើប្រាស់សាកល្បង។"}, {paymentDuration: "- លើកទី៣ ត្រូវបង់ប្រាក់ ៣០% ចុងក្រោយនៅពេលដាក់ឱ្យប្រើប្រាស់ជាផ្លូវការ។"}
             ],
             registerDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
-            contractorId: '001-01',
-            type: 'advertise'
+            type: 'advertise',
+            customerId: FlowRouter.getParam('customerId')
+
 
         }
-    },
-    customerId(){
-        return FlowRouter.getParam('customerId');
     }
 });
-insertTpl.events({
-
-});
+insertTpl.events({});
 
 /**
  * Update
@@ -130,8 +108,6 @@ insertTpl.events({
 /**
  * Show
  */
-showTpl.helpers({
-});
 /**
  * Hook
  */
@@ -164,7 +140,6 @@ AutoForm.hooks({
             alertify.error(error.message);
         }
     }
-
 });
 // Config date picker
 var configOnRender = function () {

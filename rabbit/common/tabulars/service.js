@@ -1,0 +1,24 @@
+Rabbit.TabularTable.Service = new Tabular.Table({
+    name: "rabbit_saleBranchServiceList",
+    collection: Rabbit.Collection.Service,
+    pagingType: "full_numbers",
+    autoWidth: false,
+    columnDefs: [
+        {"width": "12px", "targets": 0}
+    ],
+    order: [['1', 'desc']],
+    columns: [
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_ServiceAction},
+        {data: "_id", title: "ID"},
+        {data: "name", title: "Name"},
+        {data: "ServiceDate", title: "ServiceDate"},
+        {data: "contractId", title: "Contract ID"},
+        {data: "type", title: "Type"},
+        {data: "price", title: "Price"},
+        {
+            data: "_maintenanceCount",
+            title: "Maintenance <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_maintenanceLinkActions
+        }
+    ], extraFields: ['_contract.customerId', 'des', 'contractPrice', 'discount']
+});

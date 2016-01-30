@@ -31,17 +31,6 @@ Rabbit.Schema.Website = new SimpleSchema({
         type: Number,
         label: 'price'
     },
-
-    contractorId: {
-        type: String,
-        label: "ContractorId",
-        autoform: {
-            type: 'select2',
-            options(){
-                return Rabbit.List.contractors();
-            }
-        }
-    },
     des: {
         type: String,
         label: "Description",

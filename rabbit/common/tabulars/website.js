@@ -13,28 +13,18 @@ Rabbit.TabularTable.Website = new Tabular.Table({
         {data: "_id", title: "ID"},
         {data: "_customer.companyName", title: "Customer"},
         {
-            data: "contractDate", title: "Contract Date",
+            data: "registerDate", title: "Register Date",
             render: function (val, type, doc) {
                 return moment(val).format('YYYY-MM-DD');
             }
         },
-        {data: "productId", title: "Product ID"},
+        {data: "webName", title: "Web Name"},
+        {data: "type", title: "Type"},
+        {data: "price", title: "price"},
         {
-            data: "_officeCount",
-            title: "Office <i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_officeLinkAction
-        }, {
-            data: "_paymentOfficeCount",
-            title: "Pay Office <i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_paymentOfficeLinkAction
-        }, {
-            data: "_paymentMaintenanceCount",
-            title: "Pay Maintenance <i class='fa fa-arrow-up'></i>",
-            tmpl: Meteor.isClient && Template.rabbit_paymentMaintenanceLinkAction
-        }, {
-            data: "",
-            title: "AddFIle",
-            tmpl: Meteor.isClient && Template.rabbit_addFile
+            data: "_serviceCount",
+            title: "Service <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_serviceLinkAction
         }
     ],
     extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId', 'agentId', 'paymentMethod', 'amount']
