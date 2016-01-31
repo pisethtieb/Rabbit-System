@@ -23,15 +23,6 @@ Rabbit.Schema.Service = new SimpleSchema({
         }
     },
 //    domainName
-    domainName: {
-        type: String,
-        optional: true,
-        autoform: {
-            afFieldInput: {
-                type: "boolean-checkbox"
-            }
-        }
-    },
     domainNamePrice: {
         type: Number,
         label: "Price",
@@ -49,15 +40,6 @@ Rabbit.Schema.Service = new SimpleSchema({
         optional: true
     },
 //    Hosting
-    hosting: {
-        type: String,
-        optional: true,
-        autoform: {
-            afFieldInput: {
-                type: "boolean-checkbox"
-            }
-        }
-    },
     hostingPrice: {
         type: Number,
         label: "Price",
@@ -75,15 +57,7 @@ Rabbit.Schema.Service = new SimpleSchema({
         optional: true
     },
     //    maintenance
-    maintenance: {
-        type: String,
-        optional: true,
-        autoform: {
-            afFieldInput: {
-                type: "boolean-checkbox"
-            }
-        }
-    },
+
     maintenancePrice: {
         type: Number,
         label: "Price",

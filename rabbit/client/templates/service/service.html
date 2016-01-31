@@ -36,18 +36,18 @@
                     {{> afQuickField name="des"}}
                 </div>
                 <div class="col-md-6">
-                    {{> afQuickField name="domainName" }}
-                    <div class="col-md-4">{{> afQuickField name="domainNamePrice"}}</div>
-                    <div class="col-md-4">{{> afQuickField name="domainNameStartDate"}}</div>
-                    <div class="col-md-4">{{> afQuickField name="domainNameEndDate"}}</div>
-                    {{> afQuickField name="hosting" }}
-                    <div class="col-md-4">{{> afQuickField name="hostingPrice"}}</div>
-                    <div class="col-md-4">{{> afQuickField name="hostingStartDate"}}</div>
-                    <div class="col-md-4">{{> afQuickField name="hostingEndDate"}}</div>
-                    {{> afQuickField name="maintenance" }}
-                    <div class="col-md-4">{{> afQuickField name="maintenancePrice"}}</div>
-                    <div class="col-md-4">{{> afQuickField name="maintenanceStartDate"}}</div>
-                    <div class="col-md-4">{{> afQuickField name="maintenanceEndDate"}}</div>
+                    <div><input type="checkbox" class="domainName">DomainName</div>
+                    <div class="col-md-4">{{> afQuickField name="domainNamePrice" class="domainNamePrice" }}</div>
+                    <div class="col-md-4">{{> afQuickField name="domainNameStartDate" class="domainNameStartDate" }}</div>
+                    <div class="col-md-4">{{> afQuickField name="domainNameEndDate" class="domainNameEndDate" }}</div>
+                    <div><input type="checkbox" class="hosting">Hosting</div>
+                    <div class="col-md-4">{{> afQuickField name="hostingPrice" class='hostingPrice' }}</div>
+                    <div class="col-md-4">{{> afQuickField name="hostingStartDate" class="hostingStartDate" }}</div>
+                    <div class="col-md-4">{{> afQuickField name="hostingEndDate" class="hostingEndDate" }}</div>
+                    <div><input type="checkbox" class="maintenance">Maintenance</div>
+                    <div class="col-md-4">{{> afQuickField name="maintenancePrice" class="maintenancePrice" }}</div>
+                    <div class="col-md-4">{{> afQuickField name="maintenanceStartDate" class='maintenanceStartDate'}}</div>
+                    <div class="col-md-4">{{> afQuickField name="maintenanceEndDate" class='maintenanceEndDate'}}</div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -109,4 +109,3 @@
         <dd>{{des}}</dd>
     </dl>
 </template>
-

@@ -86,19 +86,18 @@ indexTpl.helpers({
 /*Insert*/
 insertTpl.onRendered(function () {
     configOnRender();
-    //auto selected on service selected"HeadService"
-    var contractId = FlowRouter.getParam('contractId');
-    let service = Rabbit.Collection.Service.findOne({contractId: contractId});
-    if (service == null || undefined) {
-        $('.type').val("HO");
-        $('.discount').val(0);
-        $('.type').change();
-        //$('[name=price]').val(contract.basePrice[0].headService);
-    } else {
-        $('.type').val("BO");
-        $('.discount').val(0);
-        $('.type').change();
-    }
+    // domainName
+    $('.domainNamePrice').attr('disabled', "disabled");
+    $('.domainNameStartDate').attr('disabled', "disabled");
+    $('.domainNameEndDate').attr('disabled', "disabled");
+    // hosting
+    $('.hostingPrice').attr('disabled', "disabled");
+    $('.hostingStartDate').attr('disabled', "disabled");
+    $('.hostingEndDate').attr('disabled', "disabled");
+    // maintenance
+    $('.maintenancePrice').attr('disabled', "disabled");
+    $('.maintenanceStartDate').attr('disabled', "disabled");
+    $('.maintenanceEndDate').attr('disabled', "disabled");
 });
 insertTpl.helpers({
     service(){
@@ -110,43 +109,24 @@ insertTpl.helpers({
     }
 });
 insertTpl.events({
-    'change .type'(e, t) {
-        let type = $(e.currentTarget).val();
-        var contractId = FlowRouter.getParam('contractId');
-        var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
-        //let types = Rabbit.List.getProduct(type);
-        let service = Rabbit.Collection.Service.findOne({contractId: contractId});
-        if (type == 'HO' && service != null) {
-            $('.type').val("BO");
-            $('.type').change();
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].branch);
+  "change .domainName"(e,t){
 
-        } else if (type == 'BO' && service == null) {
-            $('.type').val("HO");
-            $('.type').change();
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].headService);
-            $('[name=contractPrice]').val(contract.basePrice[0].headService);
-        } else if (type == 'BO') {
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].branch);
-            $('[name=contractPrice]').val(contract.basePrice[0].branch);
-        } else if (type == "HO") {
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].headService);
-            $('[name=contractPrice]').val(contract.basePrice[0].headService);
+    let domain=$('.domainName').prop();
 
-        } else {
-            $('.discount').val('');
-            $('[name=price]').val("");
-            $('[name=contractPrice]').val("");
-        }
-    },
-    'keyup .discount'(e){
+    console.log(domain);
+    // if(domain==checked){
+    //     $('.domainNamePrice').removeAttr('disabled');
+    //     $('.domainNameStartDate').removeAttr('disabled');
+    //     $('.domainNameEndDate').removeAttr('disabled');
+    // }else if (domain=="off"){
+    //   $('.domainNamePrice').attr('disabled', "disabled");
+    //   $('.domainNameStartDate').attr('disabled', "disabled");
+    //   $('.domainNameEndDate').attr('disabled', "disabled");
+    // }
 
-        $('#price').val($('.contractPrice').val() - $('.discount').val());
-    }
+  }
+
+
 });
 /**
  * Update
