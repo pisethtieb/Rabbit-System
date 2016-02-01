@@ -105,9 +105,9 @@ showTpl.helpers({
 
 indexTpl.helpers({
     selector: function () {
-        let id = FlowRouter.getParam('contractId');
+        let id = FlowRouter.getParam('websiteID');
         //console.log(id);
-        return {contractId: id}
+        return {websiteId: id}
     },
     contract: function () {
         let id = FlowRouter.getParam('contractId');
@@ -120,13 +120,13 @@ indexTpl.helpers({
 
 /*Insert*/
 insertTpl.helpers({
-    contract(){
-        var contractId = FlowRouter.getParam('contractId');
-        var office = ReactiveMethod.call('getWebsiteWithContract', contractId);
-        office.contractId = contractId;
-        office.customerId = FlowRouter.getParam('customerId');
-        office.paymentWebsiteDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
-        return office;
+    website(){
+        var websiteId = FlowRouter.getParam('websiteId');
+        var paymentWebsite = ReactiveMethod.call('getWebsiteWithPayment', websiteId);
+        paymentWebsite.websiteId = websiteId;
+        paymentWebsite.customerId = FlowRouter.getParam('customerId');
+        paymentWebsite.paymentWebsiteDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
+        return paymentWebsite;
     }
 });
 insertTpl.onRendered(function () {

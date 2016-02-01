@@ -13,7 +13,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
         label: 'WebSiteID'
 
     },
-    PaymentWebsiteDate: {
+    paymentWebsiteDate: {
         type: String,
         label: 'PaymentWebsiteDate'
     },
@@ -32,14 +32,17 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
 
     buildPrice: {
         type: Number,
-        label: "Price"
+        label: "Price",
+        optional: true
     },
     buildPaid: {
         type: Number,
-        label: "Paid"
+        label: "Paid",
+        optional: true
     }, buildDue: {
         type: Number,
-        label: "Due"
+        label: "Due",
+        optional: true
     },
 
 //    domainName
@@ -51,11 +54,13 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     domainNamePaid: {
         type: Number,
-        label: "Paid"
+        label: "Paid",
+        optional: true
     },
     domainNameDue: {
         type: Number,
-        label: "Due"
+        label: "Due",
+        optional: true
     },
 //    Hosting
     hostingPrice: {
@@ -67,11 +72,13 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
 
     hostingPaid: {
         type: Number,
-        label: "Paid"
+        label: "Paid",
+        optional: true
     },
     hostingDue: {
         type: Number,
-        label: "Due"
+        label: "Due",
+        optional: true
     },
     //    maintenance
     maintenancePrice: {
@@ -82,11 +89,13 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     maintenancePaid: {
         type: Number,
-        label: "Paid"
+        label: "Paid",
+        optional: true
     },
     maintenanceDue: {
         type: Number,
-        label: "Due"
+        label: "Due",
+        optional: true
     }
 
 

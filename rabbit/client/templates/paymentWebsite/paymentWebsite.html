@@ -9,7 +9,7 @@
             {{#with contract}}
                 <a href="#" class="jsInfo">{{_id}} | ContractDate : {{contractDate}} |
                     Product : {{_product.name}}|
-                    || Customer(company) : {{_customer.companyName}}  |
+                    || Customer(company) : {{_customer.companyName}} |
                     ContractName : {{_customer.contractName}}</a>
             {{/with}}
         </small>
@@ -33,20 +33,21 @@
 
 <!--Insert-->
 <template name="rabbit_paymentWebsiteInsert">
-    {{#autoForm collection=Rabbit.Collection.PaymentWebsite doc=contract id="rabbit_paymentWebsiteInsert" type="insert"}}
+    {{#autoForm collection=Rabbit.Collection.PaymentWebsite doc=website id="rabbit_paymentWebsiteInsert"
+    type="insert"}}
         <div class="panel panel-default">
             <div class="panel-heading">Payment Website & Service</div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-md-4">
-                        {{> afQuickField name="customerId"  readOnly=true}}
+                    <div class="col-md-6">
+                        {{> afQuickField name="customerId" readOnly=true}}
 
-                    </div>
-                    <div class="col-md-4">
 
-                        {{> afQuickField name="websiteId"  readOnly=true}}
+                        {{> afQuickField name="websiteId" readOnly=true}}
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-6">
+
+                        {{> afQuickField name="paymentWebsiteDate"}}
                         {{> afQuickField name="des"}}
                     </div>
                 </div>
@@ -69,21 +70,21 @@
                             <div class="panel-body">
                                 <div class="col-md-12">
                                     <div class="col-sm-3">DomainName</div>
-                                    <div class="col-sm-3">{{> afQuickField name="domainNamePrice"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="domainNamePrice" readOnly=true}}</div>
                                     <div class="col-sm-3">{{> afQuickField name="domainNamePaid"}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="domainNameDue"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="domainNameDue" readOnly=true}}</div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="col-sm-3">Hosting</div>
-                                    <div class="col-sm-3">{{> afQuickField name="hostingPrice"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="hostingPrice" readOnly=true}}</div>
                                     <div class="col-sm-3">{{> afQuickField name="hostingPaid"}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="hostingDue"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="hostingDue" readOnly=true }}</div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="col-sm-3">Maintenance</div>
-                                    <div class="col-sm-3">{{> afQuickField name="maintenancePrice"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="maintenancePrice" readOnly=true}}</div>
                                     <div class="col-sm-3">{{> afQuickField name="maintenancePaid"}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="maintenanceDue"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="maintenanceDue" readOnly=true}}</div>
                                 </div>
                             </div>
                         </div>
@@ -179,7 +180,8 @@
                 </div>
             {{/afEachArrayItem}}
 
-            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount
+            maxCount=this.atts.maxCount}}
                 <div class="row">
                     <div class="col-sm-1 pull-right">
                     </div>
@@ -192,21 +194,27 @@
 <!--Custom object field-->
 <template name="officeCustomObjectField">
     <div class="col-sm-2">
-        {{> afQuickField name=current.officeId template="bootstrap3" label=false class="input-sm officeId"  placeholder="officeId" readOnly=true }}
+        {{> afQuickField name=current.officeId template="bootstrap3" label=false class="input-sm officeId"
+        placeholder="officeId" readOnly=true }}
     </div>
     <div class="col-sm-2">
-        {{> afQuickField name=current.office template="bootstrap3" label=false class="input-sm office" id='price' placeholder="office" readOnly=true }}
+        {{> afQuickField name=current.office template="bootstrap3" label=false class="input-sm office" id='price'
+        placeholder="office" readOnly=true }}
     </div>
     <div class="col-sm-2">
-        {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price' placeholder="price" readOnly=true}}
+        {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price'
+        placeholder="price" readOnly=true}}
     </div>
     <div class="col-sm-2">
-        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount' placeholder="Dis(Amount)" }}
+        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount'
+        placeholder="Dis(Amount)" }}
     </div>
     <div class="col-sm-2">
-        {{> afQuickField name=current.paidAmount template="bootstrap3" label=false class="input-sm paidAmount" id='paidAmount' placeholder="Paid Amount"}}
+        {{> afQuickField name=current.paidAmount template="bootstrap3" label=false class="input-sm paidAmount"
+        id='paidAmount' placeholder="Paid Amount"}}
     </div>
     <div class="col-sm-2">
-        {{> afQuickField name=current.dueAmount template="bootstrap3" label=false class="input-sm dueAmount" id='dueAmount'  placeholder="Due Amount" readOnly=true}}
+        {{> afQuickField name=current.dueAmount template="bootstrap3" label=false class="input-sm dueAmount"
+        id='dueAmount' placeholder="Due Amount" readOnly=true}}
     </div>
 </template>
