@@ -3,6 +3,11 @@ Rabbit.Collection.PaymentWebsite = new Mongo.Collection("rabbit_paymentWebsite")
 
 // Schema
 Rabbit.Schema.PaymentWebsite = new SimpleSchema({
+    customerId: {
+        type: String,
+        label: 'CustomerId'
+
+    },
     websiteId: {
         type: String,
         label: 'WebSiteID'
@@ -22,6 +27,21 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
             }
         }
     },
+
+// Build Website price
+
+    buildPrice: {
+        type: Number,
+        label: "Price"
+    },
+    buildPaid: {
+        type: Number,
+        label: "Paid"
+    }, buildDue: {
+        type: Number,
+        label: "Due"
+    },
+
 //    domainName
     domainNamePrice: {
         type: Number,
@@ -29,15 +49,13 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
         decimal: true,
         optional: true
     },
-    domainNameStartDate: {
-        type: String,
-        label: "StartDate",
-        optional: true
+    domainNamePaid: {
+        type: Number,
+        label: "Paid"
     },
-    domainNameEndDate: {
-        type: String,
-        label: "EndDate",
-        optional: true
+    domainNameDue: {
+        type: Number,
+        label: "Due"
     },
 //    Hosting
     hostingPrice: {
@@ -46,34 +64,32 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
         decimal: true,
         optional: true
     },
-    hostingStartDate: {
-        type: String,
-        label: "StartDate",
-        optional: true
+
+    hostingPaid: {
+        type: Number,
+        label: "Paid"
     },
-    hostingEndDate: {
-        type: String,
-        label: "EndDate",
-        optional: true
+    hostingDue: {
+        type: Number,
+        label: "Due"
     },
     //    maintenance
-
     maintenancePrice: {
         type: Number,
         label: "Price",
         decimal: true,
         optional: true
     },
-    maintenanceStartDate: {
-        type: String,
-        label: "StartDate",
-        optional: true
+    maintenancePaid: {
+        type: Number,
+        label: "Paid"
     },
-    maintenanceEndDate: {
-        type: String,
-        label: "EndDate",
-        optional: true
+    maintenanceDue: {
+        type: Number,
+        label: "Due"
     }
+
+
 });
 // Attach schema
 Rabbit.Collection.PaymentWebsite.attachSchema(Rabbit.Schema.PaymentWebsite);
