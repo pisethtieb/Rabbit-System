@@ -9,7 +9,7 @@ Rabbit.TabularTable.Website = new Tabular.Table({
     ],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_contractAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_websiteAction},
         {data: "_id", title: "ID"},
         {data: "_customer.companyName", title: "Customer"},
         {
@@ -25,6 +25,10 @@ Rabbit.TabularTable.Website = new Tabular.Table({
             data: "_serviceCount",
             title: "Service <i class='fa fa-arrow-up'></i>",
             tmpl: Meteor.isClient && Template.rabbit_serviceLinkAction
+        }, {
+            data: "_paymentWebsiteCount",
+            title: "Payment <i class='fa fa-arrow-up'></i>",
+            tmpl: Meteor.isClient && Template.rabbit_paymentWebsiteLinkAction
         }
     ],
     extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId', 'agentId', 'paymentMethod', 'amount']

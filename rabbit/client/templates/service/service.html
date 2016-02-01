@@ -5,9 +5,9 @@
     <div class="pull-right" style="display: inline">
         <small>
 
-            {{#with contract}}
-                <a href="#" class="jsInfo">{{_id}} | ContractDate : {{contractDate}} |
-                    Product : {{_product.name}}|
+            {{#with website}}
+                <a href="#" class="jsInfo">{{_id}} | registerDate : {{registerDate}} |
+                    price : {{price}}|
                     || Customer(company) : {{_customer.companyName}}  |
                     ContractName : {{_customer.contractName}}</a>
             {{/with}}
@@ -17,7 +17,7 @@
 </template>
 
 <!--Action-->
-<template name="rabbit_serviceAction">
+<template name="rabbit_ServiceAction">
     {{#tabularAction}}
         <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
         <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
@@ -31,7 +31,7 @@
         <div class="row">
             <div class="col-md-12">
                 <div class="col-md-6">
-                    {{> afQuickField name="websiteId"}}
+                    {{> afQuickField name="websiteId" readOnly=true }}
                     {{> afQuickField name="serviceDate"}}
                     {{> afQuickField name="des"}}
                 </div>
@@ -65,17 +65,23 @@
             <div class="row">
                 <div class="col-md-12">
                     <div class="col-md-6">
-                        {{> afQuickField name="name"}}
+                        {{> afQuickField name="websiteId" readOnly=true }}
                         {{> afQuickField name="serviceDate"}}
-                        {{> afQuickField name="contractId" readonly=true}}
-                        {{> afQuickField name="type"  class='type'}}
-                        {{> afQuickField name="contractPrice"  class='contractPrice' readOnly=true}}
+                        {{> afQuickField name="des"}}
                     </div>
                     <div class="col-md-6">
-                        {{> afQuickField name="discount" class="discount"}}
-                        {{> afQuickField name="price" id="price"  readOnly=true}}
-                        {{> afQuickField name="productId"  value=productId type='hidden' }}
-                        {{> afQuickField name="des"}}
+                        <div><input type="checkbox" class="domainName">DomainName</div>
+                        <div class="col-md-4">{{> afQuickField name="domainNamePrice" class="domainNamePrice" }}</div>
+                        <div class="col-md-4">{{> afQuickField name="domainNameStartDate" class="domainNameStartDate" }}</div>
+                        <div class="col-md-4">{{> afQuickField name="domainNameEndDate" class="domainNameEndDate" }}</div>
+                        <div><input type="checkbox" class="hosting">Hosting</div>
+                        <div class="col-md-4">{{> afQuickField name="hostingPrice" class='hostingPrice' }}</div>
+                        <div class="col-md-4">{{> afQuickField name="hostingStartDate" class="hostingStartDate" }}</div>
+                        <div class="col-md-4">{{> afQuickField name="hostingEndDate" class="hostingEndDate" }}</div>
+                        <div><input type="checkbox" class="maintenance">Maintenance</div>
+                        <div class="col-md-4">{{> afQuickField name="maintenancePrice" class="maintenancePrice" }}</div>
+                        <div class="col-md-4">{{> afQuickField name="maintenanceStartDate" class='maintenanceStartDate'}}</div>
+                        <div class="col-md-4">{{> afQuickField name="maintenanceEndDate" class='maintenanceEndDate'}}</div>
                     </div>
                 </div>
                 <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>

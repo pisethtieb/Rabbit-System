@@ -1,6 +1,6 @@
-Rabbit.TabularTable.Service = new Tabular.Table({
-    name: "rabbit_saleBranchServiceList",
-    collection: Rabbit.Collection.Service,
+Rabbit.TabularTable.PaymentWebsite = new Tabular.Table({
+    name: "rabbit_saleBranchPaymentWebsiteList",
+    collection: Rabbit.Collection.PaymentWebsite,
     pagingType: "full_numbers",
     autoWidth: false,
     columnDefs: [
@@ -8,11 +8,11 @@ Rabbit.TabularTable.Service = new Tabular.Table({
     ],
     order: [['1', 'desc']],
     columns: [
-        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_ServiceAction},
+        {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_paymentWebsiteAction},
         {data: "_id", title: "ID"},
         {data: "websiteId", title: "paymentWebsite ID"},
         {
-            data: "serviceDate", title: "Service Date",
+            data: "PaymentWebsiteDate", title: "PaymentWebsite Date",
             render: function (val, type, doc) {
                 return moment(val).format('YYYY-MM-DD');
             }

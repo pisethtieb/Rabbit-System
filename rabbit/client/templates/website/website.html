@@ -7,7 +7,7 @@
         <small>
 
             {{#with customer}}
-                <a href="#" class="jsInfo">{{_id}} | WebsitePerson: {{websiteName}} | Tel: {{telephone}}|
+                <a href="#" class="jsInfo">{{_id}} | contractPerson: {{contractName}} | Tel: {{telephone}}|
                     || Company: {{companyName}}  |
                     CompanyTel: {{companyTelephone}}</a>
             {{/with}}
@@ -25,7 +25,7 @@
         <b>
             <li role="separator" class="divider"></li>
         </b>
-        <li><a href="/rabbit/website/printWebsite/{{this._id}}" target="_blank">{{fa "print"}} Print Website</a></li>
+        <li><a href="/rabbit/website/invoice/{{this._id}}" target="_blank">{{fa "print"}} Invoice </a></li>
 
     {{/tabularAction}}
 </template>
@@ -86,7 +86,7 @@
 
 <!--Show-->
 <template name="rabbit_websiteShow">
-    <!--Website template sub ready by all-->
+    <!--paymentWebsite template sub ready by all-->
     {{#if templateSubReady}}
         {{#with data}}
             <dl class="dl-horizontal">
@@ -122,6 +122,15 @@
     <button type="button" class="btn btn-primary btn-sm serviceAction">
         {{#if _serviceCount}}
             {{_serviceCount}}
+        {{else}}
+            0
+        {{/if}}
+    </button>
+</template>
+<template name="rabbit_paymentWebsiteLinkAction">
+    <button type="button" class="btn btn-primary btn-sm paymentWebsiteAction">
+        {{#if _websiteCount}}
+            {{_websiteCount}}
         {{else}}
             0
         {{/if}}

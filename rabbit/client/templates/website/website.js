@@ -71,6 +71,11 @@ indexTpl.events({
         FlowRouter.go('rabbit.service', {
             customerId: this.customerId, websiteId:this._id
         });
+    } ,
+    'click .paymentWebsiteAction': function () {
+        FlowRouter.go('rabbit.paymentWebsite', {
+            customerId: this.customerId, websiteId:this._id
+        });
     }
 });
 
@@ -112,7 +117,7 @@ insertTpl.events({});
  * Hook
  */
 AutoForm.hooks({
-    // Website
+    // paymentWebsite
     rabbit_websiteInsert: {
         before: {
             insert: function (doc) {

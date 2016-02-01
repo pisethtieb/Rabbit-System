@@ -69,15 +69,18 @@ indexTpl.events({
 
 indexTpl.helpers({
     selector: function () {
-        let id = FlowRouter.getParam('contractId');
+        let id = FlowRouter.getParam('websiteId');
         //console.log(id);
-        return {contractId: id}
+        return {websiteId: id}
     },
-    contract: function () {
-        let id = FlowRouter.getParam('contractId');
-        let contract = Rabbit.Collection.Contract.findOne({_id: id});
+    website: function () {
+        Meteor.subscribe('rabbit_website');
+        let websiteId = FlowRouter.getParam('websiteId');
+        console.log(websiteId)
+        let website = Rabbit.Collection.Website.findOne({_id: websiteId});
+        console.log(website);
+        return website;
 
-        return contract;
 
     }
 
@@ -100,31 +103,59 @@ insertTpl.onRendered(function () {
     $('.maintenanceEndDate').attr('disabled', "disabled");
 });
 insertTpl.helpers({
-    service(){
-        let contractId = FlowRouter.getParam('contractId');
-        return {
-            contractId: contractId,
-            serviceDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+        service(){
+            return {
+
+                websiteId: FlowRouter.getParam('websiteId'),
+                serviceDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+
+            }
         }
     }
-});
+);
 insertTpl.events({
-  "change .domainName"(e,t){
+    "change .domainName"(e, t){
 
-    let domain=$('.domainName').prop();
+        if ($('.domainName').is(':checked')) {
 
-    console.log(domain);
-    // if(domain==checked){
-    //     $('.domainNamePrice').removeAttr('disabled');
-    //     $('.domainNameStartDate').removeAttr('disabled');
-    //     $('.domainNameEndDate').removeAttr('disabled');
-    // }else if (domain=="off"){
-    //   $('.domainNamePrice').attr('disabled', "disabled");
-    //   $('.domainNameStartDate').attr('disabled', "disabled");
-    //   $('.domainNameEndDate').attr('disabled', "disabled");
-    // }
+            $('.domainNamePrice').removeAttr('disabled');
+            $('.domainNameStartDate').removeAttr('disabled');
+            $('.domainNameEndDate').removeAttr('disabled');
+        } else {
+            $('.domainNamePrice').attr('disabled', "disabled").val('');
+            $('.domainNameStartDate').attr('disabled', "disabled").val('');
+            $('.domainNameEndDate').attr('disabled', "disabled").val('');
+        }
 
-  }
+    },
+    "change .hosting"(e, t){
+
+        if ($('.hosting').is(':checked')) {
+
+            $('.hostingPrice').removeAttr('disabled');
+            $('.hostingStartDate').removeAttr('disabled');
+            $('.hostingEndDate').removeAttr('disabled');
+        } else {
+            $('.hostingPrice').attr('disabled', "disabled").val('');
+            $('.hostingStartDate').attr('disabled', "disabled").val('');
+            $('.hostingEndDate').attr('disabled', "disabled").val('');
+        }
+
+    },
+    "change .maintenance"(e, t){
+
+        if ($('.maintenance').is(':checked')) {
+
+            $('.maintenancePrice').removeAttr('disabled');
+            $('.maintenanceStartDate').removeAttr('disabled');
+            $('.maintenanceEndDate').removeAttr('disabled');
+        } else {
+            $('.maintenancePrice').attr('disabled', "disabled").val('');
+            $('.maintenanceStartDate').attr('disabled', "disabled").val('');
+            $('.maintenanceEndDate').attr('disabled', "disabled").val('');
+        }
+
+    }
 
 
 });
@@ -137,46 +168,62 @@ updateTpl.onCreated(function () {
 
 updateTpl.onRendered(function () {
     configOnRender();
+    $('.domainNamePrice').attr('disabled', "disabled");
+    $('.domainNameStartDate').attr('disabled', "disabled");
+    $('.domainNameEndDate').attr('disabled', "disabled");
+    // hosting
+    $('.hostingPrice').attr('disabled', "disabled");
+    $('.hostingStartDate').attr('disabled', "disabled");
+    $('.hostingEndDate').attr('disabled', "disabled");
+    // maintenance
+    $('.maintenancePrice').attr('disabled', "disabled");
+    $('.maintenanceStartDate').attr('disabled', "disabled");
+    $('.maintenanceEndDate').attr('disabled', "disabled");
 });
 
 
 updateTpl.events({
-    'change .type'(e, t) {
-        let type = $(e.currentTarget).val();
-        var contractId = FlowRouter.getParam('contractId');
-        var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
-        //let types = Rabbit.List.getProduct(type);
-        let service = Rabbit.Collection.Service.findOne({contractId: contractId});
-        if (type == 'HO' && service != null) {
-            $('.type').val("BO");
-            $('.type').change();
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].branch);
+    "change .domainName"(e, t){
 
-        } else if (type == 'BO' && service == null) {
-            $('.type').val("HO");
-            $('.type').change();
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].headService);
-            $('[name=contractPrice]').val(contract.basePrice[0].headService);
-        } else if (type == 'BO') {
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].branch);
-            $('[name=contractPrice]').val(contract.basePrice[0].branch);
-        } else if (type == "HO") {
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].headService);
-            $('[name=contractPrice]').val(contract.basePrice[0].headService);
+        if ($('.domainName').is(':checked')) {
 
+            $('.domainNamePrice').removeAttr('disabled');
+            $('.domainNameStartDate').removeAttr('disabled');
+            $('.domainNameEndDate').removeAttr('disabled');
         } else {
-            $('.discount').val('');
-            $('[name=price]').val("");
-            $('[name=contractPrice]').val("");
+            $('.domainNamePrice').attr('disabled', "disabled").val('');
+            $('.domainNameStartDate').attr('disabled', "disabled").val('');
+            $('.domainNameEndDate').attr('disabled', "disabled").val('');
         }
-    },
-    'keyup .discount'(e){
 
-        $('#price').val($('.contractPrice').val() - $('.discount').val());
+    },
+    "change .hosting"(e, t){
+
+        if ($('.hosting').is(':checked')) {
+
+            $('.hostingPrice').removeAttr('disabled');
+            $('.hostingStartDate').removeAttr('disabled');
+            $('.hostingEndDate').removeAttr('disabled');
+        } else {
+            $('.hostingPrice').attr('disabled', "disabled").val('');
+            $('.hostingStartDate').attr('disabled', "disabled").val('');
+            $('.hostingEndDate').attr('disabled', "disabled").val('');
+        }
+
+    },
+    "change .maintenance"(e, t){
+
+        if ($('.maintenance').is(':checked')) {
+
+            $('.maintenancePrice').removeAttr('disabled');
+            $('.maintenanceStartDate').removeAttr('disabled');
+            $('.maintenanceEndDate').removeAttr('disabled');
+        } else {
+            $('.maintenancePrice').attr('disabled', "disabled").val('');
+            $('.maintenanceStartDate').attr('disabled', "disabled").val('');
+            $('.maintenanceEndDate').attr('disabled', "disabled").val('');
+        }
+
     }
 });
 //
@@ -239,7 +286,24 @@ AutoForm.hooks({
 });
 var configOnRender = function () {
     debugger;
-    // date
+    // serviceDate
     var serviceDate = $('[name="serviceDate"]');
     DateTimePicker.date(serviceDate);
+//  maintenanceDate
+    var maintenanceStartDate = $('[name="maintenanceStartDate"]');
+    DateTimePicker.date(maintenanceStartDate);
+    var maintenanceEndDate = $('[name="maintenanceEndDate"]');
+    DateTimePicker.date(maintenanceEndDate);
+    //  hostingDate
+    var hostingStartDate = $('[name="hostingStartDate"]');
+    DateTimePicker.date(hostingStartDate);
+    var hostingEndDate = $('[name="hostingEndDate"]');
+    DateTimePicker.date(hostingEndDate);
+    //  domainNameDate
+    var domainNameStartDate = $('[name="domainNameStartDate"]');
+    DateTimePicker.date(domainNameStartDate);
+    var domainNameEndDate = $('[name="domainNameEndDate"]');
+    DateTimePicker.date(domainNameEndDate);
+
+
 };
