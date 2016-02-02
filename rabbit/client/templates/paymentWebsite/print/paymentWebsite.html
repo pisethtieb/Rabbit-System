@@ -44,9 +44,9 @@
                     <ul class="list-unstyled">
 
                         <li>
-                            <strong>PaymentWebsiteDate: </strong> {{paymentWebsite.paymentWebsiteDate}}</li>
+                            <strong>PaymentDate: </strong> {{header.paymentDate}}</li>
                         <li>
-                            <strong>Product: </strong> {{product.name}}</li>
+                            <strong>WebsiteName: </strong> {{header.websiteName}}</li>
                     </ul>
                 </div>
                 <!--Header-->
@@ -56,9 +56,9 @@
                         <th>
                             N<sup>o</sup>
                         </th>
-                        <th>Website</th>
-                        <th>Type</th>
-                        <!--<th>Price</th>-->
+                        <th>BPrice</th>
+                        <th>BPaid</th>
+                        <th>BDue</th>
                         <th>Price</th>
                         <th>Dis(%)</th>
                         <th>TotalSum</th>
@@ -106,12 +106,12 @@
                     </div>
                 </div>
                 <div style="width: 69%; margin-top: 20px">
-                           <ul class="list-unstyled">
-                               <li>
-                                   <strong>Staff Sign:</strong> __________________
-                               </li>
-                           </ul>
-                       </div>
+                    <ul class="list-unstyled">
+                        <li>
+                            <strong>Staff Sign:</strong> __________________
+                        </li>
+                    </ul>
+                </div>
 
             {{/with}}
             <!--Sign-->

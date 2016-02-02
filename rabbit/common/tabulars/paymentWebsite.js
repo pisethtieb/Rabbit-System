@@ -17,10 +17,10 @@ Rabbit.TabularTable.PaymentWebsite = new Tabular.Table({
                 return moment(val).format('YYYY-MM-DD');
             }
         },
-        {data: "des", title: "Description"},
-        {data: "domainNamePrice", title: "Domain Price"},
-        {data: "hostingPrice", title: "Hosting Price"},
-        {data: "maintenancePrice", title: "Maintenance Price"},
+        {data: "buildPrice", title: "Build"},
+        {data: "domainNamePrice", title: "Domain"},
+        {data: "hostingPrice", title: "Hosting"},
+        {data: "maintenancePrice", title: "Maintenance"},
 
     ],
     extraFields: ['domainNameStartDate', 'domainNameEndDate', 'hostingStartDate', 'hostingEndDate', 'maintenanceStartDate', 'maintenanceEndDate']

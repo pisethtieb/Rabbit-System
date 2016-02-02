@@ -33,16 +33,25 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     buildPrice: {
         type: Number,
         label: "Price",
-        optional: true
+        optional: true,
+        decimal: true
     },
     buildPaid: {
         type: Number,
         label: "Paid",
-        optional: true
-    }, buildDue: {
+        optional: true,
+        custom: function () {
+            if (this.value > this.field('buildPrice').value) {
+                return "buidlPraid";
+            }
+        },
+        decimal: true
+    },
+    buildDue: {
         type: Number,
         label: "Due",
-        optional: true
+        optional: true,
+        decimal: true
     },
 
 //    domainName
@@ -55,13 +64,20 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     domainNamePaid: {
         type: Number,
         label: "Paid",
-        optional: true
+        optional: true,
+        decimal: true,
+        custom: function () {
+            if (this.value > this.field('domainNamePrice').value) {
+                return "buidlPraid";
+            }
+        }
     },
     domainNameDue: {
         type: Number,
         label: "Due",
         optional: true
     },
+
 //    Hosting
     hostingPrice: {
         type: Number,
@@ -73,7 +89,14 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     hostingPaid: {
         type: Number,
         label: "Paid",
-        optional: true
+        optional: true,
+        decimal: true,
+        custom: function () {
+            if (this.value > this.field('hostingPrice').value) {
+                return "buidlPraid";
+            }
+        }
+
     },
     hostingDue: {
         type: Number,
@@ -81,6 +104,8 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
         optional: true
     },
     //    maintenance
+
+
     maintenancePrice: {
         type: Number,
         label: "Price",
@@ -90,12 +115,20 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     maintenancePaid: {
         type: Number,
         label: "Paid",
-        optional: true
+        optional: true,
+        decimal: true,
+        custom: function () {
+            if (this.value > this.field('maintenancePrice').value) {
+                return "buidlPraid";
+            }
+        }
+
     },
     maintenanceDue: {
         type: Number,
         label: "Due",
-        optional: true
+        optional: true,
+        decimal: true
     }
 
 
@@ -107,6 +140,6 @@ Rabbit.Collection.PaymentWebsite.attachSchema(Rabbit.Schema.PaymentWebsite);
 //Rabbit.Collection.Customer.attachBehaviour('softRemovable');
 
 SimpleSchema.messages({
-    "greaterThan": "it mustn't be greater than ContractPrice!"
+    "buidlPraid": "it mustn't be greater than Price!"
 });
 //Status API Training Shop Blog About Pricing

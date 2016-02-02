@@ -26,7 +26,7 @@
         <b>
             <li role="separator" class="divider"></li>
         </b>
-        <li><a href="/rabbit/paymentWebsite/print/invoice/{{this._id}}" target="_blank">{{fa "print"}} Invoice</a></li>
+        <li><a href="/rabbit/website/invoice/{{this._id}}" target="_blank">{{fa "print"}} Invoice</a></li>
 
     {{/tabularAction}}
 </template>
@@ -58,9 +58,9 @@
                             <div class="panel-heading">Build Website</div>
                             <div class="panel-body">
 
-                                <div class="col-sm-4">{{> afQuickField name="buildPrice"}}</div>
-                                <div class="col-sm-4">{{> afQuickField name="buildPaid"}}</div>
-                                <div class="col-sm-4">{{> afQuickField name="buildDue"}}</div>
+                                <div class="col-sm-4">{{> afQuickField name="buildPrice" class="buildPrice"  readOnly=true}}</div>
+                                <div class="col-sm-4">{{> afQuickField name="buildPaid" class="buildPaid" }}</div>
+                                <div class="col-sm-4">{{> afQuickField name="buildDue" class="buildDue" readOnly=true}}</div>
                             </div>
                         </div>
                     </div>
@@ -70,21 +70,21 @@
                             <div class="panel-body">
                                 <div class="col-md-12">
                                     <div class="col-sm-3">DomainName</div>
-                                    <div class="col-sm-3">{{> afQuickField name="domainNamePrice" readOnly=true}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="domainNamePaid"}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="domainNameDue" readOnly=true}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="domainNamePrice" readOnly=true class="domainNamePrice"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="domainNamePaid" class="domainNamePaid" }}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="domainNameDue" class="domainNameDue" readOnly=true}}</div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="col-sm-3">Hosting</div>
-                                    <div class="col-sm-3">{{> afQuickField name="hostingPrice" readOnly=true}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="hostingPaid"}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="hostingDue" readOnly=true }}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="hostingPrice" readOnly=true class="hostingPrice"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="hostingPaid" class="hostingPaid"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="hostingDue" readOnly=true class="hostingDue" }}</div>
                                 </div>
                                 <div class="col-md-12">
                                     <div class="col-sm-3">Maintenance</div>
-                                    <div class="col-sm-3">{{> afQuickField name="maintenancePrice" readOnly=true}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="maintenancePaid"}}</div>
-                                    <div class="col-sm-3">{{> afQuickField name="maintenanceDue" readOnly=true}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="maintenancePrice" readOnly=true class="maintenancePrice"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="maintenancePaid" class="maintenancePaid"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="maintenanceDue" class="maintenanceDue" readOnly=true}}</div>
                                 </div>
                             </div>
                         </div>
