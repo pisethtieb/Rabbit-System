@@ -87,36 +87,22 @@
 <!--Show-->
 <template name="rabbit_websiteShow">
     <!--paymentWebsite template sub ready by all-->
-    {{#if templateSubReady}}
-        {{#with data}}
-            <dl class="dl-horizontal">
-                <dt>customer:</dt>
-                <dd>{{customerId}}</dd>
-                <dt>website Date:</dt>
-                <dd>{{websiteDate}}</dd>
-                <dt>websiteor:</dt>
-                <dd>{{websiteorId}}</dd>
-                <dt>Product:</dt>
-                <dd>{{_product.name}}</dd>
-                <dt>Base Price:</dt>
-                <dd>{{base}}</dd>
-                <dt>Maintenance Price:</dt>
-                <dd>{{maintenance}}</dd>
-                <dt>Payment Method:</dt>
-                <dd>{{{paymentMethod}}}</dd>
-                <dt>Type:</dt>
-                <dd>{{type}}</dd>
-                <dt>agentId:</dt>
-                <dd>{{_agent.name}}</dd>
-                <dt>amount:</dt>
-                <dd>{{amount}}</dd>
-                <dt>Des:</dt>
-                <dd>{{des}}</dd>
-            </dl>
-        {{/with}}
-    {{else}}
-        {{> loading}}
-    {{/if}}
+    {{#with this}}
+        <dl class="dl-horizontal">
+            <dt>customer:</dt>
+            <dd>{{customerId}}</dd>
+            <dt>register Date:</dt>
+            <dd>{{registerDate}}</dd>
+            <dt>Website Name:</dt>
+            <dd>{{webName}}</dd>
+            <dt>Type:</dt>
+            <dd>{{type}}</dd>
+            <dt>Price:</dt>
+            <dd>{{price}}</dd>
+            <dt>Description:</dt>
+            <dd>{{des}}</dd>
+        </dl>
+    {{/with}}
 </template>
 <template name="rabbit_serviceLinkAction">
     <button type="button" class="btn btn-primary btn-sm serviceAction">

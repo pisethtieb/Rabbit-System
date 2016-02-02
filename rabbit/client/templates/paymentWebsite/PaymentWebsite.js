@@ -105,15 +105,17 @@ showTpl.helpers({
 
 indexTpl.helpers({
     selector: function () {
-        let id = FlowRouter.getParam('websiteID');
+        let id = FlowRouter.getParam('websiteId');
         //console.log(id);
         return {websiteId: id}
     },
-    contract: function () {
-        let id = FlowRouter.getParam('contractId');
-        let contract = Rabbit.Collection.Contract.findOne({_id: id});
+    website: function () {
+        Meteor.subscribe('rabbit_website');
+        let id = FlowRouter.getParam('websiteId');
+        console.log(id);
+        let website = Rabbit.Collection.Website.findOne({_id: id});
 
-        return contract;
+        return website;
 
     }
 });

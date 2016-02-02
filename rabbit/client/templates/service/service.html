@@ -6,7 +6,7 @@
         <small>
 
             {{#with website}}
-                <a href="#" class="jsInfo">{{_id}} | registerDate : {{registerDate}} |
+                <a href="#" class="jsInfo">{{_id}} | registerDate : {{registerDate}} | WebsiteName: {{webName}}|
                     price : {{price}}|
                     || Customer(company) : {{_customer.companyName}}  |
                     ContractName : {{_customer.contractName}}</a>
@@ -94,24 +94,37 @@
 
 </template>
 <template name="rabbit_serviceShow">
-    <dl class="dl-horizontal">
-        <dt>ID:</dt>
-        <dd>{{_id}}</dd>
-        <dt>name:</dt>
-        <dd>{{name}}</dd>
-        <dt>Service Date:</dt>
-        <dd>{{serviceDate}}</dd>
-        <dt>ContractId:</dt>
-        <dd>{{contractId}}</dd>
-        <dt>Type:</dt>
-        <dd>{{type}}</dd>
-        <dt>Contract Price</dt>
-        <dd>{{contractPrice}}</dd>
-        <dt>Discount</dt>
-        <dd>{{discount}}</dd>
-        <dt>Price</dt>
-        <dd>{{price}}</dd>
-        <dt>Des</dt>
-        <dd>{{des}}</dd>
-    </dl>
+    {{#with this}}
+        <dl class="dl-horizontal">
+            <dt>ID:</dt>
+            <dd>{{_id}}</dd>
+            <dt>name:</dt>
+            <dd>{{websiteId}}</dd>
+            <dt>Service Date:</dt>
+            <dd>{{serviceDate}}</dd>
+            <!--domain-->
+            <dt>DomainPrice:</dt>
+            <dd>{{domainNamePrice}}</dd>
+            <dt>Start Date:</dt>
+            <dd>{{domainNameStartDate}}</dd>
+            <dt>End Date:</dt>
+            <dd>{{domainNameEndDate}}</dd>
+            <!--Hosting-->
+            <dt>Hosting Price:</dt>
+            <dd>{{hostingPrice}}</dd>
+            <dt>Start Date:</dt>
+            <dd>{{hostingStartDate}}</dd>
+            <dt>End Date:</dt>
+            <dd>{{hostingEndDate}}</dd>
+            <!--Hosting-->
+            <dt>Maintenance Price:</dt>
+            <dd>{{maintenancePrice}}</dd>
+            <dt>Start Date:</dt>
+            <dd>{{maintenanceStartDate}}</dd>
+            <dt>End Date:</dt>
+            <dd>{{maintenanceEndDate}}</dd>
+            <dt>Des</dt>
+            <dd>{{des}}</dd>
+        </dl>
+    {{/with}}
 </template>

@@ -31,5 +31,5 @@ Rabbit.TabularTable.Website = new Tabular.Table({
             tmpl: Meteor.isClient && Template.rabbit_paymentWebsiteLinkAction
         }
     ],
-    extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId', 'agentId', 'paymentMethod', 'amount']
+    extraFields: ['customerId']
 });

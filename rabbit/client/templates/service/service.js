@@ -76,14 +76,9 @@ indexTpl.helpers({
     website: function () {
         Meteor.subscribe('rabbit_website');
         let websiteId = FlowRouter.getParam('websiteId');
-        console.log(websiteId)
         let website = Rabbit.Collection.Website.findOne({_id: websiteId});
-        console.log(website);
         return website;
-
-
     }
-
 });
 
 /*Insert*/
@@ -154,10 +149,7 @@ insertTpl.events({
             $('.maintenanceStartDate').attr('disabled', "disabled").val('');
             $('.maintenanceEndDate').attr('disabled', "disabled").val('');
         }
-
     }
-
-
 });
 /**
  * Update
@@ -167,64 +159,72 @@ updateTpl.onCreated(function () {
 });
 
 updateTpl.onRendered(function () {
-    configOnRender();
-    $('.domainNamePrice').attr('disabled', "disabled");
-    $('.domainNameStartDate').attr('disabled', "disabled");
-    $('.domainNameEndDate').attr('disabled', "disabled");
-    // hosting
-    $('.hostingPrice').attr('disabled', "disabled");
-    $('.hostingStartDate').attr('disabled', "disabled");
-    $('.hostingEndDate').attr('disabled', "disabled");
-    // maintenance
-    $('.maintenancePrice').attr('disabled', "disabled");
-    $('.maintenanceStartDate').attr('disabled', "disabled");
-    $('.maintenanceEndDate').attr('disabled', "disabled");
+    Meteor.setTimeout(function () {
+        //if ($('.domainNamePrice').val() != null) {
+        //    $('.domainName').prop('checked', true);
+        //    $('.domainNamePrice').attr('disabled', "disabled");
+        //    $('.domainNameStartDate').attr('disabled', "disabled");
+        //    $('.domainNameEndDate').attr('disabled', "disabled");
+        //    // hosting
+        //    $('.hosting').prop('checked', true);
+        //    $('.hostingPrice').attr('disabled', "disabled");
+        //    $('.hostingStartDate').attr('disabled', "disabled");
+        //    $('.hostingEndDate').attr('disabled', "disabled");
+        //    // maintenance
+        //    $('.maintenance').prop('checked', true);
+        //    $('.maintenancePrice').attr('disabled', "disabled");
+        //    $('.maintenanceStartDate').attr('disabled', "disabled");
+        //    $('.maintenanceEndDate').attr('disabled', "disabled");
+        //}
+        configOnRender();
+
+    }, 200);
 });
 
 
 updateTpl.events({
-    "change .domainName"(e, t){
-
-        if ($('.domainName').is(':checked')) {
-
-            $('.domainNamePrice').removeAttr('disabled');
-            $('.domainNameStartDate').removeAttr('disabled');
-            $('.domainNameEndDate').removeAttr('disabled');
-        } else {
-            $('.domainNamePrice').attr('disabled', "disabled").val('');
-            $('.domainNameStartDate').attr('disabled', "disabled").val('');
-            $('.domainNameEndDate').attr('disabled', "disabled").val('');
-        }
-
-    },
-    "change .hosting"(e, t){
-
-        if ($('.hosting').is(':checked')) {
-
-            $('.hostingPrice').removeAttr('disabled');
-            $('.hostingStartDate').removeAttr('disabled');
-            $('.hostingEndDate').removeAttr('disabled');
-        } else {
-            $('.hostingPrice').attr('disabled', "disabled").val('');
-            $('.hostingStartDate').attr('disabled', "disabled").val('');
-            $('.hostingEndDate').attr('disabled', "disabled").val('');
-        }
-
-    },
-    "change .maintenance"(e, t){
-
-        if ($('.maintenance').is(':checked')) {
-
-            $('.maintenancePrice').removeAttr('disabled');
-            $('.maintenanceStartDate').removeAttr('disabled');
-            $('.maintenanceEndDate').removeAttr('disabled');
-        } else {
-            $('.maintenancePrice').attr('disabled', "disabled").val('');
-            $('.maintenanceStartDate').attr('disabled', "disabled").val('');
-            $('.maintenanceEndDate').attr('disabled', "disabled").val('');
-        }
-
-    }
+    //"change .domainName"(e, t){
+    //
+    //    if ($('.domainName').is(':checked')) {
+    //
+    //        $('.domainNamePrice').removeAttr('disabled');
+    //        $('.domainNameStartDate').removeAttr('disabled');
+    //        $('.domainNameEndDate').removeAttr('disabled');
+    //    } else {
+    //        $('.domainNamePrice').attr('disabled', "disabled").val('');
+    //        $('.domainNameStartDate').attr('disabled', "disabled").val('');
+    //        $('.domainNameEndDate').attr('disabled', "disabled").val('');
+    //    }
+    //
+    //},
+    //"change .hosting"(e, t){
+    //
+    //    if ($('.hosting').is(':checked')) {
+    //
+    //        $('.hostingPrice').removeAttr('disabled');
+    //        $('.hostingStartDate').removeAttr('disabled');
+    //        $('.hostingEndDate').removeAttr('disabled');
+    //    } else {
+    //        $('.hostingPrice').attr('disabled', "disabled").val('');
+    //        $('.hostingStartDate').attr('disabled', "disabled").val('');
+    //        $('.hostingEndDate').attr('disabled', "disabled").val('');
+    //    }
+    //
+    //},
+    //"change .maintenance"(e, t){
+    //
+    //    if ($('.maintenance').is(':checked')) {
+    //
+    //        $('.maintenancePrice').removeAttr('disabled');
+    //        $('.maintenanceStartDate').removeAttr('disabled');
+    //        $('.maintenanceEndDate').removeAttr('disabled');
+    //    } else {
+    //        $('.maintenancePrice').attr('disabled', "disabled").val('');
+    //        $('.maintenanceStartDate').attr('disabled', "disabled").val('');
+    //        $('.maintenanceEndDate').attr('disabled', "disabled").val('');
+    //    }
+    //
+    //}
 });
 //
 //updateTpl.helpers({

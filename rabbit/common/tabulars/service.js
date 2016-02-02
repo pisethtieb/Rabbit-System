@@ -20,7 +20,8 @@ Rabbit.TabularTable.Service = new Tabular.Table({
         {data: "des", title: "Description"},
         {data: "domainNamePrice", title: "Domain Price"},
         {data: "hostingPrice", title: "Hosting Price"},
-        {data: "maintenancePrice", title: "Maintenance Price"},
+        {data: "maintenancePrice", title: "Maintenance Price"}
+
 
     ],
     extraFields: ['domainNameStartDate', 'domainNameEndDate', 'hostingStartDate', 'hostingEndDate', 'maintenanceStartDate', 'maintenanceEndDate']

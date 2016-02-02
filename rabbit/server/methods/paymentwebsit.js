@@ -88,7 +88,19 @@ Meteor.methods({
                 //build
                 buildPrice: paymentWebsite.buildDue,
                 buildPaid: paymentWebsite.buildDue,
-                buildDue: 0
+                buildDue: 0,
+                //
+                domainNamePrice: service.domainNamePrice,
+                domainNamePaid: service.domainNamePrice,
+                domainNameDue: 0,
+                //hosting
+                hostingPrice: service.hostingPrice,
+                hostingPaid: service.hostingPrice,
+                hostingDue: 0,
+                //maintenance
+                maintenancePrice: service.maintenancePrice,
+                maintenancePaid: service.maintenancePrice,
+                maintenanceDue: 0
             }
         }
     }

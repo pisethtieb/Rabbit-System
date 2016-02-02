@@ -6,10 +6,10 @@
     <div class="pull-right" style="display: inline">
         <small>
 
-            {{#with contract}}
-                <a href="#" class="jsInfo">{{_id}} | ContractDate : {{contractDate}} |
-                    Product : {{_product.name}}|
-                    || Customer(company) : {{_customer.companyName}} |
+            {{#with website}}
+                <a href="#" class="jsInfo">{{_id}} | registerDate : {{registerDate}} | WebsiteName: {{webName}}|
+                    price : {{price}}|
+                    || Customer(company) : {{_customer.companyName}}  |
                     ContractName : {{_customer.contractName}}</a>
             {{/with}}
         </small>
@@ -92,11 +92,8 @@
                 </div>
             </div>
         </div>
-
         <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
         <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
-
-
     {{/autoForm}}
 </template>
 <!--Update-->
@@ -140,81 +137,5 @@
         <dd>{{office}}</dd>
     </dl>
 </template>
-<template name="afArrayField_officeCustomArrayField">
-    <div class="panel panel-default">
-        <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
-        <div class="panel-body">
-
-            <div class="row">
-                <div class="col-md-2">
-                    <p><b>WebsiteId</b></p>
-                </div>
-                <div class="col-md-2">
-                    <p><b>Type</b></p>
-                </div>
-                <div class="col-md-2">
-                    <p><b>Price</b></p>
-                </div>
-                <div class="col-md-2">
-                    <p><b>Discount(Amount)</b></p>
-                </div>
-                <div class="col-md-2">
-                    <p><b>Paid Amount</b></p>
-
-                </div>
-                <div class="col-md-2">
-                    <p><b>Due Amount</b></p>
-                </div>
-            </div>
-            {{#if afFieldIsInvalid name=this.atts.name}}
-                <div class="has-error">
-                    <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
-                </div>
-            {{/if}}
-
-            {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
-                <div class="row item-list">
-                    {{> UI.dynamic template=../atts.subtemplate}}
-                    <div class="col-sm-1">
-                    </div>
-                </div>
-            {{/afEachArrayItem}}
-
-            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount
-            maxCount=this.atts.maxCount}}
-                <div class="row">
-                    <div class="col-sm-1 pull-right">
-                    </div>
-                </div>
-            {{/if}}
-
-        </div>
-    </div>
-</template>
 <!--Custom object field-->
-<template name="officeCustomObjectField">
-    <div class="col-sm-2">
-        {{> afQuickField name=current.officeId template="bootstrap3" label=false class="input-sm officeId"
-        placeholder="officeId" readOnly=true }}
-    </div>
-    <div class="col-sm-2">
-        {{> afQuickField name=current.office template="bootstrap3" label=false class="input-sm office" id='price'
-        placeholder="office" readOnly=true }}
-    </div>
-    <div class="col-sm-2">
-        {{> afQuickField name=current.price template="bootstrap3" label=false class="input-sm price" id='price'
-        placeholder="price" readOnly=true}}
-    </div>
-    <div class="col-sm-2">
-        {{> afQuickField name=current.discount template="bootstrap3" label=false class="input-sm discount" id='discount'
-        placeholder="Dis(Amount)" }}
-    </div>
-    <div class="col-sm-2">
-        {{> afQuickField name=current.paidAmount template="bootstrap3" label=false class="input-sm paidAmount"
-        id='paidAmount' placeholder="Paid Amount"}}
-    </div>
-    <div class="col-sm-2">
-        {{> afQuickField name=current.dueAmount template="bootstrap3" label=false class="input-sm dueAmount"
-        id='dueAmount' placeholder="Due Amount" readOnly=true}}
-    </div>
-</template>
+
