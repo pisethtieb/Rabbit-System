@@ -53,8 +53,6 @@ Meteor.methods({
                         maintenanceDue: 0
                     }
                 } else {
-
-
                     return {
                         //build
                         buildPrice: paymentWebsite.buildDue,

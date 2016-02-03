@@ -31,56 +31,75 @@
                 <div style="width: 50%; padding-top: 12px; float: left;">
                     <ul class="list-unstyled">
                         <li>
-                            <strong>Company :</strong> {{header.companyName}}</li>
+                            <strong>Company :</strong> {{header.companyName}}
+                        </li>
                         <li>
-                            <strong>Telephone :</strong> {{header.companyTelephone}}</li>
+                            <strong>Telephone :</strong> {{header.companyTelephone}}
+                        </li>
                         <li>
-                            <strong>ContractName: </strong> {{header.contractName}}</li>
+                            <strong>ContractName: </strong> {{header.contractName}}
+                        </li>
                         <li>
-                            <strong>Telephone: </strong> {{header.telephone}}</li>
+                            <strong>Telephone: </strong> {{header.telephone}}
+                        </li>
                     </ul>
                 </div>
                 <div style="width: 50%; padding-top: 12px; float: right;">
                     <ul class="list-unstyled">
 
                         <li>
-                            <strong>PaymentDate: </strong> {{header.paymentDate}}</li>
+                            <strong>PaymentDate: </strong> {{header.paymentDate}}
+                        </li>
                         <li>
-                            <strong>WebsiteName: </strong> {{header.websiteName}}</li>
+                            <strong>WebsiteName: </strong> {{header.websiteName}}
+                        </li>
                     </ul>
                 </div>
                 <!--Header-->
                 <table class="table">
                     <thead>
                     <tr>
-                        <th>
-                            N<sup>o</sup>
-                        </th>
-                        <th>BPrice</th>
-                        <th>BPaid</th>
-                        <th>BDue</th>
+                        <th>Items</th>
                         <th>Price</th>
-                        <th>Dis(%)</th>
-                        <th>TotalSum</th>
+                        <!--<th>TotalSum</th>-->
                         <th>Paid</th>
-                        <th>Balance</th>
+                        <th>Due</th>
                     </tr>
                     </thead>
                     <tbody>
-                    {{#each content}}
+                    <tr>
+
+                        <td>WebsiteBuild</td>
+                        <td>{{content.buildPrice}}</td>
+                        <td>{{content.buildPaid}}</td>
+                        <td>{{content.buildDue}}</td>
+                    </tr>
+                    {{#if content.domainNamePrice}}
                         <tr>
-                            <td>{{index}}</td>
-                            <td>{{officeName}}</td>
-                            <td>{{office}}</td>
 
-                            <td>{{priceWebsite}}</td>
-                            <td>{{discount}}</td>
-                            <td>{{{sumAmount}}}</td>
-                            <td>{{{paidAmount}}}</td>
-                            <td>{{{dueAmount}}}</td>
+                            <td>Domain</td>
+                            <td>{{content.domainNamePrice}}</td>
+                            <td>{{content.domainNamePaid}}</td>
+                            <td>{{content.domainNameDue}}</td>
                         </tr>
-                    {{/each}}
-
+                    {{/if}}
+                    {{#if content.hostingPrice}}
+                        <tr>
+                            >
+                            <td>Hosting</td>
+                            <td>{{content.hostingPrice}}</td>
+                            <td>{{content.hostingPaid}}</td>
+                            <td>{{content.hostingDue}}</td>
+                        </tr>
+                    {{/if}}
+                    {{#if content.maintenancePrice}}
+                        <tr>
+                            <td>Maintenance</td>
+                            <td>{{content.maintenancePrice}}</td>
+                            <td>{{content.maintenancePaid}}</td>
+                            <td>{{content.maintenanceDue}}</td>
+                        </tr>
+                    {{/if}}
                     </tbody>
                 </table>
 
