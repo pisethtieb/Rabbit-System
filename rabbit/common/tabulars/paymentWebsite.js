@@ -11,6 +11,7 @@ Rabbit.TabularTable.PaymentWebsite = new Tabular.Table({
         {title: '<i class="fa fa-bars"></i>', tmpl: Meteor.isClient && Template.rabbit_paymentWebsiteAction},
         {data: "_id", title: "ID"},
         {data: "websiteId", title: "paymentWebsite ID"},
+        {data: "_customer.contractName", title: "CustomerName"},
         {
             data: "PaymentWebsiteDate", title: "PaymentWebsite Date",
             render: function (val, type, doc) {
@@ -20,8 +21,8 @@ Rabbit.TabularTable.PaymentWebsite = new Tabular.Table({
         {data: "buildPrice", title: "Build"},
         {data: "domainNamePrice", title: "Domain"},
         {data: "hostingPrice", title: "Hosting"},
-        {data: "maintenancePrice", title: "Maintenance"},
+        {data: "maintenancePrice", title: "Maintenance"}
 
     ],
-    extraFields: ['domainNameStartDate', 'domainNameEndDate', 'hostingStartDate', 'hostingEndDate', 'maintenanceStartDate', 'maintenanceEndDate']
+    extraFields: ['domainNamePaid', 'domainNameDue', 'hostingPaid', 'hostingDue', 'maintenancePaid', 'maintenanceDue', 'paymentWebsiteDate', 'buildPaid', 'buildDue', 'customerId']
 });
