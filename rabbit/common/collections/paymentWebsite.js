@@ -129,10 +129,15 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
         label: "Due",
         optional: true,
         decimal: true
-    }
+    },
+    serviceId: {
+        type: String,
+        optional: true
+}
 
 
-});
+})
+;
 // Attach schema
 Rabbit.Collection.PaymentWebsite.attachSchema(Rabbit.Schema.PaymentWebsite);
 

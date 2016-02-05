@@ -39,6 +39,11 @@ Rabbit.Schema.Service = new SimpleSchema({
         label: "EndDate",
         optional: true
     },
+    domainNameOwedAmount: {
+        type: String,
+        label: "OwedAmount",
+        optional: true
+    },
 //    Hosting
     hostingPrice: {
         type: Number,
@@ -54,6 +59,11 @@ Rabbit.Schema.Service = new SimpleSchema({
     hostingEndDate: {
         type: String,
         label: "EndDate",
+        optional: true
+    },
+    hostingOwedAmount: {
+        type: String,
+        label: "OWedAmount",
         optional: true
     },
     //    maintenance
@@ -72,6 +82,11 @@ Rabbit.Schema.Service = new SimpleSchema({
     maintenanceEndDate: {
         type: String,
         label: "EndDate",
+        optional: true
+    },
+    maintenanceOwedAmount: {
+        type: String,
+        label: "OwedAmount",
         optional: true
     }
 });

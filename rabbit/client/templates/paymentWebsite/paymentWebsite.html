@@ -44,6 +44,7 @@
 
 
                         {{> afQuickField name="websiteId" readOnly=true}}
+                        {{> afQuickField name="serviceId" readOnly=true}}
                     </div>
                     <div class="col-md-6">
 
@@ -53,18 +54,18 @@
                 </div>
 
                 <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-6 buildWebsite">
                         <div class="panel panel-default">
                             <div class="panel-heading">Build Website</div>
                             <div class="panel-body">
-
                                 <div class="col-sm-4">{{> afQuickField name="buildPrice" class="buildPrice"  readOnly=true}}</div>
                                 <div class="col-sm-4">{{> afQuickField name="buildPaid" class="buildPaid" }}</div>
                                 <div class="col-sm-4">{{> afQuickField name="buildDue" class="buildDue" readOnly=true}}</div>
                             </div>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 service">
+
                         <div class="panel panel-default">
                             <div class="panel-heading">Service</div>
                             <div class="panel-body">

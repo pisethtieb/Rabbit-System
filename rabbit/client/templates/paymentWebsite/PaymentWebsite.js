@@ -112,9 +112,7 @@ indexTpl.helpers({
     website: function () {
         Meteor.subscribe('rabbit_website');
         let id = FlowRouter.getParam('websiteId');
-        console.log(id);
         let website = Rabbit.Collection.Website.findOne({_id: id});
-
         return website;
 
     }
@@ -128,8 +126,22 @@ insertTpl.helpers({
         paymentWebsite.websiteId = websiteId;
         paymentWebsite.customerId = FlowRouter.getParam('customerId');
         paymentWebsite.paymentWebsiteDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
+        if (paymentWebsite.buildPrice == 0 || paymentWebsite.buildPrice == null) {
+            $('.buildWebsite').hide();
+            paymentWebsite.buildPrice = null;
+            paymentWebsite.buildPaid = null;
+            paymentWebsite.buildDue = null;
+        } else if ((paymentWebsite.domainNamePrice == 0 || paymentWebsite.domainNamePrice == null) && (paymentWebsite.hostingPrice == 0 || paymentWebsite.hostingPrice == null) && (paymentWebsite.maintenancePrice == 0 || paymentWebsite.maintenancePrice == null)) {
+            $('.service').hide();
+        }
         return paymentWebsite;
+
+    },
+    webDesign(){
+
     }
+
+
 });
 insertTpl.onRendered(function () {
     configOnRender();
