@@ -40,8 +40,13 @@ Rabbit.Schema.Service = new SimpleSchema({
         optional: true
     },
     domainNameOwedAmount: {
-        type: String,
+        type: Number,
         label: "OwedAmount",
+        optional: true
+    },
+    domainNameTotalPrice: {
+        type: Number,
+        label: "TotalPrice",
         optional: true
     },
 //    Hosting
@@ -62,8 +67,13 @@ Rabbit.Schema.Service = new SimpleSchema({
         optional: true
     },
     hostingOwedAmount: {
-        type: String,
+        type: Number,
         label: "OWedAmount",
+        optional: true
+    },
+    hostingTotalPrice: {
+        type: Number,
+        label: "TotalPrice",
         optional: true
     },
     //    maintenance
@@ -85,8 +95,13 @@ Rabbit.Schema.Service = new SimpleSchema({
         optional: true
     },
     maintenanceOwedAmount: {
-        type: String,
+        type: Number,
         label: "OwedAmount",
+        optional: true
+    },
+    maintenanceTotalPrice: {
+        type: Number,
+        label: "TotalPrice",
         optional: true
     }
 });
