@@ -110,9 +110,12 @@ insertTpl.helpers({
 );
 insertTpl.events({
     "change .domainName"(e, t){
-
+        let websiteId = FlowRouter.getParam('websiteId');
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({_id: websiteId});
+        debugger;
         if ($('.domainName').is(':checked')) {
-
+            $('.domainNameOwedAmount').val(dueAmount);
+            $('.domainNameTotalPrice').val(dueAmount);
             $('.domainNamePrice').removeAttr('disabled');
             $('.domainNameStartDate').removeAttr('disabled');
             $('.domainNameEndDate').removeAttr('disabled');
