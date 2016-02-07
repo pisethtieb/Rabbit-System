@@ -1,6 +1,5 @@
 Meteor.methods({
     getWebsiteWithPayment(websiteId){
-
         var website = Rabbit.Collection.Website.findOne({_id: websiteId});
         let paymentWebsite = Rabbit.Collection.PaymentWebsite.findOne({websiteId: website._id}, {sort: {_id: -1}});
         let service = Rabbit.Collection.Service.findOne({websiteId: website._id}, {sort: {_id: -1}});
@@ -35,35 +34,34 @@ Meteor.methods({
                             buildDue: 0,
                             //
                             serviceId: service._id,
-                            domainNamePrice: service.domainNamePrice,
-                            domainNamePaid: service.domainNamePrice,
+                            domainNamePrice: service.domainNameTotalPrice,
+                            domainNamePaid: service.domainNameTotalPrice,
                             domainNameDue: 0,
                             //hosting
-                            hostingPrice: service.hostingPrice,
-                            hostingPaid: service.hostingPrice,
+                            hostingPrice: service.hostingTotalPrice,
+                            hostingPaid: service.hostingTotalPrice,
                             hostingDue: 0,
                             //maintenance
-                            maintenancePrice: service.maintenancePrice,
-                            maintenancePaid: service.maintenancePrice,
+                            maintenancePrice: service.maintenanceTotalPrice,
+                            maintenancePaid: service.maintenanceTotalPrice,
                             maintenanceDue: 0
                         }
                     }
                 } else {
-                    console.log('2')
                     if (service._id != paymentWebsite.serviceId) {
 
                         return {
                             serviceId: service._id,
-                            domainNamePrice: service.domainNamePrice,
-                            domainNamePaid: service.domainNamePrice,
+                            domainNamePrice: service.domainNameTotalPrice,
+                            domainNamePaid: service.domainNameTotalPrice,
                             domainNameDue: 0,
                             //hosting
-                            hostingPrice: service.hostingPrice,
-                            hostingPaid: service.hostingPrice,
+                            hostingPrice: service.hostingTotalPrice,
+                            hostingPaid: service.hostingTotalPrice,
                             hostingDue: 0,
                             //maintenance
-                            maintenancePrice: service.maintenancePrice,
-                            maintenancePaid: service.maintenancePrice,
+                            maintenancePrice: service.maintenanceTotalPrice,
+                            maintenancePaid: service.maintenanceTotalPrice,
                             maintenanceDue: 0
                         }
                     }
@@ -86,16 +84,16 @@ Meteor.methods({
                     buildPaid: website.price,
                     buildDue: 0,
                     //service domain
-                    domainNamePrice: service.domainNamePrice,
-                    domainNamePaid: service.domainNamePrice,
+                    domainNamePrice: service.domainNameTotalPrice,
+                    domainNamePaid: service.domainNameTotalPrice,
                     domainNameDue: 0,
                     //hosting
-                    hostingPrice: service.hostingPrice,
-                    hostingPaid: service.hostingPrice,
+                    hostingPrice: service.hostingTotalPrice,
+                    hostingPaid: service.hostingTotalPrice,
                     hostingDue: 0,
                     //maintenance
-                    maintenancePrice: service.maintenancePrice,
-                    maintenancePaid: service.maintenancePrice,
+                    maintenancePrice: service.maintenanceTotalPrice,
+                    maintenancePaid: service.maintenanceTotalPrice,
                     maintenanceDue: 0
                 }
             } else {

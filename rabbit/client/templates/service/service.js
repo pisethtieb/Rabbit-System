@@ -112,12 +112,12 @@ insertTpl.events({
     "change .domainName"(e, t){
         let websiteId = FlowRouter.getParam('websiteId');
         //Meteor.subscribe('rabbit_paymentWebsite');
-        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}}).domainNameDue;
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
         debugger;
         if ($('.domainName').is(':checked')) {
             if (dueAmount != null) {
-                $('.domainNameOwedAmount').val(dueAmount);
-                $('.domainNameTotalPrice').val(dueAmount);
+                $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
+                $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
             }
             $('.domainNamePrice').removeAttr('disabled');
             $('.domainNameStartDate').removeAttr('disabled');
@@ -129,19 +129,27 @@ insertTpl.events({
         }
     },
     "keyup .domainNamePrice"(e, t){
-        let price = $(e.currentTarget);
+
+        let price = $(e.currentTarget).val();
         let owedAmount = $('.domainNameOwedAmount').val();
-        $('.domainNameTotalPrice').val(price + owedAmount);
+        if (owedAmount == '') {
+            owedAmount = 0;
+            $('.domainNameTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+
+        } else {
+            $('.domainNameTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        }
+        debugger;
     },
     "change .hosting"(e, t){
         let websiteId = FlowRouter.getParam('websiteId');
         //Meteor.subscribe('rabbit_paymentWebsite');
-        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}}).hostingDue;
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
         if ($('.hosting').is(':checked')) {
 
             if (dueAmount != null) {
-                $('.hostingOwedAmount').val(dueAmount);
-                $('.hostingTotalPrice').val(dueAmount);
+                $('.hostingOwedAmount').val(dueAmount.hostingDue);
+                $('.hostingTotalPrice').val(dueAmount.hostingDue);
             }
             $('.hostingPrice').removeAttr('disabled');
             $('.hostingStartDate').removeAttr('disabled');
@@ -153,15 +161,28 @@ insertTpl.events({
         }
 
     },
+    "keyup .hostingPrice"(e, t){
+
+        let price = $(e.currentTarget).val();
+        let owedAmount = $('.hostingOwedAmount').val();
+        if (owedAmount == '') {
+            owedAmount = 0;
+            $('.hostingTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        } else {
+            $('.hostingTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        }
+
+
+    },
     "change .maintenance"(e, t){
         let websiteId = FlowRouter.getParam('websiteId');
         //Meteor.subscribe('rabbit_paymentWebsite');
-        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}}).maintenanceDue;
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
 
         if ($('.maintenance').is(':checked')) {
             if (dueAmount != null) {
-                $('.maintenanceOwedAmount').val(dueAmount);
-                $('.maintenanceTotalPrice').val(dueAmount);
+                $('.maintenanceOwedAmount').val(dueAmount.maintenanceDue);
+                $('.maintenanceTotalPrice').val(dueAmount.maintenanceDue);
             }
             $('.maintenancePrice').removeAttr('disabled');
             $('.maintenanceStartDate').removeAttr('disabled');
@@ -171,7 +192,21 @@ insertTpl.events({
             $('.maintenanceStartDate').attr('disabled', "disabled").val('');
             $('.maintenanceEndDate').attr('disabled', "disabled").val('');
         }
+    },
+    "keyup .maintenancePrice"(e, t){
+
+        let price = $(e.currentTarget).val();
+        let owedAmount = $('.maintenanceOwedAmount').val();
+        if (owedAmount == '') {
+            owedAmount = 0;
+            $('.maintenanceTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        } else {
+            $('.maintenanceTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        }
+
+
     }
+
 });
 /**
  * Update
