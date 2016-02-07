@@ -111,11 +111,14 @@ insertTpl.helpers({
 insertTpl.events({
     "change .domainName"(e, t){
         let websiteId = FlowRouter.getParam('websiteId');
-        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({_id: websiteId});
+        //Meteor.subscribe('rabbit_paymentWebsite');
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}}).domainNameDue;
         debugger;
         if ($('.domainName').is(':checked')) {
-            $('.domainNameOwedAmount').val(dueAmount);
-            $('.domainNameTotalPrice').val(dueAmount);
+            if (dueAmount != null) {
+                $('.domainNameOwedAmount').val(dueAmount);
+                $('.domainNameTotalPrice').val(dueAmount);
+            }
             $('.domainNamePrice').removeAttr('disabled');
             $('.domainNameStartDate').removeAttr('disabled');
             $('.domainNameEndDate').removeAttr('disabled');
@@ -124,12 +127,22 @@ insertTpl.events({
             $('.domainNameStartDate').attr('disabled', "disabled").val('');
             $('.domainNameEndDate').attr('disabled', "disabled").val('');
         }
-
+    },
+    "keyup .domainNamePrice"(e, t){
+        let price = $(e.currentTarget);
+        let owedAmount = $('.domainNameOwedAmount').val();
+        $('.domainNameTotalPrice').val(price + owedAmount);
     },
     "change .hosting"(e, t){
-
+        let websiteId = FlowRouter.getParam('websiteId');
+        //Meteor.subscribe('rabbit_paymentWebsite');
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}}).hostingDue;
         if ($('.hosting').is(':checked')) {
 
+            if (dueAmount != null) {
+                $('.hostingOwedAmount').val(dueAmount);
+                $('.hostingTotalPrice').val(dueAmount);
+            }
             $('.hostingPrice').removeAttr('disabled');
             $('.hostingStartDate').removeAttr('disabled');
             $('.hostingEndDate').removeAttr('disabled');
@@ -141,9 +154,15 @@ insertTpl.events({
 
     },
     "change .maintenance"(e, t){
+        let websiteId = FlowRouter.getParam('websiteId');
+        //Meteor.subscribe('rabbit_paymentWebsite');
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}}).maintenanceDue;
 
         if ($('.maintenance').is(':checked')) {
-
+            if (dueAmount != null) {
+                $('.maintenanceOwedAmount').val(dueAmount);
+                $('.maintenanceTotalPrice').val(dueAmount);
+            }
             $('.maintenancePrice').removeAttr('disabled');
             $('.maintenanceStartDate').removeAttr('disabled');
             $('.maintenanceEndDate').removeAttr('disabled');
