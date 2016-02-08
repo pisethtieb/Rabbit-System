@@ -17,33 +17,46 @@ Meteor.methods({
         /****** Header *****/
         //data.header = params;
         let paymentWebsite = Rabbit.Collection.PaymentWebsite.findOne(paymentWebsiteId);
-        let website = Rabbit.Collection.PaymentWebsite.find({
-            websiteId: paymentWebsite.websiteId
-        });
+        paymentWebsite.domainNamePrice = paymentWebsite.domainNamePrice == null ? 0 : paymentWebsite.domainNamePrice;
+        paymentWebsite.domainNamePaid = paymentWebsite.domainNamePaid == null ? 0 : paymentWebsite.domainNamePaid;
+        paymentWebsite.domainNameDue = paymentWebsite.domainNameDue == null ? 0 : paymentWebsite.domainNameDue;
+        paymentWebsite.hostingPrice = paymentWebsite.hostingPrice == null ? 0 : paymentWebsite.hostingPrice;
+        paymentWebsite.hostingPaid = paymentWebsite.hostingPaid == null ? 0 : paymentWebsite.hostingPaid;
+        paymentWebsite.hostingDue = paymentWebsite.hostingDue == null ? 0 : paymentWebsite.hostingDue;
+        paymentWebsite.maintenancePrice = paymentWebsite.maintenancePrice == null ? 0 : paymentWebsite.maintenancePrice;
+        paymentWebsite.maintenancePaid = paymentWebsite.maintenancePaid == null ? 0 : paymentWebsite.maintenancePaid;
+        paymentWebsite.miantenanceDue = paymentWebsite.miantenanceDue == null ? 0 : paymentWebsite.miantenanceDue;
+        paymentWebsite.buildPaid = paymentWebsite.buildPaid == null ? 0 : paymentWebsite.buildPaid;
+        paymentWebsite.buildDue = paymentWebsite.buildDue == null ? 0 : paymentWebsite.buildDue;
+        //let website = Rabbit.Collection.PaymentWebsite.find({
+        //    websiteId: paymentWebsite.websiteId
+        //});
         let getPrice = Rabbit.Collection.Website.findOne(paymentWebsite.websiteId);
         data.buildPrice = getPrice.price;
-        if (paymentWebsite.buildDue == '' || paymentWebsite.buildDue == null) {
-            paymentWebsite.buildDue = 0;
-            data.builSumPaid = getPrice.price - paymentWebsite.buildDue;
-            data.buildDue = paymentWebsite.buildDue;
-            data.footer.totalPaid = data.builSumPaid + paymentWebsite.domainNamePaid + paymentWebsite.hostingPaid + paymentWebsite.maintenancePaid;
 
-        } else {
-            data.builSumPaid = getPrice.price - paymentWebsite.buildDue;
-            data.buildDue = paymentWebsite.buildDue;
+        data.builSumPaid = getPrice.price - paymentWebsite.buildDue;
+        data.buildDue = paymentWebsite.buildDue;
 
 
-        }
         data.header = paymentWebsite._customer;
         data.content = paymentWebsite;
         data.header.paymentDate = paymentWebsite.paymentWebsiteDate;
         data.header.websiteName = paymentWebsite._website.webName;
+        //console.log(paymentWebsite.buildDue);
+        //console.log(paymentWebsite.domainNameDue);
+        //console.log(paymentWebsite.hostingDue);
+
+        if (paymentWebsite.maintenanceDue == null) {
+            paymentWebsite.maintenanceDue = 0;
+        }
 
         let total = getPrice.price + paymentWebsite.domainNamePrice + paymentWebsite.hostingPrice + paymentWebsite.maintenancePrice;
         let due = paymentWebsite.buildDue + paymentWebsite.domainNameDue + paymentWebsite.hostingDue + paymentWebsite.maintenanceDue;
+        let totalPaid = data.builSumPaid + paymentWebsite.domainNamePaid + paymentWebsite.hostingPaid + paymentWebsite.maintenancePaid;
 
         data.footer.total = total;
         data.footer.due = due;
+        data.footer.totalPaid = totalPaid;
         return data
 
     }
