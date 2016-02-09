@@ -1,10 +1,10 @@
 <!--Form-->
-<template name="rabbit_websiteReport">
-    {{#autoForm schema=Rabbit.Schema.WebsiteReport id="rabbit_websiteReport" action="websiteReportGen" target="_blank"}}
+<template name="rabbit_serviceReport">
+    {{#autoForm schema=Rabbit.Schema.ServiceReport id="rabbit_serviceReport" action="serviceReportGen" target="_blank"}}
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name="branch"}}
-                {{> afQuickField name="customerId"}}
+                <!--{{> afQuickField name="customerId"}}-->
             </div>
             <div class="col-md-6">
                 {{> afQuickField name="date"}}
@@ -17,7 +17,7 @@
 </template>
 
 <!--Generate-->
-<template name="rabbit_websiteReportGen">
+<template name="rabbit_serviceReportGen">
     <!--Is ready-->
     {{#if data}}
         {{#reportTpl options}}
@@ -37,7 +37,7 @@
                   <span class="report-company-name"
                         style="font-family: 'Khmer OS Muol">{{khName}}</span><br>
                                     <span class="report-company-name">{{enName}}</span><br>
-                                    <u>Website Report</u><br>
+                                    <u>Service Report</u><br>
                                     {{khAddress}}, {{telephone}}
                                 </td>
 
@@ -67,13 +67,18 @@
                     <tr>
                         <th>No</th>
                         <th>ID</th>
-                        <th>Register Date</th>
-                        <th>Website Name</th>
-                        <th>Company Name</th>
-                        <th>contract Name</th>
-                        <th>Tel</th>
-
-                        <th>Price</th>
+                        <th>ServiceDate</th>
+                        <th>WebsiteId</th>
+                        <th>Cus Name</th>
+                        <th>Domain</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Hosting</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Hosting</th>
+                        <th>Start</th>
+                        <th>End</th>
                     </tr>
                     </thead>
                     <tbody class="content-body">
@@ -81,23 +86,36 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
-                            <td>{{registerDate}}</td>
-                            <td>{{webName}}</td>
-                            <td>{{_customer.companyName}}</td>
-                            <td>{{_customer.contractName}}</td>
-                            <td>{{_customer.telephone}}</td>
-
-                            <td>{{numFormat price "$0,0.00"}}</td>
+                            <td>{{serviceDate}}</td>
+                            <td>{{websiteId}}</td>
+                            <td>{{_website._customer.contractName}}</td>
+                            <td>{{numFormat domainNamePrice "$0,0.00"}}</td>
+                            <td>{{domainNameStartDate}}</td>
+                            <td>{{domainNameEndDate}}</td>
+                            <td>{{numFormat hostingPrice "$0,0.00"}}</td>
+                            <td>{{hostingStartDate}}</td>
+                            <td>{{hostingEndDate}}</td>
+                            <td>{{numFormat maintenancePrice "$0,0.00"}}</td>
+                            <td>{{maintenanceStartDate}}</td>
+                            <td>{{maintenanceEndDate}}</td>
 
                         </tr>
                     {{/each}}
                     </tbody>
                     <tbody class="content-body">
+                    <tr>
+                        <td colspan="11"></td>
+                        <td>Domain</td>
+                        <td>Hosting</td>
+                        <td>Maintenance</td>
+                    </tr>
                     <tr class="">
-                        <td colspan="7" align="right">
+                        <td colspan="11" align="right">
                             Total :
                         </td>
-                        <td>{{footer.total}}</td>
+                        <td>{{numFormat footer.totalDomainName "$0,0.00"}}</td>
+                        <td>{{numFormat footer.totalHosting "$0,0.00"}}</td>
+                        <td>{{numFormat footer.totalMaintenance "$0,0.00"}}</td>
                     </tr>
                     </tbody>
                 </table>

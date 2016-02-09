@@ -1,5 +1,5 @@
 Meteor.methods({
-    rabbit_websiteReport: function (params) {
+    rabbit_serviceReport: function (params) {
         var data = {
             title: {},
             header: {},
@@ -24,7 +24,7 @@ Meteor.methods({
         /****** Content *****/
         var content = [];
         var selector = {};
-        selector.registerDate = {$gte: fDate, $lte: tDate};
+        selector.serviceDate = {$gte: fDate, $lte: tDate};
 
 
         //
@@ -36,13 +36,21 @@ Meteor.methods({
             selector.customerId = params.customerId;
         }
         var index = 1;
-        let total = 0;
-        Rabbit.Collection.Website.find(selector)
+        let totalDomainName = 0;
+        let totalHosting = 0;
+        let totalMaintenance = 0;
+        Rabbit.Collection.Service.find(selector)
             .forEach(function (obj) {
-                obj.index = index;
-                total += obj.price;
-                console.log(obj.price);
 
+
+                obj.index = index;
+                //total += obj.price;
+                obj.domainNamePrice = obj.domainNamePrice == null ? 0 : obj.domainNamePrice;
+                obj.hostingPrice = obj.hostingPrice == null ? 0 : obj.hostingPrice;
+                obj.maintenancePrice = obj.maintenancePrice == null ? 0 : obj.maintenancePrice;
+                totalDomainName += obj.domainNamePrice;
+                totalHosting += obj.hostingPrice;
+                totalMaintenance += obj.maintenancePrice;
                 content.push(obj);
 
                 index++;
@@ -50,7 +58,9 @@ Meteor.methods({
 
         if (content.length > 0) {
             data.content = content;
-            data.footer.total = numeral(total).format('$0,0.00');
+            data.footer.totalDomainName = totalDomainName;
+            data.footer.totalHosting = totalHosting;
+            data.footer.totalMaintenance = totalMaintenance;
         }
         if (params.branch == '') {
             params.branch = 'All'
@@ -58,13 +68,13 @@ Meteor.methods({
             params.branch = params.branch;
         }
 
-        if (params.customerId == '') {
-            params.customerId = 'All'
-
-        } else {
-
-            params.customerId = Rabbit.Collection.Customer.findOne({_id: params.customerId}).companyName;
-        }
+        //if (params.customerId == '') {
+        //    params.customerId = 'All'
+        //
+        //} else {
+        //
+        //    params.customerId = Rabbit.Collection.Customer.findOne({_id: params.customerId}).companyName;
+        //}
         /****** Header *****/
         data.header = params;
 
