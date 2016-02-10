@@ -19,7 +19,9 @@
 <!--Generate-->
 <template name="rabbit_paymentWebsiteReportGen">
     <!--Is ready-->
+
     {{#if data}}
+  
         {{#reportTpl options}}
 
             {{#with data}}
@@ -63,19 +65,30 @@
 
                 <!--Content-->
                 <table class="report-content">
-                    <thead class="content-header">
+                    <thead class="content-heatenanceDue}}}</td>
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                    <tbody class="content-body">
                     <tr>
-                        <th>No</th>
+                        <td colspan="6"
                         <th>ID</th>
                         <th>Date</th>
                         <th>WebsiteId</th>
                         <th>Cus Name</th>
                         <th>Tel</th>
                         <th>Design</th>
-                        <th>paid</th>
+                        <th>Paid</th>
                         <th>Due</th>
-                        <th>paid</th>
-                        <th>Balance</th>
+                        <th>Domain</th>
+                        <th>Paid</th>
+                        <th>Due</th>
+                        <th>Hosting</th>
+                        <th>Paid</th>
+                        <th>Due</th>
+                        <th>Maintenance</th>
+                        <th>Paid</th>
+                        <th>Due</th>
 
                     </tr>
                     </thead>
@@ -85,15 +98,21 @@
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
                             <td>{{paymentWebsiteDate}}</td>
-                            <td>{{contractId}}</td>
+                            <td>{{websiteId}}</td>
                             <td>{{_customer.contractName}}</td>
                             <td>{{_customer.telephone}}</td>
-                            <td>{{product.name}}</td>
-                            <td>{{{paymentWebsite}}}</td>
-                            <td>{{{amount}}}</td>
-                            <td>{{{paid}}}</td>
-                            <td>{{{due}}}</td>
-
+                            <td>{{buildPrice}}</td>
+                            <td>{{buildPaid}}</td>
+                            <td>{{buildDue}}</td>
+                            <td>{{{domainNamePrice}}}</td>
+                            <td>{{{domainNamePaid}}}</td>
+                            <td>{{{domainNameDue}}}</td>
+                            <td>{{{hostingPrice}}}</td>
+                            <td>{{{hostingPaid}}}</td>
+                            <td>{{{hostingDue}}}</td>
+                            <td>{{{maintenancePrice}}}</td>
+                            <td>{{{maintenancePaid}}}</td>
+                            <td>{{{maintenanceDue}}}</td>
                         </tr>
                     {{/each}}
                     </tbody>
