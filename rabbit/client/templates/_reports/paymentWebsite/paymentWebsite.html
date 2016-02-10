@@ -1,0 +1,125 @@
+<!--Form-->
+<template name="rabbit_paymentWebsiteReport">
+    {{#autoForm schema=Rabbit.Schema.PaymentWebsiteReport id="rabbit_paymentWebsiteReport" action="paymentWebsiteReportGen" target="_blank"}}
+        <div class="row">
+            <div class="col-md-6">
+                {{> afQuickField name="branch"}}
+            </div>
+            <div class="col-md-6">
+                <!--{{> afQuickField name="officeId"}}-->
+                {{> afQuickField name="date"}}
+
+                <button type="submit" class="btn btn-primary">{{fa "file-text"}} Generate</button>
+                <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+            </div>
+        </div>
+    {{/autoForm}}
+</template>
+
+<!--Generate-->
+<template name="rabbit_paymentWebsiteReportGen">
+    <!--Is ready-->
+    {{#if data}}
+        {{#reportTpl options}}
+
+            {{#with data}}
+                {{#with title}}
+                    <div class="title">
+                        <table class="report-title" style="width:100%;">
+                            <tr align="center">
+
+                                <td colspan="2">
+                                <td>
+                                    <img src="/rabbit1.png">&nbsp;
+                                </td>
+
+                                <td>
+                  <span class="report-company-name"
+                        style="font-family: 'Khmer OS Muol">{{khName}}</span><br>
+                                    <span class="report-company-name">{{enName}}</span><br>
+                                    <u>paymentWebsite Report</u><br>
+                                    {{khAddress}}, {{telephone}}
+                                </td>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                {{/with}}
+
+                <!--Header-->
+                {{#with header}}
+                    <div style="width: 100%">
+                        <div style="width: 50%; float: left">
+                            <div><strong>Branch:</strong> {{branch}}</div>
+                            <div><strong>ContractId:</strong> {{contractId}}</div>
+                        </div>
+
+                        <div style="width: 50%; float: right">
+                            <div><strong>Date:</strong> {{date}}</div>
+                        </div>
+                    </div>
+                {{/with}}
+
+                <!--Content-->
+                <table class="report-content">
+                    <thead class="content-header">
+                    <tr>
+                        <th>No</th>
+                        <th>ID</th>
+                        <th>Date</th>
+                        <th>WebsiteId</th>
+                        <th>Cus Name</th>
+                        <th>Tel</th>
+                        <th>Design</th>
+                        <th>paid</th>
+                        <th>Due</th>
+                        <th>paid</th>
+                        <th>Balance</th>
+
+                    </tr>
+                    </thead>
+                    <tbody class="content-body">
+                    {{#each content}}
+                        <tr>
+                            <td>{{index}}</td>
+                            <td>{{_id}}</td>
+                            <td>{{paymentWebsiteDate}}</td>
+                            <td>{{contractId}}</td>
+                            <td>{{_customer.contractName}}</td>
+                            <td>{{_customer.telephone}}</td>
+                            <td>{{product.name}}</td>
+                            <td>{{{paymentWebsite}}}</td>
+                            <td>{{{amount}}}</td>
+                            <td>{{{paid}}}</td>
+                            <td>{{{due}}}</td>
+
+                        </tr>
+                    {{/each}}
+                    </tbody>
+                    <tbody class="content-body">
+                    <tr>
+                        <td colspan="8" align="right">
+                            Total :
+                        </td>
+                        <td>{{footer.totalPrice}}</td>
+                        <td>{{footer.totalPaidAmount}}</td>
+                        <td>{{footer.totalDueAmount}}</td>
+                    </tr>
+                    </tbody>
+                </table>
+
+            {{/with}}
+
+            <!--Sign-->
+            {{> signFooter}}
+
+        {{/reportTpl}}
+
+        <!--Auto print-->
+        <!--{{autoprint close="true"}}-->
+
+    {{else}}
+        {{> loading}}
+    {{/if}}
+</template>
