@@ -24,6 +24,7 @@ Meteor.methods({
         let total = 0;
         let totalPaidAmount = 0;
         var contracts = Rabbit.Collection.Contract.find(selector);
+
         contracts.forEach(function (obj) {
             let offPayment = Rabbit.Collection.PaymentOffice.findOne({
                 contractId: obj._id,
@@ -40,31 +41,6 @@ Meteor.methods({
                         " |" + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
                         "</li>";
                 });
-                //var str = "<table class='table table-bordered'><thead>" +
-                //    "<tr>" +
-                //    "<th>OffId</th>" +
-                //    "<th>type</th>" +
-                //    "<th>pri</th>" +
-                //    "<th>dis</th>" +
-                //    "<th>paid</th>" +
-                //    "<th>due</th>" +
-                //    "</tr>" +
-                //    "</thead><tbody>";
-                //offPayment.office.forEach(function (o) {
-                //    o.discount = o.discount == null ? 0 : o.discount;
-                //    o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
-                //    str += '<tr>' +
-                //        '<td>' + o.officeId + '</td>' +
-                //        '<td>' + o.office + '</td>' +
-                //        '<td>' + o.price + '</td>' +
-                //        '<td>' + o.discount + '</td>' +
-                //        '<td>' + o.paidAmount + '</td>' +
-                //        '<td>' + o.dueAmount + '</td>' +
-                //        '</tr>'
-                //});
-                //str += "</tbody></table>";
-
-
                 let product = Rabbit.Collection.Product.findOne({_id: offPayment._contract.productId});
                 let amount = 0;
                 let paidAmount = 0;

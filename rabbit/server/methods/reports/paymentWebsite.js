@@ -3,7 +3,7 @@ Meteor.methods({
         var data = {
             title: {},
             header: {},
-            content: [{}],
+            content: [],
             footer: {}
         };
         //exchange = Cpanel.Collection.Exchange.findOne(exchangeId);

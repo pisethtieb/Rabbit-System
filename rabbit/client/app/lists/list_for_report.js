@@ -62,5 +62,15 @@ Rabbit.ListForReport = {
             });
 
         return list;
+    } ,
+    website: function () {
+        var list = [];
+        list.push({label: "(Select All)", value: ""});
+        Rabbit.Collection.Website.find()
+            .forEach(function (obj) {
+                list.push({label: obj._id + ' : ' + obj.webName+'|'+obj.registerDate, value: obj._id});
+            });
+
+        return list;
     }
 };
