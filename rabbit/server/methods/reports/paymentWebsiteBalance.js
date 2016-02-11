@@ -59,14 +59,6 @@ Meteor.methods({
             if (paymentWebsite != null) {
 
 
-                //console.log(paymentWebsite) //if (paymentWebsite.domainNamePrice == undefined) {
-                //    console.log('hello');
-                //if (paymentWebsite.domainNamePrice == null || paymentWebsite.domainNamePrice == null) {
-                //    paymentWebsite.domainNamePrice = 0;
-                //    paymentWebsite.domainNamePaid = 0;
-                //    paymentWebsite.domainNameDue = 0;
-                //}
-
                 paymentWebsite.domainNamePrice = paymentWebsite.domainNamePrice == null ? 0 : paymentWebsite.domainNamePrice;
                 paymentWebsite.domainNamePaid = paymentWebsite.domainNamePaid == null ? 0 : paymentWebsite.domainNamePaid;
                 paymentWebsite.domainNameDue = paymentWebsite.domainNameDue == null ? 0 : paymentWebsite.domainNameDue;
@@ -79,28 +71,29 @@ Meteor.methods({
                 paymentWebsite.buildPrice = paymentWebsite.buildPrice == null ? 0 : paymentWebsite.buildPrice;
                 paymentWebsite.buildPaid = paymentWebsite.buildPaid == null ? 0 : paymentWebsite.buildPaid;
                 paymentWebsite.buildDue = paymentWebsite.buildDue == null ? 0 : paymentWebsite.buildDue;
+                if (paymentWebsite.buildDue > 0 || paymentWebsite.maintenanceDue > 0 || paymentWebsite.hostingDue > 0 || paymentWebsite.domainNameDue > 0) {
+                    totalBuidPrice += paymentWebsite.buildPrice;
+                    totalBuildDue += paymentWebsite.buildDue;
+                    totalBuildPaid += paymentWebsite.buildPaid;
 
-                totalBuidPrice += paymentWebsite.buildPrice;
-                totalBuildDue += paymentWebsite.buildDue;
-                totalBuildPaid += paymentWebsite.buildPaid;
+                    totalDomainNamePrice += paymentWebsite.domainNamePrice;
+                    totalDomainNamePaid += paymentWebsite.domainNamePaid;
+                    totalDomainNameDue += paymentWebsite.domainNameDue;
 
-                totalDomainNamePrice += paymentWebsite.domainNamePrice;
-                totalDomainNamePaid += paymentWebsite.domainNamePaid;
-                totalDomainNameDue += paymentWebsite.domainNameDue;
+                    totalHostingPrice += paymentWebsite.hostingPrice;
+                    totalHostingPaid += paymentWebsite.hostingPaid;
+                    totalHostingDue += paymentWebsite.hostingDue;
 
-                totalHostingPrice += paymentWebsite.hostingPrice;
-                totalHostingPaid += paymentWebsite.hostingPaid;
-                totalHostingDue += paymentWebsite.hostingDue;
-
-                totalMaintenancePrice += paymentWebsite.maintenancePrice;
-                totalMaintenancePaid += paymentWebsite.maintenancePaid;
-                if (paymentWebsite.maintenanceDue == undefined) {
-                    paymentWebsite.maintenanceDue = 0;
+                    totalMaintenancePrice += paymentWebsite.maintenancePrice;
+                    totalMaintenancePaid += paymentWebsite.maintenancePaid;
+                    if (paymentWebsite.maintenanceDue == undefined) {
+                        paymentWebsite.maintenanceDue = 0;
+                    }
+                    totalMaintenanceDue += paymentWebsite.maintenanceDue;
+                    index++;
+                    paymentWebsite.index = index;
+                    data.content.push(paymentWebsite)
                 }
-                totalMaintenanceDue += paymentWebsite.maintenanceDue;
-                index++;
-                paymentWebsite.index = index;
-                data.content.push(paymentWebsite)
             }
         });
         if (data.content.length > 0) {
