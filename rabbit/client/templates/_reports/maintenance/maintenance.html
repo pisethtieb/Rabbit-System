@@ -95,9 +95,9 @@
                             <td>{{type}}</td>
                             <td>{{startDate}}</td>
                             <td>{{endDate}}</td>
-                            <td>{{contractPrice}}</td>
-                            <td>{{discount}}</td>
-                            <td>{{price}}</td>
+                            <td>{{numFormat contractPrice "$0,0.00"}}</td>
+                            <td>{{numFormat discount "$0,0.00"}}</td>
+                            <td>{{numFormat price "$0,0.00"}}</td>
                         </tr>
                     {{/each}}
                     </tbody>

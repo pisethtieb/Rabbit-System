@@ -122,6 +122,11 @@ insertTpl.helpers({
         return FlowRouter.getParam('customerId');
     }
 });
+updateTpl.onRendered(function () {
+    Meteor.setTimeout(function () {
+        configOnRender();
+    }, 200);
+});
 insertTpl.events({
     'change .productId': function (e, t) {
         let productId = $(e.currentTarget).val();

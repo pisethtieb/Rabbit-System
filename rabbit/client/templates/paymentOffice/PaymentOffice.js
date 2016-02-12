@@ -423,6 +423,11 @@ updateTpl.events({
         }
     }
 });
+updateTpl.onRendered(function () {
+    Meteor.setTimeout(function () {
+        configOnRender();
+    }, 200);
+});
 
 AutoForm.hooks({
     // PaymentOffice

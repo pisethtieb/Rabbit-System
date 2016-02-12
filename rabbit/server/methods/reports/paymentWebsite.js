@@ -3,7 +3,7 @@ Meteor.methods({
         var data = {
             title: {},
             header: {},
-            content: [],
+            content: [{index: 'No Result'}],
             footer: {}
         };
         //exchange = Cpanel.Collection.Exchange.findOne(exchangeId);
@@ -87,9 +87,10 @@ Meteor.methods({
                 totalMaintenanceDue += obj.maintenanceDue;
             }
             totalMaintenanceDue += obj.maintenanceDue;
-            index++;
+
             obj.index = index;
-            data.content.push(obj)
+            data.content.push(obj);
+            index++;
         });
         if (data.content.length > 0) {
             // data.content = content;

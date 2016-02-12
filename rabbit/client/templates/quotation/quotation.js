@@ -137,8 +137,9 @@ insertTpl.events({
 //});
 
 updateTpl.onRendered(function () {
-    configOnRender();
-
+    Meteor.setTimeout(function () {
+        configOnRender();
+    }, 200);
     var type = $('#type').val();
     if (type == 'product') {
         $('#testing').hide();

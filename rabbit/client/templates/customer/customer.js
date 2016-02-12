@@ -98,7 +98,9 @@ updateTpl.onCreated(function () {
 });
 
 updateTpl.onRendered(function () {
-    configOnRender();
+    Meteor.setTimeout(function () {
+        configOnRender();
+    }, 200);
 });
 
 updateTpl.helpers({

@@ -32,7 +32,7 @@ Meteor.methods({
             //selector.branchId = params.branch;
         }
         if (!_.isEmpty(params.websiteId)) {
-            selector.websiteId = params.websiteId
+            selector._id = params.websiteId
         }
         var index = 1;
         let totalBuildPrice = 0,
@@ -89,16 +89,12 @@ Meteor.methods({
                         paymentWebsite.maintenanceDue = 0;
                     }
                     totalMaintenanceDue += paymentWebsite.maintenanceDue;
-
                     data.content.push(paymentWebsite);
-
-                }else {
-
-                    index= 'No Result'
-                    data.content.push(index)
+                    index++;
                 }
-                index++;
             }
+
+
         });
         if (data.content.length > 0) {
             // data.content = content;

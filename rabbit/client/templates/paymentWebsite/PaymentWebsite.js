@@ -359,7 +359,11 @@ AutoForm.hooks({
         }
     }
 });
-
+updateTpl.onRendered(function () {
+    Meteor.setTimeout(function () {
+        configOnRender();
+    }, 200);
+});
 var configOnRender = function () {
     // date
     var dob = $('[name="paymentWebsiteDate"]');

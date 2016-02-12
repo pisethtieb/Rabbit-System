@@ -89,9 +89,10 @@ insertTpl.events({
 updateTpl.onCreated(function () {
     this.subscribe('rabbit_product', this.data._id);
 });
-
 updateTpl.onRendered(function () {
-    configOnRender();
+    Meteor.setTimeout(function () {
+        configOnRender();
+    }, 200);
 });
 
 updateTpl.helpers({

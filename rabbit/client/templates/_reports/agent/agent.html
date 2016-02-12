@@ -51,7 +51,7 @@
                     <div style="width: 100%">
                         <div style="width: 50%; float: left">
                             <div><strong>Branch:</strong> {{branch}}</div>
-                            <div><strong>agentId:</strong> {{agentId}}</div>
+                            <div><strong>AgentId:</strong> {{agentId}}</div>
                         </div>
 
                         <div style="width: 50%; float: right">
@@ -84,7 +84,7 @@
 
 
                             <td>{{_agent.telephone}}</td>
-                            <td>{{amount}}</td>
+                            <td>{{numFormat amount "$0,0.00"}}</td>
 
                         </tr>
                     {{/each}}
