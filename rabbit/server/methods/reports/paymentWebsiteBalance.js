@@ -35,8 +35,7 @@ Meteor.methods({
             selector.websiteId = params.websiteId
         }
         var index = 1;
-        let total = 0;
-        let totalBuidPrice = 0,
+        let totalBuildPrice = 0,
             totalBuildPaid = 0,
             totalBuildDue = 0,
             totalDomainNamePrice = 0,
@@ -47,7 +46,7 @@ Meteor.methods({
             totalHostingDue = 0,
             totalMaintenancePrice = 0,
             totalMaintenancePaid = 0,
-            totalMaintenanceDue = 0
+            totalMaintenanceDue = 0;
 
         let website = Rabbit.Collection.Website.find(selector);
         website.forEach(function (o) {
@@ -58,7 +57,7 @@ Meteor.methods({
             }, {sort: {_id: -1}});
             if (paymentWebsite != null) {
 
-
+                paymentWebsite.index = index;
                 paymentWebsite.domainNamePrice = paymentWebsite.domainNamePrice == null ? 0 : paymentWebsite.domainNamePrice;
                 paymentWebsite.domainNamePaid = paymentWebsite.domainNamePaid == null ? 0 : paymentWebsite.domainNamePaid;
                 paymentWebsite.domainNameDue = paymentWebsite.domainNameDue == null ? 0 : paymentWebsite.domainNameDue;
@@ -72,7 +71,7 @@ Meteor.methods({
                 paymentWebsite.buildPaid = paymentWebsite.buildPaid == null ? 0 : paymentWebsite.buildPaid;
                 paymentWebsite.buildDue = paymentWebsite.buildDue == null ? 0 : paymentWebsite.buildDue;
                 if (paymentWebsite.buildDue > 0 || paymentWebsite.maintenanceDue > 0 || paymentWebsite.hostingDue > 0 || paymentWebsite.domainNameDue > 0) {
-                    totalBuidPrice += paymentWebsite.buildPrice;
+                    totalBuildPrice += paymentWebsite.buildPrice;
                     totalBuildDue += paymentWebsite.buildDue;
                     totalBuildPaid += paymentWebsite.buildPaid;
 
@@ -90,15 +89,20 @@ Meteor.methods({
                         paymentWebsite.maintenanceDue = 0;
                     }
                     totalMaintenanceDue += paymentWebsite.maintenanceDue;
-                    index++;
-                    paymentWebsite.index = index;
-                    data.content.push(paymentWebsite)
+
+                    data.content.push(paymentWebsite);
+
+                }else {
+
+                    index= 'No Result'
+                    data.content.push(index)
                 }
+                index++;
             }
         });
         if (data.content.length > 0) {
             // data.content = content;
-            data.footer.totalBuildPrice = totalBuidPrice;
+            data.footer.totalBuildPrice = totalBuildPrice;
             data.footer.totalBuildPaid = totalBuildPaid;
             data.footer.totalBuildDue = totalBuildDue;
 
