@@ -24,5 +24,5 @@ Rabbit.TabularTable.Service = new Tabular.Table({
 
 
     ],
-    extraFields: ['domainNameStartDate', 'domainNameEndDate', 'hostingStartDate', 'hostingEndDate', 'maintenanceStartDate', 'maintenanceEndDate']
+    extraFields: ['domainNameStartDate', 'domainNameEndDate','domainNameOwedAmount','domainNameTotalPrice', 'hostingStartDate', 'hostingEndDate','hostingOwedAmount','hostingTotalPrice', 'maintenanceStartDate', 'maintenanceEndDate','maintenanceOwedAmount','maintenanceTotalPrice']
 });

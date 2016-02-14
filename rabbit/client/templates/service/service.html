@@ -6,10 +6,10 @@
         <small>
 
             {{#with website}}
-                <a href="#" class="jsInfo">{{_id}} | registerDate : {{registerDate}} | WebsiteName: {{webName}}|
-                    price : {{price}}|
-                    || Customer(company) : {{_customer.companyName}}  |
-                    ContractName : {{_customer.contractName}}</a>
+            <a href="#" class="jsInfo">{{_id}} | registerDate : {{registerDate}} | WebsiteName: {{webName}}|
+                price : {{price}}|
+                || Customer(company) : {{_customer.companyName}} |
+                ContractName : {{_customer.contractName}}</a>
             {{/with}}
         </small>
     </div>
@@ -19,52 +19,64 @@
 <!--Action-->
 <template name="rabbit_ServiceAction">
     {{#tabularAction}}
-        <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
-        <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
-        <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
+    <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
+    <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
+    <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
     {{/tabularAction}}
 </template>
 
 <!--Insert-->
 <template name="rabbit_serviceInsert">
     {{#autoForm collection=Rabbit.Collection.Service id="rabbit_serviceInsert" doc=service type="insert"}}
-        <div class="row">
-            <div class="col-md-12">
+    <div class="row">
+        <div class="col-md-12">
 
-                {{> afQuickField name="websiteId" readOnly=true }}
-                {{> afQuickField name="serviceDate"}}
-                {{> afQuickField name="des"}}
-            </div>
-            <div class="col-md-12">
-                <div class="row">
-                    <div><input type="checkbox" class="domainName">DomainName</div>
-                    <div class="col-md-2">{{> afQuickField name="domainNamePrice" class="domainNamePrice" }}</div>
-                    <div class="col-md-2">{{> afQuickField name="domainNameStartDate" class="domainNameStartDate" }}</div>
-                    <div class="col-md-3">{{> afQuickField name="domainNameEndDate" class="domainNameEndDate" }}</div>
-                    <div class="col-md-2">{{> afQuickField name="domainNameOwedAmount" class="domainNameOwedAmount"  readOnly=true}}</div>
-                    <div class="col-md-2">{{> afQuickField name="domainNameTotalPrice" class="domainNameTotalPrice"  readOnly=true}}</div>
-                </div>
-                <div class="row">
-                    <div><input type="checkbox" class="hosting">Hosting</div>
-                    <div class="col-md-2">{{> afQuickField name="hostingPrice" class='hostingPrice' }}</div>
-                    <div class="col-md-2">{{> afQuickField name="hostingStartDate" class="hostingStartDate" }}</div>
-                    <div class="col-md-3">{{> afQuickField name="hostingEndDate" class="hostingEndDate" }}</div>
-                    <div class="col-md-2">{{> afQuickField name="hostingOwedAmount" class="hostingOwedAmount"  readOnly=true}}</div>
-                    <div class="col-md-2">{{> afQuickField name="hostingTotalPrice" class="hostingTotalPrice"  readOnly=true}}</div>
-                </div>
-                <div class="row">
-                    <div><input type="checkbox" class="maintenance">Maintenance</div>
-                    <div class="col-md-2">{{> afQuickField name="maintenancePrice" class="maintenancePrice" }}</div>
-                    <div class="col-md-2">{{> afQuickField name="maintenanceStartDate" class='maintenanceStartDate'}}</div>
-                    <div class="col-md-3">{{> afQuickField name="maintenanceEndDate" class='maintenanceEndDate'}}</div>
-                    <div class="col-md-2">{{> afQuickField name="maintenanceOwedAmount" class='maintenanceOwedAmount' readOnly=true}}</div>
-                    <div class="col-md-2">{{> afQuickField name="maintenanceTotalPrice" class='maintenanceTotalPrice' readOnly=true}}</div>
-                </div>
-            </div>
-
-            <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-            <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+            {{> afQuickField name="websiteId" readOnly=true }}
+            {{> afQuickField name="serviceDate"}}
+            {{> afQuickField name="des"}}
         </div>
+        <div class="col-md-12">
+            <div class="row">
+                <div><input type="checkbox" class="domainName">DomainName</div>
+                <div class="col-md-2">{{> afQuickField name="domainNamePrice" class="domainNamePrice" }}</div>
+                <div class="col-md-2">{{> afQuickField name="domainNameStartDate" class="domainNameStartDate" }}</div>
+                <div class="col-md-3">{{> afQuickField name="domainNameEndDate" class="domainNameEndDate" }}</div>
+                <div class="col-md-2">{{> afQuickField name="domainNameOwedAmount" class="domainNameOwedAmount"
+                    readOnly=true}}
+                </div>
+                <div class="col-md-2">{{> afQuickField name="domainNameTotalPrice" class="domainNameTotalPrice"
+                    readOnly=true}}
+                </div>
+            </div>
+            <div class="row">
+                <div><input type="checkbox" class="hosting">Hosting</div>
+                <div class="col-md-2">{{> afQuickField name="hostingPrice" class='hostingPrice' }}</div>
+                <div class="col-md-2">{{> afQuickField name="hostingStartDate" class="hostingStartDate" }}</div>
+                <div class="col-md-3">{{> afQuickField name="hostingEndDate" class="hostingEndDate" }}</div>
+                <div class="col-md-2">{{> afQuickField name="hostingOwedAmount" class="hostingOwedAmount"
+                    readOnly=true}}
+                </div>
+                <div class="col-md-2">{{> afQuickField name="hostingTotalPrice" class="hostingTotalPrice"
+                    readOnly=true}}
+                </div>
+            </div>
+            <div class="row">
+                <div><input type="checkbox" class="maintenance">Maintenance</div>
+                <div class="col-md-2">{{> afQuickField name="maintenancePrice" class="maintenancePrice" }}</div>
+                <div class="col-md-2">{{> afQuickField name="maintenanceStartDate" class='maintenanceStartDate'}}</div>
+                <div class="col-md-3">{{> afQuickField name="maintenanceEndDate" class='maintenanceEndDate'}}</div>
+                <div class="col-md-2">{{> afQuickField name="maintenanceOwedAmount" class='maintenanceOwedAmount'
+                    readOnly=true}}
+                </div>
+                <div class="col-md-2">{{> afQuickField name="maintenanceTotalPrice" class='maintenanceTotalPrice'
+                    readOnly=true}}
+                </div>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+        <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+    </div>
 
     {{/autoForm}}
 </template>
@@ -73,70 +85,93 @@
 <template name="rabbit_serviceUpdate">
     <!--Built-in template sub ready by all-->
     {{#if Template.subscriptionsReady}}
-        {{#autoForm collection=Rabbit.Collection.Service id="rabbit_serviceUpdate" doc=this type="update"}}
+    {{#autoForm collection=Rabbit.Collection.Service id="rabbit_serviceUpdate" doc=this type="update"}}
+    <div class="row">
+        <div class="col-md-12">
+
+            {{> afQuickField name="websiteId" readOnly=true }}
+            {{> afQuickField name="serviceDate"}}
+            {{> afQuickField name="des"}}
+        </div>
+        <div class="col-md-12">
             <div class="row">
-                <div class="col-md-12">
-                    <div class="col-md-6">
-                        {{> afQuickField name="websiteId" readOnly=true }}
-                        {{> afQuickField name="serviceDate"}}
-                        {{> afQuickField name="des"}}
-                    </div>
-                    <div class="col-md-6">
-                        <div><input type="checkbox" class="domainName">DomainName</div>
-                        <div class="col-md-4">{{> afQuickField name="domainNamePrice" class="domainNamePrice" }}</div>
-                        <div class="col-md-4">{{> afQuickField name="domainNameStartDate" class="domainNameStartDate" }}</div>
-                        <div class="col-md-4">{{> afQuickField name="domainNameEndDate" class="domainNameEndDate" }}</div>
-                        <div><input type="checkbox" class="hosting">Hosting</div>
-                        <div class="col-md-4">{{> afQuickField name="hostingPrice" class='hostingPrice' }}</div>
-                        <div class="col-md-4">{{> afQuickField name="hostingStartDate" class="hostingStartDate" }}</div>
-                        <div class="col-md-4">{{> afQuickField name="hostingEndDate" class="hostingEndDate" }}</div>
-                        <div><input type="checkbox" class="maintenance">Maintenance</div>
-                        <div class="col-md-4">{{> afQuickField name="maintenancePrice" class="maintenancePrice" }}</div>
-                        <div class="col-md-4">{{> afQuickField name="maintenanceStartDate" class='maintenanceStartDate'}}</div>
-                        <div class="col-md-4">{{> afQuickField name="maintenanceEndDate" class='maintenanceEndDate'}}</div>
-                    </div>
+                <div><input type="checkbox" class="domainName">DomainName</div>
+                <div class="col-md-2">{{> afQuickField name="domainNamePrice" class="domainNamePrice" }}</div>
+                <div class="col-md-2">{{> afQuickField name="domainNameStartDate" class="domainNameStartDate" }}</div>
+                <div class="col-md-3">{{> afQuickField name="domainNameEndDate" class="domainNameEndDate" }}</div>
+                <div class="col-md-2">{{> afQuickField name="domainNameOwedAmount" class="domainNameOwedAmount"
+                    readOnly=true}}
                 </div>
-                <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-                <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+                <div class="col-md-2">{{> afQuickField name="domainNameTotalPrice" class="domainNameTotalPrice"
+                    readOnly=true}}
+                </div>
             </div>
-        {{/autoForm}}
+            <div class="row">
+                <div><input type="checkbox" class="hosting">Hosting</div>
+                <div class="col-md-2">{{> afQuickField name="hostingPrice" class='hostingPrice' }}</div>
+                <div class="col-md-2">{{> afQuickField name="hostingStartDate" class="hostingStartDate" }}</div>
+                <div class="col-md-3">{{> afQuickField name="hostingEndDate" class="hostingEndDate" }}</div>
+                <div class="col-md-2">{{> afQuickField name="hostingOwedAmount" class="hostingOwedAmount"
+                    readOnly=true}}
+                </div>
+                <div class="col-md-2">{{> afQuickField name="hostingTotalPrice" class="hostingTotalPrice"
+                    readOnly=true}}
+                </div>
+            </div>
+            <div class="row">
+                <div><input type="checkbox" class="maintenance">Maintenance</div>
+                <div class="col-md-2">{{> afQuickField name="maintenancePrice" class="maintenancePrice" }}</div>
+                <div class="col-md-2">{{> afQuickField name="maintenanceStartDate" class='maintenanceStartDate'}}</div>
+                <div class="col-md-3">{{> afQuickField name="maintenanceEndDate" class='maintenanceEndDate'}}</div>
+                <div class="col-md-2">{{> afQuickField name="maintenanceOwedAmount" class='maintenanceOwedAmount'
+                    readOnly=true}}
+                </div>
+                <div class="col-md-2">{{> afQuickField name="maintenanceTotalPrice" class='maintenanceTotalPrice'
+                    readOnly=true}}
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+        <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+    </div>
+    {{/autoForm}}
     {{else}}
-        {{> loading}}
+    {{> loading}}
     {{/if}}
 
 </template>
 <template name="rabbit_serviceShow">
     {{#with this}}
-        <dl class="dl-horizontal">
-            <dt>ID:</dt>
-            <dd>{{_id}}</dd>
-            <dt>name:</dt>
-            <dd>{{websiteId}}</dd>
-            <dt>Service Date:</dt>
-            <dd>{{serviceDate}}</dd>
-            <!--domain-->
-            <dt>DomainPrice:</dt>
-            <dd>{{domainNamePrice}}</dd>
-            <dt>Start Date:</dt>
-            <dd>{{domainNameStartDate}}</dd>
-            <dt>End Date:</dt>
-            <dd>{{domainNameEndDate}}</dd>
-            <!--Hosting-->
-            <dt>Hosting Price:</dt>
-            <dd>{{hostingPrice}}</dd>
-            <dt>Start Date:</dt>
-            <dd>{{hostingStartDate}}</dd>
-            <dt>End Date:</dt>
-            <dd>{{hostingEndDate}}</dd>
-            <!--Hosting-->
-            <dt>Maintenance Price:</dt>
-            <dd>{{maintenancePrice}}</dd>
-            <dt>Start Date:</dt>
-            <dd>{{maintenanceStartDate}}</dd>
-            <dt>End Date:</dt>
-            <dd>{{maintenanceEndDate}}</dd>
-            <dt>Des</dt>
-            <dd>{{des}}</dd>
-        </dl>
+    <dl class="dl-horizontal">
+        <dt>ID:</dt>
+        <dd>{{_id}}</dd>
+        <dt>name:</dt>
+        <dd>{{websiteId}}</dd>
+        <dt>Service Date:</dt>
+        <dd>{{serviceDate}}</dd>
+        <!--domain-->
+        <dt>DomainPrice:</dt>
+        <dd>{{domainNamePrice}}</dd>
+        <dt>Start Date:</dt>
+        <dd>{{domainNameStartDate}}</dd>
+        <dt>End Date:</dt>
+        <dd>{{domainNameEndDate}}</dd>
+        <!--Hosting-->
+        <dt>Hosting Price:</dt>
+        <dd>{{hostingPrice}}</dd>
+        <dt>Start Date:</dt>
+        <dd>{{hostingStartDate}}</dd>
+        <dt>End Date:</dt>
+        <dd>{{hostingEndDate}}</dd>
+        <!--Hosting-->
+        <dt>Maintenance Price:</dt>
+        <dd>{{maintenancePrice}}</dd>
+        <dt>Start Date:</dt>
+        <dd>{{maintenanceStartDate}}</dd>
+        <dt>End Date:</dt>
+        <dd>{{maintenanceEndDate}}</dd>
+        <dt>Des</dt>
+        <dd>{{des}}</dd>
+    </dl>
     {{/with}}
 </template>

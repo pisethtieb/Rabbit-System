@@ -89,11 +89,12 @@ Meteor.methods({
             totalMaintenanceDue += obj.maintenanceDue;
 
             obj.index = index;
-            data.content.push(obj);
+            content.push(obj);
             index++;
         });
-        if (data.content.length > 0) {
-            // data.content = content;
+        if (content.length > 0) {
+            data.content = content;
+
             data.footer.totalBuildPrice = totalBuidPrice;
             data.footer.totalBuildPaid = totalBuildPaid;
             data.footer.totalBuildDue = totalBuildDue;
@@ -110,7 +111,9 @@ Meteor.methods({
             data.footer.totalMaintenancePaid = totalMaintenancePaid;
             data.footer.totalMaintenanceDue = totalMaintenanceDue;
 
+
         }
+
         if (params.branch == '') {
             params.branch = 'All'
         }

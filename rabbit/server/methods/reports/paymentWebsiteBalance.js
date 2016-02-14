@@ -3,7 +3,7 @@ Meteor.methods({
         var data = {
             title: {},
             header: {},
-            content: [],
+            content: [{index: 'No Result'}],
             footer: {}
         };
         data.title = Cpanel.Collection.Company.findOne();
@@ -89,15 +89,15 @@ Meteor.methods({
                         paymentWebsite.maintenanceDue = 0;
                     }
                     totalMaintenanceDue += paymentWebsite.maintenanceDue;
-                    data.content.push(paymentWebsite);
+                    content.push(paymentWebsite);
                     index++;
                 }
             }
 
 
         });
-        if (data.content.length > 0) {
-            // data.content = content;
+        if (content.length > 0) {
+            data.content = content;
             data.footer.totalBuildPrice = totalBuildPrice;
             data.footer.totalBuildPaid = totalBuildPaid;
             data.footer.totalBuildDue = totalBuildDue;
