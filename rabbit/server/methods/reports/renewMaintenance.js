@@ -29,7 +29,7 @@ Meteor.methods({
         let maintenance = Rabbit.Collection.Maintenance.find(selector);
 
         maintenance.forEach(function (o) {
-            if (o.endDate <= now) {
+            if (o.endDate <= params.date) {
                 let contract = Rabbit.Collection.Contract.findOne({_id: o._office.contractId});
                 o.contract = contract;
                 o.index = i;

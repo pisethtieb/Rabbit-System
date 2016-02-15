@@ -113,6 +113,8 @@ Meteor.methods({
             data.footer.totalMaintenancePrice = totalMaintenancePrice;
             data.footer.totalMaintenancePaid = totalMaintenancePaid;
             data.footer.totalMaintenanceDue = totalMaintenanceDue;
+            data.footer.totalBalance = ( totalBuildDue + totalDomainNameDue + totalHostingDue + totalMaintenanceDue);
+            console.log(data.footer.totalBalance)
 
         }
 

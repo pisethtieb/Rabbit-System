@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-md-6">
                 {{> afQuickField name="branch"}}
-                <!--{{> afQuickField name="customerId"}}-->
+                {{> afQuickField name="websiteId"}}
             </div>
             <div class="col-md-6">
                 {{> afQuickField name="date"}}
@@ -86,18 +86,18 @@
                         <tr>
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
-                            <td>{{renewServiceDate}}</td>
+                            <td>{{serviceDate}}</td>
                             <td>{{websiteId}}</td>
                             <td>{{_website._customer.contractName}}</td>
-                            <td>{{numFormat domainNamePrice "$0,0.00"}}</td>
-                            <td>{{domainNameStartDate}}</td>
-                            <td>{{domainNameEndDate}}</td>
-                            <td>{{numFormat hostingPrice "$0,0.00"}}</td>
-                            <td>{{hostingStartDate}}</td>
-                            <td>{{hostingEndDate}}</td>
-                            <td>{{numFormat maintenancePrice "$0,0.00"}}</td>
-                            <td>{{maintenanceStartDate}}</td>
-                            <td>{{maintenanceEndDate}}</td>
+                            <td>{{{numFormat domainNamePrice "$0,0.00"}}}</td>
+                            <td>{{{domainNameStartDate}}}</td>
+                            <td>{{{domainNameEndDate}}}</td>
+                            <td>{{{numFormat hostingPrice "$0,0.00"}}}</td>
+                            <td>{{{hostingStartDate}}}</td>
+                            <td>{{{hostingEndDate}}}</td>
+                            <td>{{{numFormat maintenancePrice "$0,0.00"}}}</td>
+                            <td>{{{maintenanceStartDate}}}</td>
+                            <td>{{{maintenanceEndDate}}}</td>
 
                         </tr>
                     {{/each}}

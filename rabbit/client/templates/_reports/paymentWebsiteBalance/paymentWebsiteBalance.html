@@ -86,16 +86,16 @@
                         <th>Tel</th>
                         <th>Design</th>
                         <th>Paid</th>
-                        <th>Due</th>
+                        <th>Balance</th>
                         <th>Domain</th>
                         <th>Paid</th>
-                        <th>Due</th>
+                        <th>Balance</th>
                         <th>Hosting</th>
                         <th>Paid</th>
-                        <th>Due</th>
+                        <th>Balance</th>
                         <th>Maintenance</th>
                         <th>Paid</th>
-                        <th>Due</th>
+                        <th>Balance</th>
 
                     </tr>
                     </thead>
@@ -143,6 +143,14 @@
                         <td>{{numFormat footer.totalMaintenancePrice "$0,0.00"}}</td>
                         <td>{{numFormat footer.totalMaintenancePaid "$0,0.00"}}</td>
                         <td>{{numFormat footer.totalMaintenanceDue "$0,0.00"}}</td>
+
+                    </tr>
+                    <tr>
+                        <td colspan="17" align="right">
+                            TotalBalance :
+                        </td>
+
+                        <td>{{numFormat footer.totalBalance "$0,0.00"}}</td>
 
                     </tr>
                     </tbody>

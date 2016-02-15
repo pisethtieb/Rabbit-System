@@ -10,7 +10,7 @@ Rabbit.Schema.RenewServiceReport = new SimpleSchema({
         },
         optional: true
     },
-    customerId: {
+    websiteId: {
         type: String,
         max: 100,
         optional: true,
@@ -18,7 +18,7 @@ Rabbit.Schema.RenewServiceReport = new SimpleSchema({
         autoform: {
             type: 'select2',
             options(){
-                return Rabbit.ListForReport.customer();
+                return Rabbit.ListForReport.website();
             }
         }
     },

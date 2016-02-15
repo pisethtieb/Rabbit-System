@@ -45,9 +45,9 @@ Meteor.methods({
 
                 obj.index = index;
                 //total += obj.price;
-                obj.domainNamePrice = obj.domainNamePrice == null ? 0 : obj.domainNamePrice;
-                obj.hostingPrice = obj.hostingPrice == null ? 0 : obj.hostingPrice;
-                obj.maintenancePrice = obj.maintenancePrice == null ? 0 : obj.maintenancePrice;
+                obj.domainNameTotalPrice = obj.domainNameTotalPrice == null ? 0 : obj.domainNamePrice;
+                obj.hostingTotalPrice = obj.hostingTotalPrice == null ? 0 : obj.hostingPrice;
+                obj.maintenanceTotalPrice = obj.maintenanceTotalPrice == null ? 0 : obj.maintenancePrice;
                 totalDomainName += obj.domainNamePrice;
                 totalHosting += obj.hostingPrice;
                 totalMaintenance += obj.maintenancePrice;
