@@ -101,7 +101,7 @@ insertTpl.helpers({
             let service = Rabbit.Collection.Service.findOne({websiteId: websiteId}, {sort: {_id: -1}});
             let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
             let today = moment().format('YYYY-MM-DD');
-            if (service.domainNameEndDate >= today) {
+            if (service.domainNameEndDate > today) {
                 console.log(service.domainNameEndDate);
                 Meteor.setTimeout(function () {
                     $('.domainName').prop("checked", true);
@@ -116,7 +116,7 @@ insertTpl.helpers({
                 $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
                 $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
             }
-            if (service.hostingEndDate >= today) {
+            if (service.hostingEndDate > today) {
                 Meteor.setTimeout(function () {
                     $('.hosting').prop("checked", true);
                     $('.hosting').attr("disabled", "true");
@@ -130,7 +130,7 @@ insertTpl.helpers({
                 $('.hostingOwedAmount').val(dueAmount.hostingDue);
                 $('.hostingTotalPrice').val(dueAmount.hostingDue);
             }
-            if (service.maintenanceEndDate >= today) {
+            if (service.maintenanceEndDate > today) {
                 Meteor.setTimeout(function () {
                     $('.maintenance').prop("checked", true);
                     $('.maintenance').attr("disabled", "true");
