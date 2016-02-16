@@ -14,7 +14,6 @@
             <li class="{{isActiveRoute name='rabbit.agent'}}">
                 <a href="{{pathFor 'rabbit.agent'}}">Agent</a>
             </li>
-
         </ul>
     </li>
 
@@ -100,9 +99,12 @@
             <b>
                 <li role="separator" class="divider"></li>
             </b>
-            <li class="dropdown-header">OS Payment</li>
+            <li class="dropdown-header">Outstanding</li>
             <li class="{{isActiveRoute name='rabbit.paymentWebsiteBalanceReport'}}">
                 <a href="{{pathFor 'rabbit.paymentWebsiteBalanceReport'}}">Payment</a>
+            </li>
+            <li class="{{isActiveRoute name='rabbit.serviceBalanceReport'}}">
+                <a href="{{pathFor 'rabbit.serviceBalanceReport'}}">Service</a>
             </li>
 
             <b>

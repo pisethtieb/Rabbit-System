@@ -8,9 +8,7 @@ var indexTpl = Template.rabbit_service,
     insertTpl = Template.rabbit_serviceInsert,
     updateTpl = Template.rabbit_serviceUpdate,
     showTpl = Template.rabbit_serviceShow;
-
 //locationAddOnTpl = Template.rabbit_locationAddOnService;
-
 
 /**
  * Index
@@ -99,10 +97,31 @@ insertTpl.onRendered(function () {
 });
 insertTpl.helpers({
         service(){
+            let websiteId = FlowRouter.getParam('websiteId');
+            let service = Rabbit.Collection.Service.findOne({websiteId: websiteId}, {sort: {_id: -1}});
+            let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
+            let today = moment().format('YYYY-MM-DD');
+            if (service.domainNameEndDate >= today) {
+                console.log(service.domainNameEndDate);
+                Meteor.setTimeout(function () {
+                    $('.domainName').prop("checked", true);
+                    $('.domainName').attr("disabled", "true");
+                    $('.domainNamePrice').removeAttr('disabled');
+                    $('.domainNameStartDate').removeAttr('disabled');
+                    $('.domainNameEndDate').removeAttr('disabled');
+                }, 200);
+                $('.domainNamePrice').val(0);
+                $('.domainNameStartDate').val(service.domainNameStartDate);
+                $('.domainNameEndDate').val(service.domainNameEndDate);
+                $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
+                $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
+            }
+
             return {
 
-                websiteId: FlowRouter.getParam('websiteId'),
+                websiteId: websiteId,
                 serviceDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+
 
             }
         }
