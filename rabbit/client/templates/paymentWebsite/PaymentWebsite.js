@@ -252,7 +252,7 @@ var configOnRender = function () {
 };
 
 function checkLastPaymentWebsite(self) {
-    let checkingLastPaymentWebsiteForWebsite = Rabbit.Collection.PaymentWebsite.findOne({contractId: self.contractId}, {sort: {_id: -1}})._id;
+    let checkingLastPaymentWebsiteForWebsite = Rabbit.Collection.PaymentWebsite.findOne({websiteId: self.websiteId}, {sort: {_id: -1}})._id;
     if (checkingLastPaymentWebsiteForWebsite == self._id) {
         $('.updatePaymentWebsite').show();
         $('.removePaymentWebsite').show();

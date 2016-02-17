@@ -100,63 +100,96 @@ insertTpl.helpers({
             let websiteId = FlowRouter.getParam('websiteId');
             let service = Rabbit.Collection.Service.findOne({websiteId: websiteId}, {sort: {_id: -1}});
             let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
-            let today = moment().format('YYYY-MM-DD');
-
-            if (dueAmount.domainNameDue > 0) {
-                $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
-                $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
-                ;
-            }
-            if (service.domainNameEndDate > today) {
-                console.log(service.domainNameEndDate);
-                Meteor.setTimeout(function () {
-                    $('.domainName').prop("checked", true);
-                    $('.domainName').attr("disabled", "true");
-                    $('.domainNamePrice').removeAttr('disabled');
-                    $('.domainNameStartDate').removeAttr('disabled');
-                    $('.domainNameEndDate').removeAttr('disabled');
-                }, 200);
-                $('.domainNamePrice').val(0);
-                $('.domainNameStartDate').val(service.domainNameStartDate);
-                $('.domainNameEndDate').val(service.domainNameEndDate);
-                $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
-                $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
-            }
-            if (dueAmount.hostingDue > 0) {
-                $('.hostingOwedAmount').val(dueAmount.hostingDue);
-                $('.hostingTotalPrice').val(dueAmount.hostingDue);
-            }
-            if (service.hostingEndDate > today) {
-                Meteor.setTimeout(function () {
-                    $('.hosting').prop("checked", true);
-                    $('.hosting').attr("disabled", "true");
-                    $('.hostingPrice').removeAttr('disabled');
-                    $('.hostingStartDate').removeAttr('disabled');
-                    $('.hostingEndDate').removeAttr('disabled');
-                }, 200);
-                $('.hostingPrice').val(0);
-                $('.hostingStartDate').val(service.domainNameStartDate);
-                $('.hostingEndDate').val(service.domainNameEndDate);
-                $('.hostingOwedAmount').val(dueAmount.hostingDue);
-                $('.hostingTotalPrice').val(dueAmount.hostingDue);
-            }
-            if (dueAmount.maintenanceDue > 0) {
-                $('.maintenanceOwedAmount').val(dueAmount.maintenanceDue);
-                $('.maintenanceTotalPrice').val(dueAmount.maintenanceDue);
-            }
-            if (service.maintenanceEndDate > today) {
-                Meteor.setTimeout(function () {
-                    $('.maintenance').prop("checked", true);
-                    $('.maintenance').attr("disabled", "true");
-                    $('.maintenancePrice').removeAttr('disabled');
-                    $('.maintenanceStartDate').removeAttr('disabled');
-                    $('.maintenanceEndDate').removeAttr('disabled');
-                }, 200);
-                $('.maintenancePrice').val(0);
-                $('.maintenanceStartDate').val(service.maintenanceStartDate);
-                $('.maintenanceEndDate').val(service.maintenanceEndDate);
-                $('.maintenanceOwedAmount').val(dueAmount.maintenanceDue);
-                $('.maintenanceTotalPrice').val(dueAmount.maintenanceDue);
+            if (service) {
+                let today = moment().format('YYYY-MM-DD');
+                if (dueAmount != null) {
+                    if (dueAmount.domainNameDue != null) {
+                        if (dueAmount.domainNameDue > 0) {
+                            $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
+                            $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
+                        }
+                    }
+                }
+                if (service.domainNameEndDate > today) {
+                    console.log(service.domainNameEndDate);
+                    Meteor.setTimeout(function () {
+                        $('.domainName').prop("checked", true);
+                        $('.domainName').attr("disabled", "true");
+                        $('.domainNamePrice').removeAttr('disabled');
+                        $('.domainNameStartDate').removeAttr('disabled');
+                        $('.domainNameEndDate').removeAttr('disabled');
+                    }, 200);
+                    $('.domainNamePrice').val(0);
+                    $('.domainNameStartDate').val(service.domainNameStartDate);
+                    $('.domainNameEndDate').val(service.domainNameEndDate);
+                    if (dueAmount) {
+                        if (dueAmount.domainNameDue != null) {
+                            $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
+                            $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
+                        }
+                    } else {
+                        $('.domainNameOwedAmount').val(service.domainNameOwedAmount);
+                        $('.domainNameTotalPrice').val(service.domainNameTotalPrice);
+                    }
+                }
+                if (dueAmount != null) {
+                    if (dueAmount.hostingDue) {
+                        if (dueAmount.hostingDue > 0) {
+                            $('.hostingOwedAmount').val(dueAmount.hostingDue);
+                            $('.hostingTotalPrice').val(dueAmount.hostingDue);
+                        }
+                    }
+                }
+                if (service.hostingEndDate > today) {
+                    Meteor.setTimeout(function () {
+                        $('.hosting').prop("checked", true);
+                        $('.hosting').attr("disabled", "true");
+                        $('.hostingPrice').removeAttr('disabled');
+                        $('.hostingStartDate').removeAttr('disabled');
+                        $('.hostingEndDate').removeAttr('disabled');
+                    }, 200);
+                    $('.hostingPrice').val(0);
+                    $('.hostingStartDate').val(service.domainNameStartDate);
+                    $('.hostingEndDate').val(service.domainNameEndDate);
+                    if (dueAmount) {
+                        if (dueAmount.hostingDue) {
+                            $('.hostingOwedAmount').val(dueAmount.hostingDue);
+                            $('.hostingTotalPrice').val(dueAmount.hostingDue);
+                        }
+                    } else {
+                        $('.hostingOwedAmount').val(service.hostingOwedAmount);
+                        $('.hostingTotalPrice').val(service.hostingTotalPrice);
+                    }
+                }
+                if (dueAmount != null) {
+                    if (dueAmount.maintenanceDue) {
+                        if (dueAmount.maintenanceDue > 0) {
+                            $('.maintenanceOwedAmount').val(dueAmount.maintenanceDue);
+                            $('.maintenanceTotalPrice').val(dueAmount.maintenanceDue);
+                        }
+                    }
+                }
+                if (service.maintenanceEndDate > today) {
+                    Meteor.setTimeout(function () {
+                        $('.maintenance').prop("checked", true);
+                        $('.maintenance').attr("disabled", "true");
+                        $('.maintenancePrice').removeAttr('disabled');
+                        $('.maintenanceStartDate').removeAttr('disabled');
+                        $('.maintenanceEndDate').removeAttr('disabled');
+                    }, 200);
+                    $('.maintenancePrice').val(0);
+                    $('.maintenanceStartDate').val(service.maintenanceStartDate);
+                    $('.maintenanceEndDate').val(service.maintenanceEndDate);
+                    if (dueAmount) {
+                        if (dueAmount.maintenanceDue != null) {
+                            $('.maintenanceOwedAmount').val(dueAmount.maintenanceDue);
+                            $('.maintenanceTotalPrice').val(dueAmount.maintenanceDue);
+                        }
+                    } else {
+                        $('.maintenanceOwedAmount').val(service.maintenanceOwedAmount);
+                        $('.maintenanceTotalPrice').val(service.maintenanceTotalPrice);
+                    }
+                }
             }
 
             return {

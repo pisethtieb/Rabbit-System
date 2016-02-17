@@ -18,8 +18,6 @@ Meteor.methods({
         //****** Title *****/
         data.title = Cpanel.Collection.Company.findOne();
 
-        /****** Header *****/
-        data.header = params;
 
         /****** Content *****/
         var content = [];
@@ -28,7 +26,7 @@ Meteor.methods({
 
         //
         if (!_.isEmpty(params.branch)) {
-            selector.branchId = params.branch;
+            selector.branchId = null;
         }
         if (!_.isEmpty(params.customerId)) {
             selector.customerId = params.customerId;
