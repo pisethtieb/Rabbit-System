@@ -49,10 +49,10 @@ Meteor.methods({
         } else {
             params.branch = params.branch;
         }
-        if (params.customerId == '') {
-            params.customerId = 'All'
+        if (params.websiteId == '') {
+            params.websiteId = 'All'
         } else {
-            params.customerId = Rabbit.Collection.Customer.findOne({_id: params.customerId}).companyName;
+            params.websiteId = websiteId;
         }
         /****** Header *****/
         data.header = params;

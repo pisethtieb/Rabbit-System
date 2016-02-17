@@ -27,7 +27,7 @@ Meteor.methods({
 //console.log(params.serviceDate);
         //console.log(selector.serviceDate);
         if (!_.isEmpty(params.branch)) {
-            selector.branchId = params.branch;
+            selector.branchId = null;
         }
 
         if (!_.isEmpty(params.websiteId)) {
@@ -42,7 +42,7 @@ Meteor.methods({
             let service = Rabbit.Collection.Service.findOne({websiteId: obj._id}, {sort: {_id: -1}});
             if (service) {
                 if (service.domainNameEndDate < params.date || service.hostingEndDate < params.date || service.maintenanceEndDate < params.date) {
-                    
+
                     service.index = index;
                     //total += service.price;
                     service.domainNamePrice = service.domainNamePrice == null ? 0 : service.domainNamePrice;
@@ -90,13 +90,13 @@ Meteor.methods({
             params.branch = params.branch;
         }
 
-        //if (params.customerId == '') {
-        //    params.customerId = 'All'
-        //
-        //} else {
-        //
-        //    params.customerId = Rabbit.Collection.Customer.findOne({_id: params.customerId}).companyName;
-        //}
+        if (params.websiteId == '') {
+            params.websiteId = 'All'
+
+        } else {
+
+            params.websiteId = params.websiteId;
+        }
         /****** Header *****/
         data.header = params;
 

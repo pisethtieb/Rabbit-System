@@ -11,18 +11,18 @@ Rabbit.Schema.PaymentWebsiteReport = new SimpleSchema({
         optional: true
     },
 
-    //officeId: {
-    //    type: String,
-    //    max: 100,
-    //    optional: true,
-    //    label: "OfficeId",
-    //    autoform: {
-    //        type: 'select2',
-    //        options(){
-    //            return Rabbit.ListForReport.office();
-    //        }
-    //    }
-    //},
+    websiteId: {
+        type: String,
+        max: 100,
+        optional: true,
+        label: "websiteId",
+        autoform: {
+            type: 'select2',
+            options(){
+                return Rabbit.ListForReport.website();
+            }
+        }
+    },
     date: {
         type: String,
         defaultValue: function () {

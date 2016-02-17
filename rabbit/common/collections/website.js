@@ -15,7 +15,8 @@ Rabbit.Schema.Website = new SimpleSchema({
     },
     webName: {
         type: String,
-        label: 'Web Name'
+        label: 'Web Name',
+        unique: true
     },
     type: {
         type: String,

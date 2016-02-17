@@ -33,8 +33,8 @@ Meteor.methods({
         if (!_.isEmpty(params.branch)) {
             //selector.branchId = params.branch;
         }
-        if (!_.isEmpty(params.contractId)) {
-            selector.contractId = params.contractId
+        if (!_.isEmpty(params.websiteId)) {
+            selector.websiteID = params.websiteId
         }
         var index = 1;
         let total = 0;
@@ -116,10 +116,14 @@ Meteor.methods({
 
         if (params.branch == '') {
             params.branch = 'All'
+        } else {
+            params.branch = params.branch
         }
 
-        if (params.contractId == '') {
-            params.contractId = 'All'
+        if (params.websiteId == '') {
+            params.websiteId = 'All'
+        } else {
+            params.websiteId = params.websiteId
         }
         /****** Header *****/
         data.header = params;

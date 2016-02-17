@@ -10,15 +10,15 @@ Rabbit.Schema.ServiceReport = new SimpleSchema({
         },
         optional: true
     },
-    customerId: {
+    websiteId: {
         type: String,
         max: 100,
         optional: true,
-        label: "CustomerId",
+        label: "websiteId",
         autoform: {
             type: 'select2',
             options(){
-                return Rabbit.ListForReport.customer();
+                return Rabbit.ListForReport.website();
             }
         }
     },

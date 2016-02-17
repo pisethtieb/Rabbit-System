@@ -32,8 +32,8 @@ Meteor.methods({
             selector.branchId = null;
         }
 
-        if (!_.isEmpty(params.customerId)) {
-            selector.customerId = params.customerId;
+        if (!_.isEmpty(params.websiteId)) {
+            selector.websiteId = params.websiteId;
         }
         var index = 1;
         let totalDomainName = 0;

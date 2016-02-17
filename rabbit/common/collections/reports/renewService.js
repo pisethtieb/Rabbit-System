@@ -14,7 +14,7 @@ Rabbit.Schema.RenewServiceReport = new SimpleSchema({
         type: String,
         max: 100,
         optional: true,
-        label: "CustomerId",
+        label: "websiteId",
         autoform: {
             type: 'select2',
             options(){
