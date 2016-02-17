@@ -41,7 +41,7 @@ Meteor.methods({
         website.forEach(function (obj) {
             let service = Rabbit.Collection.Service.findOne({websiteId: obj._id}, {sort: {_id: -1}});
             if (service) {
-                if (service.domainNameEndDate <= params.date || service.hostingEndDate <= params.date || service.maintenanceEndDate <= params.date) {
+                if (service.domainNameEndDate < params.date || service.hostingEndDate < params.date || service.maintenanceEndDate < params.date) {
                     
                     service.index = index;
                     //total += service.price;
@@ -51,21 +51,21 @@ Meteor.methods({
                     totalDomainName += service.domainNamePrice;
                     totalHosting += service.hostingPrice;
                     totalMaintenance += service.maintenancePrice;
-                    if (service.domainNameEndDate <= params.date) {
+                    if (service.domainNameEndDate < params.date) {
                         service.domainNameEndDate = " <font color=red>" + service.domainNameEndDate + " </font>"
                         service.domainNameStartDate = " <font color=red>" + service.domainNameStartDate + " </font>"
                     } else {
                         service.domainNameEndDate = " <font color=green>" + service.domainNameEndDate + " </font>"
                         service.domainNameStartDate = " <font color=green>" + service.domainNameStartDate + " </font>"
                     }
-                    if (service.hostingEndDate <= params.date) {
+                    if (service.hostingEndDate < params.date) {
                         service.hostingStartDate = " <font color=red>" + service.hostingStartDate + " </font>"
                         service.hostingEndDate = " <font color=red>" + service.hostingEndDate + " </font>"
                     } else {
                         service.hostingStartDate = " <font color=green>" + service.hostingStartDate + " </font>"
                         service.hostingEndDate = " <font color=green>" + service.hostingEndDate + " </font>"
                     }
-                    if (service.maintenanceEndDate <= params.date) {
+                    if (service.maintenanceEndDate < params.date) {
                         service.maintenanceStartDate = " <font color=red>" + service.maintenanceStartDate + " </font>"
                         service.maintenanceEndDate = " <font color=red>" + service.maintenanceEndDate + " </font>"
                     } else {

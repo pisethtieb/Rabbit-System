@@ -60,6 +60,9 @@
                     <thead>
                     <tr>
                         <th>Items</th>
+
+                        <th>Start</th>
+                        <th>End</th>
                         <th>Price</th>
                         <!--<th>TotalSum</th>-->
                         <th>Paid</th>
@@ -69,6 +72,9 @@
                     <tbody>
                     <tr>
                         <td>DeSign Website</td>
+                        <td>---</td>
+                        <td>---</td>
+
                         <td>{{numFormat buildPrice "$0,0.00"}}</td>
                         <td>{{numFormat builSumPaid "$0,0.00"}}</td>
                         <td>{{numFormat buildDue "$0,0.00"}}</td>
@@ -77,7 +83,10 @@
                         <tr>
 
                             <td>Domain</td>
+                            <td>{{service.domainNameStartDate}}</td>
+                            <td>{{service.domainNameEndDate}}</td>
                             <td>{{numFormat content.domainNamePrice "$0,0.00"}}</td>
+
                             <td>{{numFormat content.domainNamePaid "$0,0.00"}}</td>
                             <td>{{numFormat content.domainNameDue  "$0,0.00"}}</td>
                         </tr>
@@ -85,7 +94,10 @@
                     {{#if content.hostingPrice}}
                         <tr>
                             <td>Hosting</td>
+                            <td>{{service.hostingStartDate}}</td>
+                            <td>{{service.hostingEndDate}}</td>
                             <td>{{numFormat content.hostingPrice "$0,0.00"}}</td>
+
                             <td>{{numFormat content.hostingPaid "$0,0.00"}}</td>
                             <td>{{numFormat content.hostingDue "$0,0.00"}}</td>
                         </tr>
@@ -93,7 +105,10 @@
                     {{#if content.maintenancePrice}}
                         <tr>
                             <td>Maintenance</td>
+                            <td>{{service.maintenanceStartDate}}</td>
+                            <td>{{service.maintenanceEndDate}}</td>
                             <td>{{numFormat content.maintenancePrice "$0,0.00"}}</td>
+
                             <td>{{numFormat content.maintenancePaid "$0,0.00"}}</td>
                             <td>{{numFormat content.maintenanceDue "$0,0.00"}}</td>
                         </tr>

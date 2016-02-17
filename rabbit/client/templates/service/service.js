@@ -101,6 +101,12 @@ insertTpl.helpers({
             let service = Rabbit.Collection.Service.findOne({websiteId: websiteId}, {sort: {_id: -1}});
             let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
             let today = moment().format('YYYY-MM-DD');
+
+            if (dueAmount.domainNameDue > 0) {
+                $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
+                $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
+                ;
+            }
             if (service.domainNameEndDate > today) {
                 console.log(service.domainNameEndDate);
                 Meteor.setTimeout(function () {
@@ -116,6 +122,10 @@ insertTpl.helpers({
                 $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
                 $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
             }
+            if (dueAmount.hostingDue > 0) {
+                $('.hostingOwedAmount').val(dueAmount.hostingDue);
+                $('.hostingTotalPrice').val(dueAmount.hostingDue);
+            }
             if (service.hostingEndDate > today) {
                 Meteor.setTimeout(function () {
                     $('.hosting').prop("checked", true);
@@ -129,6 +139,10 @@ insertTpl.helpers({
                 $('.hostingEndDate').val(service.domainNameEndDate);
                 $('.hostingOwedAmount').val(dueAmount.hostingDue);
                 $('.hostingTotalPrice').val(dueAmount.hostingDue);
+            }
+            if (dueAmount.maintenanceDue > 0) {
+                $('.maintenanceOwedAmount').val(dueAmount.maintenanceDue);
+                $('.maintenanceTotalPrice').val(dueAmount.maintenanceDue);
             }
             if (service.maintenanceEndDate > today) {
                 Meteor.setTimeout(function () {
@@ -186,7 +200,8 @@ insertTpl.events({
         } else {
             $('.domainNameTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
         }
-        debugger;
+        $('.domainNameEndDate').val(moment().add(1, 'years').format('YYYY-MM-DD'));
+        $('.domainNameStartDate').val(moment().format('YYYY-MM-DD'));
     },
     "change .hosting"(e, t){
         let websiteId = FlowRouter.getParam('websiteId');
@@ -218,6 +233,8 @@ insertTpl.events({
         } else {
             $('.hostingTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
         }
+        $('.hostingEndDate').val(moment().add(1, 'years').format('YYYY-MM-DD'));
+        $('.hostingStartDate').val(moment().format('YYYY-MM-DD'));
 
 
     },
@@ -250,6 +267,8 @@ insertTpl.events({
         } else {
             $('.maintenanceTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
         }
+        $('.maintenanceEndDate').val(moment().add(1, 'years').format('YYYY-MM-DD'));
+        $('.maintenanceStartDate').val(moment().format('YYYY-MM-DD'));
 
 
     }
@@ -362,6 +381,30 @@ AutoForm.hooks({
         before: {
 
             insert: function (doc) {
+                debugger;
+                if (doc.domainNameStartDate || doc.domainNameEndDate || doc.domainNameOwedAmount || doc.domainNameTotalPrice) {
+                    if (doc.domainNamePrice == null) {
+
+                        alertify.error("DomainNamePrice Is Require");
+                        return false
+                    }
+
+                }
+                if (doc.hostingStartDate || doc.hostingEndDate || doc.hostingOwedAmount || doc.hostingTotalPrice) {
+                    if (doc.hostingPrice == null) {
+                        alertify.error("HostingPrice Is Require");
+                        return false
+                    }
+
+                }
+                if (doc.maintenanceStartDate || doc.maintenanceEndDate || doc.maintenanceOwedAmount || doc.maintenanceTotalPrice) {
+                    if (doc.maintenancePrice == null) {
+                        alertify.error("maintenance Price Is Require");
+                        return false
+                    }
+
+                }
+
                 doc.branchId = Session.get('currentBranch');
                 var prefix = doc.branchId + '-';
                 Meteor.call('rabbit', prefix);

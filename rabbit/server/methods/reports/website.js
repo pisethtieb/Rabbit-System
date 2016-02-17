@@ -26,12 +26,10 @@ Meteor.methods({
         var selector = {};
         selector.registerDate = {$gte: fDate, $lte: tDate};
 
-
         //
         if (!_.isEmpty(params.branch)) {
             selector.branchId = params.branch;
         }
-
         if (!_.isEmpty(params.customerId)) {
             selector.customerId = params.customerId;
         }
@@ -41,13 +39,9 @@ Meteor.methods({
             .forEach(function (obj) {
                 obj.index = index;
                 total += obj.price;
-                console.log(obj.price);
-
                 content.push(obj);
-
                 index++;
             });
-
         if (content.length > 0) {
             data.content = content;
             data.footer.total = numeral(total).format('$0,0.00');
@@ -57,12 +51,9 @@ Meteor.methods({
         } else {
             params.branch = params.branch;
         }
-
         if (params.customerId == '') {
             params.customerId = 'All'
-
         } else {
-
             params.customerId = Rabbit.Collection.Customer.findOne({_id: params.customerId}).companyName;
         }
         /****** Header *****/
