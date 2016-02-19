@@ -7,10 +7,10 @@
         <small>
 
             {{#with website}}
-            <a href="#" class="jsInfo">{{_id}} | registerDate : {{registerDate}} | WebsiteName: {{webName}}|
-                price : {{price}}|
-                || Customer(company) : {{_customer.companyName}} |
-                ContractName : {{_customer.contractName}}</a>
+                <a href="#" class="jsInfo">{{_id}} | registerDate : {{registerDate}} | WebsiteName: {{webName}}|
+                    price : {{price}}|
+                    || Customer(company) : {{_customer.companyName}} |
+                    ContractName : {{_customer.contractName}}</a>
             {{/with}}
         </small>
     </div>
@@ -20,13 +20,13 @@
 <!--Action-->
 <template name="rabbit_paymentWebsiteAction">
     {{#tabularAction}}
-    <li><a href="#" class="js-update updatePaymentWebsite">{{fa "pencil"}} Update</a></li>
-    <li><a href="#" class="js-remove removePaymentWebsite">{{fa "remove"}} Remove</a></li>
-    <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
-    <b>
-        <li role="separator" class="divider"></li>
-    </b>
-    <li><a href="/rabbit/website/invoice/{{this._id}}" target="_blank">{{fa "print"}} Invoice</a></li>
+        <li><a href="#" class="js-update updatePaymentWebsite">{{fa "pencil"}} Update</a></li>
+        <li><a href="#" class="js-remove removePaymentWebsite">{{fa "remove"}} Remove</a></li>
+        <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
+        <b>
+            <li role="separator" class="divider"></li>
+        </b>
+        <li><a href="/rabbit/website/invoice/{{this._id}}" target="_blank">{{fa "print"}} Invoice</a></li>
 
     {{/tabularAction}}
 </template>
@@ -34,74 +34,75 @@
 <!--Insert-->
 <template name="rabbit_paymentWebsiteInsert">
     {{#autoForm collection=Rabbit.Collection.PaymentWebsite doc=website id="rabbit_paymentWebsiteInsert" type="insert"}}
-    <div class="panel panel-default">
-        <div class="panel-heading">Payment Website & Service</div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-6">
-                    {{> afQuickField name="customerId" readOnly=true}}
+        <div class="panel panel-default">
+            <div class="panel-heading">Payment Website & Service</div>
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-md-6">
+                        {{> afQuickField name="customerId" readOnly=true}}
 
 
-                    {{> afQuickField name="websiteId" readOnly=true}}
-                    {{> afQuickField name="serviceId" readOnly=true}}
+                        {{> afQuickField name="websiteId" readOnly=true}}
+                        {{> afQuickField name="serviceId" readOnly=true}}
+                    </div>
+                    <div class="col-md-6">
+
+                        {{> afQuickField name="paymentWebsiteDate"}}
+                        {{> afQuickField name="des"}}
+                    </div>
                 </div>
-                <div class="col-md-6">
 
-                    {{> afQuickField name="paymentWebsiteDate"}}
-                    {{> afQuickField name="des"}}
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-6 buildWebsite">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Build Website</div>
-                        <div class="panel-body">
-                            <div class="col-sm-4">{{> afQuickField name="buildPrice" class="buildPrice"
+                <div class="row">
+                    <div class="col-md-6 buildWebsite">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Build Website</div>
+                            <div class="panel-body">
+                                <div class="col-sm-4">{{> afQuickField name="buildPrice" class="buildPrice"
                                 readOnly=true}}
-                            </div>
-                            <div class="col-sm-4">{{> afQuickField name="buildPaid" class="buildPaid" }}</div>
-                            <div class="col-sm-4">{{> afQuickField name="buildDue" class="buildDue" readOnly=true}}
+                                </div>
+                                <div class="col-sm-4">{{> afQuickField name="buildPaid" class="buildPaid" }}</div>
+                                <div class="col-sm-4">{{> afQuickField name="buildDue" class="buildDue" readOnly=true}}
+                                </div>
                             </div>
                         </div>
                     </div>
-                </div>
-                <div class="col-md-6 service">
+                    <div class="col-md-6 service">
 
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Service</div>
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                                <div class="col-sm-3">DomainName</div>
-                                <div class="col-sm-3">{{> afQuickField name="domainNamePrice" readOnly=true
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Service</div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    <div class="col-sm-3">DomainName</div>
+                                    <div class="col-sm-3">{{> afQuickField name="domainNamePrice" readOnly=true
                                     class="domainNamePrice"}}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="domainNamePaid" class="domainNamePaid" }}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="domainNameDue" class="domainNameDue"
+                                    </div>
+                                    <div class="col-sm-3">{{> afQuickField name="domainNamePaid" class="domainNamePaid" }}
+                                    </div>
+                                    <div class="col-sm-3">{{> afQuickField name="domainNameDue" class="domainNameDue"
                                     readOnly=true}}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-sm-3">Hosting</div>
-                                <div class="col-sm-3">{{> afQuickField name="hostingPrice" readOnly=true
+                                <div class="col-md-12">
+                                    <div class="col-sm-3">Hosting</div>
+                                    <div class="col-sm-3">{{> afQuickField name="hostingPrice" readOnly=true
                                     class="hostingPrice"}}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="hostingPaid" class="hostingPaid"}}</div>
-                                <div class="col-sm-3">{{> afQuickField name="hostingDue" readOnly=true
+                                    </div>
+                                    <div class="col-sm-3">{{> afQuickField name="hostingPaid" class="hostingPaid"}}</div>
+                                    <div class="col-sm-3">{{> afQuickField name="hostingDue" readOnly=true
                                     class="hostingDue" }}
+                                    </div>
                                 </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-sm-3">Maintenance</div>
-                                <div class="col-sm-3">{{> afQuickField name="maintenancePrice" readOnly=true
+                                <div class="col-md-12">
+                                    <div class="col-sm-3">Maintenance</div>
+                                    <div class="col-sm-3">{{> afQuickField name="maintenancePrice" readOnly=true
                                     class="maintenancePrice"}}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="maintenancePaid"
+                                    </div>
+                                    <div class="col-sm-3">{{> afQuickField name="maintenancePaid"
                                     class="maintenancePaid"}}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="maintenanceDue" class="maintenanceDue"
+                                    </div>
+                                    <div class="col-sm-3">{{> afQuickField name="maintenanceDue" class="maintenanceDue"
                                     readOnly=true}}
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -109,98 +110,97 @@
                 </div>
             </div>
         </div>
-    </div>
-    <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-    <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+        <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+        <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
     {{/autoForm}}
 </template>
 <!--Update-->
 <template name="rabbit_paymentWebsiteUpdate">
     <!--Built-in template sub ready by all-->
     {{#if Template.subscriptionsReady}}
-    {{#autoForm collection=Rabbit.Collection.PaymentWebsite id="rabbit_paymentWebsiteUpdate" doc=this type="update"}}
-    <div class="panel panel-default">
-        <div class="panel-heading">Payment Website & Service</div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-md-6">
-                    {{> afQuickField name="customerId" readOnly=true}}
+        {{#autoForm collection=Rabbit.Collection.PaymentWebsite id="rabbit_paymentWebsiteUpdate" doc=this type="update"}}
+            <div class="panel panel-default">
+                <div class="panel-heading">Payment Website & Service</div>
+                <div class="panel-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            {{> afQuickField name="customerId" readOnly=true}}
 
 
-                    {{> afQuickField name="websiteId" readOnly=true}}
-                    {{> afQuickField name="serviceId" readOnly=true}}
-                </div>
-                <div class="col-md-6">
+                            {{> afQuickField name="websiteId" readOnly=true}}
+                            {{> afQuickField name="serviceId" readOnly=true}}
+                        </div>
+                        <div class="col-md-6">
 
-                    {{> afQuickField name="paymentWebsiteDate"}}
-                    {{> afQuickField name="des"}}
-                </div>
-            </div>
+                            {{> afQuickField name="paymentWebsiteDate"}}
+                            {{> afQuickField name="des"}}
+                        </div>
+                    </div>
 
-            <div class="row">
-                <div class="col-md-6 buildWebsite">
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Build Website</div>
-                        <div class="panel-body">
-                            <div class="col-sm-4">{{> afQuickField name="buildPrice" class="buildPrice"
-                                readOnly=true}}
+                    <div class="row">
+                        <div class="col-md-6 buildWebsite">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Build Website</div>
+                                <div class="panel-body">
+                                    <div class="col-sm-4">{{> afQuickField name="buildPrice" class="buildPrice"
+                                    readOnly=true}}
+                                    </div>
+                                    <div class="col-sm-4">{{> afQuickField name="buildPaid" class="buildPaid" }}</div>
+                                    <div class="col-sm-4">{{> afQuickField name="buildDue" class="buildDue" readOnly=true}}
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col-sm-4">{{> afQuickField name="buildPaid" class="buildPaid" }}</div>
-                            <div class="col-sm-4">{{> afQuickField name="buildDue" class="buildDue" readOnly=true}}
+                        </div>
+                        <div class="col-md-6 service">
+
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Service</div>
+                                <div class="panel-body">
+                                    <div class="col-md-12">
+                                        <div class="col-sm-3">DomainName</div>
+                                        <div class="col-sm-3">{{> afQuickField name="domainNamePrice" readOnly=true
+                                        class="domainNamePrice"}}
+                                        </div>
+                                        <div class="col-sm-3">{{> afQuickField name="domainNamePaid" class="domainNamePaid" }}
+                                        </div>
+                                        <div class="col-sm-3">{{> afQuickField name="domainNameDue" class="domainNameDue"
+                                        readOnly=true}}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-sm-3">Hosting</div>
+                                        <div class="col-sm-3">{{> afQuickField name="hostingPrice" readOnly=true
+                                        class="hostingPrice"}}
+                                        </div>
+                                        <div class="col-sm-3">{{> afQuickField name="hostingPaid" class="hostingPaid"}}</div>
+                                        <div class="col-sm-3">{{> afQuickField name="hostingDue" readOnly=true
+                                        class="hostingDue" }}
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="col-sm-3">Maintenance</div>
+                                        <div class="col-sm-3">{{> afQuickField name="maintenancePrice" readOnly=true
+                                        class="maintenancePrice"}}
+                                        </div>
+                                        <div class="col-sm-3">{{> afQuickField name="maintenancePaid"
+                                        class="maintenancePaid"}}
+                                        </div>
+                                        <div class="col-sm-3">{{> afQuickField name="maintenanceDue" class="maintenanceDue"
+                                        readOnly=true}}
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-md-6 service">
-
-                    <div class="panel panel-default">
-                        <div class="panel-heading">Service</div>
-                        <div class="panel-body">
-                            <div class="col-md-12">
-                                <div class="col-sm-3">DomainName</div>
-                                <div class="col-sm-3">{{> afQuickField name="domainNamePrice" readOnly=true
-                                    class="domainNamePrice"}}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="domainNamePaid" class="domainNamePaid" }}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="domainNameDue" class="domainNameDue"
-                                    readOnly=true}}
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-sm-3">Hosting</div>
-                                <div class="col-sm-3">{{> afQuickField name="hostingPrice" readOnly=true
-                                    class="hostingPrice"}}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="hostingPaid" class="hostingPaid"}}</div>
-                                <div class="col-sm-3">{{> afQuickField name="hostingDue" readOnly=true
-                                    class="hostingDue" }}
-                                </div>
-                            </div>
-                            <div class="col-md-12">
-                                <div class="col-sm-3">Maintenance</div>
-                                <div class="col-sm-3">{{> afQuickField name="maintenancePrice" readOnly=true
-                                    class="maintenancePrice"}}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="maintenancePaid"
-                                    class="maintenancePaid"}}
-                                </div>
-                                <div class="col-sm-3">{{> afQuickField name="maintenanceDue" class="maintenanceDue"
-                                    readOnly=true}}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-    </div>
-    <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-    <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
+            <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+            <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
 
-    {{/autoForm}}
+        {{/autoForm}}
     {{else}}
-    {{> loading}}
+        {{> loading}}
     {{/if}}
 </template>
 <template name="rabbit_paymentWebsiteShow">
@@ -209,14 +209,39 @@
         <dd>{{_id}}</dd>
         <dt>customerId:</dt>
         <dd>{{_customer.companyName}}</dd>
-        <dt>contractId</dt>
-        <dd>{{contractId}}</dd>
+        <dt>WebsiteId</dt>
+        <dd>{{websiteId}}</dd>
         <dt>paymentWebsiteDate</dt>
         <dd>{{paymentWebsiteDate}}</dd>
+        <dt>Design Price</dt>
+        <dd>{{buildPrice}}</dd>
+        <dt>Design Paid</dt>
+        <dd>{{buildPaid}}</dd>
+        <dt>Design Due</dt>
+        <dd>{{buildDue}}</dd>
+        <dt>DomainName Price</dt>
+        <dd>{{domainNamePrice}}</dd>
+        <dt>DomainName Paid</dt>
+        <dd>{{domainNamePaid}}</dd>
+        <dt>DomainName Due</dt>
+        <dd>{{domainNameDue}}</dd>
+        <dt>Hosting Price</dt>
+        <dd>{{hostingPrice}}</dd>
+        <dt>Hosting Paid</dt>
+        <dd>{{hostingPaid}}</dd>
+        <dt>Hosting Due</dt>
+        <dd>{{hostingDue}}</dd>
+        <dt>Maintenance Price</dt>
+        <dd>{{maintenancePrice}}</dd>
+        <dt>Maintenance Paid</dt>
+        <dd>{{maintenancePaid}}</dd>
+        <dt>Maintenance Due</dt>
+        <dd>{{maintenanceDue}}</dd>
+
+
         <dt>des</dt>
         <dd>{{des}}</dd>
-        <dt>office</dt>
-        <dd>{{office}}</dd>
+
     </dl>
 </template>
 <!--Custom object field-->

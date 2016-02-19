@@ -31,9 +31,10 @@ Meteor.methods({
         //let website = Rabbit.Collection.PaymentWebsite.find({
         //    websiteId: paymentWebsite.websiteId
         //});
-        let service = Rabbit.Collection.Service.findOne({websiteId: paymentWebsite.websiteId}, {short: {_id: -1}})
+        let service = Rabbit.Collection.Service.findOne({websiteId: paymentWebsite.websiteId}, {sort: {_id: -1}});
 
         data.service = service;
+        console.log(service);
         let getPrice = Rabbit.Collection.Website.findOne(paymentWebsite.websiteId);
         data.buildPrice = getPrice.price;
 
@@ -43,7 +44,6 @@ Meteor.methods({
 
         data.header = paymentWebsite._customer;
         data.content = paymentWebsite;
-        console.log(data.content)
         data.header.paymentDate = paymentWebsite.paymentWebsiteDate;
         data.header.websiteName = paymentWebsite._website.webName;
         //console.log(paymentWebsite.buildDue);

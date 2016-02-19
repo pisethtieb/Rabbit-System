@@ -24,5 +24,5 @@ Rabbit.TabularTable.PaymentWebsite = new Tabular.Table({
         {data: "maintenancePrice", title: "Maintenance"}
 
     ],
-    extraFields: ['service','domainNamePaid', 'domainNameDue', 'hostingPaid', 'hostingDue', 'maintenancePaid', 'maintenanceDue', 'paymentWebsiteDate', 'buildPaid', 'buildDue', 'customerId','maintenanceOwedAmount','maintenanceTotalPrice']
+    extraFields: ['serviceId','domainNamePaid', 'domainNameDue', 'hostingPaid', 'hostingDue', 'maintenancePaid', 'maintenanceDue', 'paymentWebsiteDate', 'buildPaid', 'buildDue', 'customerId','maintenanceOwedAmount','maintenanceTotalPrice']
 });
