@@ -339,48 +339,106 @@ updateTpl.onRendered(function () {
 
 
 updateTpl.events({
-    //"change .domainName"(e, t){
-    //
-    //    if ($('.domainName').is(':checked')) {
-    //
-    //        $('.domainNamePrice').removeAttr('disabled');
-    //        $('.domainNameStartDate').removeAttr('disabled');
-    //        $('.domainNameEndDate').removeAttr('disabled');
-    //    } else {
-    //        $('.domainNamePrice').attr('disabled', "disabled").val('');
-    //        $('.domainNameStartDate').attr('disabled', "disabled").val('');
-    //        $('.domainNameEndDate').attr('disabled', "disabled").val('');
-    //    }
-    //
-    //},
-    //"change .hosting"(e, t){
-    //
-    //    if ($('.hosting').is(':checked')) {
-    //
-    //        $('.hostingPrice').removeAttr('disabled');
-    //        $('.hostingStartDate').removeAttr('disabled');
-    //        $('.hostingEndDate').removeAttr('disabled');
-    //    } else {
-    //        $('.hostingPrice').attr('disabled', "disabled").val('');
-    //        $('.hostingStartDate').attr('disabled', "disabled").val('');
-    //        $('.hostingEndDate').attr('disabled', "disabled").val('');
-    //    }
-    //
-    //},
-    //"change .maintenance"(e, t){
-    //
-    //    if ($('.maintenance').is(':checked')) {
-    //
-    //        $('.maintenancePrice').removeAttr('disabled');
-    //        $('.maintenanceStartDate').removeAttr('disabled');
-    //        $('.maintenanceEndDate').removeAttr('disabled');
-    //    } else {
-    //        $('.maintenancePrice').attr('disabled', "disabled").val('');
-    //        $('.maintenanceStartDate').attr('disabled', "disabled").val('');
-    //        $('.maintenanceEndDate').attr('disabled', "disabled").val('');
-    //    }
-    //
-    //}
+    "change .domainName"(e, t){
+        let websiteId = FlowRouter.getParam('websiteId');
+        //Meteor.subscribe('rabbit_paymentWebsite');
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
+        debugger;
+        if ($('.domainName').is(':checked')) {
+            if (dueAmount != null) {
+                $('.domainNameOwedAmount').val(dueAmount.domainNameDue);
+                $('.domainNameTotalPrice').val(dueAmount.domainNameDue);
+            }
+            $('.domainNamePrice').removeAttr('disabled');
+            $('.domainNameStartDate').removeAttr('disabled');
+            $('.domainNameEndDate').removeAttr('disabled');
+        } else {
+            $('.domainNamePrice').attr('disabled', "disabled").val('');
+            $('.domainNameStartDate').attr('disabled', "disabled").val('');
+            $('.domainNameEndDate').attr('disabled', "disabled").val('');
+        }
+    },
+    "keyup .domainNamePrice"(e, t){
+
+        let price = $(e.currentTarget).val();
+        let owedAmount = $('.domainNameOwedAmount').val();
+        if (owedAmount == '') {
+            owedAmount = 0;
+            $('.domainNameTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+
+        } else {
+            $('.domainNameTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        }
+        $('.domainNameEndDate').val(moment().add(1, 'years').format('YYYY-MM-DD'));
+        $('.domainNameStartDate').val(moment().format('YYYY-MM-DD'));
+    },
+    "change .hosting"(e, t){
+        let websiteId = FlowRouter.getParam('websiteId');
+        //Meteor.subscribe('rabbit_paymentWebsite');
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
+        if ($('.hosting').is(':checked')) {
+
+            if (dueAmount != null) {
+                $('.hostingOwedAmount').val(dueAmount.hostingDue);
+                $('.hostingTotalPrice').val(dueAmount.hostingDue);
+            }
+            $('.hostingPrice').removeAttr('disabled');
+            $('.hostingStartDate').removeAttr('disabled');
+            $('.hostingEndDate').removeAttr('disabled');
+        } else {
+            $('.hostingPrice').attr('disabled', "disabled").val('');
+            $('.hostingStartDate').attr('disabled', "disabled").val('');
+            $('.hostingEndDate').attr('disabled', "disabled").val('');
+        }
+
+    },
+    "keyup .hostingPrice"(e, t){
+
+        let price = $(e.currentTarget).val();
+        let owedAmount = $('.hostingOwedAmount').val();
+        if (owedAmount == '') {
+            owedAmount = 0;
+            $('.hostingTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        } else {
+            $('.hostingTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        }
+        $('.hostingEndDate').val(moment().add(1, 'years').format('YYYY-MM-DD'));
+        $('.hostingStartDate').val(moment().format('YYYY-MM-DD'));
+
+
+    },
+    "change .maintenance"(e, t){
+        let websiteId = FlowRouter.getParam('websiteId');
+        //Meteor.subscribe('rabbit_paymentWebsite');
+        let dueAmount = Rabbit.Collection.PaymentWebsite.findOne({websiteId: websiteId}, {sort: {_id: -1}});
+
+        if ($('.maintenance').is(':checked')) {
+            if (dueAmount != null) {
+                $('.maintenanceOwedAmount').val(dueAmount.maintenanceDue);
+                $('.maintenanceTotalPrice').val(dueAmount.maintenanceDue);
+            }
+            $('.maintenancePrice').removeAttr('disabled');
+            $('.maintenanceStartDate').removeAttr('disabled');
+            $('.maintenanceEndDate').removeAttr('disabled');
+        } else {
+            $('.maintenancePrice').attr('disabled', "disabled").val('');
+            $('.maintenanceStartDate').attr('disabled', "disabled").val('');
+            $('.maintenanceEndDate').attr('disabled', "disabled").val('');
+        }
+    },
+    "keyup .maintenancePrice"(e, t){
+
+        let price = $(e.currentTarget).val();
+        let owedAmount = $('.maintenanceOwedAmount').val();
+        if (owedAmount == '') {
+            owedAmount = 0;
+            $('.maintenanceTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        } else {
+            $('.maintenanceTotalPrice').val(parseFloat(price) + parseFloat(owedAmount));
+        }
+        $('.maintenanceEndDate').val(moment().add(1, 'years').format('YYYY-MM-DD'));
+        $('.maintenanceStartDate').val(moment().format('YYYY-MM-DD'));
+    }
 });
 //
 //updateTpl.helpers({
