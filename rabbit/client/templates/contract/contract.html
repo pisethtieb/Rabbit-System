@@ -128,6 +128,52 @@
         {{> loading}}
     {{/if}}
 </template>
+
+<template name="afArrayField_basePriceArrayField">
+    <div class="panel panel-default">
+        <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
+        <div class="panel-body">
+            <div class="col-md-6">
+                <p><b>Head Price</b></p>
+            </div>
+            <div class="col-md-6">
+                <p><b>Branch Price</b></p>
+            </div>
+            {{#if afFieldIsInvalid name=this.atts.name}}
+                <div class="has-error">
+                    <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
+                </div>
+            {{/if}}
+
+            {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+                <div class="row item-list">
+                    {{> UI.dynamic template=../atts.subtemplate}}
+
+                    <div class="col-sm-1">
+                        {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
+                            <button type="button" class="btn btn-sm btn-danger autoform-remove-item btnRemove">
+                                <span class="glyphicon glyphicon-minus"></span>
+                            </button>
+                        {{/if}}
+                    </div>
+                </div>
+            {{/afEachArrayItem}}
+
+            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
+                <div class="row">
+                    <div class="col-sm-1 pull-right">
+                        <button type="button" class="btn btn-primary autoform-add-item btn-sm btnAdd"
+                                data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}"
+                                data-autoform-maxCount="{{this.atts.maxCount}}">
+                            <span class="glyphicon glyphicon-plus"></span>
+                        </button>
+                    </div>
+                </div>
+            {{/if}}
+        </div>
+    </div>
+</template>
+
 <!--Office Price-->
 <template name="contractBasePriceObjectField">
     <div class="col-sm-6">
