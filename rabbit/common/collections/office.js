@@ -5,7 +5,7 @@ Rabbit.Collection.Office = new Mongo.Collection("rabbit_office");
 Rabbit.Schema.Office = new SimpleSchema({
     name: {
         type: String,
-        label: "name"
+        label: "Name"
     },
     contractId: {
         type: String,
@@ -28,7 +28,7 @@ Rabbit.Schema.Office = new SimpleSchema({
         decimal: true
     },
     discount: {
-        label: "Discount(Amount)",
+        label: "Discount (Amount)",
         type: Number,
         decimal: true,
         optional: true,
@@ -39,7 +39,7 @@ Rabbit.Schema.Office = new SimpleSchema({
         }
     },
     price: {
-        label: "price",
+        label: "Price",
         type: Number,
         decimal: true
     },

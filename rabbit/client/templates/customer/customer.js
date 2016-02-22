@@ -54,7 +54,7 @@ indexTpl.events({
 
         alertify.confirm(
             fa("remove", "Customer"),
-            "Are you sure to delete [" + self._id + "]?",
+            "Are you sure to delete [" + self._id + "] ?",
             function () {
                 Rabbit.Collection.Customer.remove(self._id, function (error) {
                     if (error) {
@@ -186,5 +186,3 @@ var configOnRender = function () {
     var dob = $('[name="dob"]');
     DateTimePicker.date(dob);
 };
-
-

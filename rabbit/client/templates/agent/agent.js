@@ -19,7 +19,7 @@ indexTpl.onCreated(function () {
     });
 
     // Create new  alertify
-    createNewAlertify(["agent"], {size: 'lg'});
+    createNewAlertify(["agent"], {size: 'sm'});
     createNewAlertify(["agentShow"]) ;
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
@@ -36,19 +36,19 @@ indexTpl.helpers({
 
 indexTpl.events({
     'click .js-insert': function (e, t) {
-        alertify.agent(fa("plus", "agent"), renderTemplate(insertTpl));
+        alertify.agent(fa("plus", "Agent"), renderTemplate(insertTpl));
     },
     'click .js-update': function (e, t) {
-        alertify.agent(fa("pencil", "agent"), renderTemplate(updateTpl, this));
+        alertify.agent(fa("pencil", "Agent"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
         var self = this;
 
         alertify.confirm(
-            fa("remove", "agent"),
-            "Are you sure to delete [" + self._id + "]?",
+            fa("remove", "Agent"),
+            "Are you sure to delete [" + self._id + "] ?",
             function () {
-                Rabbit.Collection.agent.remove(self._id, function (error) {
+                Rabbit.Collection.Agent.remove(self._id, function (error) {
                     if (error) {
                         alertify.error(error.message);
                     } else {
@@ -60,7 +60,7 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.agentShow(fa("eye", "agent"), renderTemplate(showTpl, this));
+        alertify.agentShow(fa("eye", "Agent"), renderTemplate(showTpl, this));
     }
 
 
@@ -132,5 +132,3 @@ var configOnRender = function () {
     var dob = $('[name="dob"]');
     DateTimePicker.date(dob);
 };
-
-

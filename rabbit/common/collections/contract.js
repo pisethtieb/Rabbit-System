@@ -14,7 +14,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     productId: {
         type: String,
-        label: "Product ID",
+        label: "Product",
         autoform: {
             type: 'select2',
             options(){
@@ -24,9 +24,9 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     basePrice: {
         type: Array,
-        //label: "Branch Price",
+        label: "Branch Price",
         minCount: 1,
-        maxCount: 1
+        maxCount: 1,
     },
     'basePrice.$': {
         type: Object
@@ -42,7 +42,8 @@ Rabbit.Schema.Contract = new SimpleSchema({
     maintenancePrice: {
         type: Array,
         minCount: 1,
-        maxCount: 1
+        maxCount: 1,
+        label:"Maintenance Price"
     },
     'maintenancePrice.$': {
         type: Object
@@ -58,7 +59,8 @@ Rabbit.Schema.Contract = new SimpleSchema({
     paymentMethod: {
         type: Array,
         minCount: 1,
-        maxCount: 3
+        maxCount: 3,
+        label:"Payment Method"
     },
     'paymentMethod.$': {
         type: Object
@@ -84,11 +86,11 @@ Rabbit.Schema.Contract = new SimpleSchema({
     des: {
         type: String,
         label: "Description",
-        autoform: {
-            afFieldInput: {
-                type: "textarea"
-            }
-        },
+        // autoform: {
+        //     afFieldInput: {
+        //         type: "textarea"
+        //     }
+        // },
         optional: true
     },
     addFile: {
@@ -103,7 +105,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     contractorId: {
         type: String,
-        label: "ContractorId",
+        label: "Contractor",
         autoform: {
             type: 'select2',
             options(){
@@ -113,7 +115,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     agentId: {
         type: String,
-        label: 'AgentId',
+        label: 'Agent',
         autoform: {
             type: 'select2',
             options(){
@@ -130,4 +132,3 @@ Rabbit.Schema.Contract = new SimpleSchema({
 
 // Attach schema
 Rabbit.Collection.Contract.attachSchema(Rabbit.Schema.Contract);
-

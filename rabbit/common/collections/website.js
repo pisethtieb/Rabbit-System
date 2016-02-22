@@ -15,7 +15,7 @@ Rabbit.Schema.Website = new SimpleSchema({
     },
     webName: {
         type: String,
-        label: 'Web Name',
+        label: 'Website Name',
         unique: true
     },
     type: {
@@ -30,7 +30,7 @@ Rabbit.Schema.Website = new SimpleSchema({
     },
     price: {
         type: Number,
-        label: 'price'
+        label: 'Price'
     },
     des: {
         type: String,
@@ -47,4 +47,3 @@ Rabbit.Schema.Website = new SimpleSchema({
 
 // Attach schema
 Rabbit.Collection.Website.attachSchema(Rabbit.Schema.Website);
-

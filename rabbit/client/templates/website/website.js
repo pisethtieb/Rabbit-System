@@ -15,9 +15,9 @@ indexTpl.onCreated(function () {
         description: 'Description for this page'
     });
     // Create new  alertify
-    createNewAlertify(["website"], {size: 'lg'});
+    createNewAlertify(["website"], {size: 'sm'});
     createNewAlertify(["addFile"]);
-    createNewAlertify(["websiteShow"], {size: 'lg'});
+    createNewAlertify(["websiteShow"], {size: 'sm'});
 });
 
 indexTpl.helpers({
@@ -51,7 +51,7 @@ indexTpl.events({
         }
         alertify.confirm(
             fa("remove", "Website"),
-            "Are you sure to delete [" + self._id + "]?",
+            "Are you sure to delete [" + self._id + "] ?",
             function () {
                 Rabbit.Collection.Website.remove(self._id, function (error) {
                     if (error) {
