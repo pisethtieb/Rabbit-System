@@ -38,20 +38,18 @@ indexTpl.events({
     'click .js-insert': function (e, t) {
         let id = FlowRouter.getParam('contractId');
 
-        alertify.paymentOffice(fa("plus", "PaymentOffice"), renderTemplate(insertTpl)).maximize();
+        alertify.paymentOffice(fa("plus", "Payment Office"), renderTemplate(insertTpl));
 
     },
     'click .js-update': function (e, t) {
-        debugger;
-        alertify.paymentOffice(fa("pencil", "PaymentOffice"), renderTemplate(updateTpl, this));
-        debugger;
+        alertify.paymentOffice(fa("pencil", "Payment Office"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
         var self = this;
 
         alertify.confirm(
-            fa("remove", "PaymentOffice"),
-            "Are you sure to delete [" + self._id + "]?",
+            fa("remove", "Payment Office"),
+            "Are you sure to delete [" + self._id + "] ?",
             function () {
                 Rabbit.Collection.PaymentOffice.remove(self._id, function (error) {
                     if (error) {
@@ -65,7 +63,7 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.paymentOfficeShow(fa("eye", "PaymentOffice"), renderTemplate(showTpl, this));
+        alertify.paymentOfficeShow(fa("eye", "Payment Office"), renderTemplate(showTpl, this));
 
     },
     'click .maintenanceAction': function () {
@@ -80,12 +78,12 @@ showTpl.helpers({
     office: function () {
         var str = "<table class='table table-bordered'><thead>" +
             "<tr>" +
-            "<th>OfficeId</th>" +
+            "<th>Office ID</th>" +
             "<th>Office Type</th>" +
             "<th>Price</th>" +
             "<th>Discount</th>" +
-            "<th>PaidAmount</th>" +
-            "<th>DueAmount</th>" +
+            "<th>Paid Amount</th>" +
+            "<th>Due Amount</th>" +
             "</tr>" +
             "</thead><tbody>";
         this.office.forEach(function (o) {

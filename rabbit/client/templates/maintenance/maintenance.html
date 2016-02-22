@@ -37,10 +37,10 @@
                 {{> afQuickField name="startDate"  class='startDate'}}
                 {{> afQuickField name="endDate" class='endDate'}}
                 {{> afQuickField name="des" }}
-                <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-                <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
             </div>
         </div>
+        <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+        <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
     {{/autoForm}}
 </template>
 
@@ -61,10 +61,10 @@
                     {{> afQuickField name="startDate"  class='startDate'}}
                     {{> afQuickField name="endDate" class='endDate'}}
                     {{> afQuickField name="des" }}
-                    <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-                    <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
                 </div>
             </div>
+            <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+            <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
         {{/autoForm}}
     {{else}}
         {{> loading}}
@@ -84,17 +84,17 @@
                 <dd>{{_id}}</dd>
                 <dt>Type:</dt>
                 <dd>{{type}}</dd>
-                <dt>Contact Price</dt>
+                <dt>Contract Price:</dt>
                 <dd>{{contractPrice}}</dd>
-                <dt>Discount</dt>
+                <dt>Discount:</dt>
                 <dd>{{discount}}</dd>
-                <dt>Price</dt>
+                <dt>Price:</dt>
                 <dd>{{price}}</dd>
-                <dt>startDate</dt>
+                <dt>Start Date:</dt>
                 <dd>{{startDate}}</dd>
-                <dt>endDate</dt>
+                <dt>End Date:</dt>
                 <dd>{{endDate}}</dd>
-                <dt>Des</dt>
+                <dt>Description:</dt>
                 <dd>{{des}}</dd>
             </dl>
         {{/with}}

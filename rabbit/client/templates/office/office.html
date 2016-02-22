@@ -29,25 +29,22 @@
 <template name="rabbit_officeInsert">
     {{#autoForm collection=Rabbit.Collection.Office id="rabbit_officeInsert" doc=office type="insert"}}
         <div class="row">
-            <div class="col-md-12">
                 <div class="col-md-6">
                     {{> afQuickField name="name"}}
                     {{> afQuickField name="officeDate"}}
                     {{> afQuickField name="contractId" readonly=true}}
                     {{> afQuickField name="type"  class='type'}}
-                    {{> afQuickField name="contractPrice"  class='contractPrice' readOnly=true}}
                 </div>
                 <div class="col-md-6">
+                  {{> afQuickField name="contractPrice"  class='contractPrice' readOnly=true}}
                     {{> afQuickField name="discount" class="discount"}}
                     {{> afQuickField name="price" id="price"  readOnly=true}}
                     {{> afQuickField name="productId"  value=productId type='hidden' }}
                     {{> afQuickField name="des"}}
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-            <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
-
         </div>
+        <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+        <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
     {{/autoForm}}
 </template>
 
@@ -57,24 +54,22 @@
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Office id="rabbit_officeUpdate" doc=this type="update"}}
             <div class="row">
-                <div class="col-md-12">
                     <div class="col-md-6">
                         {{> afQuickField name="name"}}
                         {{> afQuickField name="officeDate"}}
                         {{> afQuickField name="contractId" readonly=true}}
                         {{> afQuickField name="type"  class='type'}}
-                        {{> afQuickField name="contractPrice"  class='contractPrice' readOnly=true}}
                     </div>
                     <div class="col-md-6">
+                        {{> afQuickField name="contractPrice"  class='contractPrice' readOnly=true}}
                         {{> afQuickField name="discount" class="discount"}}
                         {{> afQuickField name="price" id="price"  readOnly=true}}
                         {{> afQuickField name="productId"  value=productId type='hidden' }}
                         {{> afQuickField name="des"}}
                     </div>
-                </div>
-                <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
-                <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
             </div>
+            <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
+            <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>
         {{/autoForm}}
     {{else}}
         {{> loading}}
@@ -85,21 +80,21 @@
         <dl class="dl-horizontal">
             <dt>ID:</dt>
             <dd>{{_id}}</dd>
-            <dt>name:</dt>
+            <dt>Name:</dt>
             <dd>{{name}}</dd>
             <dt>Office Date:</dt>
             <dd>{{officeDate}}</dd>
-            <dt>ContractId:</dt>
+            <dt>Contract ID:</dt>
             <dd>{{contractId}}</dd>
             <dt>Type:</dt>
             <dd>{{type}}</dd>
-            <dt>Contract Price</dt>
+            <dt>Contract Price:</dt>
             <dd>{{contractPrice}}</dd>
-            <dt>Discount</dt>
+            <dt>Discount:</dt>
             <dd>{{discount}}</dd>
-            <dt>Price</dt>
+            <dt>Price:</dt>
             <dd>{{price}}</dd>
-            <dt>Des</dt>
+            <dt>Description:</dt>
             <dd>{{des}}</dd>
         </dl>
 </template>

@@ -5,17 +5,17 @@ Rabbit.Collection.PaymentWebsite = new Mongo.Collection("rabbit_paymentWebsite")
 Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     customerId: {
         type: String,
-        label: 'CustomerId'
+        label: 'Customer ID'
 
     },
     websiteId: {
         type: String,
-        label: 'WebSiteID'
+        label: 'Website ID'
 
     },
     paymentWebsiteDate: {
         type: String,
-        label: 'PaymentWebsiteDate'
+        label: 'Payment Website Date'
     },
     des: {
         type: String,
@@ -38,7 +38,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     buildPaid: {
         type: Number,
-        label: "Paid",
+        label: "Paid Amount",
         optional: true,
         custom: function () {
             if (this.value > this.field('buildPrice').value) {
@@ -49,7 +49,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     buildDue: {
         type: Number,
-        label: "Due",
+        label: "Due Amount",
         optional: true,
         decimal: true
     },
@@ -63,7 +63,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     domainNamePaid: {
         type: Number,
-        label: "Paid",
+        label: "Paid Amount",
         optional: true,
         decimal: true,
         custom: function () {
@@ -74,7 +74,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     domainNameDue: {
         type: Number,
-        label: "Due",
+        label: "Due Amount",
         optional: true
     },
 
@@ -88,7 +88,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
 
     hostingPaid: {
         type: Number,
-        label: "Paid",
+        label: "Paid Amount",
         optional: true,
         decimal: true,
         custom: function () {
@@ -100,7 +100,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     hostingDue: {
         type: Number,
-        label: "Due",
+        label: "Due Amount",
         optional: true
     },
     //    maintenance
@@ -114,7 +114,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     maintenancePaid: {
         type: Number,
-        label: "Paid",
+        label: "Paid Amount",
         optional: true,
         decimal: true,
         custom: function () {
@@ -126,7 +126,7 @@ Rabbit.Schema.PaymentWebsite = new SimpleSchema({
     },
     maintenanceDue: {
         type: Number,
-        label: "Due",
+        label: "Due Amount",
         optional: true,
         decimal: true
     },

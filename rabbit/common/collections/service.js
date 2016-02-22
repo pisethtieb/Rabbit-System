@@ -5,12 +5,12 @@ Rabbit.Collection.Service = new Mongo.Collection("rabbit_service");
 Rabbit.Schema.Service = new SimpleSchema({
     websiteId: {
         type: String,
-        label: 'WebSiteID'
+        label: 'Website ID'
 
     },
     serviceDate: {
         type: String,
-        label: 'ServiceDate'
+        label: 'Service Date'
     },
     des: {
         type: String,
@@ -31,22 +31,22 @@ Rabbit.Schema.Service = new SimpleSchema({
     },
     domainNameStartDate: {
         type: String,
-        label: "StartDate",
+        label: "Start Date",
         optional: true
     },
     domainNameEndDate: {
         type: String,
-        label: "EndDate",
+        label: "End Date",
         optional: true
     },
     domainNameOwedAmount: {
         type: Number,
-        label: "OwedAmount",
+        label: "Owed Amount",
         optional: true
     },
     domainNameTotalPrice: {
         type: Number,
-        label: "TotalPrice",
+        label: "Total Price",
         optional: true
     },
 //    Hosting
@@ -58,22 +58,22 @@ Rabbit.Schema.Service = new SimpleSchema({
     },
     hostingStartDate: {
         type: String,
-        label: "StartDate",
+        label: "Start Date",
         optional: true
     },
     hostingEndDate: {
         type: String,
-        label: "EndDate",
+        label: "End Date",
         optional: true
     },
     hostingOwedAmount: {
         type: Number,
-        label: "OWedAmount",
+        label: "Owed Amount",
         optional: true
     },
     hostingTotalPrice: {
         type: Number,
-        label: "TotalPrice",
+        label: "Total Price",
         optional: true
     },
     //    maintenance
@@ -86,22 +86,22 @@ Rabbit.Schema.Service = new SimpleSchema({
     },
     maintenanceStartDate: {
         type: String,
-        label: "StartDate",
+        label: "Start Date",
         optional: true
     },
     maintenanceEndDate: {
         type: String,
-        label: "EndDate",
+        label: "End Date",
         optional: true
     },
     maintenanceOwedAmount: {
         type: Number,
-        label: "OwedAmount",
+        label: "Owed Amount",
         optional: true
     },
     maintenanceTotalPrice: {
         type: Number,
-        label: "TotalPrice",
+        label: "Total Price",
         optional: true
     }
 });

@@ -21,7 +21,7 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["contractor"], {size: 'lg'});
-    createNewAlertify(["contractorShow"], {size: 'lg'});
+    createNewAlertify(["contractorShow"], {size: 'sm'});
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -47,7 +47,7 @@ indexTpl.events({
 
         alertify.confirm(
             fa("remove", "Contractor"),
-            "Are you sure to delete [" + self._id + "]?",
+            "Are you sure to delete [" + self._id + "] ?",
             function () {
                 Rabbit.Collection.Contractor.remove(self._id, function (error) {
                     if (error) {
@@ -184,5 +184,3 @@ var configOnRender = function () {
     var dob = $('[name="dob"]');
     DateTimePicker.date(dob);
 };
-
-

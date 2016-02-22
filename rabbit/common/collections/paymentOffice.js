@@ -23,7 +23,7 @@ Rabbit.Schema.PaymentOffice = new SimpleSchema({
     },
     paymentOfficeDate: {
         type: String,
-        label: 'PaymentOffice Date',
+        label: 'Payment Office Date',
         defaultValue: function () {
             var currentDate = moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD');
             return currentDate;

@@ -41,7 +41,7 @@ indexTpl.events({
 
         alertify.confirm(
             fa("remove", "Service"),
-            "Are you sure to delete [" + self._id + "]?",
+            "Are you sure to delete [" + self._id + "] ?",
             function () {
                 Rabbit.Collection.Service.remove(self._id, function (error) {
                     if (error) {

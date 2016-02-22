@@ -19,7 +19,7 @@ Rabbit.Schema.Maintenance = new SimpleSchema({
     },
     officeId: {
         type: String,
-        label: 'officeId'
+        label: 'Office ID'
 
     },
     contractPrice: {
@@ -28,7 +28,7 @@ Rabbit.Schema.Maintenance = new SimpleSchema({
         decimal: true
     },
     discount: {
-        label: "Discount(Amount)",
+        label: "Discount (Amount)",
         type: Number,
         decimal: true,
         optional: true,
@@ -39,7 +39,7 @@ Rabbit.Schema.Maintenance = new SimpleSchema({
         }
     },
     price: {
-        label: "price",
+        label: "Price",
         type: Number,
         decimal: true
     },

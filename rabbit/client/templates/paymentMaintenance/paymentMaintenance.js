@@ -36,21 +36,17 @@ indexTpl.events({
         checkLastPaymentMaintenance(self);
     },
     'click .js-insert': function (e, t) {
-
-        alertify.paymentMaintenance(fa("plus", "PaymentMaintenance"), renderTemplate(insertTpl)).maximize();
-
+        alertify.paymentMaintenance(fa("plus", "Payment Maintenance"), renderTemplate(insertTpl));
     },
     'click .js-update': function (e, t) {
-        debugger;
-        alertify.paymentMaintenance(fa("pencil", "PaymentMaintenance"), renderTemplate(updateTpl, this));
-        debugger;
+        alertify.paymentMaintenance(fa("pencil", "Payment Maintenance"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
         var self = this;
 
         alertify.confirm(
-            fa("remove", "PaymentMaintenance"),
-            "Are you sure to delete [" + self._id + "]?",
+            fa("remove", "Payment Maintenance"),
+            "Are you sure to delete [" + self._id + "] ?",
             function () {
                 Rabbit.Collection.PaymentMaintenance.remove(self._id, function (error) {
                     if (error) {
@@ -64,7 +60,7 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.paymentMaintenanceShow(fa("eye", "PaymentMaintenance"), renderTemplate(showTpl, this));
+        alertify.paymentMaintenanceShow(fa("eye", "Payment Maintenance"), renderTemplate(showTpl, this));
 
     },
     'click .maintenanceAction': function () {
@@ -439,12 +435,12 @@ showTpl.helpers({
     maintenance: function () {
         var str = "<table class='table table-bordered'><thead>" +
             "<tr>" +
-            "<th>MaintenanceId</th>" +
+            "<th>Maintenance ID</th>" +
             "<th>Office Type</th>" +
             "<th>Price</th>" +
             "<th>Discount</th>" +
-            "<th>PaidAmount</th>" +
-            "<th>DueAmount</th>" +
+            "<th>Paid Amount</th>" +
+            "<th>Due Amount</th>" +
             "</tr>" +
             "</thead><tbody>";
         this.maintenance.forEach(function (o) {

@@ -25,7 +25,7 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["paymentWebsite"], {size: 'lg'});
-    createNewAlertify(["paymentWebsiteShow"], {size: 'lg'});
+    createNewAlertify(["paymentWebsiteShow"], {size: 'sm'});
     //createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
@@ -38,20 +38,20 @@ indexTpl.events({
     'click .js-insert': function (e, t) {
         let id = FlowRouter.getParam('contractId');
 
-        alertify.paymentWebsite(fa("plus", "PaymentWebsite"), renderTemplate(insertTpl)).maximize();
+        alertify.paymentWebsite(fa("plus", "Payment Website"), renderTemplate(insertTpl));
 
     },
     'click .js-update': function (e, t) {
         debugger;
-        alertify.paymentWebsite(fa("pencil", "PaymentWebsite"), renderTemplate(updateTpl, this));
+        alertify.paymentWebsite(fa("pencil", "Payment Website"), renderTemplate(updateTpl, this));
         debugger;
     },
     'click .js-remove': function (e, t) {
         var self = this;
 
         alertify.confirm(
-            fa("remove", "PaymentWebsite"),
-            "Are you sure to delete [" + self._id + "]?",
+            fa("remove", "Payment Website"),
+            "Are you sure to delete [" + self._id + "] ?",
             function () {
                 Rabbit.Collection.PaymentWebsite.remove(self._id, function (error) {
                     if (error) {
@@ -65,7 +65,7 @@ indexTpl.events({
         );
     },
     'click .js-show': function (e, t) {
-        alertify.paymentWebsiteShow(fa("eye", "PaymentWebsite"), renderTemplate(showTpl, this));
+        alertify.paymentWebsiteShow(fa("eye", "Payment Website"), renderTemplate(showTpl, this));
 
     },
     'click .maintenanceAction': function () {
