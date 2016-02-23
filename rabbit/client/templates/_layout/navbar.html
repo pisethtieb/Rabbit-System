@@ -19,124 +19,124 @@
 
     <!--Reports-->
     {{#if isInRole 'report' 'Rabbit'}}
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            MIS Reports <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-            <li class="{{isActiveRoute name='rabbit.quotationReport'}}">
-                <a href="{{pathFor 'rabbit.quotationReport'}}">Quotation</a>
-            </li>
-            <li class="{{isActiveRoute name='rabbit.agentReport'}}">
-                <a href="{{pathFor 'rabbit.agentReport'}}">Agent</a>
-            </li>
-            <!--<li class="{{isActiveRoute name='rabbit.customerExcelReport'}}">-->
-            <!--<a href="{{pathFor 'rabbit.customerExcelReport'}}">Customer (Excel)</a>-->
-            <!--</li>-->
-            <b>
-                <li role="separator" class="divider"></li>
-            </b>
-            <li class="dropdown-header">Contract</li>
-            <li class="{{isActiveRoute name='rabbit.contractReport'}}">
-                <a href="{{pathFor 'rabbit.contractReport'}}">Contract</a>
-            </li>
-            <li class="{{isActiveRoute name='rabbit.officeReport'}}">
-                <a href="{{pathFor 'rabbit.officeReport'}}">Office</a>
-            </li>
-            <li class="{{isActiveRoute name='rabbit.maintenanceReport'}}">
-                <a href="{{pathFor 'rabbit.maintenanceReport'}}">Maintenance </a>
-            </li>
-            <b>
-                <li role="separator" class="divider"></li>
-            </b>
-            <li class="dropdown-header">Payment</li>
-            <li class="{{isActiveRoute name='rabbit.paymentOfficeReport'}}">
-                <a href="{{pathFor 'rabbit.paymentOfficeReport'}}">PaymentOffice</a>
-            </li>
-            <li class="{{isActiveRoute name='rabbit.paymentMaintenanceReport'}}">
-                <a href="{{pathFor 'rabbit.paymentMaintenanceReport'}}">PaymentMaintenance</a>
-            </li>
-            <li class="dropdown-header">Outstanding</li>
-            <li class="{{isActiveRoute name='rabbit.paymentOfficeBalanceReport'}}">
-                <a href="{{pathFor 'rabbit.paymentOfficeBalanceReport'}}">OS PaymentOffice</a>
-            </li>
-            <li class="{{isActiveRoute name='rabbit.paymentMaintenanceBalanceReport'}}">
-                <a href="{{pathFor 'rabbit.paymentMaintenanceBalanceReport'}}">Os PaymentMaintenance</a>
-            </li>
-            <b>
-                <li role="separator" class="divider"></li>
-            </b>
-            <li class="dropdown-header">ReNew Maintenance</li>
-            <li class="{{isActiveRoute name='rabbit.renewMaintenanceReport'}}">
-                <a href="{{pathFor 'rabbit.renewMaintenanceReport'}}">{{> dental_alertEventMsg}} Renew Maintenance
-                    ​ </a>
-            </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{> dental_alertEventMsg}} MIS Reports<span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="{{isActiveRoute name='rabbit.quotationReport'}}">
+                    <a href="{{pathFor 'rabbit.quotationReport'}}">Quotation</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.agentReport'}}">
+                    <a href="{{pathFor 'rabbit.agentReport'}}">Agent</a>
+                </li>
+                <!--<li class="{{isActiveRoute name='rabbit.customerExcelReport'}}">-->
+                <!--<a href="{{pathFor 'rabbit.customerExcelReport'}}">Customer (Excel)</a>-->
+                <!--</li>-->
+                <b>
+                    <li role="separator" class="divider"></li>
+                </b>
+                <li class="dropdown-header">Contract</li>
+                <li class="{{isActiveRoute name='rabbit.contractReport'}}">
+                    <a href="{{pathFor 'rabbit.contractReport'}}">Contract</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.officeReport'}}">
+                    <a href="{{pathFor 'rabbit.officeReport'}}">Office</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.maintenanceReport'}}">
+                    <a href="{{pathFor 'rabbit.maintenanceReport'}}">Maintenance </a>
+                </li>
+                <b>
+                    <li role="separator" class="divider"></li>
+                </b>
+                <li class="dropdown-header">Payment</li>
+                <li class="{{isActiveRoute name='rabbit.paymentOfficeReport'}}">
+                    <a href="{{pathFor 'rabbit.paymentOfficeReport'}}">PaymentOffice</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.paymentMaintenanceReport'}}">
+                    <a href="{{pathFor 'rabbit.paymentMaintenanceReport'}}">PaymentMaintenance</a>
+                </li>
+                <li class="dropdown-header">Outstanding</li>
+                <li class="{{isActiveRoute name='rabbit.paymentOfficeBalanceReport'}}">
+                    <a href="{{pathFor 'rabbit.paymentOfficeBalanceReport'}}">OS PaymentOffice</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.paymentMaintenanceBalanceReport'}}">
+                    <a href="{{pathFor 'rabbit.paymentMaintenanceBalanceReport'}}">Os PaymentMaintenance</a>
+                </li>
+                <b>
+                    <li role="separator" class="divider"></li>
+                </b>
+                <li class="dropdown-header ">ReNew Maintenance</li>
+                <li class="{{isActiveRoute name='rabbit.renewMaintenanceReport' }} renewMaintenance">
+                    <a href="{{pathFor 'rabbit.renewMaintenanceReport'}}">{{> dental_alertEventMsg}} Renew Maintenance
+                        ​ </a>
+                </li>
 
-        </ul>
-    </li>
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            Website Reports <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-            <li class="{{isActiveRoute name='rabbit.websiteReport'}}">
-                <a href="{{pathFor 'rabbit.websiteReport'}}">Website</a>
-            </li>
-            <li class="{{isActiveRoute name='rabbit.serviceReport'}}">
-                <a href="{{pathFor 'rabbit.serviceReport'}}">Service</a>
-            </li>
-            <!--<li class="{{isActiveRoute name='rabbit.customerExcelReport'}}">-->
-            <!--<a href="{{pathFor 'rabbit.customerExcelReport'}}">Customer (Excel)</a>-->
-            <!--</li>-->
-            <b>
-                <li role="separator" class="divider"></li>
-            </b>
-            <li class="dropdown-header">Payment</li>
-            <li class="{{isActiveRoute name='rabbit.paymentWebsiteReport'}}">
-                <a href="{{pathFor 'rabbit.paymentWebsiteReport'}}">Payment</a>
-            </li>
+            </ul>
+        </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                {{> service_alertEventMsg}} Website Reports <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="{{isActiveRoute name='rabbit.websiteReport'}}">
+                    <a href="{{pathFor 'rabbit.websiteReport'}}">Website</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.serviceReport'}}">
+                    <a href="{{pathFor 'rabbit.serviceReport'}}">Service</a>
+                </li>
+                <!--<li class="{{isActiveRoute name='rabbit.customerExcelReport'}}">-->
+                <!--<a href="{{pathFor 'rabbit.customerExcelReport'}}">Customer (Excel)</a>-->
+                <!--</li>-->
+                <b>
+                    <li role="separator" class="divider"></li>
+                </b>
+                <li class="dropdown-header">Payment</li>
+                <li class="{{isActiveRoute name='rabbit.paymentWebsiteReport'}}">
+                    <a href="{{pathFor 'rabbit.paymentWebsiteReport'}}">Payment</a>
+                </li>
 
-            <b>
-                <li role="separator" class="divider"></li>
-            </b>
-            <li class="dropdown-header">Outstanding</li>
-            <li class="{{isActiveRoute name='rabbit.paymentWebsiteBalanceReport'}}">
-                <a href="{{pathFor 'rabbit.paymentWebsiteBalanceReport'}}">Payment</a>
-            </li>
-            <!--<li class="{{isActiveRoute name='rabbit.serviceBalanceReport'}}">-->
+                <b>
+                    <li role="separator" class="divider"></li>
+                </b>
+                <li class="dropdown-header">Outstanding</li>
+                <li class="{{isActiveRoute name='rabbit.paymentWebsiteBalanceReport'}}">
+                    <a href="{{pathFor 'rabbit.paymentWebsiteBalanceReport'}}">Payment</a>
+                </li>
+                <!--<li class="{{isActiveRoute name='rabbit.serviceBalanceReport'}}">-->
                 <!--<a href="{{pathFor 'rabbit.serviceBalanceReport'}}">Service</a>-->
-            <!--</li>-->
+                <!--</li>-->
 
-            <b>
-                <li role="separator" class="divider"></li>
-            </b>
-            <li class="dropdown-header">ReNew Service</li>
-            <li class="{{isActiveRoute name='rabbit.renewServiceReport'}}">
-                <a href="{{pathFor 'rabbit.renewServiceReport'}}">{{> dental_alertEventMsg}} Service
-                    ​ </a>
-            </li>
+                <b>
+                    <li role="separator" class="divider"></li>
+                </b>
+                <li class="dropdown-header">ReNew Service</li>
+                <li class="{{isActiveRoute name='rabbit.renewServiceReport'}}">
+                    <a href="{{pathFor 'rabbit.renewServiceReport'}}">{{> service_alertEventMsg}} Service
+                        ​ </a>
+                </li>
 
-        </ul>
-    </li>
+            </ul>
+        </li>
     {{/if}}
 
     <!--Settings-->
     {{#if isInRole 'setting' 'Rabbit'}}
-    <li class="dropdown">
-        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-            Settings <span class="caret"></span>
-        </a>
-        <ul class="dropdown-menu" role="menu">
-            <li class="{{isActiveRoute name='rabbit.product'}}">
-                <a href="{{pathFor 'rabbit.product'}}">Product</a>
-            </li>
-            <li class="{{isActiveRoute name='rabbit.contractor'}}">
-                <a href="{{pathFor 'rabbit.contractor'}}">Contractor</a>
-            </li>
-            <li class="{{isActiveRoute name='cpanel.exchange'}}">
-                <a href="{{pathFor 'cpanel.exchange'}}">Exchange</a>
-            </li>
-        </ul>
-    </li>
+        <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                Settings <span class="caret"></span>
+            </a>
+            <ul class="dropdown-menu" role="menu">
+                <li class="{{isActiveRoute name='rabbit.product'}}">
+                    <a href="{{pathFor 'rabbit.product'}}">Product</a>
+                </li>
+                <li class="{{isActiveRoute name='rabbit.contractor'}}">
+                    <a href="{{pathFor 'rabbit.contractor'}}">Contractor</a>
+                </li>
+                <li class="{{isActiveRoute name='cpanel.exchange'}}">
+                    <a href="{{pathFor 'cpanel.exchange'}}">Exchange</a>
+                </li>
+            </ul>
+        </li>
     {{/if}}
 </template>

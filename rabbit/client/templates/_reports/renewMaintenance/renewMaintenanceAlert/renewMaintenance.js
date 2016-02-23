@@ -19,15 +19,22 @@ Template.dental_alertEventMsg.onRendered(function () {
 
 Template.dental_alertEventMsg.helpers({
     data: function () {
+        //let today = moment().format("YYYY-MM-DD");
+        //var doc = Rabbit.Collection.Maintenance.find({endDate: {$lte: today}});
+        //
+        //if (doc.count() > 0) {
+        //    data=doc.
+        //}
         return state.get('data');
     }
 });
 
 Template.dental_alertEventMsg.events({
-    'click .eventItem': function () {
+    'click .renewMaintenance': function () {
+        Meteor.subscribe('rabbit_maintenance');
         var data = Rabbit.Collection.Maintenance.findOne(this._id);
         // Update status
-        Rabbit.Collection.Maintenance.update({_id: this._id}, {$set: {status: 'Disable'}});
+        Rabbit.Collection.Maintenance.update({_id: this._id}, {$set: {status: 'yes'}});
         alertify.alert(fa("eye", "Maintenance"), renderTemplate(Template.rabbit_maintenanceShow, data));
 
 
@@ -37,16 +44,17 @@ Template.dental_alertEventMsg.events({
 // Count event
 function appointmentEvent(alertDate, endDate) {
     var data = {};
-
+    Meteor.subscribe('rabbit_maintenance');
     let today = moment().format("YYYY-MM-DD");
-    var doc = Rabbit.Collection.Maintenance.find({endDate: {$lte: today}});
-
-    if (doc.count() > 0) {
-        data.count = doc.count();
-
+    var doc = Rabbit.Collection.Maintenance.find({endDate: {$lte: today}}, {sort: {_id: -1}});
+    if (doc) {
         var event = [];
+        data.count = 0;
         doc.forEach(function (obj) {
-
+            let maintenance = Rabbit.Collection.Maintenance.findOne({officeId: obj.officeId}, {sort: {_id: -1}});
+            if (maintenance._id == obj._id && maintenance.endDate < today) {
+                data.count += 1;
+            }
             event.push(obj);
         });
 

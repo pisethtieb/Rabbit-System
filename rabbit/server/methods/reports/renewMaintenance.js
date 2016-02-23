@@ -27,17 +27,21 @@ Meteor.methods({
         let total = 0;
         var now = moment().format('YYYY-MM-DD');
         let maintenance = Rabbit.Collection.Maintenance.find(selector);
-
         maintenance.forEach(function (o) {
-            if (o.endDate <= params.date) {
-                let contract = Rabbit.Collection.Contract.findOne({_id: o._office.contractId});
-                o.contract = contract;
-                o.index = i;
-                total += o.price
-                o.renewMaintenance = 'ReNew';
-                data.content.push(o);
-                i++
+
+            let renew = Rabbit.Collection.Maintenance.findOne({officeId: o.officeId}, {sort: {_id: -1}});
+            if (renew._id == o._id) {
+                if (renew.endDate <= params.date) {
+                    let contract = Rabbit.Collection.Contract.findOne({_id: renew._office.contractId});
+                    renew.contract = contract;
+                    renew.index = i;
+                    total += renew.price;
+                    renew.renewMaintenance = 'ReNew';
+                    data.content.push(renew);
+                    i++
+                }
             }
+
         });
 
         if (params.branch == '') {
@@ -62,4 +66,5 @@ Meteor.methods({
         data.footer.total = total
         return data
     }
-});
+})
+;

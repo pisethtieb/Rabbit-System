@@ -103,6 +103,13 @@ Rabbit.Schema.Service = new SimpleSchema({
         type: Number,
         label: "Total Price",
         optional: true
+    },
+    status: {
+        type: String,
+        label: "Status",
+        defaultValue: "no"
+
+
     }
 });
 // Attach schema

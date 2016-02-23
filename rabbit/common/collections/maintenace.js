@@ -59,6 +59,13 @@ Rabbit.Schema.Maintenance = new SimpleSchema({
             }
         }
     },
+    status: {
+        type: String,
+        label: "Status",
+        defaultValue: "no"
+
+
+    },
     branchId: {
         type: String,
         label: "Branch",
