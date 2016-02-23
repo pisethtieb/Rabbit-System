@@ -25,9 +25,10 @@
 <template name="rabbit_productInsert">
     {{#autoForm collection=Rabbit.Collection.Product id="rabbit_productInsert" type="insert"}}
         <div class="row">
+            {{> afQuickField name="name"}}
             <div class="col-md-6">
-                {{> afQuickField name="name"}}
-                {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="basePriceObjectField"}}
+
+                {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="ProductBasePriceObjectField"}}
             </div>
             <div class="col-md-6">
                 {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
@@ -100,47 +101,47 @@
 <!--</template>-->
 
 <!--Custom array field-->
-<template name="afArrayField_basePriceArrayField">
-    <div class="panel panel-default">
-        <div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>
-        <div class="panel-body">
-            {{#if afFieldIsInvalid name=this.atts.name}}
-                <div class="has-error">
-                    <span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>
-                </div>
-            {{/if}}
+<!--<template name="afArrayField_basePriceArrayField">-->
+<!--<div class="panel panel-default">-->
+<!--<div class="panel-heading">{{afFieldLabelText name=this.atts.name}}</div>-->
+<!--<div class="panel-body">-->
+        <!--{{#if afFieldIsInvalid name=this.atts.name}}-->
+<!--<div class="has-error">-->
+<!--<span class="help-block">{{{afFieldMessage name=this.atts.name}}}</span>-->
+<!--</div>-->
+        <!--{{/if}}-->
 
-            {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
-                <div class="row item-list">
-                    {{> UI.dynamic template=../atts.subtemplate}}
+        <!--{{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}-->
+<!--<div class="row item-list">-->
+<!--{{> UI.dynamic template=../atts.subtemplate}}-->
 
-                    <div class="col-sm-1">
-                        {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
-                            <button type="button" class="btn btn-sm btn-danger autoform-remove-item btnRemove">
-                                <span class="glyphicon glyphicon-minus"></span>
-                            </button>
-                        {{/if}}
-                    </div>
-                </div>
-            {{/afEachArrayItem}}
+<!--<div class="col-sm-1">-->
+        <!--{{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}-->
+<!--<button type="button" class="btn btn-sm btn-danger autoform-remove-item btnRemove">-->
+<!--<span class="glyphicon glyphicon-minus"></span>-->
+<!--</button>-->
+        <!--{{/if}}-->
+<!--</div>-->
+<!--</div>-->
+        <!--{{/afEachArrayItem}}-->
 
-            {{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
-                <div class="row">
-                    <div class="col-sm-1 col-md-offset-11">
-                        <button type="button" class="btn btn-primary autoform-add-item btn-sm btnAdd"
-                                data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}"
-                                data-autoform-maxCount="{{this.atts.maxCount}}">
-                            <span class="glyphicon glyphicon-plus"></span>
-                        </button>
-                    </div>
-                </div>
-            {{/if}}
+        <!--{{#if afArrayFieldHasLessThanMaximum name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}-->
+<!--<div class="row">-->
+<!--<div class="col-sm-1 col-md-offset-11">-->
+<!--<button type="button" class="btn btn-primary autoform-add-item btn-sm btnAdd"-->
+<!--data-autoform-field="{{this.atts.name}}" data-autoform-minCount="{{this.atts.minCount}}"-->
+<!--data-autoform-maxCount="{{this.atts.maxCount}}">-->
+<!--<span class="glyphicon glyphicon-plus"></span>-->
+<!--</button>-->
+<!--</div>-->
+<!--</div>-->
+        <!--{{/if}}-->
 
-        </div>
-    </div>
-</template>
+<!--</div>-->
+<!--</div>-->
+<!--</template>-->
 <!--Custom object field-->
-<template name="basePriceObjectField">
+<template name="ProductBasePriceObjectField">
     <div class="col-sm-6">
         {{> afQuickField name=current.headOffice template="bootstrap3" label=false class="input-sm baseHeadOffice" placeholder="Head Office"}}
     </div>
