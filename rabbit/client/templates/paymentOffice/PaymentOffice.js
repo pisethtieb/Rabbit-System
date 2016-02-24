@@ -182,94 +182,6 @@ insertTpl.events({
             }
         }
         return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
-    },
-    'click .btnAdd': function (e) {
-        setTimeout(function () {
-            $('.btnAdd').attr('disabled', 'disabled');
-        }, 300);
-
-        var thisObj = $(e.currentTarget);
-        var officeId = thisObj.parents('div.item-list').find('.officeId').val();
-        var price = thisObj.parents('div.item-list').find('.price').val();
-        setTimeout(function () {
-            if (officeId != "" && price != 0) {
-                $('.btnAdd').attr('disabled', false);
-            } else {
-                $('.btnAdd').attr('disabled', true);
-            }
-
-        }, 300);
-    },
-    'change .officeId': function (e) {
-        //let checkOM = Session.get('checkOfficeMaintenance');
-        //if (checkOM == "office") {
-        var thisObje = $(e.currentTarget);
-        var officeId = $(e.currentTarget).val();
-        if (officeId == '') {
-            thisObje.parents('div.item-list').find('.officeId').val('');
-            thisObje.parents('div.item-list').find('.office').val('');
-            thisObje.parents('div.item-list').find('.price').val('');
-            thisObje.parents('div.item-list').find('.paidAmount').val('');
-            thisObje.parents('div.item-list').find('.dueAmount').val('');
-
-        }
-
-        var office = Rabbit.Collection.Office.findOne({_id: officeId});
-        Rabbit.Collection.Office.find(officeId).forEach(function (obj) {
-            var paymentOffice = Rabbit.Collection.PaymentOffice.findOne({
-                    'office.officeId': obj._id
-                },
-                {
-                    sort: {
-                        _id: -1
-                    }
-                });
-
-
-            if (paymentOffice != null) {
-
-                paymentOffice.office.forEach(function (payObj) {
-
-                    if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
-                        thisObje.parents('div.item-list').find('.office').val(payObj.office);
-                        thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
-                        thisObje.parents('div.item-list').find('.paidAmount').val(0);
-                        thisObje.parents('div.item-list').find('.discount').val(0);
-                        thisObje.parents('div.item-list').find('.dueAmount').val(payObj.dueAmount);
-                    }
-                })
-            } else if (paymentOffice == null) {
-
-                thisObje.parents('div.item-list').find('.office').val(office.type);
-                thisObje.parents('div.item-list').find('.price').val(office.price);
-                thisObje.parents('div.item-list').find('.paidAmount').val(0);
-                thisObje.parents('div.item-list').find('.discount').val(0);
-                thisObje.parents('div.item-list').find('.dueAmount').val(office.price);
-            }
-        });
-        var num = 0;
-        $('.officeId').each(function () {
-            if (officeId == $(this).val()) {
-                num += 1;
-            }
-        });
-        if (num > 1) {
-
-            thisObje.parents('div.item-list').find('.officeId').val('');
-            thisObje.parents('div.item-list').find('.office').val('');
-            thisObje.parents('div.item-list').find('.price').val('');
-            thisObje.parents('div.item-list').find('.paidAmount').val('');
-            thisObje.parents('div.item-list').find('.dueAmount').val('');
-            setTimeout(function () {
-                $('.btnAdd').attr('disabled', 'disabled');
-
-            }, 100);
-        }
-        if (officeId) {
-            $('.btnAdd').removeAttr('disabled');
-        } else {
-            $('.btnAdd').attr('disabled', "disabled");
-        }
     }
 });
 updateTpl.events({
@@ -325,13 +237,6 @@ updateTpl.events({
         }
         return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     },
-    //'keypress .paidAmount'(e){
-    //    var thisObj = $(e.currentTarget);
-    //    var paid = thisObj.parents('div.item-list').find('.paidAmount').val();
-    //    if (paid == 0) {
-    //        thisObj.parents('div.item-list').find('.paidAmount').val('');
-    //    }
-    //},
     'click .btnAdd': function (e) {
         setTimeout(function () {
             $('.btnAdd').attr('disabled', 'disabled');
@@ -349,77 +254,6 @@ updateTpl.events({
 
         }, 300);
     },
-    'change .officeId': function (e) {
-        //let checkOM = Session.get('checkOfficeMaintenance');
-        //if (checkOM == "office") {
-        var thisObje = $(e.currentTarget);
-        var officeId = $(e.currentTarget).val();
-        if (officeId == '') {
-            thisObje.parents('div.item-list').find('.officeId').val('');
-            thisObje.parents('div.item-list').find('.office').val('');
-            thisObje.parents('div.item-list').find('.price').val('');
-            thisObje.parents('div.item-list').find('.paidAmount').val('');
-            thisObje.parents('div.item-list').find('.dueAmount').val('');
-
-        }
-
-        var office = Rabbit.Collection.Office.findOne({_id: officeId});
-        Rabbit.Collection.Office.find(officeId).forEach(function (obj) {
-            var paymentOffice = Rabbit.Collection.PaymentOffice.findOne({
-                    'office.officeId': obj._id
-                },
-                {
-                    sort: {
-                        _id: -1
-                    }
-                });
-
-
-            if (paymentOffice != null) {
-
-                paymentOffice.office.forEach(function (payObj) {
-
-                    if (obj._id == payObj.officeId && payObj.dueAmount > 0) {
-                        thisObje.parents('div.item-list').find('.office').val(payObj.office);
-                        thisObje.parents('div.item-list').find('.price').val(payObj.dueAmount);
-                        thisObje.parents('div.item-list').find('.paidAmount').val(0);
-                        thisObje.parents('div.item-list').find('.discount').val(0);
-                        thisObje.parents('div.item-list').find('.dueAmount').val(payObj.dueAmount);
-                    }
-                })
-            } else if (paymentOffice == null) {
-
-                thisObje.parents('div.item-list').find('.office').val(office.type);
-                thisObje.parents('div.item-list').find('.price').val(office.price);
-                thisObje.parents('div.item-list').find('.paidAmount').val(0);
-                thisObje.parents('div.item-list').find('.discount').val(0);
-                thisObje.parents('div.item-list').find('.dueAmount').val(office.price);
-            }
-        });
-        var num = 0;
-        $('.officeId').each(function () {
-            if (officeId == $(this).val()) {
-                num += 1;
-            }
-        });
-        if (num > 1) {
-
-            thisObje.parents('div.item-list').find('.officeId').val('');
-            thisObje.parents('div.item-list').find('.office').val('');
-            thisObje.parents('div.item-list').find('.price').val('');
-            thisObje.parents('div.item-list').find('.paidAmount').val('');
-            thisObje.parents('div.item-list').find('.dueAmount').val('');
-            setTimeout(function () {
-                $('.btnAdd').attr('disabled', 'disabled');
-
-            }, 100);
-        }
-        if (officeId) {
-            $('.btnAdd').removeAttr('disabled');
-        } else {
-            $('.btnAdd').attr('disabled', "disabled");
-        }
-    }
 });
 updateTpl.onRendered(function () {
     Meteor.setTimeout(function () {

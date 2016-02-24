@@ -19,27 +19,21 @@ Template.service_alertEventMsg.onRendered(function () {
 
 Template.service_alertEventMsg.helpers({
     data: function () {
-        //let today = moment().format("YYYY-MM-DD");
-        //var doc = Rabbit.Collection.Service.find({endDate: {$lte: today}});
-        //
-        //if (doc.count() > 0) {
-        //    data=doc.
-        //}
         return state.get('data');
     }
 });
 
-Template.service_alertEventMsg.events({
-    'click .renewService': function () {
-        Meteor.subscribe('rabbit_service');
-        var data = Rabbit.Collection.Service.findOne(this._id);
-        // Update status
-        Rabbit.Collection.Service.update({_id: this._id}, {$set: {status: 'yes'}});
-        alertify.alert(fa("eye", "Service"), renderTemplate(Template.rabbit_ServiceShow, data));
-
-
-    }
-});
+//Template.service_alertEventMsg.events({
+//    'click .renewService': function () {
+//        Meteor.subscribe('rabbit_service');
+//        var data = Rabbit.Collection.Service.findOne(this._id);
+//        // Update status
+//        Rabbit.Collection.Service.update({_id: this._id}, {$set: {status: 'yes'}});
+//        alertify.alert(fa("eye", "Service"), renderTemplate(Template.rabbit_ServiceShow, data));
+//
+//
+//    }
+//});
 
 // Count event
 function appointmentEvent(alertDate, endDate) {
