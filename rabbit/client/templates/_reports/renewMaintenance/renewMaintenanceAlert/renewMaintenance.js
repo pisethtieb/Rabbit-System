@@ -52,7 +52,7 @@ function appointmentEvent(alertDate, endDate) {
         data.count = 0;
         doc.forEach(function (obj) {
             let maintenance = Rabbit.Collection.Maintenance.findOne({officeId: obj.officeId}, {sort: {_id: -1}});
-            if (maintenance._id == obj._id && maintenance.endDate < today) {
+            if (maintenance._id == obj._id && maintenance.endDate <= today) {
                 data.count += 1;
             }
             event.push(obj);
