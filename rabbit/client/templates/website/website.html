@@ -22,11 +22,7 @@
         <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
         <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
         <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
-        <b>
-            <li role="separator" class="divider"></li>
-        </b>
-        <li><a href="/rabbit/website/invoice/{{this._id}}" target="_blank">{{fa "print"}} Invoice </a></li>
-
+     
     {{/tabularAction}}
 </template>
 
@@ -56,15 +52,15 @@
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Website id="rabbit_websiteUpdate" doc=this type="update"}}
             <div class="row">
-                    <div class="col-md-12">
-                        {{> afQuickField name="customerId"  readOnly=true }}
-                        {{> afQuickField name="registerDate"}}
-                        <!--{{> afQuickField name="contractorId"}}-->
-                        {{> afQuickField name="webName"}}
-                        {{> afQuickField name="type"}}
-                        {{> afQuickField name="price"}}
-                        {{> afQuickField name="des"}}
-                    </div>
+                <div class="col-md-12">
+                    {{> afQuickField name="customerId"  readOnly=true }}
+                    {{> afQuickField name="registerDate"}}
+                    <!--{{> afQuickField name="contractorId"}}-->
+                    {{> afQuickField name="webName"}}
+                    {{> afQuickField name="type"}}
+                    {{> afQuickField name="price"}}
+                    {{> afQuickField name="des"}}
+                </div>
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
             <button type="reset" class="btn btn-default">{{fa "refresh"}} Reset</button>

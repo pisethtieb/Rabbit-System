@@ -18,7 +18,7 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
                 return moment(val).format('YYYY-MM-DD');
             }
         },
-        {data: "productId", title: "Product ID"},
+        {data: "_product.name", title: "Product"},
         {
             data: "_officeCount",
             title: "Office <i class='fa fa-arrow-up'></i>",
@@ -37,5 +37,5 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
             tmpl: Meteor.isClient && Template.rabbit_addFile
         }
     ],
-    extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId', 'agentId', 'paymentMethod', 'amount']
+    extraFields: ['customerId', 'contractDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId', 'agentId', 'paymentMethod', 'amount', 'productId']
 });

@@ -107,7 +107,7 @@ insertTpl.helpers({
 insertTpl.events({
 
     'click .customerAddon': function () {
-        alertify.quotationShow(fa("plus", "Quotation"), renderTemplate(Template.rabbit_customerInsert)).maximize()
+        alertify.quotationShow(fa("plus", "Customer"), renderTemplate(Template.rabbit_customerInsert)).maximize()
 
     },
     'change .productId': function (e, t) {

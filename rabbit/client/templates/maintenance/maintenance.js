@@ -113,9 +113,9 @@ insertTpl.helpers({
 })
 ;
 insertTpl.events({
-    'click .endDate': function (e, t) {
-        $('.endDate').val(moment().add(1, 'years').format('YYYY-MM-DD'))
-    },
+    //'click .endDate': function (e, t) {
+    //    $('.endDate').val(moment().add(1, 'years').format('YYYY-MM-DD'))
+    //},
     'keyup .discount'(e){
 
         $('#price').val($('.contractPrice').val() - $('.discount').val());
