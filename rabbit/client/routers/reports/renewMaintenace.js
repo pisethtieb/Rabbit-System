@@ -1,8 +1,13 @@
 /**
  * Browser view
  */
+var subs = new SubsManager();
 rabbitRoutes.route('/renewMaintenanceReport', {
     name: 'rabbit.renewMaintenanceReport',
+    subscriptions: function (params, queryParams) {
+        // Customer
+        this.register('rabbit_contract', subs.subscribe('rabbit_contract'));
+    },
     action: function (params, queryParams) {
         Layout.main('rabbit_renewMaintenanceReport');
     },

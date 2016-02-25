@@ -1,8 +1,15 @@
 /**
  * Browser view
  */
+var subs = new SubsManager();
 rabbitRoutes.route('/officeReport', {
     name: 'rabbit.officeReport',
+    subscriptions: function (params, queryParams) {
+        // Customer
+        this.register('rabbit_contract', subs.subscribe('rabbit_contract'));
+        //this.register('rabbit_contractor', subs.subscribe('rabbit_contractor'));
+        //this.register('rabbit_agent', subs.subscribe('rabbit_agent'));
+    },
     action: function (params, queryParams) {
         Layout.main('rabbit_officeReport');
     },

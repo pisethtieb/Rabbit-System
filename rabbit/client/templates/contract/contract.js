@@ -10,6 +10,9 @@ var indexTpl = Template.rabbit_contract,
  * Index
  */
 indexTpl.onCreated(function () {
+    Meteor.subscribe('rabbit_office');
+    Meteor.subscribe('rabbit_paymentOffice');
+    Meteor.subscribe('rabbit_paymentMaintenance');
     // SEO
     SEO.set({
         title: 'Contract',

@@ -1,6 +1,7 @@
 /**
  * Browser view
  */
+var subs = new SubsManager();
 rabbitRoutes.route('/paymentWebsiteBalanceReport', {
     name: 'rabbit.paymentWebsiteBalanceReport',
     action: function (params, queryParams) {

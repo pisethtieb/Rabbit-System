@@ -26,7 +26,8 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.onRendered(function () {
-    //
+    Meteor.subscribe("rabbit_contract");
+    Meteor.subscribe("rabbit_quotation");
 });
 
 indexTpl.helpers({
@@ -78,9 +79,7 @@ indexTpl.events({
 insertTpl.onRendered(function () {
     configOnRender();
 });
-insertTpl.events({
-   
-});
+insertTpl.events({});
 
 
 /**

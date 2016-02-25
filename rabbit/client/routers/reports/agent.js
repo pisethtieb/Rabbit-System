@@ -1,8 +1,14 @@
 /**
  * Browser view
  */
+var subs = new SubsManager();
 rabbitRoutes.route('/agentReport', {
     name: 'rabbit.agentReport',
+    subscriptions: function (params, queryParams) {
+        // agent
+        this.register('rabbit_agent', subs.subscribe('rabbit_agent'));
+
+    },
     action: function (params, queryParams) {
         Layout.main('rabbit_agentReport');
     },

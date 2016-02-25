@@ -7,7 +7,6 @@ var indexTpl = Template.rabbit_agent,
     showTpl = Template.rabbit_agentShow;
 
 
-
 /**
  * Index
  */
@@ -20,12 +19,13 @@ indexTpl.onCreated(function () {
 
     // Create new  alertify
     createNewAlertify(["agent"], {size: 'sm'});
-    createNewAlertify(["agentShow"]) ;
+    createNewAlertify(["agentShow"]);
     createNewAlertify(["locationAddon"], {transition: 'zoom', size: 'lg'});
 });
 
 indexTpl.onRendered(function () {
-    //
+    Meteor.subscribe('rabbit_contract');
+    Meteor.subscribe('rabbit_quotation');
 });
 
 indexTpl.helpers({
@@ -41,9 +41,16 @@ indexTpl.events({
     'click .js-update': function (e, t) {
         alertify.agent(fa("pencil", "Agent"), renderTemplate(updateTpl, this));
     },
+
     'click .js-remove': function (e, t) {
         var self = this;
+        let contract = Rabbit.Collection.Contract.findOne({agentId: self._id});
+        let quotation = Rabbit.Collection.Quotation.findOne({agentId: self._id});
+        if (contract != null || quotation != null) {
+            alertify.message(self._id + '||' + self.name + '  is in used !');
+            return false;
 
+        }
         alertify.confirm(
             fa("remove", "Agent"),
             "Are you sure to delete [" + self._id + "] ?",
@@ -78,7 +85,7 @@ insertTpl.onRendered(function () {
  * Update
  */
 updateTpl.onCreated(function () {
-    this.subscribe('rabbit_agent', this.data._id);
+    //this.subscribe('rabbit_agent', this.data._id);
 });
 
 updateTpl.onRendered(function () {
@@ -89,7 +96,7 @@ updateTpl.onRendered(function () {
  * Show
  */
 showTpl.onCreated(function () {
-    this.subscribe('rabbit_agent', this.data._id);
+    //this.subscribe('rabbit_agent', this.data._id);
 });
 
 

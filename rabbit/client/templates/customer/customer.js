@@ -26,7 +26,9 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.onRendered(function () {
-    //
+    Meteor.subscribe('rabbit_contract');
+    Meteor.subscribe('rabbit_quotation');
+    Meteor.subscribe('rabbit_website');
 });
 
 indexTpl.helpers({
@@ -44,9 +46,14 @@ indexTpl.events({
     },
     'click .js-remove': function (e, t) {
         var self = this;
+
         let contract = Rabbit.Collection.Contract.findOne({customerId: self._id});
+
         let quotation = Rabbit.Collection.Quotation.findOne({customerId: self._id});
-        if (contract != null || quotation != null) {
+
+        debugger;
+        let website = Rabbit.Collection.Website.findOne({customerId: self._id});
+        if (contract != null || quotation != null || website != null) {
             alertify.message(self._id + '|' + self.companyName + '  is in used !');
             return false;
 
@@ -94,7 +101,7 @@ insertTpl.onRendered(function () {
  * Update
  */
 updateTpl.onCreated(function () {
-    this.subscribe('rabbit_customer', this.data._id);
+    //this.subscribe('rabbit_customer', this.data._id);
 });
 
 updateTpl.onRendered(function () {
@@ -104,10 +111,10 @@ updateTpl.onRendered(function () {
 });
 
 updateTpl.helpers({
-    data: function () {
-        var data = Rabbit.Collection.Customer.findOne(this._id);
-        return data;
-    }
+    //data: function () {
+    //    var data = Rabbit.Collection.Customer.findOne(this._id);
+    //    return data;
+    //}
 });
 
 

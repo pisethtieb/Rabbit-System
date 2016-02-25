@@ -1,8 +1,14 @@
 /**
  * Browser view
  */
+var subs = new SubsManager();
 rabbitRoutes.route('/websiteReport', {
     name: 'rabbit.websiteReport',
+    subscriptions: function (params, queryParams) {
+        // Customer
+        this.register('rabbit_customer', subs.subscribe('rabbit_customer'));
+
+    },
     action: function (params, queryParams) {
         Layout.main('rabbit_websiteReport');
     },

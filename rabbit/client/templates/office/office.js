@@ -17,6 +17,7 @@ var indexTpl = Template.rabbit_office,
  */
 indexTpl.onCreated(function () {
     // SEO
+    Meteor.subscribe("rabbit_maintenance");
     SEO.set({
         title: 'Sale Branch Office',
         description: 'Description for this page'
@@ -41,6 +42,12 @@ indexTpl.events({
     'click .js-remove': function (e, t) {
         var self = this;
 
+        let office = Rabbit.Collection.Maintenance.findOne({officeId: self._id});
+        if (office != null) {
+            alertify.message(self._id + " | " + self.name + '  is in used !');
+            return false;
+
+        }
         alertify.confirm(
             fa("remove", "Office"),
             "Are you sure to delete [" + self._id + "] ?",
