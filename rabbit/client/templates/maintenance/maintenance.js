@@ -16,6 +16,7 @@ var indexTpl = Template.rabbit_maintenance,
  * Index
  */
 indexTpl.onCreated(function () {
+    Meteor.subscribe('rabbit_office')
     // SEO
     SEO.set({
         title: 'Sale Branch Maintenance',

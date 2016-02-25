@@ -21,7 +21,7 @@
     {{#if isInRole 'report' 'Rabbit'}}
         <li class="dropdown">
             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                {{> dental_alertEventMsg}} MIS Reports<span class="caret"></span>
+                {{getPublishedCount 'alertRenewMaintenance'}} MIS Reports<span class="caret"></span>
             </a>
             <ul class="dropdown-menu" role="menu">
                 <li class="{{isActiveRoute name='rabbit.quotationReport'}}">

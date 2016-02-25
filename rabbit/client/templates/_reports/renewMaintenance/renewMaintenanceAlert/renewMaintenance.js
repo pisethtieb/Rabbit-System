@@ -19,12 +19,7 @@ Template.dental_alertEventMsg.onRendered(function () {
 
 Template.dental_alertEventMsg.helpers({
     data: function () {
-        //let today = moment().format("YYYY-MM-DD");
-        //var doc = Rabbit.Collection.Maintenance.find({endDate: {$lte: today}});
-        //
-        //if (doc.count() > 0) {
-        //    data=doc.
-        //}
+
         return state.get('data');
     }
 });
