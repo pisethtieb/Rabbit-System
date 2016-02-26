@@ -7,3 +7,4 @@
 //Meteor.subscribe('rabbit_paymentWebsite');
 //Meteor.subscribe('rabbit_website');
 Meteor.subscribe('alertRenewMaintenance');
+Meteor.subscribe('alertRenewService');

@@ -20,3 +20,23 @@ Meteor.publish('alertRenewMaintenance', function () {
 
     this.ready();
 });
+
+Meteor.publish('alertRenewService', function () {
+    let today = moment().format("YYYY-MM-DD");
+    var doc = Rabbit.Collection.Service.find();
+    if (doc != null) {
+        var arr = [];
+        doc.forEach(function (obj) {
+            let service = Rabbit.Collection.Service.findOne({websiteId: obj.websiteId}, {sort: {_id: -1}});
+            if (service) {
+                if ((service.domainNameEndDate <= today || service.hostingEndDate <= today || service.maintenanceEndDate <= today)) {
+                    arr.push(service._id);
+                }
+
+            }
+        });
+    }
+    Counts.publish(this, 'alertRenewService', Rabbit.Collection.Service.find({_id: {$in: arr}}));
+
+    this.ready();
+});
