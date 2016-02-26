@@ -27,6 +27,10 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.events({
+    'click .btn-link': function (e, t) {
+        var self = this;
+        checkLastService(self);
+    },
     'click .js-insert': function (e, t) {
 
         alertify.service(fa("plus", "Service"), renderTemplate(insertTpl));
@@ -545,3 +549,13 @@ var configOnRender = function () {
 
 
 };
+function checkLastService(self) {
+    let checkingLastService = Rabbit.Collection.Service.findOne({websiteId: self.websiteId}, {sort: {_id: -1}})._id;
+    if (checkingLastService == self._id) {
+        $('.updateService').show();
+        $('.removeService').show();
+    } else {
+        $('.updateService').hide();
+        $('.removeService').hide();
+    }
+}

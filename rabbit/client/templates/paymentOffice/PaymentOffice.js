@@ -299,6 +299,7 @@ var configOnRender = function () {
 };
 
 function checkLastPaymentOffice(self) {
+
     let checkingLastPaymentOfficeForOffice = Rabbit.Collection.PaymentOffice.findOne({contractId: self.contractId}, {sort: {_id: -1}})._id;
     if (checkingLastPaymentOfficeForOffice == self._id) {
         $('.updatePaymentOffice').show();
