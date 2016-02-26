@@ -26,9 +26,9 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.onRendered(function () {
-    Meteor.subscribe('rabbit_contract');
-    Meteor.subscribe('rabbit_quotation');
-    Meteor.subscribe('rabbit_website');
+    //Meteor.subscribe('rabbit_contract');
+    //Meteor.subscribe('rabbit_quotation');
+    //Meteor.subscribe('rabbit_website');
 });
 
 indexTpl.helpers({
@@ -46,49 +46,63 @@ indexTpl.events({
     },
     'click .js-remove': function (e, t) {
         var self = this;
+        var id = this._id;
+        var arr = [
+            {collection: 'Rabbit.Collection.Contract', selector: {customerId: id}},
+            {collection: 'Rabbit.Collection.Website', selector: {customerId: id}}
+        ];
+        Meteor.call('isRelationExist', arr, function (error, result) {
+                if (result) {
 
-        let contract = Rabbit.Collection.Contract.findOne({customerId: self._id});
-
-        let quotation = Rabbit.Collection.Quotation.findOne({customerId: self._id});
-
-        debugger;
-        let website = Rabbit.Collection.Website.findOne({customerId: self._id});
-        if (contract != null || quotation != null || website != null) {
-            alertify.message(self._id + '|' + self.companyName + '  is in used !');
-            return false;
-
-        }
-
-        alertify.confirm(
-            fa("remove", "Customer"),
-            "Are you sure to delete [" + self._id + "] ?",
-            function () {
-                Rabbit.Collection.Customer.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+                    alertify.message(self._id + '|' + self.companyName + '  is in used !');
+                    return false
+                } else {
+                    alertify.confirm(
+                        fa("remove", "Customer"),
+                        "Are you sure to delete [" + self._id + "] ?",
+                        function () {
+                            Rabbit.Collection.Customer.remove(self._id, function (error) {
+                                if (error) {
+                                    alertify.error(error.message);
+                                } else {
+                                    alertify.success("Success");
+                                }
+                            });
+                        },
+                        null
+                    );
+                }
+            }
         );
+
+
+        //        let website = Rabbit.Collection.Website.findOne({customerId: self._id});
+        //if (contract != null || quotation != null || website != null) {
+        //    alertify.message(self._id + '|' + self.companyName + '  is in used !');
+        //    return false;
+        //
+        //}
+
+
     },
     'click .js-show': function (e, t) {
         alertify.customerShow(fa("eye", "Customer"), renderTemplate(showTpl, this));
-    },
+    }
+    ,
     'click .contractAction': function () {
         FlowRouter.go('rabbit.contract', {
             customerId: this._id
         })
 
-    },
+    }
+    ,
     'click .websiteAction': function () {
         FlowRouter.go('rabbit.website', {
             customerId: this._id
         })
     }
-});
+})
+;
 
 /**
  * Insert

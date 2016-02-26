@@ -43,21 +43,33 @@ indexTpl.events({
         alertify.contractor(fa("pencil", "Contractor"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
-        var self = this;
-
-        alertify.confirm(
-            fa("remove", "Contractor"),
-            "Are you sure to delete [" + self._id + "] ?",
-            function () {
-                Rabbit.Collection.Contractor.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+        var id = this._id;
+        let self = this;
+        var arr = [
+            {collection: 'Rabbit.Collection.Contract', selector: {contractorId: id}},
+            {collection: 'Rabbit.Collection.Quotation', selector: {contractorId: id}}
+        ];
+        Meteor.call('isRelationExist', arr, function (error, result) {
+                if (result) {
+                    alertify.message(self._id + '|' + self.name + '  is in used !');
+                    return false
+                } else {
+                    alertify.confirm(
+                        fa("remove", "Contractor"),
+                        "Are you sure to delete [" + self._id + "] ?",
+                        function () {
+                            Rabbit.Collection.Contractor.remove(self._id, function (error) {
+                                if (error) {
+                                    alertify.error(error.message);
+                                } else {
+                                    alertify.success("Success");
+                                }
+                            });
+                        },
+                        null
+                    );
+                }
+            }
         );
     },
     'click .js-show': function (e, t) {

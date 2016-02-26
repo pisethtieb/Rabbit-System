@@ -24,8 +24,8 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.onRendered(function () {
-    Meteor.subscribe('rabbit_contract');
-    Meteor.subscribe('rabbit_quotation');
+    //Meteor.subscribe('rabbit_contract');
+    //Meteor.subscribe('rabbit_quotation');
 });
 
 indexTpl.helpers({
@@ -43,29 +43,48 @@ indexTpl.events({
     },
 
     'click .js-remove': function (e, t) {
-        var self = this;
-        let contract = Rabbit.Collection.Contract.findOne({agentId: self._id});
-        let quotation = Rabbit.Collection.Quotation.findOne({agentId: self._id});
-        if (contract != null || quotation != null) {
-            alertify.message(self._id + '||' + self.name + '  is in used !');
-            return false;
+        var id = this._id;
+        let self = this;
+        var arr = [
+            {collection: 'Rabbit.Collection.Contract', selector: {agentId: id}},
+            {collection: 'Rabbit.Collection.Quotation', selector: {agentId: id}}
+        ];
+        Meteor.call('isRelationExist', arr, function (error, result) {
+                if (result) {
 
-        }
-        alertify.confirm(
-            fa("remove", "Agent"),
-            "Are you sure to delete [" + self._id + "] ?",
-            function () {
-                Rabbit.Collection.Agent.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+                    alertify.message(self._id + '|' + self.name + '  is in used !');
+                    return false
+                } else {
+                    alertify.confirm(
+                        fa("remove", "Agent"),
+                        "Are you sure to delete [" + self._id + "] ?",
+                        function () {
+                            Rabbit.Collection.Agent.remove(self._id, function (error) {
+                                if (error) {
+                                    alertify.error(error.message);
+                                } else {
+                                    alertify.success("Success");
+                                }
+                            });
+                        },
+                        null
+                    );
+                }
+            }
         );
+
+
+        //        let website = Rabbit.Collection.Website.findOne({customerId: self._id});
+        //if (contract != null || quotation != null || website != null) {
+        //    alertify.message(self._id + '|' + self.companyName + '  is in used !');
+        //    return false;
+        //
+        //}
+
+
     },
+
+
     'click .js-show': function (e, t) {
         alertify.agentShow(fa("eye", "Agent"), renderTemplate(showTpl, this));
     }

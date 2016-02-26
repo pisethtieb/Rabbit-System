@@ -11,12 +11,12 @@ Meteor.publish('alertRenewMaintenance', function () {
             if (maintenance) {
                 if (maintenance._id == obj._id && maintenance.endDate <= today) {
                     //maintenance.countIndex = [maintenance];
-                    arr.push(maintenance._id);
+                    arr.push(maintenance._id, maintenance.paymentMaintenanceDate);
                 }
             }
         });
     }
-    Counts.publish(this, 'alertRenewMaintenance', Rabbit.Collection.Maintenance.find({_id:{$in:arr}}));
+    Counts.publish(this, 'alertRenewMaintenance', Rabbit.Collection.Maintenance.find({_id: {$in: arr}}));
 
     this.ready();
 });

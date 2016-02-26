@@ -40,28 +40,34 @@ indexTpl.events({
         alertify.website(fa("pencil", "Website"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
-        var self = this;
-        let office = Rabbit.Collection.Office.findOne({websiteId: self._id});
-        let paymentOffice = Rabbit.Collection.PaymentOffice.findOne({websiteId: self._id});
-        let paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({websiteId: self._id});
-        if (office != null || paymentOffice != null || paymentMaintenance) {
-            alertify.message(self._id + '  is in used !');
-            return false;
+        var id = this._id;
+        let self = this;
+        var arr = [
+            {collection: 'Rabbit.Collection.Service', selector: {websiteId: id}},
+            {collection: 'Rabbit.Collection.PaymentWebsite', selector: {websiteId: id}}
+        ];
+        Meteor.call('isRelationExist', arr, function (error, result) {
+                if (result) {
 
-        }
-        alertify.confirm(
-            fa("remove", "Website"),
-            "Are you sure to delete [" + self._id + "] ?",
-            function () {
-                Rabbit.Collection.Website.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+                    alertify.message(self._id + '|' + self.webName + '  is in used !');
+                    return false
+                } else {
+                    alertify.confirm(
+                        fa("remove", "Webite"),
+                        "Are you sure to delete [" + self._id + "] ?",
+                        function () {
+                            Rabbit.Collection.Website.remove(self._id, function (error) {
+                                if (error) {
+                                    alertify.error(error.message);
+                                } else {
+                                    alertify.success("Success");
+                                }
+                            });
+                        },
+                        null
+                    );
+                }
+            }
         );
     },
     'click .js-show': function (e, t) {
@@ -69,12 +75,12 @@ indexTpl.events({
     },
     'click .serviceAction': function () {
         FlowRouter.go('rabbit.service', {
-            customerId: this.customerId, websiteId:this._id
+            customerId: this.customerId, websiteId: this._id
         });
-    } ,
+    },
     'click .paymentWebsiteAction': function () {
         FlowRouter.go('rabbit.paymentWebsite', {
-            customerId: this.customerId, websiteId:this._id
+            customerId: this.customerId, websiteId: this._id
         });
     }
 });

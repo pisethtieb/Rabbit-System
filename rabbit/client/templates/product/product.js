@@ -26,8 +26,8 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.onRendered(function () {
-    Meteor.subscribe("rabbit_contract");
-    Meteor.subscribe("rabbit_quotation");
+    //Meteor.subscribe("rabbit_contract");
+    //Meteor.subscribe("rabbit_quotation");
 });
 
 indexTpl.helpers({
@@ -44,28 +44,34 @@ indexTpl.events({
         alertify.product(fa("pencil", "Product"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
+        var id = this._id;
+        let self = this;
+        var arr = [
+            {collection: 'Rabbit.Collection.Contract', selector: {productId: id}},
+            {collection: 'Rabbit.Collection.Quotation', selector: {productId: id}}
+        ];
+        Meteor.call('isRelationExist', arr, function (error, result) {
+                if (result) {
 
-        var self = this;
-        let contract = Rabbit.Collection.Contract.findOne({productId: self._id});
-        let quotation = Rabbit.Collection.Quotation.findOne({productId: self._id});
-        if (contract != null || quotation != null) {
-            alertify.message(self._id + '|' + self.name + '  is in used !');
-            return false;
-
-        }
-        alertify.confirm(
-            fa("remove", "Product"),
-            "Are you sure to delete [" + self._id + "]?",
-            function () {
-                Rabbit.Collection.Product.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+                    alertify.message(self._id + '|' + self.name + '  is in used !');
+                    return false
+                } else {
+                    alertify.confirm(
+                        fa("remove", "Product"),
+                        "Are you sure to delete [" + self._id + "] ?",
+                        function () {
+                            Rabbit.Collection.Product.remove(self._id, function (error) {
+                                if (error) {
+                                    alertify.error(error.message);
+                                } else {
+                                    alertify.success("Success");
+                                }
+                            });
+                        },
+                        null
+                    );
+                }
+            }
         );
     },
     'click .js-show': function (e, t) {

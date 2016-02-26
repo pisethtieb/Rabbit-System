@@ -92,17 +92,6 @@ insertTpl.helpers({
             contractorId: Rabbit.Collection.Contractor.findOne({_id: '001-01'})._id
         }
     }
-    //customer: function () {
-    //    //let id = FlowRouter.getParam('customerId');
-    //    let customer = Rabbit.Collection.Customer.findOne({_id: '001-000001'})._id;
-    //    return customer
-    //},
-    //contractor: function () {
-    //    //let id = FlowRouter.getParam('customerId');
-    //    let contractor = Rabbit.Collection.Contractor.findOne({_id: '001-01'})._id;
-    //    return contractor
-    //}
-
 });
 insertTpl.events({
 

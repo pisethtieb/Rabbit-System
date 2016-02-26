@@ -40,27 +40,34 @@ indexTpl.events({
         debugger;
     },
     'click .js-remove': function (e, t) {
-        var self = this;
+        var id = this._id;
+        let self = this;
+        var arr = [
+            {collection: 'Rabbit.Collection.Maintenance', selector: {officeId: id}}
 
-        let office = Rabbit.Collection.Maintenance.findOne({officeId: self._id});
-        if (office != null) {
-            alertify.message(self._id + " | " + self.name + '  is in used !');
-            return false;
+        ];
+        Meteor.call('isRelationExist', arr, function (error, result) {
+                if (result) {
 
-        }
-        alertify.confirm(
-            fa("remove", "Office"),
-            "Are you sure to delete [" + self._id + "] ?",
-            function () {
-                Rabbit.Collection.Office.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+                    alertify.message(self._id + '|' + self.name + '  is in used !');
+                    return false
+                } else {
+                    alertify.confirm(
+                        fa("remove", "Office"),
+                        "Are you sure to delete [" + self._id + "] ?",
+                        function () {
+                            Rabbit.Collection.Office.remove(self._id, function (error) {
+                                if (error) {
+                                    alertify.error(error.message);
+                                } else {
+                                    alertify.success("Success");
+                                }
+                            });
+                        },
+                        null
+                    );
+                }
+            }
         );
     },
     'click .js-show': function (e, t) {

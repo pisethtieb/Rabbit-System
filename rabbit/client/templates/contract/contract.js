@@ -10,9 +10,9 @@ var indexTpl = Template.rabbit_contract,
  * Index
  */
 indexTpl.onCreated(function () {
-    Meteor.subscribe('rabbit_office');
-    Meteor.subscribe('rabbit_paymentOffice');
-    Meteor.subscribe('rabbit_paymentMaintenance');
+    //Meteor.subscribe('rabbit_office');
+    //Meteor.subscribe('rabbit_paymentOffice');
+    //Meteor.subscribe('rabbit_paymentMaintenance');
     // SEO
     SEO.set({
         title: 'Contract',
@@ -45,28 +45,33 @@ indexTpl.events({
         alertify.contract(fa("pencil", "Contract"), renderTemplate(updateTpl, this));
     },
     'click .js-remove': function (e, t) {
-        var self = this;
-        let office = Rabbit.Collection.Office.findOne({contractId: self._id});
-        let paymentOffice = Rabbit.Collection.PaymentOffice.findOne({contractId: self._id});
-        let paymentMaintenance = Rabbit.Collection.PaymentMaintenance.findOne({contractId: self._id});
-        if (office != null || paymentOffice != null || paymentMaintenance) {
-            alertify.message(self._id + '  is in used !');
-            return false;
+        var id = this._id;
+        let self = this;
+        var arr = [
+            {collection: 'Rabbit.Collection.Office', selector: {contractId: id}}
+        ];
+        Meteor.call('isRelationExist', arr, function (error, result) {
+                if (result) {
 
-        }
-        alertify.confirm(
-            fa("remove", "Contract"),
-            "Are you sure to delete [" + self._id + "] ?",
-            function () {
-                Rabbit.Collection.Contract.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+                    alertify.message(self._id + '|' + self.contractDate + '  is in used !');
+                    return false
+                } else {
+                    alertify.confirm(
+                        fa("remove", "Contract"),
+                        "Are you sure to delete [" + self._id + "] ?",
+                        function () {
+                            Rabbit.Collection.Agent.remove(self._id, function (error) {
+                                if (error) {
+                                    alertify.error(error.message);
+                                } else {
+                                    alertify.success("Success");
+                                }
+                            });
+                        },
+                        null
+                    );
+                }
+            }
         );
     },
     'click .js-show': function (e, t) {
