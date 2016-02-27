@@ -113,8 +113,15 @@ insertTpl.events({
             $('#MaintenaceHeadOffice').val("");
             $('#MaintenaceBranch').val("");
         }
-
-
+    },
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
 });
 
@@ -137,7 +144,17 @@ updateTpl.onRendered(function () {
     }
 });
 
-updateTpl.events({});
+updateTpl.events({
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    }
+});
 //updateTpl.helpers({
 //    data: function () {
 //        var data = Rabbit.Collection.Quotation.findOne(this._id);

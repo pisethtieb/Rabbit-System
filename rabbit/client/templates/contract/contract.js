@@ -151,15 +151,14 @@ insertTpl.events({
             $('#MaintenaceBranch').val("");
         }
     },
-    'change .type': function (e, t) {
-        let type = $(e.currentTarget).val();
-        if (type == 'product') {
-            $('.testing').hide()
-        } else if (type == "new") {
-            $('.testing').show()
-        } else if (type == '') {
-            $('.testing').hide()
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,.amount': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
         }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
 
 });
@@ -182,9 +181,15 @@ updateTpl.events({
             $('#MaintenaceHeadOffice').val("");
             $('#MaintenaceBranch').val("");
         }
-        debugger;
-
-
+    },
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,.amount': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
 
 });

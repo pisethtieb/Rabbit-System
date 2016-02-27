@@ -85,7 +85,17 @@ indexTpl.events({
 insertTpl.onRendered(function () {
     configOnRender();
 });
-insertTpl.events({});
+insertTpl.events({
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    }
+});
 
 
 /**
@@ -98,6 +108,19 @@ updateTpl.onRendered(function () {
     Meteor.setTimeout(function () {
         configOnRender();
     }, 200);
+});
+updateTpl.events({
+
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    }
+
 });
 
 updateTpl.helpers({

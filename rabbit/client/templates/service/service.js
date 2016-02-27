@@ -41,21 +41,34 @@ indexTpl.events({
         debugger;
     },
     'click .js-remove': function (e, t) {
-        var self = this;
+        var id = this._id;
+        let self = this;
+        var arr = [
+            {collection: 'Rabbit.Collection.PaymentWebsite', selector: {websiteId: id}}
 
-        alertify.confirm(
-            fa("remove", "Service"),
-            "Are you sure to delete [" + self._id + "] ?",
-            function () {
-                Rabbit.Collection.Service.remove(self._id, function (error) {
-                    if (error) {
-                        alertify.error(error.message);
-                    } else {
-                        alertify.success("Success");
-                    }
-                });
-            },
-            null
+        ];
+        Meteor.call('isRelationExist', arr, function (error, result) {
+                if (result) {
+
+                    alertify.message(self._id + '|' + self.serviceDate + '  is in used !');
+                    return false
+                } else {
+                    alertify.confirm(
+                        fa("remove", "Service"),
+                        "Are you sure to delete [" + self._id + "] ?",
+                        function () {
+                            Rabbit.Collection.Service.remove(self._id, function (error) {
+                                if (error) {
+                                    alertify.error(error.message);
+                                } else {
+                                    alertify.success("Success");
+                                }
+                            });
+                        },
+                        null
+                    );
+                }
+            }
         );
     },
     'click .js-show': function (e, t) {
@@ -224,6 +237,8 @@ insertTpl.events({
             $('.domainNamePrice').attr('disabled', "disabled").val('');
             $('.domainNameStartDate').attr('disabled', "disabled").val('');
             $('.domainNameEndDate').attr('disabled', "disabled").val('');
+            $('.domainNameOwedAmount').attr('disabled', "disabled").val('');
+            $('.domainNametotalPrice').attr('disabled', "disabled").val('');
         }
     },
     "keyup .domainNamePrice"(e, t){
@@ -257,6 +272,8 @@ insertTpl.events({
             $('.hostingPrice').attr('disabled', "disabled").val('');
             $('.hostingStartDate').attr('disabled', "disabled").val('');
             $('.hostingEndDate').attr('disabled', "disabled").val('');
+            $('.hostingOwedAmount').attr('disabled', "disabled").val('');
+            $('.hostingTotalPrice').attr('disabled', "disabled").val('');
         }
 
     },
@@ -292,6 +309,8 @@ insertTpl.events({
             $('.maintenancePrice').attr('disabled', "disabled").val('');
             $('.maintenanceStartDate').attr('disabled', "disabled").val('');
             $('.maintenanceEndDate').attr('disabled', "disabled").val('');
+            $('.maintenanceOwedAmount').attr('disabled', "disabled").val('');
+            $('.maintenanceTotalPrice').attr('disabled', "disabled").val('');
         }
     },
     "keyup .maintenancePrice"(e, t){
@@ -308,6 +327,15 @@ insertTpl.events({
         $('.maintenanceStartDate').val(moment().format('YYYY-MM-DD'));
 
 
+    },
+    'keypress .maintenancePrice,.hostingPrice,.domainNamePrice': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
 
 });
@@ -320,22 +348,6 @@ updateTpl.onCreated(function () {
 
 updateTpl.onRendered(function () {
     Meteor.setTimeout(function () {
-        //if ($('.domainNamePrice').val() != null) {
-        //    $('.domainName').prop('checked', true);
-        //    $('.domainNamePrice').attr('disabled', "disabled");
-        //    $('.domainNameStartDate').attr('disabled', "disabled");
-        //    $('.domainNameEndDate').attr('disabled', "disabled");
-        //    // hosting
-        //    $('.hosting').prop('checked', true);
-        //    $('.hostingPrice').attr('disabled', "disabled");
-        //    $('.hostingStartDate').attr('disabled', "disabled");
-        //    $('.hostingEndDate').attr('disabled', "disabled");
-        //    // maintenance
-        //    $('.maintenance').prop('checked', true);
-        //    $('.maintenancePrice').attr('disabled', "disabled");
-        //    $('.maintenanceStartDate').attr('disabled', "disabled");
-        //    $('.maintenanceEndDate').attr('disabled', "disabled");
-        //}
         configOnRender();
 
     }, 200);
@@ -442,7 +454,17 @@ updateTpl.events({
         }
         $('.maintenanceEndDate').val(moment().add(1, 'years').format('YYYY-MM-DD'));
         $('.maintenanceStartDate').val(moment().format('YYYY-MM-DD'));
+    },
+    'keypress .maintenancePrice,.hostingPrice,.domainNamePrice': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
+
 });
 //
 //updateTpl.helpers({

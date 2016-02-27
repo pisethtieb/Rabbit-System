@@ -111,11 +111,32 @@ insertTpl.helpers({
         }
     }
 });
-insertTpl.events({});
+insertTpl.events({
+    'keypress .price': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    }
+});
 
 /**
  * Update
  */
+updateTpl.events({
+    'keypress .price': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    }
+});
 /**
  * Show
  */

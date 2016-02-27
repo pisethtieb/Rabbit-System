@@ -124,6 +124,15 @@ insertTpl.events({
     'keyup .discount'(e){
 
         $('#price').val($('.contractPrice').val() - $('.discount').val());
+    },
+    'keypress .discount': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
 });
 
@@ -144,6 +153,21 @@ updateTpl.helpers({
     data: function () {
         var data = Rabbit.Collection.Maintenance.findOne(this._id);
         return data;
+    }
+});
+updateTpl.events({
+    'keyup .discount'(e){
+
+        $('#price').val($('.contractPrice').val() - $('.discount').val());
+    },
+    'keypress .discount': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
 });
 /**

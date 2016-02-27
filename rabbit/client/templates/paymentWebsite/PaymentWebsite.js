@@ -175,7 +175,15 @@ insertTpl.events({
         let paid = $('.maintenancePaid').val();
         let price = $('.maintenancePrice').val();
         $('.maintenanceDue').val(price - paid)
-
+    },
+    'keypress .maintenancePaid,.hostingPaid,.domainNamePaid,.buildPrice': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
 
 });
@@ -207,6 +215,15 @@ updateTpl.events({
         let price = $('.maintenancePrice').val();
         $('.maintenanceDue').val(price - paid)
 
+    },
+    'keypress .maintenancePaid,.hostingPaid,.domainNamePaid,.buildPrice': function (evt) {
+        var charCode = (evt.which) ? evt.which : evt.keyCode;
+        if ($(evt.currentTarget).val().indexOf('.') != -1) {
+            if (charCode == 46) {
+                return false;
+            }
+        }
+        return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
     }
 });
 

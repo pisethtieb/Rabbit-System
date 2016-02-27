@@ -5,7 +5,7 @@ rabbitRoutes.route('/quotation', {
     subscriptions: function (params, queryParams) {
         // Customer
         this.register('rabbit_customer', subs.subscribe('rabbit_customer', Session.get('currentBranch')));
-        this.register('rabbit_quotation', subs.subscribe('rabbit_quotation'));
+        this.register('rabbit_product', subs.subscribe('rabbit_product'));
         this.register('rabbit_contractor', subs.subscribe('rabbit_contractor'));
     },
     action: function (params, queryParams) {
