@@ -30,6 +30,10 @@ indexTpl.onCreated(function () {
 });
 
 indexTpl.events({
+    'click .btn-link': function (e, t) {
+        var self = this;
+        checkLastMaintenance(self);
+    },
     'click .js-insert': function (e, t) {
 
         alertify.maintenance(fa("plus", "Maintenance"), renderTemplate(insertTpl));
@@ -194,3 +198,13 @@ var configOnRender = function () {
     DateTimePicker.date(endDate);
 
 };
+function checkLastMaintenance(self) {
+    let checkLastMaintenance = Rabbit.Collection.Maintenance.findOne({officeId: self.officeId}, {sort: {_id: -1}})._id;
+    if (checkLastMaintenance == self._id) {
+        $('.updateMaintenance').show();
+        $('.removeMaintenance').show();
+    } else {
+        $('.updateMaintenance').hide();
+        $('.removeMaintenance').hide();
+    }
+}
