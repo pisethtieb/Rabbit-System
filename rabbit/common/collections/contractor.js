@@ -11,9 +11,14 @@ Rabbit.Schema.Contractor = new SimpleSchema({
         type: String,
         label: "Gender",
         autoform: {
-            type: "selectize",
+            type: "select2",
             options: function () {
                 return Rabbit.List.gender();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },

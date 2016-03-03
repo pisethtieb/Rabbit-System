@@ -6,6 +6,11 @@ Rabbit.Schema.PaymentMaintenanceBalanceReport = new SimpleSchema({
             type: "select2",
             options: function () {
                 return Rabbit.ListForReport.branch();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         },
         optional: true
@@ -19,6 +24,11 @@ Rabbit.Schema.PaymentMaintenanceBalanceReport = new SimpleSchema({
             type: 'select2',
             options(){
                 return Rabbit.ListForReport.contract();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },

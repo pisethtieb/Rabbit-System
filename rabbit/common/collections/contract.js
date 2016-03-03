@@ -19,6 +19,11 @@ Rabbit.Schema.Contract = new SimpleSchema({
             type: 'select2',
             options(){
                 return Rabbit.List.product();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },
@@ -75,6 +80,11 @@ Rabbit.Schema.Contract = new SimpleSchema({
             type: 'select2',
             options(){
                 return Rabbit.List.contractType();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },
@@ -110,6 +120,11 @@ Rabbit.Schema.Contract = new SimpleSchema({
             type: 'select2',
             options(){
                 return Rabbit.List.contractors();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },
@@ -120,6 +135,11 @@ Rabbit.Schema.Contract = new SimpleSchema({
             type: 'select2',
             options(){
                 return Rabbit.List.agent();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },

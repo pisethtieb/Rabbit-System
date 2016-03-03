@@ -6,6 +6,11 @@ Rabbit.Schema.CustomerReport = new SimpleSchema({
             type: "select2",
             options: function () {
                 return Rabbit.ListForReport.branch();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         },
         optional: true

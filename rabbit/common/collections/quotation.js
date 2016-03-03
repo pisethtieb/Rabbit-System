@@ -17,6 +17,11 @@ Rabbit.Schema.Quotation = new SimpleSchema({
             type: 'select2',
             options(){
                 return Rabbit.List.customer();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },
@@ -27,6 +32,11 @@ Rabbit.Schema.Quotation = new SimpleSchema({
             type: 'select2',
             options(){
                 return Rabbit.List.product();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },
@@ -83,9 +93,14 @@ Rabbit.Schema.Quotation = new SimpleSchema({
         type: String,
         label: "Contractor",
         autoform: {
-            type: 'selectize',
+            type: 'select2',
             options(){
                 return Rabbit.List.contractors();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     }

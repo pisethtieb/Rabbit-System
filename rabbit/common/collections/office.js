@@ -19,6 +19,11 @@ Rabbit.Schema.Office = new SimpleSchema({
             type: "select2",
             options: function () {
                 return Rabbit.List.type();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },

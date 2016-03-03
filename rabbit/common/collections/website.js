@@ -25,6 +25,11 @@ Rabbit.Schema.Website = new SimpleSchema({
             type: 'select2',
             options(){
                 return Rabbit.List.webType();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
             }
         }
     },
