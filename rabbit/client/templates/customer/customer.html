@@ -1,5 +1,5 @@
 <!--Index-->
-<template name="rabbit_customer" xmlns="http://www.w3.org/1999/html">
+<template name="rabbit_customer">
   <p>
     <button type="button" class="btn btn-primary js-insert">{{fa "plus"}} Add New</button>
   </p>
@@ -12,7 +12,6 @@
   <li><a href="#" class="js-update">{{fa "pencil"}} Update</a></li>
   <li><a href="#" class="js-remove">{{fa "remove"}} Remove</a></li>
   <li><a href="#" class="js-show">{{fa "eye"}} Show</a></li>
-
   {{/tabularAction}}
 </template>
 
@@ -20,20 +19,18 @@
 <template name="rabbit_customerInsert">
   {{#autoForm collection=Rabbit.Collection.Customer id="rabbit_customerInsert" type="insert"}}
   <div class="row">
-
     <div class="col-md-3">
       {{> afQuickField name="contractName"}} {{> afQuickField name="dob"}}
     </div>
     <div class="col-md-3">
-      {{> afQuickField name="gender"}} {{> afQuickField name="id"}}
+      {{> afQuickField name="gender"}} {{> afQuickField name="telephone"}}
     </div>
     <div class="col-md-3">
-      {{> afQuickField name="position"}} {{> afQuickField name="telephone"}}
+      {{> afQuickField name="position"}} {{> afQuickField name="id"}}
     </div>
     <div class="col-md-3">
       {{> afQuickField name="email"}} {{> afQuickField name="address"}}
     </div>
-
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">Company Information</div>
@@ -54,10 +51,8 @@
             {{> afQuickField name="companyAddress"}}
           </div>
         </div>
-
       </div>
     </div>
-
     <div class="col-md-12">
       {{> afArrayField name="contactPerson" id="contactPerson" template="customArrayField" subtemplate="customObjectField"}}
       <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -76,15 +71,14 @@
       {{> afQuickField name="contractName"}} {{> afQuickField name="dob"}}
     </div>
     <div class="col-md-3">
-      {{> afQuickField name="gender"}} {{> afQuickField name="id"}}
+      {{> afQuickField name="gender"}} {{> afQuickField name="telephone"}}
     </div>
     <div class="col-md-3">
-      {{> afQuickField name="position"}} {{> afQuickField name="telephone"}}
+      {{> afQuickField name="position"}} {{> afQuickField name="id"}}
     </div>
     <div class="col-md-3">
       {{> afQuickField name="email"}} {{> afQuickField name="address"}}
     </div>
-
     <div class="col-md-12">
       <div class="panel panel-default">
         <div class="panel-heading">Company Information</div>
@@ -105,10 +99,8 @@
             {{> afQuickField name="companyAddress"}}
           </div>
         </div>
-
       </div>
     </div>
-
     <div class="col-md-12">
       {{> afArrayField name="contactPerson" id="contactPerson" template="customArrayField" subtemplate="customObjectField"}}
       <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -116,7 +108,6 @@
     </div>
   </div>
   {{/autoForm}} {{else}} {{> loading}} {{/if}}
-
 </template>
 
 <!--Show-->
@@ -158,11 +149,6 @@
   {{/with}} {{else}} {{> loading}} {{/if}}
 </template>
 
-<!--Location add on-->
-<!--<template name="rabbit_locationAddOnCustomer">-->
-<!--{{> rabbit_location cssClass="pointer"}}-->
-<!--</template>-->
-
 <!--Custom array field-->
 <template name="afArrayField_customArrayField">
   <div class="panel panel-default">
@@ -192,7 +178,6 @@
       {{/if}} {{#afEachArrayItem name=this.atts.name minCount=this.atts.minCount maxCount=this.atts.maxCount}}
       <div class="row item-list">
         {{> UI.dynamic template=../atts.subtemplate}}
-
         <div class="col-sm-1">
           {{#if afArrayFieldHasMoreThanMinimum name=../atts.name minCount=../atts.minCount maxCount=../atts.maxCount}}
           <button type="button" class="btn btn-sm btn-danger autoform-remove-item btnRemove">
@@ -210,10 +195,10 @@
         </div>
       </div>
       {{/if}}
-
     </div>
   </div>
 </template>
+
 <!--Custom object field-->
 <template name="customObjectField">
   <div class="col-sm-3">

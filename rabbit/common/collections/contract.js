@@ -26,7 +26,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
         type: Array,
         label: "Branch Price",
         minCount: 1,
-        maxCount: 1,
+        maxCount: 1
     },
     'basePrice.$': {
         type: Object

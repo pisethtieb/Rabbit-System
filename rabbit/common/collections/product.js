@@ -50,7 +50,7 @@ Rabbit.Schema.Product = new SimpleSchema({
                 type: 'summernote',
                 class: 'editor',// optional
                 settings: {
-                    height: 160,
+                    height: 300,
                     toolbar:[
                         ['style', ['bold', 'italic', 'underline', 'clear']],
                         ['font', ['strikethrough', 'superscript', 'subscript']],
@@ -58,7 +58,7 @@ Rabbit.Schema.Product = new SimpleSchema({
                         ['color', ['color']],
                         ['para', ['ul', 'ol', 'paragraph']],
                         ['height', ['height']],
-                        ['picture',['picture']]
+                        ['picture',['picture','fullscreen']]
                     ]
                 }// summernote options goes here
             }
