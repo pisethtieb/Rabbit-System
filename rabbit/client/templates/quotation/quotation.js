@@ -7,8 +7,6 @@ var indexTpl = Template.rabbit_quotation,
     showTpl = Template.rabbit_quotationShow;
 
 //locationAddOnTpl = Template.rabbit_locationAddOnQuotation;
-
-
 /**
  * Index
  */
@@ -70,18 +68,29 @@ indexTpl.events({
             customerId: this.customerId, quotationId: this._id
 
         });
-    },
+    }
 });
 
 /**
  * Insert
  */
 insertTpl.onCreated(function () {
+
+
     Meteor.subscribe('rabbit_customer');
-    $('.testing').hide();
 });
 insertTpl.onRendered(function () {
-    configOnRender();
+
+    Meteor.setTimeout(function () {
+        $('#basePriceHeadOffice').attr('disabled', "disabled");
+        $('#basePriceBranch').attr('disabled', "disabled");
+        $('#MaintenaceHeadOffice').attr('disabled', "disabled");
+        $('#MaintenaceBranch').attr('disabled', "disabled");
+        $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
+        $('#monthlyFeeBranch').attr('disabled', "disabled");
+        $('.productId').attr('disabled', "disabled");
+        configOnRender();
+    }, 100);
 });
 insertTpl.helpers({
     quotationData(){
@@ -94,27 +103,49 @@ insertTpl.helpers({
     }
 });
 insertTpl.events({
-
     'click .customerAddon': function () {
         alertify.quotationShow(fa("plus", "Customer"), renderTemplate(Template.rabbit_customerInsert)).maximize()
-
     },
     'change .productId': function (e, t) {
         let productId = $(e.currentTarget).val();
+        let type = $('.type').val();
+
         let product = Rabbit.Collection.Product.findOne({_id: productId});
-        if (product) {
-            $('#basePriceHeadOffice').val(product.basePrice[0].headOffice);
-            $('#basePriceBranch').val(product.basePrice[0].branch);
-            $('#MaintenaceHeadOffice').val(product.maintenancePrice[0].headOffice);
-            $('#MaintenaceBranch').val(product.maintenancePrice[0].branch);
-        } else if (productId == "") {
-            $('#basePriceHeadOffice').val("");
-            $('#basePriceBranch').val("");
-            $('#MaintenaceHeadOffice').val("");
-            $('#MaintenaceBranch').val("");
+        if (type == 'fullyFee') {
+            if (product) {
+                $('#basePriceHeadOffice').val(product.basePrice[0].headOffice);
+                $('#basePriceBranch').val(product.basePrice[0].branch);
+                $('#MaintenaceHeadOffice').val(product.maintenancePrice[0].headOffice);
+                $('#MaintenaceBranch').val(product.maintenancePrice[0].branch);
+                $('#monthlyFeeHeadOffice').val('');
+                $('#monthlyFeeBranch').val('');
+            } else if (productId == "") {
+                $('#basePriceHeadOffice').val("");
+                $('#basePriceBranch').val("");
+                $('#MaintenaceHeadOffice').val("");
+                $('#MaintenaceBranch').val("");
+                $('#monthlyFeeHeadOffice').val('');
+                $('#monthlyFeeBranch').val('');
+            }
+        } else if (type == "monthlyFee") {
+            if (product) {
+                $('#monthlyFeeHeadOffice').val(product.monthlyFee[0].headOffice);
+                $('#monthlyFeeBranch').val(product.monthlyFee[0].branch);
+                $('#basePriceHeadOffice').val("");
+                $('#basePriceBranch').val("");
+                $('#MaintenaceHeadOffice').val("");
+                $('#MaintenaceBranch').val("");
+            } else if (productId == "") {
+                $('#basePriceHeadOffice').val("");
+                $('#basePriceBranch').val("");
+                $('#MaintenaceHeadOffice').val("");
+                $('#MaintenaceBranch').val("");
+                $('#monthlyFeeHeadOffice').val('');
+                $('#monthlyFeeBranch').val('');
+            }
         }
     },
-    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch': function (evt) {
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,#monthlyFeeHeadOffice,#monthlyFeeBranch': function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if ($(evt.currentTarget).val().indexOf('.') != -1) {
             if (charCode == 46) {
@@ -122,7 +153,36 @@ insertTpl.events({
             }
         }
         return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    },
+    "change .type": function (e, t) {
+        let type = $('.type').val()
+        if (type == 'fullyFee') {
+            $('#basePriceHeadOffice').removeAttr('disabled', "disabled");
+            $('#basePriceBranch').removeAttr('disabled', "disabled");
+            $('#MaintenaceHeadOffice').removeAttr('disabled', "disabled");
+            $('#MaintenaceBranch').removeAttr('disabled', "disabled");
+            $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
+            $('#monthlyFeeBranch').attr('disabled', "disabled");
+            $('.productId').removeAttr('disabled', "disabled");
+        } else if (type == "monthlyFee") {
+            $('#basePriceHeadOffice').attr('disabled', "disabled");
+            $('#basePriceBranch').attr('disabled', "disabled");
+            $('#MaintenaceHeadOffice').attr('disabled', "disabled");
+            $('#MaintenaceBranch').attr('disabled', "disabled");
+            $('#monthlyFeeHeadOffice').removeAttr('disabled', "disabled");
+            $('#monthlyFeeBranch').removeAttr('disabled', "disabled");
+            $('productId').removeAttr('disabled', "disabled");
+        } else {
+            $('#basePriceHeadOffice').attr('disabled', "disabled");
+            $('#basePriceBranch').attr('disabled', "disabled");
+            $('#MaintenaceHeadOffice').attr('disabled', "disabled");
+            $('#MaintenaceBranch').attr('disabled', "disabled");
+            $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
+            $('#monthlyFeeBranch').attr('disabled', "disabled");
+            $('.productId').attr('disabled', "disabled");
+        }
     }
+
 });
 
 /**
@@ -134,18 +194,61 @@ insertTpl.events({
 
 updateTpl.onRendered(function () {
     Meteor.setTimeout(function () {
+        $('#basePriceHeadOffice').attr('disabled', "disabled");
+        $('#basePriceBranch').attr('disabled', "disabled");
+        $('#MaintenaceHeadOffice').attr('disabled', "disabled");
+        $('#MaintenaceBranch').attr('disabled', "disabled");
+        $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
+        $('#monthlyFeeBranch').attr('disabled', "disabled");
+        $('.productId').attr('disabled', "disabled");
         configOnRender();
-    }, 200);
-    var type = $('#type').val();
-    if (type == 'product') {
-        $('#testing').hide();
-    } else {
-        $('#testing').show();
-    }
+    }, 100);
 });
 
 updateTpl.events({
-    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch': function (evt) {
+    'click .customerAddon': function () {
+        alertify.quotationShow(fa("plus", "Customer"), renderTemplate(Template.rabbit_customerInsert)).maximize()
+    },
+    'change .productId': function (e, t) {
+        let productId = $(e.currentTarget).val();
+        let type = $('.type').val();
+
+        let product = Rabbit.Collection.Product.findOne({_id: productId});
+        if (type == 'fullyFee') {
+            if (product) {
+                $('#basePriceHeadOffice').val(product.basePrice[0].headOffice);
+                $('#basePriceBranch').val(product.basePrice[0].branch);
+                $('#MaintenaceHeadOffice').val(product.maintenancePrice[0].headOffice);
+                $('#MaintenaceBranch').val(product.maintenancePrice[0].branch);
+                $('#monthlyFeeHeadOffice').val('');
+                $('#monthlyFeeBranch').val('');
+            } else if (productId == "") {
+                $('#basePriceHeadOffice').val("");
+                $('#basePriceBranch').val("");
+                $('#MaintenaceHeadOffice').val("");
+                $('#MaintenaceBranch').val("");
+                $('#monthlyFeeHeadOffice').val('');
+                $('#monthlyFeeBranch').val('');
+            }
+        } else if (type == "monthlyFee") {
+            if (product) {
+                $('#monthlyFeeHeadOffice').val(product.monthlyFee[0].headOffice);
+                $('#monthlyFeeBranch').val(product.monthlyFee[0].branch);
+                $('#basePriceHeadOffice').val("");
+                $('#basePriceBranch').val("");
+                $('#MaintenaceHeadOffice').val("");
+                $('#MaintenaceBranch').val("");
+            } else if (productId == "") {
+                $('#basePriceHeadOffice').val("");
+                $('#basePriceBranch').val("");
+                $('#MaintenaceHeadOffice').val("");
+                $('#MaintenaceBranch').val("");
+                $('#monthlyFeeHeadOffice').val('');
+                $('#monthlyFeeBranch').val('');
+            }
+        }
+    },
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,#monthlyFeeHeadOffice,#monthlyFeeBranch': function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if ($(evt.currentTarget).val().indexOf('.') != -1) {
             if (charCode == 46) {
@@ -153,6 +256,34 @@ updateTpl.events({
             }
         }
         return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
+    },
+    "change .type": function (e, t) {
+        let type = $('.type').val()
+        if (type == 'fullyFee') {
+            $('#basePriceHeadOffice').removeAttr('disabled', "disabled");
+            $('#basePriceBranch').removeAttr('disabled', "disabled");
+            $('#MaintenaceHeadOffice').removeAttr('disabled', "disabled");
+            $('#MaintenaceBranch').removeAttr('disabled', "disabled");
+            $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
+            $('#monthlyFeeBranch').attr('disabled', "disabled");
+            $('.productId').removeAttr('disabled', "disabled");
+        } else if (type == "monthlyFee") {
+            $('#basePriceHeadOffice').attr('disabled', "disabled");
+            $('#basePriceBranch').attr('disabled', "disabled");
+            $('#MaintenaceHeadOffice').attr('disabled', "disabled");
+            $('#MaintenaceBranch').attr('disabled', "disabled");
+            $('#monthlyFeeHeadOffice').removeAttr('disabled', "disabled");
+            $('#monthlyFeeBranch').removeAttr('disabled', "disabled");
+            $('.productId').removeAttr('disabled', "disabled");
+        } else {
+            $('#basePriceHeadOffice').attr('disabled', "disabled");
+            $('#basePriceBranch').attr('disabled', "disabled");
+            $('#MaintenaceHeadOffice').attr('disabled', "disabled");
+            $('#MaintenaceBranch').attr('disabled', "disabled");
+            $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
+            $('#monthlyFeeBranch').attr('disabled', "disabled");
+            $('.productId').attr('disabled', "disabled");
+        }
     }
 });
 //updateTpl.helpers({
@@ -196,6 +327,22 @@ showTpl.helpers({
             "</tr>" +
             "</thead><tbody>";
         this.maintenancePrice.forEach(function (o) {
+            str += '<tr>' +
+                '<td>' + o.headOffice + '</td>' +
+                '<td>' + o.branch + '</td>' +
+                '</tr>'
+        });
+        str += "</tbody></table>";
+        return new Spacebars.SafeString(str);
+    },
+    monthlyFee: function () {
+        var str = "<table class='table table-bordered'><thead>" +
+            "<tr>" +
+            "<th>Head Office</th>" +
+            "<th>Branch</th>" +
+            "</tr>" +
+            "</thead><tbody>";
+        this.monthlyFee.forEach(function (o) {
             str += '<tr>' +
                 '<td>' + o.headOffice + '</td>' +
                 '<td>' + o.branch + '</td>' +

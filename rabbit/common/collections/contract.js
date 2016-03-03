@@ -12,6 +12,21 @@ Rabbit.Schema.Contract = new SimpleSchema({
         type: String,
         label: 'Customer ID'
     },
+    productType: {
+        type: String,
+        label: 'ProductType',
+        autoform: {
+            type: 'select2',
+            options(){
+                return Rabbit.List.type();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
+            }
+        }
+    },
     productId: {
         type: String,
         label: "Product",
@@ -27,6 +42,30 @@ Rabbit.Schema.Contract = new SimpleSchema({
             }
         }
     },
+    monthlyFee: {
+        type: Array,
+        //label: "Branch Price",
+        minCount: 1,
+        maxCount: 1,
+        optional: true
+    },
+    'monthlyFee.$': {
+        type: Object,
+        decimal: true
+
+    },
+    'monthlyFee.$.headOffice': {
+        type: Number,
+        decimal: true
+
+    },
+    'monthlyFee.$.branch': {
+        type: Number,
+        decimal: true
+
+    },
+
+
     basePrice: {
         type: Array,
         label: "Branch Price",
@@ -48,7 +87,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
         type: Array,
         minCount: 1,
         maxCount: 1,
-        label:"Maintenance Price"
+        label: "Maintenance Price"
     },
     'maintenancePrice.$': {
         type: Object
@@ -65,7 +104,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
         type: Array,
         minCount: 1,
         maxCount: 3,
-        label:"Payment Method"
+        label: "Payment Method"
     },
     'paymentMethod.$': {
         type: Object

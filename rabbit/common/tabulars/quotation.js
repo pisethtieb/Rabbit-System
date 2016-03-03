@@ -21,5 +21,5 @@ Rabbit.TabularTable.Quotation = new Tabular.Table({
         {data: "productId", title: "Product ID"}
 
     ],
-    extraFields: ['customerId', 'quotationDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId']
+    extraFields: ['customerId', 'quotationDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId','monthlyFee']
 });

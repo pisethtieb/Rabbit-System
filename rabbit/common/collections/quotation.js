@@ -40,11 +40,51 @@ Rabbit.Schema.Quotation = new SimpleSchema({
             }
         }
     },
+    monthlyFee: {
+        type: Array,
+        //label: "Branch Price",
+        minCount: 1,
+        maxCount: 1,
+        optional: true
+    },
+    'monthlyFee.$': {
+        type: Object,
+        decimal: true
+
+    },
+    'monthlyFee.$.headOffice': {
+        type: Number,
+        decimal: true
+
+    },
+    'monthlyFee.$.branch': {
+        type: Number,
+        decimal: true
+
+    },
+    type: {
+        type: String,
+        label: 'ProductType',
+        autoform: {
+            type: 'select2',
+            options(){
+                return Rabbit.List.type();
+            },
+            afFieldInput: {
+                select2Options: {
+                    theme: "bootstrap"
+                }
+            }
+        }
+    },
+
+
     basePrice: {
         type: Array,
         //label: "Branch Price",
         minCount: 1,
-        maxCount: 1
+        maxCount: 1,
+        optional: true
     },
     'basePrice.$': {
         type: Object
@@ -60,7 +100,8 @@ Rabbit.Schema.Quotation = new SimpleSchema({
     maintenancePrice: {
         type: Array,
         minCount: 1,
-        maxCount: 1
+        maxCount: 1,
+        optional: true
     },
     'maintenancePrice.$': {
         type: Object

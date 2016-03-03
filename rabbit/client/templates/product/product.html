@@ -31,6 +31,8 @@
                 {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
             </div>
             <div class="col-md-6">
+                {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="productMonthlyFeeObjectField"}}
+
                 {{> afQuickField name="feature"}}
             </div>
         </div>
@@ -51,6 +53,8 @@
                     {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
                 </div>
                 <div class="col-md-6">
+                    {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="productMonthlyFeeObjectField"}}
+
                     {{> afQuickField name="feature"}}
                 </div>
             </div>
@@ -76,6 +80,8 @@
                 <dd>{{{base}}}</dd>
                 <dt>Maintenance Price:</dt>
                 <dd>{{{maintenance}}}</dd>
+                <dt>Monthly Fee Price:</dt>
+                <dd>{{{monthlyFee}}}</dd>
                 <dt>Feature:</dt>
                 <dd>{{{feature}}}</dd>
             </dl>
@@ -101,5 +107,13 @@
     </div>
     <div class="col-sm-6">
         {{> afQuickField name=current.branch id='MaintenaceBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
+    </div>
+</template>
+<template name="productMonthlyFeeObjectField">
+    <div class="col-sm-6">
+        {{> afQuickField name=current.headOffice template="bootstrap3" id='monthlyFeeBranch' label=false class="input-sm" placeholder="Head Office"}}
+    </div>
+    <div class="col-sm-6">
+        {{> afQuickField name=current.branch id='monthlyFeeBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
     </div>
 </template>

@@ -29,3 +29,14 @@
     width: 50%;
     float: left;
 }
+
+.fully, .monthly {
+    width: 1289px;
+
+}
+
+.paymentMethod {
+    width: 1306px;
+    padding-right: 4px;
+    padding-left: 15px;
+}

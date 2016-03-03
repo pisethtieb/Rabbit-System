@@ -175,6 +175,22 @@ showTpl.helpers({
         });
         str += "</tbody></table>";
         return new Spacebars.SafeString(str);
+    },
+    monthlyFee: function () {
+        var str = "<table class='table table-bordered'><thead>" +
+            "<tr>" +
+            "<th>Head Office</th>" +
+            "<th>Branch</th>" +
+            "</tr>" +
+            "</thead><tbody>";
+        this.monthlyFee.forEach(function (o) {
+            str += '<tr>' +
+                '<td>' + o.headOffice + '</td>' +
+                '<td>' + o.branch + '</td>' +
+                '</tr>'
+        });
+        str += "</tbody></table>";
+        return new Spacebars.SafeString(str);
     }
 });
 

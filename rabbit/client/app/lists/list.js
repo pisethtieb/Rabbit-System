@@ -98,6 +98,15 @@ Rabbit.List = {
 
         return list;
     },
+    type: function () {
+        var list = [];
+        list.push({label: "Select One", value: ""});
+
+        list.push({label: 'Fully Fee', value: 'fullyFee'});
+        list.push({label: 'Monthly Fee', value: 'monthlyFee'});
+
+        return list;
+    },
     contractPaymentType: function () {
         let list = [];
         list.push({label: 'Office', value: 'office'}, {label: 'Maintenance', value: 'maintenance'}

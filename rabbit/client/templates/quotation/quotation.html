@@ -33,7 +33,7 @@
 <template name="rabbit_quotationInsert">
     {{#autoForm collection=Rabbit.Collection.Quotation id="rabbit_quotationInsert" type="insert" doc=quotationData}}
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 {{> afQuickField name="quotationDate"}}
             </div>
             <div class="col-md-3">
@@ -52,19 +52,32 @@
                 {{#if afFieldIsInvalid name='customerId'}}
                     <span class="help-block">{{afFieldMessage name='customerId'}}</span> {{/if}}
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 {{> afQuickField name="contractorId"}}
+            </div>
+            <div class="col-md-2">
+                {{> afQuickField name="type" class="type"}}
             </div>
             <div class="col-md-3">
                 {{> afQuickField name="productId" class='productId'}}
             </div>
-            <div class="col-md-6">
-                {{> afArrayField name="basePrice" template="quotationBasePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
-            </div>
-            <div class="col-md-6">
-                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
-            </div>
 
+            <div class="col-md-12 monthly">
+                {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="quotationMonthlyFeeObjectField"}}
+            </div>
+            <div class="col-md-12 fully">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Fully Fee</div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            {{> afArrayField name="basePrice" template="quotationBasePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
+                        </div>
+                        <div class="col-md-6">
+                            {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="col-md-12">
                 {{> afQuickField name="des"}}
             </div>
@@ -79,7 +92,7 @@
     <!--Built-in template sub ready by all-->
     {{#if Template.subscriptionsReady}} {{#autoForm collection=Rabbit.Collection.Quotation id="rabbit_quotationUpdate" doc=this type="update"}}
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-2">
                 {{> afQuickField name="quotationDate"}}
             </div>
             <div class="col-md-3">
@@ -98,17 +111,32 @@
                 {{#if afFieldIsInvalid name='customerId'}}
                     <span class="help-block">{{afFieldMessage name='customerId'}}</span> {{/if}}
             </div>
-            <div class="col-md-3">
+            <div class="col-md-2">
                 {{> afQuickField name="contractorId"}}
+            </div>
+            <div class="col-md-2">
+                {{> afQuickField name="type" class="type"}}
             </div>
             <div class="col-md-3">
                 {{> afQuickField name="productId" class='productId'}}
             </div>
-            <div class="col-md-6">
-                {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
+
+            <div class="col-md-12 monthly">
+                {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="quotationMonthlyFeeObjectField"}}
             </div>
-            <div class="col-md-6">
-                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
+            <div class="col-md-12 fully">
+                <div class="panel panel-default">
+                    <div class="panel-heading">Fully Fee</div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            {{> afArrayField name="basePrice" template="quotationBasePriceArrayField" subtemplate="quotationBasePriceObjectField" id="basePrice"}}
+                        </div>
+                        <div class="col-md-6">
+                            {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="quotationMaintenancePriceObjectField" }}
+                        </div>
+                    </div>
+                </div>
+
             </div>
             <div class="col-md-12">
                 {{> afQuickField name="des"}}
@@ -134,6 +162,8 @@
             <dd>{{base}}</dd>
             <dt>Maintenance Price:</dt>
             <dd>{{maintenance}}</dd>
+            <dt>Monthly Fee Price:</dt>
+            <dd>{{{monthlyFee}}}</dd>
             <dt>Description:</dt>
             <dd>{{des}}</dd>
         </dl>
@@ -196,5 +226,14 @@
     </div>
     <div class="col-sm-6">
         {{> afQuickField name=current.branch id='MaintenaceBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
+    </div>
+</template>
+
+<template name="quotationMonthlyFeeObjectField">
+    <div class="col-sm-6">
+        {{> afQuickField name=current.headOffice template="bootstrap3" id='monthlyFeeHeadOffice' label=false class="input-sm" placeholder="Head Office"}}
+    </div>
+    <div class="col-sm-6">
+        {{> afQuickField name=current.branch id='monthlyFeeBranch' template="bootstrap3" label=false class="input-sm" placeholder="Branch Office"}}
     </div>
 </template>

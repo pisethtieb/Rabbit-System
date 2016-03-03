@@ -43,8 +43,24 @@ Rabbit.TabularTable.Product = new Tabular.Table({
             }
 
         },
-        {data: "_contractCunt", title: "Contract"},
-        {data: "_quotationCount", title: "Quotation"}
+        {
+            data: "monthlyFee", title: "MonthlyFee Price",
+            render: function (val, type, doc) {
+                var str = "<ul>";
+                if (val != null) {
+                    val.forEach(function (o) {
+
+                        str += "<li>HeadOffice : " + o.headOffice + "| branch :" + o.branch +
+                            "</li>";
+                    });
+                }
+                str += '</ul>';
+                return str
+            }
+
+        },
+        {data: "_contractCunt", title: "C"},
+        {data: "_quotationCount", title: "Q"}
     ],
     extraFields: ['feature']
 });
