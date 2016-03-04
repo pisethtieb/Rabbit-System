@@ -18,7 +18,7 @@ Rabbit.Schema.Office = new SimpleSchema({
         autoform: {
             type: "select2",
             options: function () {
-                return Rabbit.List.type();
+                return Rabbit.List.officeType();
             },
             afFieldInput: {
                 select2Options: {

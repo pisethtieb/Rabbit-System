@@ -77,8 +77,18 @@ Rabbit.Schema.Quotation = new SimpleSchema({
             }
         }
     },
-
-
+    installationFee: {
+        type: Number,
+        label: 'InstallationFee',
+        decimal: true,
+        optional: true
+    },
+    trainingFee: {
+        type: Number,
+        label: 'trainingFee',
+        decimal: true,
+        optional: true
+    },
     basePrice: {
         type: Array,
         //label: "Branch Price",

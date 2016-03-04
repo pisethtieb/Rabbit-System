@@ -86,7 +86,7 @@ insertTpl.onRendered(function () {
     configOnRender();
 });
 insertTpl.events({
-    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch': function (evt) {
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,#monthlyFeeHeadOffice,#monthlyFeeBranch,.trainingFee,.installationFee': function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if ($(evt.currentTarget).val().indexOf('.') != -1) {
             if (charCode == 46) {
@@ -94,7 +94,7 @@ insertTpl.events({
             }
         }
         return !(charCode != 46 && charCode > 31 && (charCode < 48 || charCode > 57));
-    }
+    },
 });
 
 
@@ -111,7 +111,7 @@ updateTpl.onRendered(function () {
 });
 updateTpl.events({
 
-    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch': function (evt) {
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,#monthlyFeeHeadOffice,#monthlyFeeBranch,.trainingFee,.installationFee': function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if ($(evt.currentTarget).val().indexOf('.') != -1) {
             if (charCode == 46) {

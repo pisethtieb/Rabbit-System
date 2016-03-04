@@ -65,6 +65,13 @@
             <div class="col-md-12 monthly">
                 {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="quotationMonthlyFeeObjectField"}}
             </div>
+            <div class="col-md-6">
+                {{> afQuickField name="installationFee" class="installationFee"}}
+            </div>
+            <div class="col-md-6">
+                {{> afQuickField name="trainingFee" class="trainingFee"}}
+            </div>
+
             <div class="col-md-12 fully">
                 <div class="panel panel-default">
                     <div class="panel-heading">Fully Fee</div>
@@ -124,6 +131,13 @@
             <div class="col-md-12 monthly">
                 {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="quotationMonthlyFeeObjectField"}}
             </div>
+            <div class="col-md-6">
+                {{> afQuickField name="installationFee" class="installationFee"}}
+            </div>
+            <div class="col-md-6">
+                {{> afQuickField name="trainingFee" class="trainingFee"}}
+            </div>
+
             <div class="col-md-12 fully">
                 <div class="panel panel-default">
                     <div class="panel-heading">Fully Fee</div>
@@ -136,7 +150,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             <div class="col-md-12">
                 {{> afQuickField name="des"}}
@@ -164,6 +177,10 @@
             <dd>{{maintenance}}</dd>
             <dt>Monthly Fee Price:</dt>
             <dd>{{{monthlyFee}}}</dd>
+            <dt>InstallationFee:</dt>
+            <dd>{{installationFee}}</dd>
+            <dt>TrainingFee:</dt>
+            <dd>{{trainingFee}}</dd>
             <dt>Description:</dt>
             <dd>{{des}}</dd>
         </dl>

@@ -101,18 +101,18 @@ indexTpl.helpers({
 insertTpl.onRendered(function () {
     configOnRender();
     //auto selected on office selected"HeadOffice"
-    var contractId = FlowRouter.getParam('contractId');
-    let office = Rabbit.Collection.Office.findOne({contractId: contractId});
-    if (office == null || undefined) {
-        $('.type').val("HO");
-        $('.discount').val(0);
-        $('.type').change();
-        //$('[name=price]').val(contract.basePrice[0].headOffice);
-    } else {
-        $('.type').val("BO");
-        $('.discount').val(0);
-        $('.type').change();
-    }
+    //var contractId = FlowRouter.getParam('contractId');
+    //let office = Rabbit.Collection.Office.findOne({contractId: contractId});
+    //if (office == null || undefined) {
+    //    $('.type').val("HO");
+    //    $('.discount').val(0);
+    //    $('.type').change();
+    //    //$('[name=price]').val(contract.basePrice[0].headOffice);
+    //} else {
+    //    $('.type').val("BO");
+    //    $('.discount').val(0);
+    //    $('.type').change();
+    //}
 });
 insertTpl.helpers({
     office(){
@@ -128,34 +128,73 @@ insertTpl.events({
         let type = $(e.currentTarget).val();
         var contractId = FlowRouter.getParam('contractId');
         var contract = Rabbit.Collection.Contract.findOne({_id: contractId});
-        //let types = Rabbit.List.getProduct(type);
         let office = Rabbit.Collection.Office.findOne({contractId: contractId});
+        debugger;
         if (type == 'HO' && office != null) {
-            $('.type').val("BO");
-            $('.type').change();
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].branch);
-
+            debugger;
+            if (contract.productType == 'fullyFee') {
+                $('.type').val("BO");
+                $('.type').change();
+                $('.discount').val(0);
+                $('[name=price]').val(contract.basePrice[0].branch);
+                $('[name=contractPrice]').val(contract.basePrice[0].branch);
+            } else if (contract.productType == "monthlyFee") {
+                debugger;
+                $('.type').val("BO");
+                $('.type').change();
+                $('.discount').val(0);
+                $('[name=price]').val(contract.installationFee);
+                $('[name=contractPrice]').val(contract.installationFee);
+            }
         } else if (type == 'BO' && office == null) {
-            $('.type').val("HO");
-            $('.type').change();
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].headOffice);
-            $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
-        } else if (type == 'BO') {
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].branch);
-            $('[name=contractPrice]').val(contract.basePrice[0].branch);
-        } else if (type == "HO") {
-            $('.discount').val(0);
-            $('[name=price]').val(contract.basePrice[0].headOffice);
-            $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
+            if (contract.productType == 'fullyFee') {
+                $('.type').val("HO");
+                $('.type').change();
+                $('.discount').val(0);
+                $('[name=price]').val(contract.basePrice[0].headOffice);
+                $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
+            } else if (contract.prototype == "monthlyFee") {
+                $('.type').val("HO");
+                $('.type').change();
+                $('.discount').val(0);
+                $('[name=price]').val(contract.installationFee + contract.trainingFee);
+                $('[name=contractPrice]').val(contract.installationFee + contract.trainingFee);
 
-        } else {
-            $('.discount').val('');
-            $('[name=price]').val("");
-            $('[name=contractPrice]').val("");
+            } else if (type == "HO") {
+                debugger;
+                if (contract.productType == 'fullyFee') {
+                    //$('.type').val("BO");
+                    //$('.type').change();
+                    $('.discount').val(0);
+
+                    $('[name=price]').val(contract.basePrice[0].headOffice);
+                    $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
+                } else if (contract.productType == "monthlyFee") {
+                    debugger;
+                    //$('.type').val("BO");
+                    //$('.type').change();
+                    $('.discount').val(0);
+                    $('[name=price]').val(contract.installationFee + contract.trainingFee);
+                    $('[name=contractPrice]').val(contract.installationFee + contract.trainingFee);
+                }
+            } else if (type == "BO") {
+                if (contract.productType == 'fullyFee') {
+                    //$('.type').val("HO");
+                    //$('.type').change();
+                    $('.discount').val(0);
+                    $('[name=price]').val(contract.basePrice[0].branch);
+                    $('[name=contractPrice]').val(contract.basePrice[0].branch);
+
+                } else if (contract.prototype == "monthlyFee") {
+                    //$('.type').val("HO");
+                    //$('.type').change();
+                    $('.discount').val(0);
+                    $('[name=price]').val(contract.installationFee);
+                    $('[name=contractPrice]').val(contract.installationFee);
+                }
+            }
         }
+        debugger;
     },
     'keyup .discount'(e){
 

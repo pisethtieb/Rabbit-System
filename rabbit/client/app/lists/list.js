@@ -10,7 +10,7 @@ Rabbit.List = {
 
         return list;
     },
-    type: function () {
+    officeType: function () {
         var list = [];
         list.push({label: "Select One", value: ""});
         list.push({label: 'Head Office', value: 'HO'});

@@ -62,5 +62,5 @@ Rabbit.TabularTable.Product = new Tabular.Table({
         {data: "_contractCunt", title: "C"},
         {data: "_quotationCount", title: "Q"}
     ],
-    extraFields: ['feature']
+    extraFields: ['feature','installationFee','trainingFee']
 });

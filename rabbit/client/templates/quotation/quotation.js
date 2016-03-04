@@ -89,6 +89,8 @@ insertTpl.onRendered(function () {
         $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
         $('#monthlyFeeBranch').attr('disabled', "disabled");
         $('.productId').attr('disabled', "disabled");
+        $('.installationFee').attr('disabled', "disabled");
+        $('.trainingFee').attr('disabled', "disabled");
         configOnRender();
     }, 100);
 });
@@ -131,6 +133,8 @@ insertTpl.events({
             if (product) {
                 $('#monthlyFeeHeadOffice').val(product.monthlyFee[0].headOffice);
                 $('#monthlyFeeBranch').val(product.monthlyFee[0].branch);
+                $('.trainingFee').val(product.trainingFee);
+                $('.installationFee').val(product.installationFee);
                 $('#basePriceHeadOffice').val("");
                 $('#basePriceBranch').val("");
                 $('#MaintenaceHeadOffice').val("");
@@ -142,10 +146,12 @@ insertTpl.events({
                 $('#MaintenaceBranch').val("");
                 $('#monthlyFeeHeadOffice').val('');
                 $('#monthlyFeeBranch').val('');
+                $('.installation').val('');
+                $('.trainingFee').val('');
             }
         }
     },
-    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,#monthlyFeeHeadOffice,#monthlyFeeBranch': function (evt) {
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,#monthlyFeeHeadOffice,#monthlyFeeBranch,.trainingFee,.installationFee': function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if ($(evt.currentTarget).val().indexOf('.') != -1) {
             if (charCode == 46) {
@@ -157,22 +163,50 @@ insertTpl.events({
     "change .type": function (e, t) {
         let type = $('.type').val()
         if (type == 'fullyFee') {
+            $('#basePriceHeadOffice').val("");
+            $('#basePriceBranch').val("");
+            $('#MaintenaceHeadOffice').val("");
+            $('#MaintenaceBranch').val("");
+            $('#monthlyFeeHeadOffice').val('');
+            $('#monthlyFeeBranch').val('');
+            $('.installationFee').val('');
+            $('.trainingFee').val('');
             $('#basePriceHeadOffice').removeAttr('disabled', "disabled");
             $('#basePriceBranch').removeAttr('disabled', "disabled");
             $('#MaintenaceHeadOffice').removeAttr('disabled', "disabled");
             $('#MaintenaceBranch').removeAttr('disabled', "disabled");
             $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
             $('#monthlyFeeBranch').attr('disabled', "disabled");
+            $('.installationFee').attr('disabled', "disabled");
+            $('.trainingFee').attr('disabled', "disabled");
             $('.productId').removeAttr('disabled', "disabled");
         } else if (type == "monthlyFee") {
+            $('#basePriceHeadOffice').val("");
+            $('#basePriceBranch').val("");
+            $('#MaintenaceHeadOffice').val("");
+            $('#MaintenaceBranch').val("");
+            $('#monthlyFeeHeadOffice').val('');
+            $('#monthlyFeeBranch').val('');
+            $('.installationFee').val('');
+            $('.trainingFee').val('');
             $('#basePriceHeadOffice').attr('disabled', "disabled");
             $('#basePriceBranch').attr('disabled', "disabled");
             $('#MaintenaceHeadOffice').attr('disabled', "disabled");
             $('#MaintenaceBranch').attr('disabled', "disabled");
             $('#monthlyFeeHeadOffice').removeAttr('disabled', "disabled");
             $('#monthlyFeeBranch').removeAttr('disabled', "disabled");
-            $('productId').removeAttr('disabled', "disabled");
+            $('.trainingFee').removeAttr('disabled', "disabled");
+            $('.installationFee').removeAttr('disabled', "disabled");
+            $('.productId').removeAttr('disabled', "disabled");
         } else {
+            $('#basePriceHeadOffice').val("");
+            $('#basePriceBranch').val("");
+            $('#MaintenaceHeadOffice').val("");
+            $('#MaintenaceBranch').val("");
+            $('#monthlyFeeHeadOffice').val('');
+            $('#monthlyFeeBranch').val('');
+            $('.installationFee').val('');
+            $('.trainingFee').val('');
             $('#basePriceHeadOffice').attr('disabled', "disabled");
             $('#basePriceBranch').attr('disabled', "disabled");
             $('#MaintenaceHeadOffice').attr('disabled', "disabled");
@@ -180,9 +214,10 @@ insertTpl.events({
             $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
             $('#monthlyFeeBranch').attr('disabled', "disabled");
             $('.productId').attr('disabled', "disabled");
+            $('.installationFee').attr('disabled', "disabled");
+            $('.trainingFee').attr('disabled', "disabled");
         }
     }
-
 });
 
 /**
@@ -201,6 +236,8 @@ updateTpl.onRendered(function () {
         $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
         $('#monthlyFeeBranch').attr('disabled', "disabled");
         $('.productId').attr('disabled', "disabled");
+        $('.trainingFee').attr('disabled', "disabled");
+        $('.installationFee').attr('disabled', "disabled");
         configOnRender();
     }, 100);
 });
@@ -234,6 +271,8 @@ updateTpl.events({
             if (product) {
                 $('#monthlyFeeHeadOffice').val(product.monthlyFee[0].headOffice);
                 $('#monthlyFeeBranch').val(product.monthlyFee[0].branch);
+                $('.trainingFee').val(product.trainingFee);
+                $('.installationFee').val(product.installationFee);
                 $('#basePriceHeadOffice').val("");
                 $('#basePriceBranch').val("");
                 $('#MaintenaceHeadOffice').val("");
@@ -245,10 +284,12 @@ updateTpl.events({
                 $('#MaintenaceBranch').val("");
                 $('#monthlyFeeHeadOffice').val('');
                 $('#monthlyFeeBranch').val('');
+                $('.installation').val('');
+                $('.trainingFee').val('');
             }
         }
     },
-    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,#monthlyFeeHeadOffice,#monthlyFeeBranch': function (evt) {
+    'keypress #basePriceHeadOffice,#basePriceBranch,#MaintenaceHeadOffice,#MaintenaceBranch,#monthlyFeeHeadOffice,#monthlyFeeBranch,.trainingFee,.installationFee': function (evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode;
         if ($(evt.currentTarget).val().indexOf('.') != -1) {
             if (charCode == 46) {
@@ -260,22 +301,50 @@ updateTpl.events({
     "change .type": function (e, t) {
         let type = $('.type').val()
         if (type == 'fullyFee') {
+            $('#basePriceHeadOffice').val("");
+            $('#basePriceBranch').val("");
+            $('#MaintenaceHeadOffice').val("");
+            $('#MaintenaceBranch').val("");
+            $('#monthlyFeeHeadOffice').val('');
+            $('#monthlyFeeBranch').val('');
+            $('.installationFee').val('');
+            $('.trainingFee').val('');
             $('#basePriceHeadOffice').removeAttr('disabled', "disabled");
             $('#basePriceBranch').removeAttr('disabled', "disabled");
             $('#MaintenaceHeadOffice').removeAttr('disabled', "disabled");
             $('#MaintenaceBranch').removeAttr('disabled', "disabled");
             $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
             $('#monthlyFeeBranch').attr('disabled', "disabled");
+            $('.installationFee').attr('disabled', "disabled");
+            $('.trainingFee').attr('disabled', "disabled");
             $('.productId').removeAttr('disabled', "disabled");
         } else if (type == "monthlyFee") {
+            $('#basePriceHeadOffice').val("");
+            $('#basePriceBranch').val("");
+            $('#MaintenaceHeadOffice').val("");
+            $('#MaintenaceBranch').val("");
+            $('#monthlyFeeHeadOffice').val('');
+            $('#monthlyFeeBranch').val('');
+            $('.installationFee').val('');
+            $('.trainingFee').val('');
             $('#basePriceHeadOffice').attr('disabled', "disabled");
             $('#basePriceBranch').attr('disabled', "disabled");
             $('#MaintenaceHeadOffice').attr('disabled', "disabled");
             $('#MaintenaceBranch').attr('disabled', "disabled");
             $('#monthlyFeeHeadOffice').removeAttr('disabled', "disabled");
             $('#monthlyFeeBranch').removeAttr('disabled', "disabled");
+            $('.trainingFee').removeAttr('disabled', "disabled");
+            $('.installationFee').removeAttr('disabled', "disabled");
             $('.productId').removeAttr('disabled', "disabled");
         } else {
+            $('#basePriceHeadOffice').val("");
+            $('#basePriceBranch').val("");
+            $('#MaintenaceHeadOffice').val("");
+            $('#MaintenaceBranch').val("");
+            $('#monthlyFeeHeadOffice').val('');
+            $('#monthlyFeeBranch').val('');
+            $('.installationFee').val('');
+            $('.trainingFee').val('');
             $('#basePriceHeadOffice').attr('disabled', "disabled");
             $('#basePriceBranch').attr('disabled', "disabled");
             $('#MaintenaceHeadOffice').attr('disabled', "disabled");
@@ -283,6 +352,8 @@ updateTpl.events({
             $('#monthlyFeeHeadOffice').attr('disabled', "disabled");
             $('#monthlyFeeBranch').attr('disabled', "disabled");
             $('.productId').attr('disabled', "disabled");
+            $('.installationFee').attr('disabled', "disabled");
+            $('.trainingFee').attr('disabled', "disabled");
         }
     }
 });

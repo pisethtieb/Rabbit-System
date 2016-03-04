@@ -3,6 +3,7 @@ Rabbit.Collection.Product = new Mongo.Collection("rabbit_product");
 
 // Schema
 Rabbit.Schema.Product = new SimpleSchema({
+
     name: {
         type: String,
         label: 'Name',
@@ -30,6 +31,21 @@ Rabbit.Schema.Product = new SimpleSchema({
         decimal: true
 
     },
+
+    installationFee: {
+        type: Number,
+        label: 'InstallationFee',
+        decimal: true
+
+    },
+    trainingFee: {
+        type: Number,
+        label: 'trainingFee',
+        decimal: true
+
+    },
+
+
     basePrice: {
         type: Array,
         //label: "Branch Price",
@@ -71,7 +87,7 @@ Rabbit.Schema.Product = new SimpleSchema({
                 type: 'summernote',
                 class: 'editor',// optional
                 settings: {
-                    height: 128,
+                    height: 62.25,
                     toolbar: [
                         ['style', ['bold', 'italic', 'underline', 'clear']],
                         ['font', ['strikethrough', 'superscript', 'subscript']],

@@ -49,15 +49,22 @@
             </div>
             <div class="col-md-2">
                 {{> afQuickField name="productType" class="productType"}}
-
-            </div>
-            <div class="col-md-3">
                 {{> afQuickField name="productId" class='productId'}}
-                {{> afQuickField name="des"}}
+            </div>
+
+            <div class="col-sm-3">
+
+                {{> afQuickField name="des" class='desCustom'}}
             </div>
 
             <div class="col-md-12 monthly">
                 {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="quotationMonthlyFeeObjectField"}}
+            </div>
+            <div class="col-md-6">
+                {{> afQuickField name="installationFee" class="installationFee"}}
+            </div>
+            <div class="col-md-6">
+                {{> afQuickField name="trainingFee" class="trainingFee"}}
             </div>
             <div class="col-md-12 fully">
                 <div class="panel panel-default">
@@ -93,7 +100,7 @@
     {{#if Template.subscriptionsReady}}
         {{#autoForm collection=Rabbit.Collection.Contract id="rabbit_contractUpdate" doc=this type="update"}}
             <div class="row">
-                <div class="col-md-3">
+                <div class="col-md-2">
                     {{> afQuickField name="customerId"  readOnly=true value=customerId}}
                     {{> afQuickField name="type" class='type'}}
                 </div>
@@ -101,26 +108,46 @@
                     {{> afQuickField name="contractDate"}}
                     {{> afQuickField name="agentId"}}
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
                     {{> afQuickField name="contractorId"}}
                     {{> afQuickField name="amount" class="amount"}}
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-2">
+                    {{> afQuickField name="productType" class="productType"}}
                     {{> afQuickField name="productId" class='productId'}}
-                    {{> afQuickField name="des"}}
                 </div>
-            </div>
-            <div class="row">
+
+                <div class="col-sm-3">
+
+                    {{> afQuickField name="des" class='desCustom'}}
+                </div>
+
+                <div class="col-md-12 monthly">
+                    {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="quotationMonthlyFeeObjectField"}}
+                </div>
                 <div class="col-md-6">
-                    {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="contractBasePriceObjectField" id="basePrice"}}
+                    {{> afQuickField name="installationFee" class="installationFee"}}
                 </div>
                 <div class="col-md-6">
-                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="contractMaintenancePriceObjectField" }}
+                    {{> afQuickField name="trainingFee" class="trainingFee"}}
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    {{> afArrayField name="paymentMethod" template='paymentMethodArrayField' subtemplate="paymentMethodObjectField" id="paymentOffice"}}
+                <div class="col-md-12 fully">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Fully Fee</div>
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                {{> afArrayField name="basePrice" template="basePriceArrayField" subtemplate="contractBasePriceObjectField" id="basePrice"}}
+                            </div>
+                            <div class="col-md-6">
+                                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="contractMaintenancePriceObjectField" }}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row paymentMethod">
+                    <div class="col-md-12 ">
+                        {{> afArrayField name="paymentMethod" template='paymentMethodArrayField' subtemplate="paymentMethodObjectField" id="paymentOffice"}}
+                    </div>
                 </div>
             </div>
             <button type="submit" class="btn btn-primary">{{fa "floppy-o"}} Save</button>
@@ -153,6 +180,12 @@
                 <dd>{{maintenance}}</dd>
                 <dt>Payment Method:</dt>
                 <dd>{{{paymentMethod}}}</dd>
+                <dt>MonthlyFee:</dt>
+                <dd>{{{monthlyFee}}}</dd>
+                <dt>InstallationFee:</dt>
+                <dd>{{{installationFee}}}</dd>
+                <dt>TrainingFee:</dt>
+                <dd>{{{trainingFee}}}</dd>
                 <dt>Type:</dt>
                 <dd>{{type}}</dd>
                 <dt>Agent:</dt>

@@ -42,6 +42,18 @@ Rabbit.Schema.Contract = new SimpleSchema({
             }
         }
     },
+    installationFee: {
+        type: Number,
+        label: 'InstallationFee',
+        decimal: true,
+        optional: true
+    },
+    trainingFee: {
+        type: Number,
+        label: 'trainingFee',
+        decimal: true,
+        optional: true
+    },
     monthlyFee: {
         type: Array,
         //label: "Branch Price",
@@ -70,7 +82,8 @@ Rabbit.Schema.Contract = new SimpleSchema({
         type: Array,
         label: "Branch Price",
         minCount: 1,
-        maxCount: 1
+        maxCount: 1,
+        optional: true
     },
     'basePrice.$': {
         type: Object
@@ -87,7 +100,8 @@ Rabbit.Schema.Contract = new SimpleSchema({
         type: Array,
         minCount: 1,
         maxCount: 1,
-        label: "Maintenance Price"
+        label: "Maintenance Price",
+        optional: true
     },
     'maintenancePrice.$': {
         type: Object
@@ -135,11 +149,11 @@ Rabbit.Schema.Contract = new SimpleSchema({
     des: {
         type: String,
         label: "Description",
-        // autoform: {
-        //     afFieldInput: {
-        //         type: "textarea"
-        //     }
-        // },
+        autoform: {
+            afFieldInput: {
+                type: "textarea"
+            }
+        },
         optional: true
     },
     addFile: {
