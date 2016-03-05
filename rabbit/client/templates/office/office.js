@@ -146,54 +146,54 @@ insertTpl.events({
                 $('[name=price]').val(contract.installationFee);
                 $('[name=contractPrice]').val(contract.installationFee);
             }
-        } else if (type == 'BO' && office == null) {
+        } else if (type == "BO" && office == undefined) {
+            debugger;
             if (contract.productType == 'fullyFee') {
+
                 $('.type').val("HO");
                 $('.type').change();
                 $('.discount').val(0);
                 $('[name=price]').val(contract.basePrice[0].headOffice);
                 $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
-            } else if (contract.prototype == "monthlyFee") {
+            } else if (contract.productType == "monthlyFee") {
+                debugger
                 $('.type').val("HO");
                 $('.type').change();
                 $('.discount').val(0);
                 $('[name=price]').val(contract.installationFee + contract.trainingFee);
                 $('[name=contractPrice]').val(contract.installationFee + contract.trainingFee);
 
-            } else if (type == "HO") {
+            }
+        } else if (type == "HO") {
+            debugger;
+            if (contract.productType == 'fullyFee') {
+                //$('.type').val("BO");
+                //$('.type').change();
+                $('.discount').val(0);
+
+                $('[name=price]').val(contract.basePrice[0].headOffice);
+                $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
+            } else if (contract.productType == "monthlyFee") {
                 debugger;
-                if (contract.productType == 'fullyFee') {
-                    //$('.type').val("BO");
-                    //$('.type').change();
-                    $('.discount').val(0);
+                //$('.type').val("BO");
+                //$('.type').change();
+                $('.discount').val(0);
+                $('[name=price]').val(contract.installationFee + contract.trainingFee);
+                $('[name=contractPrice]').val(contract.installationFee + contract.trainingFee);
+            }
+        } else if (type == "BO") {
+            if (contract.productType == 'fullyFee') {
+                $('.discount').val(0);
+                $('[name=price]').val(contract.basePrice[0].branch);
+                $('[name=contractPrice]').val(contract.basePrice[0].branch);
 
-                    $('[name=price]').val(contract.basePrice[0].headOffice);
-                    $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
-                } else if (contract.productType == "monthlyFee") {
-                    debugger;
-                    //$('.type').val("BO");
-                    //$('.type').change();
-                    $('.discount').val(0);
-                    $('[name=price]').val(contract.installationFee + contract.trainingFee);
-                    $('[name=contractPrice]').val(contract.installationFee + contract.trainingFee);
-                }
-            } else if (type == "BO") {
-                if (contract.productType == 'fullyFee') {
-                    //$('.type').val("HO");
-                    //$('.type').change();
-                    $('.discount').val(0);
-                    $('[name=price]').val(contract.basePrice[0].branch);
-                    $('[name=contractPrice]').val(contract.basePrice[0].branch);
-
-                } else if (contract.prototype == "monthlyFee") {
-                    //$('.type').val("HO");
-                    //$('.type').change();
-                    $('.discount').val(0);
-                    $('[name=price]').val(contract.installationFee);
-                    $('[name=contractPrice]').val(contract.installationFee);
-                }
+            } else if (contract.productType == "monthlyFee") {
+                $('.discount').val(0);
+                $('[name=price]').val(contract.installationFee);
+                $('[name=contractPrice]').val(contract.installationFee);
             }
         }
+
         debugger;
     },
     'keyup .discount'(e){
@@ -236,7 +236,6 @@ updateTpl.events({
             $('.type').change();
             $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].branch);
-
         } else if (type == 'BO' && office == null) {
             $('.type').val("HO");
             $('.type').change();
@@ -251,7 +250,6 @@ updateTpl.events({
             $('.discount').val(0);
             $('[name=price]').val(contract.basePrice[0].headOffice);
             $('[name=contractPrice]').val(contract.basePrice[0].headOffice);
-
         } else {
             $('.discount').val('');
             $('[name=price]').val("");
