@@ -92,26 +92,51 @@ insertTpl.helpers({
         let officeId = FlowRouter.getParam('officeId');
         let office = Rabbit.Collection.Office.findOne({_id: officeId});
         if (office.type == 'HO') {
-            return {
-                price: office._contract.maintenancePrice[0].headOffice,
-                contractPrice: office._contract.maintenancePrice[0].headOffice,
-                officeId: office._id,
-                type: office.type,
-                discount: 0,
-                startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
-                endDate: moment().add(1, 'years').format('YYYY-MM-DD')
+            if (office._contract.monthlyFee != null) {
+                return {
+                    price: office._contract.monthlyFee[0].headOffice,
+                    contractPrice: office._contract.monthlyFee[0].headOffice,
+                    officeId: office._id,
+                    type: office.type,
+                    discount: 0,
+                    startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+                    endDate: moment().add(1, 'years').format('YYYY-MM-DD')
+                }
+            } else {
+                return {
+                    price: office._contract.maintenancePrice[0].headOffice,
+                    contractPrice: office._contract.maintenancePrice[0].headOffice,
+                    officeId: office._id,
+                    type: office.type,
+                    discount: 0,
+                    startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+                    endDate: moment().add(1, 'years').format('YYYY-MM-DD')
 
+                }
             }
         } else {
-            return {
-                contractPrice: office._contract.maintenancePrice[0].branch,
-                price: office._contract.maintenancePrice[0].branch,
-                officeId: office._id,
-                type: office.type,
-                discount: 0,
-                startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
-                endDate: moment().add(1, 'years').format('YYYY-MM-DD')
+            if (office._contract.monthlyFee != null) {
+                return {
+                    contractPrice: office._contract.monthlyFee[0].branch,
+                    price: office._contract.monthlyFee[0].branch,
+                    officeId: office._id,
+                    type: office.type,
+                    discount: 0,
+                    startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+                    endDate: moment().add(1, 'years').format('YYYY-MM-DD')
 
+                }
+            } else {
+                return {
+                    contractPrice: office._contract.maintenancePrice[0].branch,
+                    price: office._contract.maintenancePrice[0].branch,
+                    officeId: office._id,
+                    type: office.type,
+                    discount: 0,
+                    startDate: moment(ReactiveMethod.call("currentDate"), 'YYYY-MM-DD').format('YYYY-MM-DD'),
+                    endDate: moment().add(1, 'years').format('YYYY-MM-DD')
+
+                }
             }
         }
     }
