@@ -18,8 +18,9 @@ Rabbit.TabularTable.Quotation = new Tabular.Table({
                 return moment(val).format('YYYY-MM-DD');
             }
         },
+        {data: "type", title: "Pro Type"},
         {data: "productId", title: "Product ID"}
 
     ],
-    extraFields: ['customerId', 'quotationDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId','monthlyFee','installationFee','trainingFee']
+    extraFields: ['customerId', 'quotationDate', 'basePrice', 'maintenancePrice', 'paymentMethod', 'type', 'testing', 'maintenanceFee', 'des', '_product', '_customer', 'addFile', 'contractorId', 'monthlyFee', 'installationFee', 'trainingFee']
 });
