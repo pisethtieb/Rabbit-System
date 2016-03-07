@@ -50,7 +50,7 @@ Rabbit.Schema.Contract = new SimpleSchema({
     },
     trainingFee: {
         type: Number,
-        label: 'trainingFee',
+        label: 'TrainingFee',
         decimal: true,
         optional: true
     },

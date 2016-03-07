@@ -26,9 +26,20 @@
     {{#autoForm collection=Rabbit.Collection.Product id="rabbit_productInsert" type="insert"}}
         <div class="row">
             <div class="col-md-6">
-                {{> afQuickField name="name"}}
-                {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="ProductBasePriceObjectField"}}
-                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
+                <div class="col-md-12">
+                    {{> afQuickField name="name"}}
+                </div>
+                <div class="col-md-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Fully Fee</div>
+                        <div class="panel-body">
+                            <div class="col-md-12">
+                                {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="ProductBasePriceObjectField"}}
+                                {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="col-md-6">
                 {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="productMonthlyFeeObjectField"}}
@@ -41,7 +52,7 @@
             <div class="col-md-3">
                 {{> afQuickField name="trainingFee" class="trainingFee"}}
             </div>
-            <div>
+            <div class="col-md-6">
                 {{> afQuickField name="feature"}}
             </div>
         </div>
@@ -57,9 +68,20 @@
         {{#autoForm collection=Rabbit.Collection.Product id="rabbit_productUpdate" doc=this type="update"}}
             <div class="row">
                 <div class="col-md-6">
-                    {{> afQuickField name="name"}}
-                    {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="ProductBasePriceObjectField"}}
-                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
+                    <div class="col-md-12">
+                        {{> afQuickField name="name"}}
+                    </div>
+                    <div class="col-md-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Fully Fee</div>
+                            <div class="panel-body">
+                                <div class="col-md-12">
+                                    {{> afArrayField name="basePrice" id="basePrice" template="basePriceArrayField" subtemplate="ProductBasePriceObjectField"}}
+                                    {{> afArrayField name="maintenancePrice" id="maintenancePrice" template="basePriceArrayField" subtemplate="maintenancePriceObjectField"}}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-md-6">
                     {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="productMonthlyFeeObjectField"}}
@@ -72,7 +94,7 @@
                 <div class="col-md-3">
                     {{> afQuickField name="trainingFee" class="trainingFee"}}
                 </div>
-                <div>
+                <div class="col-md-6">
                     {{> afQuickField name="feature"}}
                 </div>
             </div>

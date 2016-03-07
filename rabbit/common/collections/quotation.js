@@ -85,7 +85,7 @@ Rabbit.Schema.Quotation = new SimpleSchema({
     },
     trainingFee: {
         type: Number,
-        label: 'trainingFee',
+        label: 'TrainingFee',
         decimal: true,
         optional: true
     },

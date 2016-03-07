@@ -40,7 +40,7 @@ Rabbit.Schema.Product = new SimpleSchema({
     },
     trainingFee: {
         type: Number,
-        label: 'trainingFee',
+        label: 'TrainingFee',
         decimal: true
 
     },
