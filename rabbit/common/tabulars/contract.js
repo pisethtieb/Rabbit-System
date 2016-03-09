@@ -19,6 +19,7 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
             }
         },
         {data: "_product.name", title: "Product"},
+          {data: "productType", title: "Type"},
         {
             data: "_officeCount",
             title: "Office <i class='fa fa-arrow-up'></i>",
@@ -33,7 +34,7 @@ Rabbit.TabularTable.Contract = new Tabular.Table({
             tmpl: Meteor.isClient && Template.rabbit_paymentMaintenanceLinkAction
         }, {
             data: "",
-            title: "AddFIle",
+            title: "FIle",
             tmpl: Meteor.isClient && Template.rabbit_addFile
         }
     ],
