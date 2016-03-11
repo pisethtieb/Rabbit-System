@@ -80,7 +80,7 @@ insertTpl.onCreated(function () {
     Meteor.subscribe('rabbit_customer');
 });
 insertTpl.onRendered(function () {
-
+    Meteor.typeahead.inject();
     Meteor.setTimeout(function () {
         $('#basePriceHeadOffice').attr('disabled', "disabled");
         $('#basePriceBranch').attr('disabled', "disabled");
@@ -102,7 +102,32 @@ insertTpl.helpers({
             customerId: Rabbit.Collection.Customer.findOne({_id: '001-000001'})._id,
             contractorId: Rabbit.Collection.Contractor.findOne({_id: '001-01'})._id
         }
-    }
+
+    },
+    search: function (query, sync, callback) {
+        Meteor.call('searchCustomer', query, {}, function (err, res) {
+            if (err) {
+                console.log(err);
+                return;
+            }
+            callback(res);
+        });
+    },
+    selected: function (event, suggestion, dataSetName) {
+        // event - the jQuery event object
+        // suggestion - the suggestion object
+        // datasetName - the name of the dataset the suggestion belongs to
+        // TODO your event handler here
+        var id = suggestion._id;
+        var selector = {_id: id};
+        var data = getValidatedValues();
+        if (data.valid) {
+            checkBeforeAddOrUpdate(selector, data);
+        } else {
+            alertify.warning(data.message);
+        }
+        $('#product-barcode').focus();
+    },
 });
 insertTpl.events({
     'click .customerAddon': function () {
