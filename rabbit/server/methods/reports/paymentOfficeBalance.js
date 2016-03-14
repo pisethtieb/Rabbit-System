@@ -34,7 +34,7 @@ Meteor.methods({
             if (offPayment != null) {
                 var str = "<ul>";
                 offPayment.office.forEach(function (o) {
-                    let officeName = Rabbit.Collection.Office.findOne({_id: o.officeId}).name;
+                    let officeName = Rabbit.Collection.Office.findOne({_id: o.officeId});
                     o.discount = o.discount == null ? 0 : o.discount;
                     o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
                     str += "<li>" + officeName +
