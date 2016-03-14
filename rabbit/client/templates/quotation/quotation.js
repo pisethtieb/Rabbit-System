@@ -80,7 +80,7 @@ insertTpl.onCreated(function () {
     Meteor.subscribe('rabbit_customer');
 });
 insertTpl.onRendered(function () {
-    Meteor.typeahead.inject();
+    //Meteor.typeahead.inject();
     Meteor.setTimeout(function () {
         $('#basePriceHeadOffice').attr('disabled', "disabled");
         $('#basePriceBranch').attr('disabled', "disabled");

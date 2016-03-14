@@ -1,13 +1,4 @@
 <!--Index-->
-
-
-<template name="repo">
-    <div class="row">
-        <div class="col-lg-9">
-            <p><b style="font-size: 18px;">{{contractName}}  </b></p>
-        </div>
-    </div>
-</template>
 <template name="rabbit_quotation">
     <p>
         <button type="button" class="btn btn-primary js-insert">{{fa "plus"}} Add New</button>
@@ -45,10 +36,6 @@
             <div class="col-md-2">
                 {{> afQuickField name="quotationDate"}}
             </div>
-            <input class="form-control typeahead input-sm" name="search" type="text"
-                   placeholder="Type your product name" autocomplete="off" spellcheck="off"
-                   data-source="search" data-select='selected' data-highlight=true
-                   data-template='repo' style="width: 315px;"/>
             <div class="col-md-3">
                 <div class="form-group{{#if afFieldIsInvalid name='customerId'}} has-error{{/if}}" data-required="true">
                     <label class="control-label" for="customerId">Customer</label>
