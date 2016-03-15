@@ -42,24 +42,24 @@
 
 
                         <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - តម្លៃ <b style="font-family:Khmer Viravuth">{{product.priceHead}}USD</b> (ការិយាល័យកណ្តាល
+                            - តម្លៃ <b style="font-family:Khmer Viravuth">{{product.priceHead}}USD ({{product.priceHeadKh}} ដុល្លារអាមេរិក)</b> (ការិយាល័យកណ្តាល
                             តែមួយគត់)។
 
                         </p>
 
                         <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
                             - កំរ៉ៃសេវាថែទាំសំរាប់ការិយាល័យកណ្តាល <b
-                                style="font-family:Khmer Viravuth">{{product.maintenancePriceHead}}USD</b> ក្នុងមួយឆ្នាំ
+                                style="font-family:Khmer Viravuth">{{product.maintenancePriceHead}}USD  ({{product.maintenancePriceHeadKh}} ដុល្លារអាមេរិក)</b> ក្នុងមួយឆ្នាំ
 
                         </p>
 
                         <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - បើកសាខាថ្មី <b style="font-family:Khmer Viravuth">{{product.priceBrand}} USD</b>
+                            - បើកសាខាថ្មី <b style="font-family:Khmer Viravuth">{{product.priceBrand}} USD ({{product.priceBrandKh}} ដុល្លារអាមេរិក)</b>
                             ក្នុងមួយសាខា </p>
 
                         <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
                             - កំរ៉ៃសេវាថែទាំសំរាប់សាខាបើកថ្មី <b
-                                style="font-family:Khmer Viravuth">{{product.maintenancePriceBrand}} USD</b>
+                                style="font-family:Khmer Viravuth">{{product.maintenancePriceBrand}} USD ({{product.maintenancePriceBrandKh}} ដុល្លារអាមេរិក)</b>
                             ក្នុងមួយសាខា
                         </p>
 
@@ -87,23 +87,17 @@
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <b
                                 style="font-family:Khmer Viravuth">30%</b>
                             បញ្ចប់នៅពេលដាក់ឱ្យប្រើប្រាស់ផ្លូវការ</p>
-
                     {{/if}}
                     {{#if data.type}}
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - សេវាប្រចាំខែ​​ <b style="font-family:Khmer Viravuth">{{product.priceHead}} USD  ({{product.priceHeadKh}} ដុល្លារអាមេរិក)</b> សម្រាប់ការិយាល័យកណ្តាល។</p>
                         <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - សេវា<b style="font-family:Khmer Viravuth"> {{product.totalHead}} USD</b> ក្នុងការតំឡើង
+                            - សេវា<b style="font-family:Khmer Viravuth"> {{product.totalHead}} USD​ ({{product.totalHeadKh}} ដុល្លារអាមេរិក)</b> ក្នុងការតំឡើង
                             និង​ ការបណ្តុះប្រើប្រាស់ប្រព័ន្ធសម្រាប់លើកដំបូង។
                         </p>
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - សេវាប្រចាំខែ{{product.priceHead}} USD សម្រាប់ការិយាល័យកណ្តាល</p>
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - បើកសាខាថ្មី <b style="font-family:Khmer Viravuth">{{product.installationFee}} USD</b>
-                            ក្នុងមួយសាខាថ្លៃសេវាក្នុងការតំឡើង</p>
-
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - សេវាប្រចាំខែ<b> {{product.priceBrand}} USD</b> សម្រាប់សាខានិមួយៗ។</p>
-
-                    {{/if}}
+                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        - សាខាថ្មី សេវាប្រចាំខែ<b style="font-family:Khmer Viravuth"> {{product.priceBrand}} USD ({{product.priceBrandKh}} ដុល្លារអាមេរិក)</b> សម្រាប់មួយសាខា និង សេវាក្នុងការតំឡើង<b style="font-family:Khmer Viravuth"> {{product.installationFee}} USD​ ({{product.installationFeeKh}}ដុល្លារអាមេរិក)។</b></p>
+                          {{/if}}
                     <p style="font-family: khmer os battambang;font-size: 13px; line-height: 27px; text-align:right">
                         បាត់ដំបង, ថ្ងៃទី........... ខែ................ ឆ្នាំ២០១...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>

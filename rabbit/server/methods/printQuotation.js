@@ -38,7 +38,12 @@ Meteor.methods({
 
         if (quotation.type == "fullyFee") {
             data.types = 'hello';
-
+            //kh
+            data.product.priceHeadKh = toWords(quotation.basePrice[0].headOffice);
+            data.product.priceBrandKh = toWords(quotation.basePrice[0].branch);
+            data.product.maintenancePriceHeadKh = toWords(quotation.maintenancePrice[0].headOffice);
+            data.product.maintenancePriceBrandKh = toWords(quotation.maintenancePrice[0].branch);
+            //en
             data.product.priceHead = quotation.basePrice[0].headOffice;
             data.product.priceBrand = quotation.basePrice[0].branch;
             data.product.maintenancePriceHead = quotation.maintenancePrice[0].headOffice;
@@ -50,6 +55,12 @@ Meteor.methods({
             data.product.totalHead = quotation.installationFee+quotation.trainingFee;
             data.product.installationFee = quotation.installationFee;
             data.product.trainingFee = quotation.trainingFee;
+            //kh
+            data.product.priceHeadKh = toWords(quotation.monthlyFee[0].headOffice);
+            data.product.priceBrandKh = toWords(quotation.monthlyFee[0].branch);
+            data.product.totalHeadKh = toWords(quotation.installationFee+quotation.trainingFee);
+            data.product.installationFeeKh = toWords(quotation.installationFee);
+            data.product.trainingFeeKh = toWords(quotation.trainingFee);
             //data.product. = quotation.maintenancePrice[0].branch;
         }
 
