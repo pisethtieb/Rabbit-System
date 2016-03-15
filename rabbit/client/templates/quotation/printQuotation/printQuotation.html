@@ -12,15 +12,16 @@
                                 <td>
                                     <div class="header-style">
                                         <span class="report-company-name"
-                                              style="font-family: 'Khmer OS Muol">{{khName}}</span>
-                                        <br>
-                                        <span class="report-company-name">{{enName}}</span>
+                                              style="font-family: 'Khmer OS Muol';font-size: 18px">{{khName}}</span>
                                         <br>
                                         <span class="report-company-name"
-                                              style="font-family: 'Khmer OS battambang">{{khAddress}}</span>
+                                              style="font-family: 'Khmer OS Muol';font-size: 18px">{{enName}}</span>
+                                        <br>
+                                        <span class="report-company-name"
+                                              style="font-family: 'Khmer OS Muol';font-size: 18px">{{khAddress}}</span>
                                         <br>
                                        <span class="report-company-name"
-                                             style="font-family: 'Khmer OS battambang"><i
+                                             style="font-family: 'Khmer OS Muol';font-size: 18px"><i
                                                class="fa fa-phone"> {{telephone}}</i></span>
                                         <br>
                                     </div>
@@ -32,88 +33,102 @@
 
                 <div align="center">
                      <span class="report-company-name">
-                           <b style="font-family: 'Khmer OS Muol ;">{{product.name}}</b></span>
+                           <b style="font-family: 'Khmer OS Muol';font-size: 17px">{{product.name}}</b></span>
                     <br>
                     <span class="report-company-name"
-                          style="font-family: 'Khmer OS Muol"><u>ការចំណាយ និងសេវាផ្សេងៗ</u></span>
+                          style="font-family: 'Khmer OS Muol';font-size: 17px"><u>ការចំណាយ និងសេវាផ្សេងៗ</u></span>
                 </div>
                 <div class='col-md-12' style="padding: 20px;">
                     {{#if data.types}}
 
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - តម្លៃ <b style="font-family:Khmer Viravuth">{{product.priceHead}}USD ({{product.priceHeadKh}} ដុល្លារអាមេរិក)</b> (ការិយាល័យកណ្តាល
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
+                            - តម្លៃ <b style="font-family:Khmer Viravuth">{{product.priceHead}}USD
+                            ({{product.priceHeadKh}} ដុល្លារអាមេរិក)</b> (ការិយាល័យកណ្តាល
                             តែមួយគត់)។
 
                         </p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
                             - កំរ៉ៃសេវាថែទាំសំរាប់ការិយាល័យកណ្តាល <b
-                                style="font-family:Khmer Viravuth">{{product.maintenancePriceHead}}USD  ({{product.maintenancePriceHeadKh}} ដុល្លារអាមេរិក)</b> ក្នុងមួយឆ្នាំ
+                                style="font-family:Khmer Viravuth">{{product.maintenancePriceHead}}USD
+                            ({{product.maintenancePriceHeadKh}} ដុល្លារអាមេរិក)</b> ក្នុងមួយឆ្នាំ
 
                         </p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - បើកសាខាថ្មី <b style="font-family:Khmer Viravuth">{{product.priceBrand}} USD ({{product.priceBrandKh}} ដុល្លារអាមេរិក)</b>
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
+                            - បើកសាខាថ្មី <b style="font-family:Khmer Viravuth">{{product.priceBrand}} USD
+                            ({{product.priceBrandKh}} ដុល្លារអាមេរិក)</b>
                             ក្នុងមួយសាខា </p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
                             - កំរ៉ៃសេវាថែទាំសំរាប់សាខាបើកថ្មី <b
-                                style="font-family:Khmer Viravuth">{{product.maintenancePriceBrand}} USD ({{product.maintenancePriceBrandKh}} ដុល្លារអាមេរិក)</b>
+                                style="font-family:Khmer Viravuth">{{product.maintenancePriceBrand}} USD
+                            ({{product.maintenancePriceBrandKh}} ដុល្លារអាមេរិក)</b>
                             ក្នុងមួយសាខា
                         </p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
                             - ឥតគិតថ្លៃសេវា ក្នុងការតំឡើង និងការណែនាំប្រើប្រាស់ប្រព័ន្ធ
                         </p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
                             - ឥតគិតថ្លៃសេវា ក្នុងការប្រើប្រាស់សាកល្បងមួយខែ និងថែទាំប្រព័ន្ធរយៈពេលបីខែ </p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
                             - ការបង់ប្រាក់៖ </p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <b
                                 style="font-family:Khmer Viravuth">40%</b>
                             នៅពេលចុះកិច្ចសន្យាដំបូង</p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <b
                                 style="font-family:Khmer Viravuth">30%</b>
                             នៅពេលដាក់ឱ្យប្រើប្រាស់សាកល្បង</p>
 
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
                             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;o <b
                                 style="font-family:Khmer Viravuth">30%</b>
                             បញ្ចប់នៅពេលដាក់ឱ្យប្រើប្រាស់ផ្លូវការ</p>
                     {{/if}}
                     {{#if data.type}}
-                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                        - សេវាប្រចាំខែ​​ <b style="font-family:Khmer Viravuth">{{product.priceHead}} USD  ({{product.priceHeadKh}} ដុល្លារអាមេរិក)</b> សម្រាប់ការិយាល័យកណ្តាល។</p>
-                        <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                            - សេវា<b style="font-family:Khmer Viravuth"> {{product.totalHead}} USD​ ({{product.totalHeadKh}} ដុល្លារអាមេរិក)</b> ក្នុងការតំឡើង
-                            និង​ ការបណ្តុះប្រើប្រាស់ប្រព័ន្ធសម្រាប់លើកដំបូង។
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
+                            - សេវាប្រចាំខែ​​ <b style="font-family:Khmer Viravuth">{{product.priceHead}} USD
+                            ({{product.priceHeadKh}} ដុល្លារអាមេរិក)</b> សម្រាប់ការិយាល័យកណ្តាល។</p>
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
+                            - សេវា<b style="font-family:Khmer Viravuth"> {{product.totalHead}} USD​
+                            ({{product.totalHeadKh}} ដុល្លារអាមេរិក)</b> ក្នុងការតំឡើង
+                            និង​បណ្តុះបណ្តាលការប្រើប្រាស់ប្រព័ន្ធសម្រាប់លើកដំបូង។
                         </p>
-                    <p align="left" style="font-family: khmer os battambang;font-size: 13px; line-height: 27px;">
-                        - សាខាថ្មី សេវាប្រចាំខែ<b style="font-family:Khmer Viravuth"> {{product.priceBrand}} USD ({{product.priceBrandKh}} ដុល្លារអាមេរិក)</b> សម្រាប់មួយសាខា និង សេវាក្នុងការតំឡើង<b style="font-family:Khmer Viravuth"> {{product.installationFee}} USD​ ({{product.installationFeeKh}}ដុល្លារអាមេរិក)។</b></p>
-                          {{/if}}
-                    <p style="font-family: khmer os battambang;font-size: 13px; line-height: 27px; text-align:right">
+                        <p align="left" style="font-family: khmer os battambang;font-size: 15px; line-height: 27px;">
+
+                            -​ ក្នុងករណីបង្កើតសាខាថ្មីនៅលើប្រព័ន្ធ
+                            ដើម្បីប្រើប្រាស់បន្ថែមត្រូវបង់ប្រាក់ក្នុងការតំឡើងប្រព័ន្ធចំនួន {{product.installationFee}}
+                            USD
+                            ({{product.installationFeeKh}} ដុល្លារអាមេរិក) និង​​សេវាចំនួន <b
+                                style="font-family:Khmer Viravuth">{{product.priceBrand}}  USD
+                            ({{product.priceBrandKh}}ដុល្លារអាមេរិក)</b> ក្នុងមួយខែ
+                            សម្រាប់មួយសាខា​​ ។
+                        </p>
+                    {{/if}}
+                    <p style="font-family: khmer os battambang;font-size: 15px; line-height: 27px; text-align:right">
                         បាត់ដំបង, ថ្ងៃទី........... ខែ................ ឆ្នាំ២០១...&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
 
-                    <p style="font-family: khmer os battambang;font-size: 13px; line-height: 27px; text-align:right">
+                    <p style="font-family: khmer os battambang;font-size: 15px; line-height: 27px; text-align:right">
                         <b style="font-family:Khmer Viravuth"> រៀបចំដោយ</b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
                     <br>
                     <br>
                     <br>
 
-                    <p style="font-family: khmer os Muol;font-size: 13px; line-height: 27px; text-align:right">
+                    <p style="font-family: khmer os Muol;font-size: 15px; line-height: 27px; text-align:right">
                         {{contractor.name}}
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</p>
 
-                    <p style="font-family: khmer os battambang;font-size: 13px; line-height: 27px; text-align:right">
+                    <p style="font-family: khmer os battambang;font-size: 15px; line-height: 27px; text-align:right">
                         <b style="font-family:Khmer Viravuth"> {{contractor.telephone}}</b>
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                     </p>
@@ -131,7 +146,7 @@
 </template>
 
 <template name="lendingSignFooter">
-    <!--<table width="100%" border="0" style="font-family: khmer os battambang; font-size: 13px;text-align: center">-->
+    <!--<table width="100%" border="0" style="font-family: khmer os battambang; font-size: 15px;text-align: center">-->
     <!--<tr>-->
     <!--<td width="33%">-->
     <!--អ្នកខ្ចី-->
