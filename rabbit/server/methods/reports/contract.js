@@ -36,50 +36,69 @@ Meteor.methods({
             selector.customerId = params.customerId;
         }
 
+
         var index = 1;
-        let totalFee = 0;
         let totalHeadBasePrice = 0;
         let totalBranchBasePrice = 0;
         let totalHeadMainPrice = 0;
         let totalBranchMainPrice = 0;
+        let totalMonthlyFeeBranchPrice = 0;
+        let totalMonthlyFeeHeadPrice = 0;
+        let totalInstallationFeePrice = 0;
+        let totalTrainingFeePrice = 0;
+        let totalFee = 0;
         Rabbit.Collection.Contract.find(selector)
             .forEach(function (obj) {
                 // Do something
                 obj.index = index;
-                totalFee += parseFloat(obj.amount);
+                totalFee += obj.amount;
+                if (obj.productType == "fullyFee") {
 
-                obj.headBasePrice = obj.basePrice[0].headOffice;
-                totalHeadBasePrice += obj.headBasePrice;
+                    obj.headBasePrice = obj.basePrice[0].headOffice;
+                    totalHeadBasePrice += obj.headBasePrice;
 
-                obj.brachBasePrice = obj.basePrice[0].branch;
-                totalBranchBasePrice += obj.brachBasePrice;
+                    obj.brachBasePrice = obj.basePrice[0].branch;
+                    totalBranchBasePrice += obj.brachBasePrice;
 
-                obj.headMainPrice = obj.maintenancePrice[0].headOffice;
-                totalHeadMainPrice += obj.headMainPrice;
+                    obj.headMainPrice = obj.maintenancePrice[0].headOffice;
+                    totalHeadMainPrice += obj.headMainPrice;
 
-                obj.brachMainPrice = obj.maintenancePrice[0].branch;
-                totalBranchMainPrice += obj.brachMainPrice;
+                    obj.brachMainPrice = obj.maintenancePrice[0].branch;
+                    totalBranchMainPrice += obj.brachMainPrice;
+                    content.push(obj);
+                    index++;
+                } else {
+                    obj.monthlyFeePriceHead = obj.monthlyFee[0].headOffice;
+                    totalMonthlyFeeHeadPrice += obj.monthlyFeePriceHead;
 
-                content.push(obj);
-
-                index++;
+                    obj.monthlyFeeBriceBrand = obj.monthlyFee[0].branch;
+                    totalMonthlyFeeBranchPrice += obj.monthlyFeeBriceBrand;
+                    totalInstallationFeePrice += obj.installationFee;
+                    totalTrainingFeePrice += obj.trainingFee;
+                    content.push(obj);
+                    index++;
+                }
             });
 
         if (content.length > 0) {
             data.content = content;
-            data.footer.totalFee = numeral(totalFee).format('$0,0.00');
             data.footer.totalHeadBasePrice = numeral(totalHeadBasePrice).format('$0,0.00');
             data.footer.totalBranchBasePrice = numeral(totalBranchBasePrice).format('$0,0.00');
             data.footer.totalHeadMainPrice = numeral(totalHeadMainPrice).format('$0,0.00');
             data.footer.totalBranchMainPrice = numeral(totalBranchMainPrice).format('$0,0.00');
-        };
+            data.footer.totalMonthlyFeeHeadPrice = numeral(totalMonthlyFeeHeadPrice).format('$0,0.00');
+            data.footer.totalMonthlyFeeBranchPrice = numeral(totalMonthlyFeeBranchPrice).format('$0,0.00');
+            data.footer.totalInstallationFeePrice = numeral(totalInstallationFeePrice).format('$0,0.00');
+            data.footer.totalTrainingFeePrice = numeral(totalTrainingFeePrice).format('$0,0.00');
+            data.footer.totalFee = numeral(totalFee).format('$0,0.00');
+        }
 
         if (params.branch == '') {
             params.branch = 'All'
 
         } else {
 
-            params.branch =   params.branch;
+            params.branch = params.branch;
         }
 
         if (params.customerId == '') {
@@ -87,7 +106,7 @@ Meteor.methods({
 
         } else {
 
-            params.customerId=Rabbit.Collection.Customer.findOne({_id:params.customerId}).companyName;
+            params.customerId = Rabbit.Collection.Customer.findOne({_id: params.customerId}).companyName;
         }
         /****** Header *****/
         data.header = params;

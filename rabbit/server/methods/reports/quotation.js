@@ -41,25 +41,43 @@ Meteor.methods({
         let totalBranchBasePrice = 0;
         let totalHeadMainPrice = 0;
         let totalBranchMainPrice = 0;
+        let totalMonthlyFeeBranchPrice = 0;
+        let totalMonthlyFeeHeadPrice = 0;
+        let totalInstallationFeePrice = 0;
+        let totalTrainingFeePrice = 0;
+
 
         Rabbit.Collection.Quotation.find(selector)
             .forEach(function (obj) {
                 // Do something
                 obj.index = index;
-                obj.headBasePrice = obj.basePrice[0].headOffice;
-                totalHeadBasePrice += obj.headBasePrice;
 
-                obj.brachBasePrice = obj.basePrice[0].branch;
-                totalBranchBasePrice += obj.brachBasePrice;
+                if (obj.type == "fullyFee") {
 
-                obj.headMainPrice = obj.maintenancePrice[0].headOffice;
-                totalHeadMainPrice += obj.headMainPrice;
+                    obj.headBasePrice = obj.basePrice[0].headOffice;
+                    totalHeadBasePrice += obj.headBasePrice;
 
-                obj.brachMainPrice = obj.maintenancePrice[0].branch;
-                totalBranchMainPrice += obj.brachMainPrice;
-                content.push(obj);
+                    obj.brachBasePrice = obj.basePrice[0].branch;
+                    totalBranchBasePrice += obj.brachBasePrice;
 
-                index++;
+                    obj.headMainPrice = obj.maintenancePrice[0].headOffice;
+                    totalHeadMainPrice += obj.headMainPrice;
+
+                    obj.brachMainPrice = obj.maintenancePrice[0].branch;
+                    totalBranchMainPrice += obj.brachMainPrice;
+                    content.push(obj);
+                    index++;
+                } else {
+                    obj.monthlyFeePriceHead = obj.monthlyFee[0].headOffice;
+                    totalMonthlyFeeHeadPrice += obj.monthlyFeePriceHead;
+
+                    obj.monthlyFeeBriceBrand = obj.monthlyFee[0].branch;
+                    totalMonthlyFeeBranchPrice += obj.monthlyFeeBriceBrand;
+                    totalInstallationFeePrice += obj.installationFee;
+                    totalTrainingFeePrice += obj.trainingFee;
+                    content.push(obj);
+                    index++;
+                }
             });
 
         if (content.length > 0) {
@@ -68,8 +86,10 @@ Meteor.methods({
             data.footer.totalBranchBasePrice = numeral(totalBranchBasePrice).format('$0,0.00');
             data.footer.totalHeadMainPrice = numeral(totalHeadMainPrice).format('$0,0.00');
             data.footer.totalBranchMainPrice = numeral(totalBranchMainPrice).format('$0,0.00');
-
-
+            data.footer.totalMonthlyFeeHeadPrice = numeral(totalMonthlyFeeHeadPrice).format('$0,0.00');
+            data.footer.totalMonthlyFeeBranchPrice = numeral(totalMonthlyFeeBranchPrice).format('$0,0.00');
+            data.footer.totalInstallationFeePrice = numeral(totalInstallationFeePrice).format('$0,0.00');
+            data.footer.totalTrainingFeePrice = numeral(totalTrainingFeePrice).format('$0,0.00');
         }
         if (params.branch == '') {
             params.branch = 'All'
