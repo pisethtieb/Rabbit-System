@@ -49,16 +49,15 @@ Meteor.methods({
             data.product.maintenancePriceHead = quotation.maintenancePrice[0].headOffice;
             data.product.maintenancePriceBrand = quotation.maintenancePrice[0].branch;
         } else {
-            data.type = 'hello';
             data.product.priceHead = quotation.monthlyFee[0].headOffice;
             data.product.priceBrand = quotation.monthlyFee[0].branch;
-            data.product.totalHead = quotation.installationFee+quotation.trainingFee;
+            data.product.totalHead = quotation.installationFee + quotation.trainingFee;
             data.product.installationFee = quotation.installationFee;
             data.product.trainingFee = quotation.trainingFee;
             //kh
             data.product.priceHeadKh = toWords(quotation.monthlyFee[0].headOffice);
             data.product.priceBrandKh = toWords(quotation.monthlyFee[0].branch);
-            data.product.totalHeadKh = toWords(quotation.installationFee+quotation.trainingFee);
+            data.product.totalHeadKh = toWords(quotation.installationFee + quotation.trainingFee);
             data.product.installationFeeKh = toWords(quotation.installationFee);
             data.product.trainingFeeKh = toWords(quotation.trainingFee);
             //data.product. = quotation.maintenancePrice[0].branch;
