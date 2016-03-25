@@ -41,11 +41,15 @@ Meteor.methods({
             var str = "<ul>";
             if (obj.office != null) {
                 obj.office.forEach(function (o) {
-                    o.discount = o.discount == null ? 0 : o.discount;
-                    o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
-                    str += "<li>officeId: " + o.officeId +
-                        " | type: " + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
-                        "</li>";
+                    if (o.officeId) {
+                        let officeName = Rabbit.Collection.Office.findOne({_id: o.officeId}).name;
+
+                        o.discount = o.discount == null ? 0 : o.discount;
+                        o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
+                        str += "<li>" + officeName +
+                            " |" + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                            "</li>";
+                    }
                 });
             }
             str += '</ul>';

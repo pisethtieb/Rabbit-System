@@ -37,11 +37,11 @@ Meteor.methods({
             if (offPayment != null) {
                 var str = "<ul>";
                 offPayment.maintenance.forEach(function (o) {
-
+                    let maintenance = Rabbit.Collection.Maintenance.findOne({_id: o.maintenanceId})._office.name;
                     o.discount = o.discount == null ? 0 : o.discount;
                     o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
-                    str += "<li>maintenanceId: " + o.maintenanceId +
-                        " | type: " + o.maintenance + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                    str += "<li>" + maintenance +
+                        " | " + o.maintenance + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
                         "</li>";
                 });
                 let product = Rabbit.Collection.Product.findOne({_id: offPayment._contract.productId});

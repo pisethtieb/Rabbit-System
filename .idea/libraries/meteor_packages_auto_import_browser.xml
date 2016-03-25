@@ -229,6 +229,7 @@
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.0/web.browser/throw-compile-error.js" />
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.0/web.browser/templating-tools.js" />
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.0/web.browser/code-generation.js" />
+        <item url="file://$USER_HOME$/.meteor/packages/theara_numeral-helpers/0.0.4/web.browser/numeral-helpers.js" />
         <item url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.0/web.browser/compile-tags-with-spacebars.js" />
         <item url="file://$USER_HOME$/.meteor/packages/cfs_collection/0.5.5/web.browser/packages/cfs_collection.js" />
         <item url="file://$USER_HOME$/.meteor/packages/cfs_access-point/0.1.49/web.browser/packages/cfs_access-point.js" />
@@ -677,6 +678,7 @@
       <root url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.0/web.browser/templating-tools.js" />
       <root url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.0/web.browser/code-generation.js" />
       <root url="file://$USER_HOME$/.meteor/packages/templating-tools/1.0.0/web.browser/compile-tags-with-spacebars.js" />
+      <root url="file://$USER_HOME$/.meteor/packages/theara_numeral-helpers/0.0.4/web.browser/numeral-helpers.js" />
       <root url="file://$USER_HOME$/.meteor/packages/cfs_collection/0.5.5/web.browser/packages/cfs_collection.js" />
       <root url="file://$USER_HOME$/.meteor/packages/cfs_access-point/0.1.49/web.browser/packages/cfs_access-point.js" />
       <root url="file://$USER_HOME$/.meteor/packages/babel-runtime/0.1.4/web.browser/babel-runtime.js" />

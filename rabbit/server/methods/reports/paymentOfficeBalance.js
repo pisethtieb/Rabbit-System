@@ -34,12 +34,15 @@ Meteor.methods({
             if (offPayment != null) {
                 var str = "<ul>";
                 offPayment.office.forEach(function (o) {
-                    let officeName = Rabbit.Collection.Office.findOne({_id: o.officeId});
-                    o.discount = o.discount == null ? 0 : o.discount;
-                    o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
-                    str += "<li>" + officeName +
-                        " |" + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
-                        "</li>";
+                    if (o.officeId) {
+                        let officeName = Rabbit.Collection.Office.findOne({_id: o.officeId}).name;
+
+                        o.discount = o.discount == null ? 0 : o.discount;
+                        o.paidAmount = o.paidAmount == null ? 0 : o.paidAmount;
+                        str += "<li>" +officeName +
+                            " |" + o.office + " | Price: " + o.price + " | dis: " + o.discount + " | paid: " + o.paidAmount + " | Due: " + o.dueAmount +
+                            "</li>";
+                    }
                 });
                 let product = Rabbit.Collection.Product.findOne({_id: offPayment._contract.productId});
                 let amount = 0;
