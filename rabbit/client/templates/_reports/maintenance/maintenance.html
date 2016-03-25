@@ -68,7 +68,7 @@
                         <th>No</th>
                         <th>ID</th>
                         <th>Contract Date</th>
-                        <th>ContractId</th>
+                        <th>Company</th>
                         <th>Cus Name</th>
                         <th>Tel</th>
                         <th>Office Name</th>
@@ -87,7 +87,7 @@
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
                             <td>{{contract.contractDate}}</td>
-                            <td>{{contract._id}}</td>
+                            <td>{{contract._customer.companyName}}</td>
                             <td>{{contract._customer.contractName}}</td>
                             <td>{{contract._customer.telephone}}</td>
                             <td>{{_office.name}}</td>

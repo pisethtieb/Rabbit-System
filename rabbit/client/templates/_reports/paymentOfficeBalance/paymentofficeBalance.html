@@ -83,7 +83,7 @@
                         <th>No</th>
                         <th>ID</th>
                         <th>Paid Date</th>
-                        <th>ContractId</th>
+                        <th>Company</th>
                         <th>Cus Name</th>
                         <th>Tel</th>
                         <th>Product</th>
@@ -100,7 +100,7 @@
                             <td>{{index}}</td>
                             <td>{{_id}}</td>
                             <td>{{moFormat paymentOfficeDate "DD/MM/YYYY"}}</td>
-                            <td>{{contractId}}</td>
+                            <td>{{_customer.companyName}}</td>
                             <td>{{_customer.contractName}}</td>
                             <td>{{_customer.telephone}}</td>
                             <td>{{product.name}}</td>
