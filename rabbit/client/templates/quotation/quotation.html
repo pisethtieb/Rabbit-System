@@ -74,10 +74,10 @@
                                 <div class="panel-heading">Service</div>
                                 <div class="panel-body">
                                     <div class="col-md-6">
-                                        {{> afQuickField name="installationFee" class="installationFee"}}
+                                        {{> afQuickField name="installationFee" class="installationFee" placeholder="Installation Fee"}}
                                     </div>
                                     <div class="col-md-6">
-                                        {{> afQuickField name="trainingFee" class="trainingFee"}}
+                                        {{> afQuickField name="trainingFee" class="trainingFee" placeholder="Training Fee"}}
                                     </div>
                                 </div>
                             </div>
@@ -144,14 +144,29 @@
             </div>
 
             <div class="col-md-12 monthly">
-                {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField" subtemplate="quotationMonthlyFeeObjectField"}}
+                <div class="panel panel-default">
+                    <div class="panel-heading">Monthly Fee</div>
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            {{> afArrayField name="monthlyFee" id="monthlyFee" template="basePriceArrayField"  label=false subtemplate="quotationMonthlyFeeObjectField"}}
+                        </div>
+                        <div class="col-md-6">
+                            <div class="panel panel-default">
+                                <div class="panel-heading">Service</div>
+                                <div class="panel-body">
+                                    <div class="col-md-6">
+                                        {{> afQuickField name="installationFee" class="installationFee" placeholder="Installation Fee"}}
+                                    </div>
+                                    <div class="col-md-6">
+                                        {{> afQuickField name="trainingFee" class="trainingFee" placeholder="Training Fee"}}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-6">
-                {{> afQuickField name="installationFee" class="installationFee"}}
-            </div>
-            <div class="col-md-6">
-                {{> afQuickField name="trainingFee" class="trainingFee"}}
-            </div>
+
 
             <div class="col-md-12 fully">
                 <div class="panel panel-default">

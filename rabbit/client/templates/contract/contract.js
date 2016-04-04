@@ -164,6 +164,8 @@ insertTpl.events({
                 $('#MaintenaceBranch').val("");
                 $('#monthlyFeeHeadOffice').val('');
                 $('#monthlyFeeBranch').val('');
+                $('.installationFee').val('');
+                $('.trainingFee').val('');
             }
         } else if (type == "monthlyFee") {
             if (product) {
@@ -182,7 +184,7 @@ insertTpl.events({
                 $('#MaintenaceBranch').val("");
                 $('#monthlyFeeHeadOffice').val('');
                 $('#monthlyFeeBranch').val('');
-                $('.installation').val('');
+                $('.installationFee').val('');
                 $('.trainingFee').val('');
             }
         }
@@ -296,6 +298,8 @@ updateTpl.events({
                 $('#MaintenaceBranch').val("");
                 $('#monthlyFeeHeadOffice').val('');
                 $('#monthlyFeeBranch').val('');
+                $('.installationFee').val('');
+                $('.trainingFee').val('');
             }
         } else if (type == "monthlyFee") {
             if (product) {
@@ -314,7 +318,7 @@ updateTpl.events({
                 $('#MaintenaceBranch').val("");
                 $('#monthlyFeeHeadOffice').val('');
                 $('#monthlyFeeBranch').val('');
-                $('.installation').val('');
+                $('.installationFee').val('');
                 $('.trainingFee').val('');
             }
         }
